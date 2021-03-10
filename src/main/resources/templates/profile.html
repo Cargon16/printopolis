@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <th:block th:replace="fragments/header.html :: header" />
+    <title>Profile</title>
+</head>
+
+<body>
+    <header th:replace="fragments/cabecera.html :: cabecera">
+        Header goes here
+    </header>
+    <div>
+
+    <div class="profile">
+        <div class="perfil-izq">
+            <div class="datos-Usuario">
+                <img style="width: 20%;" src="../../static/img/user.png" th:src="@{/img/user.png}" alt="User" />
+                <p>Usuario Ejemplo</p>
+                <a class="mensaje-perfil" href="">Mensaje</a>
+                <div class="stats-usuario">
+                    <div class ="stats">
+                        <div class="stat">
+                            <p>8</p>
+                        </div>
+                        <div class="stat">
+                            <p>Puntos</p>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <p>10</p>
+                        </div>
+                        <div class="stat">
+                            <p>Diseños</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-Usuario">
+                <h3>Sobre mí:</h3>
+                <p>Te doy una descripción random de este usuario. Aquí el usuario puede contar sus cameos en el mundo de la impresión 3D.
+                </p>
+                <h3>Nivel de experiencia:</h3>
+                <p>Intermedio</p>
+                
+            </div>
+        </div>
+        <div class="perfil-der">
+            <div class="diseno">
+                <h3>Diseño 1</h3>
+                <img style="width: 50%; margin-left: auto; margin-right: auto;"id="icon" src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
+                <div class="stats">
+                    <div class="stat">
+                        <p>10</p>
+                    </div>
+                    <div class="stat">
+                        <p>Me gusta</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="diseno">
+                <h3>Diseño 2</h3>
+                <img style="width: 50%; margin-left: auto; margin-right: auto;"id="icon" src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
+                <div class="stats">
+                    <div class="stat">
+                        <p>10</p>
+                    </div>
+                    <div class="stat">
+                        <p>Me gusta</p>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="diseno">
+                <h3>Diseño 3</h3>
+                <img style="width: 50%; margin-left: auto; margin-right: auto;"id="icon" src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
+                <div class="stats">
+                    <div class="stat">
+                        <p>10</p>
+                    </div>
+                    <div class="stat">
+                        <p>Me gusta</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="diseno">
+                <h3>Diseño 4</h3>
+                <img style="width: 50%; margin-left: auto; margin-right: auto;"id="icon" src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
+                <div class="stats">
+                    <div class="stat">
+                        <p>10</p>
+                    </div>
+                    <div class="stat">
+                        <p>Me gusta</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <footer th:replace="fragments/footer.html :: footer">
+        Footer goes here
+    </footer>
+
+</body>
+
+</html>

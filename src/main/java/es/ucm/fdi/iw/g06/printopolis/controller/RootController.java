@@ -20,13 +20,12 @@ public class RootController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		model.addAttribute(WELCOME, "Hellooo");
 		return "index";
 	}
 	
-	@GetMapping("/chat")
-	public String chat(Model model, HttpServletRequest request) {
-		return "chat";
+	@GetMapping("/profile")
+	public String profile(Model model, HttpServletRequest request) {
+		return "profile";
 	}
 	
 	@GetMapping("/error")
