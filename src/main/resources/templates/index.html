@@ -4,13 +4,15 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head><th:block th:replace="fragments/header.html :: header"/>
-	<title>KM: Bienvenido</title>
+	<title>Printopolis</title>
 </head>
 <body>
+	<nav th:replace="fragments/nav.html :: nav">
+		Nav goes here
+	</nav>
 	
 	<div class="container">
 	<div class="main">
-	
 	<h1 th:text="${welcome}">Bienvenido a la plantilla de IW</h1>
 	
 	<p>
