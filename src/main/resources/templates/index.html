@@ -7,35 +7,58 @@
 	<title>Printopolis</title>
 </head>
 <body>
+	<header th:replace="fragments/cabecera.html :: cabecera">
+		Nav goes here
+	</header>
 	<nav th:replace="fragments/nav.html :: nav">
 		Nav goes here
 	</nav>
 	
-	<div class="container">
-	<div class="main">
-	<h1 th:text="${welcome}">Bienvenido a la plantilla de IW</h1>
-	
-	<p>
-	El Karmómetro te permite dos cosas: experimentar con una aplicación que más o menos funciona, y 
-	conseguir que el profe sepa, en tiempo real, lo que te parece la clase. ¿Problemas de timidez? 
-	¡Karmómetro es 100% anónimo, no te quedes con dudas! ¿Al contrario, tus compañeros dicen que preguntas demasiado? 
-	¡Karmómetro les permite votar sólo tus preguntas interesantes!	
-	</p>
-	
-	<div th:if="${session.u == null}">
-	<h4>Entra en una clase</h4>
-	<!--<form th:action="@{/clase/enter}" method="POST">
-		<input name="userName" placeholder="Nombre de usuario"/>
-		<input name="groupCode" placeholder="Código de la clase"/>
-		<button type="submit">Enviar</button>				
-	</form>-->
-	<p>
-		(El profesor debería escribir el código de la clase en la pizarra)
-	</p>
-	</div>
-	
-	</div>
-	</div>
+	<div id="fondo">
+        <nav>
+
+            <h3>Si lo imaginas, IMPRIMELO</h3>
+            
+            <h1>¿Qué estás buscando?</h1>
+            
+    
+            <div class="row">
+            <div class="column">
+                <img width="100" height="100" src="../img/3d-printing.png">
+                <h5>Todas las categorias</h5>
+            </div>
+            <div class="column">
+                <img width="100" height="100" src="../img/3d-printing.png">
+                <h5>Diseños</h5>
+            </div>
+            <div class="column">
+                <img width="100" height="100" src="../img/3d-printing.png">
+                <h5>Impresores</h5>
+            </div>
+            </div>
+            
+        </nav>
+    
+    
+        <div id="disenos">
+            <h1><b>DISEÑOS DESTACADOS</b></h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a venenatis nisl, a egestas lectus. Vivamus sodales bibendum lobortis. Pellentesque vestibulum nisi ligula, id viverra enim maximus ac. Duis varius nunc ex, at eleifend mauris blandit et. Pellentesque luctus quam ut arcu porttitor tincidunt. Duis quis urna quis ex sagittis dignissim. Phasellus mollis eu augue non aliquam. Mauris facilisis tellus luctus dolor venenatis finibus. Suspendisse commodo auctor massa, sit amet tempus urna tempor vitae. Vestibulum sagittis, nisi non lobortis accumsan, diam magna ultrices justo, a pharetra mi sapien et lacus. Donec et maximus nibh, at semper ligula. In molestie est eget consectetur rhoncus. Proin eget odio orci. Sed eget vehicula nulla. Nullam pretium id purus ut rutrum.
+    
+                Vivamus ac purus luctus, vehicula dui ac, finibus purus. Pellentesque quis enim a odio eleifend laoreet. Pellentesque euismod venenatis velit eu pharetra. In porttitor nec ex id vehicula. Aenean nec rhoncus orci. Sed aliquet commodo lacus eget posuere. Aliquam eu purus eget purus bibendum faucibus in eu quam. In euismod erat eget lorem luctus ornare. Morbi at tortor arcu. Sed sed maximus eros, quis vestibulum nunc. Praesent quis lectus sit amet turpis laoreet interdum non iaculis quam. Integer placerat rhoncus bibendum. Vestibulum magna leo, interdum eu pharetra vitae, pharetra in ante. Morbi id nisl vel urna faucibus mollis lacinia nec leo. Suspendisse ante quam, pulvinar at nunc eu, consequat mattis diam. Suspendisse sit amet mauris tempor, condimentum est vitae, malesuada leo.
+                
+                Curabitur ac ligula malesuada ex malesuada maximus. Praesent vel risus fringilla sem semper fringilla eget vitae elit. Praesent lectus dui, viverra vel maximus sed, egestas sit amet magna. Morbi viverra est id elit sollicitudin pharetra. Morbi consequat odio sed dolor pretium, in rutrum nunc consectetur. Nulla at metus sollicitudin, efficitur lacus eu, semper sem. Etiam et erat tortor. Vestibulum ipsum arcu, hendrerit sed luctus non, mattis sit amet nisl. Donec luctus orci in arcu sagittis aliquet. Donec at ipsum in leo viverra convallis sit amet eu nibh. Praesent tempor ligula et orci placerat mollis ut non purus.
+                
+                Vivamus erat orci, aliquet vel nibh nec, lacinia faucibus metus. Vivamus id porttitor massa. Ut scelerisque nisl eget ultricies dapibus. Aliquam feugiat elementum enim, sed iaculis purus luctus ac. Nulla sodales lorem nunc, sed euismod turpis venenatis eget. Nam sollicitudin, lacus at interdum egestas, ipsum lorem consectetur magna, non faucibus ante metus id felis. Morbi vel dolor eu libero ultrices suscipit quis at elit. Etiam porttitor porta mi ut lobortis.
+                
+                Donec feugiat sed ex ac sollicitudin. In ut tortor hendrerit, viverra massa vitae, vestibulum ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam mattis augue ac est aliquet facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum scelerisque lorem eget magna gravida elementum. Suspendisse et nibh eget est egestas interdum. Nullam nunc sapien, varius sit amet magna nec, posuere bibendum metus. Aliquam pharetra ac eros ac tempus. Curabitur nisi neque, sodales quis sem a, posuere dignissim tellus. Maecenas arcu elit, placerat tincidunt sem a, fringilla semper nisl. Sed lacinia eros a pellentesque pharetra. Proin feugiat sit amet purus ac viverra. Sed metus erat, euismod non hendrerit quis, pretium sed orci. Curabitur suscipit dictum sapien id viverra.
+            </p>
+        </div>
+    
+        <div id="impresores">
+            <h1><b>IMPRESORES DESTACADOS</b></h1>
+        </div>
+    </div>
+
     <footer th:replace="fragments/footer.html :: footer">
 		Footer goes here
 	</footer>
