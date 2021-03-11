@@ -127,6 +127,11 @@ nav{
     margin-top: 2em;
 }
 
+.nombre{
+    text-decoration: none;
+    color: black;
+}
+
 /*---------- impresores -------------------*/
 
 #impresores{
