@@ -7,16 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-/**
- * Landing-page controller
- * 
- * @author mfreire
- */
+
 @Controller
 public class RootController {
 	
 	private static final Logger log = LogManager.getLogger(RootController.class);
-	private static final String WELCOME = "welcome";
 
 	@GetMapping("/")
 	public String index(Model model) {
@@ -28,8 +23,8 @@ public class RootController {
 		return "profile";
 	}
 	
-	@GetMapping("/error")
+	@GetMapping("/admin")
 	public String error(Model model) {
-		return "error";
+		return "admin";
 	}	
 }
