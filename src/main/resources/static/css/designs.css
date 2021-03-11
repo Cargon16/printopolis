@@ -92,7 +92,7 @@
         rgba(5, 5, 5, 0.45)
       );
 
-      font-size: 20px;
+    font-size: 20px;
 }
 
 
@@ -101,7 +101,7 @@
     height: auto;
     margin-left: 40px;
     margin-right: 40px;
-    margin-bottom: 50px;
+    /* margin-bottom: 15px; */
 
     display:flex;
     flex-direction: row;  
@@ -150,6 +150,24 @@
     margin-top:5px;
 }
 
+.view-model{
+    align-self: center;
+    margin-left: 35px;
+    text-decoration: none;
+    color:black;
+    font-style: bold;
+    border: 2px solid black;
+    border-radius: 10%;
+    padding: 2px;
+}
+
+.view-model:hover{
+    box-shadow: inset 0 0 20px #f4a361bb, 0 0 20px #f4a361bb;
+    outline-color: rgba(49, 138, 172, 0);
+    outline-offset: 80px;
+    text-shadow: 1px 1px 6px #fff;
+}
+
 
 .categorias{
     align-self: flex-start;
@@ -157,6 +175,15 @@
     margin-top: 5px;
     height: 600px;
     overflow: hidden;
+}
+
+.categorias span{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.categorias span::before{
+content:"#"
 }
 
 .likes{
