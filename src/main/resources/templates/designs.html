@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" type="text/css" media="screen" href="../css/designs.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet"> 
+
+<head>
+    <th:block th:replace="fragments/header.html :: header" />
+    <title>Designs</title>
+</head>
+
+<body>
+    <header th:replace="fragments/cabecera.html :: cabecera">
+        Header goes here
+    </header>
+
+
+
+    <div class="carrusel">
+        <div id="tecnologia">Tecnología</div>
+        <div id="juguetes">Juguetes</div>
+        <div id="accesorios">Accesorios</div>
+        <div id="herramientas">Herramientas</div>
+        <div id="hogar">Hogar</div>
+        <div id="deporte">Deporte</div>
+        <div id="todasLasCategorias">Todas las categorías</div>
+ 
+ 
+     </div>
+     
+     <div class="contenedor_diseños">
+ 
+         <div class="diseño">
+             <div class="perfil">
+                 <img src="img/user.png">
+                 <span class= "nombre">NombreUsuario</span>
+                 <a class="view-model" href="">Modelo</a>
+             </div>
+             <img src="https://thingiverse-rerender-new.s3.amazonaws.com/renders/68/2c/fd/d1/a4/Pic_Iphone_Mount_display_large.jpg" height="180" width="268">
+             <div class="categorias">
+                 <span>phonecase</span>
+                 <span>tecnología</span>
+                 <span>accesorios</span>
+ 
+             </div>
+             <span class="likes">10 ❤️</span>
+         </div>
+ 
+ 
+         <div class="diseño">
+            <div class="perfil">
+                <img src="img/user.png">
+                <span class= "nombre">NombreUsuario</span>
+                <a class="view-model" href="">Modelo</a>
+            </div>
+            <img src="https://cdn.myminifactory.com/assets/object-assets/579fa3dac4ff2/images/720X720-d0c3d899055a26e61dc04dfebd4c9cebea21dfa6.JPG" height="180" width="268">
+            <div class="categorias">
+                <span>pingpong</span>
+                <span>deporte</span>
+
+            </div>
+            <span class="likes">7 ❤️</span>
+         </div>
+
+         <div class="diseño">
+            <div class="perfil">
+                <img src="img/user.png">
+                <span class= "nombre">NombreUsuario</span>
+                <a class="view-model" href="">Modelo</a>
+            </div>
+            <img src="https://pinshape.com/blog/wp-content/uploads/2016/02/container_IMG_20151130_085208-01.jpg" height="180" width="268">
+            <div class="categorias">
+                <span>herramientas</span>
+                <span>Llave inglesa</span>
+
+            </div>
+            <span class="likes">2 ❤️</span>
+         </div>
+
+         <div class="diseño"></div>
+         <div class="diseño"></div>
+         <div class="diseño"></div>
+         <div class="diseño"></div>
+         <div class="diseño"></div>
+         
+ 
+     </div>
+ 
+
+
+
+
+    <footer th:replace="fragments/footer.html :: footer">
+        Footer goes here
+    </footer>
+
+</body>
+
+</html>

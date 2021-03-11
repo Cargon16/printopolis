@@ -22,6 +22,11 @@ public class RootController {
 	public String profile(Model model, HttpServletRequest request) {
 		return "profile";
 	}
+
+	@GetMapping("/designs")
+	public String designs(Model model, HttpServletRequest request) {
+		return "designs";
+	}
 	
 	@GetMapping("/admin")
 	public String error(Model model) {

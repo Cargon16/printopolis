@@ -1,0 +1,191 @@
+/* *{
+    border: red solid 1px;
+} */
+
+.carrusel{
+    margin-top:50px;
+    height: 200px;
+    margin-left: 200px;
+    margin-right: 200px;
+
+    display:flex;
+    flex-direction: row;
+    column-gap: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+.carrusel div:hover{
+    transform: scale(1.1);
+    text-shadow: 1px 1px 6px #fff;
+}
+
+.carrusel div{
+    border: black solid 2px;
+    border-radius: 8%;
+    height: 95px;
+    width: 140px;
+    margin-left: 8px;
+    align-self: start;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    color: white;
+
+    align-self: center;
+    background-size: 140px 95px;
+}
+
+#tecnologia{
+    background-image: 
+    linear-gradient(
+        rgba(5, 5, 5, 0.45), 
+        rgba(5, 5, 5, 0.45)
+      ), url("https://live.staticflickr.com/7164/6736043905_7ee71eaf31_b.jpg");
+}
+
+#juguetes{
+    background-image: 
+    linear-gradient(
+        rgba(5, 5, 5, 0.45), 
+        rgba(5, 5, 5, 0.45)
+      ), url("https://live.staticflickr.com/5100/5526885408_b9b10329b7_b.jpg");
+}
+
+#accesorios{
+    background-image: 
+    linear-gradient(
+        rgba(5, 5, 5, 0.45), 
+        rgba(5, 5, 5, 0.45)
+      ), url("https://live.staticflickr.com/4121/34807334784_f5530167a2_b.jpg");
+}
+
+#herramientas{
+    background-image: 
+    linear-gradient(
+        rgba(5, 5, 5, 0.45), 
+        rgba(5, 5, 5, 0.45)
+      ), url("https://live.staticflickr.com/484/32708495171_a91cf2732d_b.jpg");
+}
+
+#hogar{
+    background-image: 
+    linear-gradient(
+        rgba(5, 5, 5, 0.45), 
+        rgba(5, 5, 5, 0.45)
+      ), url("https://live.staticflickr.com/5770/22811852647_4c434d30df_b.jpg");
+}
+
+#deporte{
+    background-image: 
+    linear-gradient(
+        rgba(5, 5, 5, 0.45), 
+        rgba(5, 5, 5, 0.45)
+      ), url("https://cdn.pixabay.com/photo/2018/08/10/16/33/footballs-3597192__340.jpg");
+}
+
+#todasLasCategorias{
+    background:  linear-gradient(
+        rgba(5, 5, 5, 0.45), 
+        rgba(5, 5, 5, 0.45)
+      );
+
+    font-size: 20px;
+}
+
+
+.contenedor_diseños{
+    margin-top:50px;
+    height: auto;
+    margin-left: 40px;
+    margin-right: 40px;
+    /* margin-bottom: 15px; */
+
+    display:flex;
+    flex-direction: row;  
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 30px;
+    justify-content: center;
+
+}
+
+
+.diseño{
+    background-color: rgba(255, 255, 255);
+    box-shadow: inset 0 0 2px black, 0 0 2px black;
+
+    display:flex;
+    flex-direction: column;
+    row-gap: 8px;
+    justify-content: center;
+
+    border-radius: 3%;
+    height: 330px;
+    width: 270px;
+    margin-top: 30px;
+    align-items: center;  
+}
+
+.perfil{
+    justify-content: flex-start;
+    align-self: flex-start;
+
+    display:flex;
+    flex-direction: row;
+}
+
+.nombre{
+    padding: 5px;
+    margin-top:auto;
+}
+
+.perfil img{
+    border: black solid 1px;
+    border-radius: 100%;
+    padding: 8px;
+    margin-left: 5px;
+    margin-top:5px;
+}
+
+.view-model{
+    align-self: center;
+    margin-left: 35px;
+    text-decoration: none;
+    color:black;
+    font-style: bold;
+    border: 2px solid black;
+    border-radius: 10%;
+    padding: 2px;
+}
+
+.view-model:hover{
+    box-shadow: inset 0 0 20px #f4a361bb, 0 0 20px #f4a361bb;
+    outline-color: rgba(49, 138, 172, 0);
+    outline-offset: 80px;
+    text-shadow: 1px 1px 6px #fff;
+}
+
+
+.categorias{
+    align-self: flex-start;
+    margin-left: 5px;
+    margin-top: 5px;
+    height: 600px;
+    overflow: hidden;
+}
+
+.categorias span{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.categorias span::before{
+content:"#"
+}
+
+.likes{
+    padding: 8px;
+}
