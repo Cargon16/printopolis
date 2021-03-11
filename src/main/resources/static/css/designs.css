@@ -25,6 +25,7 @@
     border-radius: 8%;
     height: 95px;
     width: 140px;
+    min-width: 140px;
     margin-left: 8px;
     align-self: start;
 
@@ -36,6 +37,7 @@
 
     align-self: center;
     background-size: 140px 95px;
+    padding: 8px;
 }
 
 #tecnologia{
@@ -101,7 +103,6 @@
     height: auto;
     margin-left: 40px;
     margin-right: 40px;
-    /* margin-bottom: 15px; */
 
     display:flex;
     flex-direction: row;  
@@ -140,9 +141,10 @@
 .nombre{
     padding: 5px;
     margin-top:auto;
+    margin-left: 5px;
 }
 
-.perfil img{
+.img-user{
     border: black solid 1px;
     border-radius: 100%;
     padding: 8px;
@@ -150,9 +152,9 @@
     margin-top:5px;
 }
 
-.view-model{
+.cart{
     align-self: center;
-    margin-left: 35px;
+    margin-left: 60px;
     text-decoration: none;
     color:black;
     font-style: bold;
@@ -186,6 +188,21 @@
 content:"#"
 }
 
+.inf{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    column-gap: 32px;
+    width:270px;
+}
+
 .likes{
     padding: 8px;
+}
+
+.vendidos{
+    align-self: flex-end;
+    font-size: 13px;
+    color:rgb(129, 129, 129);
+    padding: 5px;
 }
