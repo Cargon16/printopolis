@@ -8,21 +8,17 @@
 <body>
     <header th:fragment="cabecera">
 
-        <div class="fijo">
-            
-            <form action="" method="POST" class="form-buscar">
-                <input id="buscar" type="text" name="search" placeholder="Buscar en todas las categorías">
-            </form>
+        <form action="" method="POST" class="form-buscar">
+            <input id="buscar" type="text" name="search" placeholder="Buscar en todas las categorías">
+        </form>
 
+        <a href="/">
             <img id="icon" src="../../static/img/logo.png" th:src="@{/img/logo.png}" alt="Printopolis" />
-
-            <a id="boton_login" href="#" title="Login">
-                Regístrate o inicia sesión
-            </a>
-
-            
-        </div>
-
+        </a>
+       
+        <a id="boton_login" href="#" title="Login">
+            Regístrate o inicia sesión
+        </a>
 
     </header>
 </body>
