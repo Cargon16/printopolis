@@ -1,0 +1,51 @@
+/*----------- diseños destacados --------------------*/
+
+a{
+    text-decoration: none;
+}
+
+/*---------- grid layout -------------------------------*/
+
+.grid_container {
+    position: relative;
+    margin-top:2em;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    
+}
+
+.grid_container a{
+    color: black;
+}
+
+/*---------- impresores destacados -------------------*/
+
+#impresores{
+    text-align: center;
+    margin-top: 2em;
+}
+
+
+/*---------------------- cards ----------------------------------*/
+
+.card {
+    margin: 0.25em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border: 1px solid rgb(104, 104, 104);
+    transition: 0.3s;
+    border-radius: 5px;
+    text-align: center;
+    padding-bottom: 12px;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .container {
+    text-align: center;
+    padding: 2px 16px;
+    margin-top: 0.2em;
+  }

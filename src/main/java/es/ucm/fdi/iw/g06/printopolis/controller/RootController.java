@@ -32,4 +32,9 @@ public class RootController {
 	public String error(Model model) {
 		return "admin";
 	}	
+
+	@GetMapping("/printers")
+	public String printers(Model model, HttpServletRequest request) {
+		return "printers";
+	}
 }

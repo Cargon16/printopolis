@@ -24,14 +24,6 @@ header{
     width: 100%;
     vertical-align:middle;
     text-align: center;
-    position:sticky;
-    top: 0;
-}
-
-.fijo{
-    position:sticky;
-    top: 0;
-    display:flex;
 }
 
 #icon{
@@ -59,10 +51,6 @@ header{
     word-wrap: break-word;
 
     
-}
-
-hr{
-    width: 100%;
 }
 
 /*---------- Barra de buscar ------------------*/
@@ -101,48 +89,31 @@ hr{
 /*---------- navegacion -----------------------------*/
 
 nav{
-    margin-top: 5em;
-    text-align: center;
+    width: 100%;
+    position:sticky;
+    top: 0;
+    overflow: hidden;
+    background: linear-gradient(to right,#264653, #2a9d90, #e9c56a, #f4a361, #e76f51);
 }
 
-.row{
-    margin-top: 2em;
-}
-
-.column {
-    float: left;
-    width: 33.33%;
-    display: block;
-    word-wrap: break-word;
-}
-
-
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-/*----------- diseños --------------------*/
-
-#disenos{
-    text-align: center;
-    margin-top: 2em;
-}
-
-.nombre{
+nav a{
     text-decoration: none;
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 14px 16px ;
+}
+
+nav a:hover{
+    background-color: rgba(255, 255, 255, 0.178);
     color: black;
 }
 
-/*---------- impresores -------------------*/
-
-#impresores{
-    text-align: center;
-    margin-top: 2em;
+.button_nav{
+    margin-right: 1%;
 }
-
 
 /*------------------ footer ----------------------*/
 

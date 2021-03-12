@@ -2,6 +2,7 @@
 <html 
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/index.css">
 
 <head><th:block th:replace="fragments/header.html :: header"/>
 	<title>Printopolis</title>
@@ -15,51 +16,101 @@
 	</nav>
 	
 	<div id="fondo">
-        <nav>
+       
 
-            <h3>Si lo imaginas, IMPRIMELO</h3>
-            
-            <h1>¿Qué estás buscando?</h1>
-            
-    
-            <div class="row">
-            <div class="column">
-                <img width="100" height="100" src="../img/3d-printing.png">
-                <h5>Todas las categorias</h5>
-            </div>
-            <div class="column">
-                <img width="100" height="100" src="../img/3d-printing.png">
-                <h5>Diseños</h5>
-            </div>
-            <div class="column">
-                <img width="100" height="100" src="../img/3d-printing.png">
-                <h5>Impresores</h5>
-            </div>
-            </div>
-            
-        </nav>
-    
+        <h3>Si lo imaginas, IMPRIMELO</h3>
+        
+        <h1>¿Qué estás buscando?</h1>
+        
+
     
         <div id="disenos">
             <h1><b>DISEÑOS DESTACADOS</b></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a venenatis nisl, a egestas lectus. Vivamus sodales bibendum lobortis. Pellentesque vestibulum nisi ligula, id viverra enim maximus ac. Duis varius nunc ex, at eleifend mauris blandit et. Pellentesque luctus quam ut arcu porttitor tincidunt. Duis quis urna quis ex sagittis dignissim. Phasellus mollis eu augue non aliquam. Mauris facilisis tellus luctus dolor venenatis finibus. Suspendisse commodo auctor massa, sit amet tempus urna tempor vitae. Vestibulum sagittis, nisi non lobortis accumsan, diam magna ultrices justo, a pharetra mi sapien et lacus. Donec et maximus nibh, at semper ligula. In molestie est eget consectetur rhoncus. Proin eget odio orci. Sed eget vehicula nulla. Nullam pretium id purus ut rutrum.
-    
-                Vivamus ac purus luctus, vehicula dui ac, finibus purus. Pellentesque quis enim a odio eleifend laoreet. Pellentesque euismod venenatis velit eu pharetra. In porttitor nec ex id vehicula. Aenean nec rhoncus orci. Sed aliquet commodo lacus eget posuere. Aliquam eu purus eget purus bibendum faucibus in eu quam. In euismod erat eget lorem luctus ornare. Morbi at tortor arcu. Sed sed maximus eros, quis vestibulum nunc. Praesent quis lectus sit amet turpis laoreet interdum non iaculis quam. Integer placerat rhoncus bibendum. Vestibulum magna leo, interdum eu pharetra vitae, pharetra in ante. Morbi id nisl vel urna faucibus mollis lacinia nec leo. Suspendisse ante quam, pulvinar at nunc eu, consequat mattis diam. Suspendisse sit amet mauris tempor, condimentum est vitae, malesuada leo.
-                
-                Curabitur ac ligula malesuada ex malesuada maximus. Praesent vel risus fringilla sem semper fringilla eget vitae elit. Praesent lectus dui, viverra vel maximus sed, egestas sit amet magna. Morbi viverra est id elit sollicitudin pharetra. Morbi consequat odio sed dolor pretium, in rutrum nunc consectetur. Nulla at metus sollicitudin, efficitur lacus eu, semper sem. Etiam et erat tortor. Vestibulum ipsum arcu, hendrerit sed luctus non, mattis sit amet nisl. Donec luctus orci in arcu sagittis aliquet. Donec at ipsum in leo viverra convallis sit amet eu nibh. Praesent tempor ligula et orci placerat mollis ut non purus.
-                
-                Vivamus erat orci, aliquet vel nibh nec, lacinia faucibus metus. Vivamus id porttitor massa. Ut scelerisque nisl eget ultricies dapibus. Aliquam feugiat elementum enim, sed iaculis purus luctus ac. Nulla sodales lorem nunc, sed euismod turpis venenatis eget. Nam sollicitudin, lacus at interdum egestas, ipsum lorem consectetur magna, non faucibus ante metus id felis. Morbi vel dolor eu libero ultrices suscipit quis at elit. Etiam porttitor porta mi ut lobortis.
-                
-                Donec feugiat sed ex ac sollicitudin. In ut tortor hendrerit, viverra massa vitae, vestibulum ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam mattis augue ac est aliquet facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum scelerisque lorem eget magna gravida elementum. Suspendisse et nibh eget est egestas interdum. Nullam nunc sapien, varius sit amet magna nec, posuere bibendum metus. Aliquam pharetra ac eros ac tempus. Curabitur nisi neque, sodales quis sem a, posuere dignissim tellus. Maecenas arcu elit, placerat tincidunt sem a, fringilla semper nisl. Sed lacinia eros a pellentesque pharetra. Proin feugiat sit amet purus ac viverra. Sed metus erat, euismod non hendrerit quis, pretium sed orci. Curabitur suscipit dictum sapien id viverra.
-            </p>
+            <div class="grid_container">
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="https://cdn.myminifactory.com/assets/object-assets/579fa3dac4ff2/images/720X720-d0c3d899055a26e61dc04dfebd4c9cebea21dfa6.JPG" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p>ventas </p> 
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="https://cdn.myminifactory.com/assets/object-assets/579fa3dac4ff2/images/720X720-d0c3d899055a26e61dc04dfebd4c9cebea21dfa6.JPG" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p>ventas </p> 
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="https://cdn.myminifactory.com/assets/object-assets/579fa3dac4ff2/images/720X720-d0c3d899055a26e61dc04dfebd4c9cebea21dfa6.JPG" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p>ventas </p> 
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
         </div>
     
         <div id="impresores">
             <h1><b>IMPRESORES DESTACADOS</b></h1>
 
-          
+            <div class="grid_container">
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="https://cdn.myminifactory.com/assets/object-assets/579fa3dac4ff2/images/720X720-d0c3d899055a26e61dc04dfebd4c9cebea21dfa6.JPG" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p>ventas </p> 
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="https://cdn.myminifactory.com/assets/object-assets/579fa3dac4ff2/images/720X720-d0c3d899055a26e61dc04dfebd4c9cebea21dfa6.JPG" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p>ventas </p> 
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="https://cdn.myminifactory.com/assets/object-assets/579fa3dac4ff2/images/720X720-d0c3d899055a26e61dc04dfebd4c9cebea21dfa6.JPG" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p>ventas </p> 
+                        </div>
+                    </a>
+                </div>
+
+            </div>
             
         </div>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla placerat urna sit amet eros laoreet, et imperdiet velit tristique. Praesent fringilla, magna ut tempor ultricies, odio odio ultrices ipsum, eget tincidunt velit nisl ut felis. Nullam at efficitur ante. Maecenas condimentum mattis massa laoreet accumsan. Vivamus quis placerat diam. Aliquam aliquet nibh ut lorem imperdiet eleifend. Cras nisl elit, volutpat nec magna at, dictum lacinia diam. Integer consequat nisi eget dolor ultricies eleifend non eget justo. In imperdiet lorem tincidunt turpis vehicula finibus. Praesent luctus lacus nisi, vel pretium nibh mattis vitae. Donec convallis diam a mauris tempus suscipit. Praesent cursus augue vitae dolor ultricies fermentum in eu metus. In consequat at ex eu finibus. Aenean pharetra augue nec tellus fringilla finibus. In euismod maximus vestibulum.
+        </p>
+        <p>
+            Fusce mattis pulvinar orci eu interdum. Etiam ultrices consectetur egestas. Suspendisse ornare nulla quis pulvinar tristique. Nulla molestie justo a fermentum convallis. Duis sit amet turpis nec dui gravida accumsan at id metus. Fusce posuere euismod porta. Donec rhoncus neque sit amet malesuada condimentum. Phasellus fringilla sagittis purus eget venenatis. Proin vitae diam ac enim elementum mattis et vel augue. Quisque lacus magna, ultricies ut suscipit eget, maximus sit amet arcu. Duis sem enim, posuere ac ultrices at, varius et lectus. Praesent vitae diam at diam venenatis sagittis et eu lorem. Pellentesque eu efficitur tortor. Pellentesque diam neque, congue eget blandit ac, consequat eu mauris. Nam euismod diam at convallis feugiat. Duis suscipit, nisl sed condimentum porttitor, sem quam gravida enim, ut faucibus nisl lacus eu turpis.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla placerat urna sit amet eros laoreet, et imperdiet velit tristique. Praesent fringilla, magna ut tempor ultricies, odio odio ultrices ipsum, eget tincidunt velit nisl ut felis. Nullam at efficitur ante. Maecenas condimentum mattis massa laoreet accumsan. Vivamus quis placerat diam. Aliquam aliquet nibh ut lorem imperdiet eleifend. Cras nisl elit, volutpat nec magna at, dictum lacinia diam. Integer consequat nisi eget dolor ultricies eleifend non eget justo. In imperdiet lorem tincidunt turpis vehicula finibus. Praesent luctus lacus nisi, vel pretium nibh mattis vitae. Donec convallis diam a mauris tempus suscipit. Praesent cursus augue vitae dolor ultricies fermentum in eu metus. In consequat at ex eu finibus. Aenean pharetra augue nec tellus fringilla finibus. In euismod maximus vestibulum.
+
+Fusce mattis pulvinar orci eu interdum. Etiam ultrices consectetur egestas. Suspendisse ornare nulla quis pulvinar tristique. Nulla molestie justo a fermentum convallis. Duis sit amet turpis nec dui gravida accumsan at id metus. Fusce posuere euismod porta. Donec rhoncus neque sit amet malesuada condimentum. Phasellus fringilla sagittis purus eget venenatis. Proin vitae diam ac enim elementum mattis et vel augue. Quisque lacus magna, ultricies ut suscipit eget, maximus sit amet arcu. Duis sem enim, posuere ac ultrices at, varius et lectus. Praesent vitae diam at diam venenatis sagittis et eu lorem. Pellentesque eu efficitur tortor. Pellentesque diam neque, congue eget blandit ac, consequat eu mauris. Nam euismod diam at convallis feugiat. Duis suscipit, nisl sed condimentum porttitor, sem quam gravida enim, ut faucibus nisl lacus eu turpis.
+
+Vivamus convallis dictum sapien, id sagittis ipsum rutrum sit amet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed eros turpis, feugiat quis congue quis, rhoncus quis magna. Sed eleifend porttitor convallis. Vivamus ornare dui et commodo blandit. Curabitur imperdiet consequat quam id tempor. Fusce mattis laoreet luctus. Aenean pharetra elementum mattis. Etiam vitae convallis ligula. Donec lobortis ornare nulla eget bibendum. Aenean sodales est enim, a cursus risus hendrerit in. Curabitur erat velit, rhoncus rhoncus imperdiet id, tempus eu dui. Cras in molestie nulla. Cras viverra lacinia arcu sed fermentum. Ut congue, lacus mollis luctus pharetra, dui felis vestibulum mi, eu sodales dui magna eu ligula. Maecenas euismod fermentum ultricies.
+
+Nam a justo hendrerit urna ultricies pretium id a eros. Vestibulum vel ante sit amet sem commodo hendrerit. Nulla feugiat erat ut lectus rhoncus ultrices. Nam molestie vitae diam ac placerat. Vestibulum bibendum pretium ex interdum mattis. Etiam dignissim augue sem, sed euismod ex rhoncus id. Proin gravida nulla vel auctor vulputate. Sed gravida ac mauris in mollis. Pellentesque id semper sem. Maecenas sodales orci id mollis pharetra. Fusce vitae cursus dolor. Pellentesque vel cursus orci. Nam elit odio, mollis nec posuere et, pharetra id nisi. Nunc a sapien id mi aliquam mollis eu nec nisi. Mauris quis eros nibh.
+
+Donec pretium iaculis tellus at vestibulum. Suspendisse nisl justo, ultrices a aliquet auctor, fringilla at elit. Aliquam et maximus nunc, vel semper elit. Nunc urna enim, malesuada fermentum sem id, porta tristique risus. Aenean lorem nisi, iaculis sed venenatis at, tristique vitae est. Nulla vel placerat mi, at ornare tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        </p>
     </div>
 
     <footer th:replace="fragments/footer.html :: footer">
