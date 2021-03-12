@@ -2,12 +2,16 @@
     margin: 0;
     padding: 0;
 }
+body{
+    margin-bottom: 4em;
+}
 
 html{
     /*background: linear-gradient(90deg, #2a9d8f, #e9c46a, #f4a261);*/
     background-image: url(../img/fondo.png);
     background-repeat: to left;
     background-size: 100%;
+    min-height: 100%;
 
 }
 
@@ -154,6 +158,8 @@ footer{
     line-height:normal;
     text-align: center;
     float: flex;
+    position: fixed;
+    bottom: 0;
 }
 
 footer #name{
