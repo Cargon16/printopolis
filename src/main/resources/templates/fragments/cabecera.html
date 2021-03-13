@@ -7,18 +7,23 @@
 
 <body>
     <header th:fragment="cabecera">
-
-        <form action="" method="POST" class="form-buscar">
-            <input id="buscar" type="text" name="search" placeholder="Buscar en todas las categorías">
-        </form>
-
-        <a href="/">
-            <img id="icon" src="../../static/img/logo.png" th:src="@{/img/logo.png}" alt="Printopolis" />
-        </a>
-       
-        <a id="boton_login" href="#" title="Login">
-            Regístrate o inicia sesión
-        </a>
+        <div class ="barra-busqueda">
+            <form action="" method="POST" class="form-buscar">
+                <input id="buscar" type="text" name="search" placeholder="Buscar en todas las categorías">
+            </form>
+            <div class="icono">
+                <a href="/">
+                    <img id="icon" src="../../static/img/logo.png" th:src="@{/img/logo.png}" alt="Printopolis" />
+                </a>
+            </div>
+            
+            <div class="btn-login">
+                <a id="boton_login" href="#" title="Login">
+                    Regístrate o inicia sesión
+                </a>
+            </div>
+            
+        </div>
 
     </header>
 </body>
