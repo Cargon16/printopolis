@@ -24,6 +24,12 @@ header{
     width: 100%;
     vertical-align:middle;
     text-align: center;
+    color:1px solid red;
+}
+.fijo{
+    position:sticky;
+    top: 0;
+    display:flex;
 }
 
 #icon{
