@@ -23,9 +23,9 @@
 .carrusel div{
     border: black solid 2px;
     border-radius: 8%;
-    height: 95px;
-    width: 140px;
-    min-width: 140px;
+    height: 90px;
+    width: 135px;
+    min-width: 135px;
     margin-left: 8px;
     align-self: start;
 
@@ -38,6 +38,8 @@
     align-self: center;
     background-size: 140px 95px;
     padding: 8px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 #tecnologia{
