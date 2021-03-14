@@ -37,4 +37,9 @@ public class RootController {
 	public String printers(Model model, HttpServletRequest request) {
 		return "printers";
 	}
+
+	@GetMapping("/signup")
+	public String signup(Model model, HttpServletRequest request) {
+		return "signup";
+	}
 }
