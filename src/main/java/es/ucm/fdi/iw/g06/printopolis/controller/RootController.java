@@ -42,4 +42,15 @@ public class RootController {
 	public String signup(Model model, HttpServletRequest request) {
 		return "signup";
 	}
+
+	@GetMapping("/payment")
+	public String payment(Model model, HttpServletRequest request) {
+		return "payment";
+	}
+
+	@GetMapping("/cart")
+	public String cart(Model model, HttpServletRequest request) {
+		return "cart";
+	}
+
 }
