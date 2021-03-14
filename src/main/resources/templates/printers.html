@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<link rel="stylesheet" type="text/css" media="screen" href="../css/printers.css">
+<link rel="stylesheet" th:href="@{/css/printers.css}" href="css/printers.css" type="text/css"/>
 
 <head>
     <th:block th:replace="fragments/header.html :: header" />

@@ -2,7 +2,7 @@
 <html 
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/index.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}" href="css/index.css" type="text/css"/>
   
 <head><th:block th:replace="fragments/header.html :: header"/>
 	<title>Printopolis</title>
