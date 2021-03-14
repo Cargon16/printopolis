@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" type="text/css" media="screen" href="../static/css/cart.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+<head>
+    <th:block th:replace="fragments/header.html :: header" />
+    <title>Carrito</title>
+</head>
+
+<body>
+    <header th:replace="fragments/cabecera.html :: cabecera">
+        Header goes here
+    </header>
+    <nav th:replace="fragments/nav.html :: nav">
+        Nav goes here
+    </nav>
+
+    <div class="contenedor_productos">
+
+        <div class="producto">
+            <input type="text" value="Producto 1"> <span class="cantidad">2</span>
+        </div>
+
+        <div class="producto">
+            <input type="text" value="Producto 2"> <span class="cantidad">1</span>
+        </div>
+
+        <div class="producto">
+            <input type="text" value="Producto 3"> <span class="cantidad">1</span>
+        </div>
+
+        <div class="producto">
+            <input type="text" value="Producto 4"> <span class="cantidad">3</span>
+        </div>
+
+        <div class="producto">
+            <input type="submit" value="Añadir impresora">
+        </div>
+
+        <div class="producto">
+            <input type="submit" value="Tramitar">
+        </div>
+
+    </div>
+
+    <footer th:replace="fragments/footer.html :: footer">
+        Footer goes here
+    </footer>
+
+</body>
+
+</html>

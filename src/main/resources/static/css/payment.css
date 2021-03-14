@@ -1,0 +1,99 @@
+/* *{
+    border: red solid 1px;
+} */
+
+.contenedor_productos {
+    margin-top: 50px;
+    height: auto;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 30px;
+    justify-content: center;
+}
+
+.producto {
+    background-color: rgba(255, 255, 255);
+    box-shadow: inset 0 0 2px black, 0 0 2px black;
+    display: flex;
+    flex-direction: row;
+    row-gap: 8px;
+    justify-content: center;
+    border-radius: 3%;
+    height: 80px;
+    width: 400px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.nombre {
+    padding: 5px;
+    margin-top: auto;
+    margin-left: 5px;
+}
+
+.img-user {
+    border: black solid 1px;
+    border-radius: 100%;
+    padding: 8px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.cart {
+    align-self: center;
+    margin-left: 60px;
+    text-decoration: none;
+    color: black;
+    font-style: bold;
+    border: 2px solid black;
+    border-radius: 10%;
+    padding: 2px;
+}
+
+.view-model:hover {
+    box-shadow: inset 0 0 20px #f4a361bb, 0 0 20px #f4a361bb;
+    outline-color: rgba(49, 138, 172, 0);
+    outline-offset: 80px;
+    text-shadow: 1px 1px 6px #fff;
+}
+
+.categorias {
+    align-self: flex-start;
+    margin-left: 5px;
+    margin-top: 5px;
+    height: 600px;
+    overflow: hidden;
+}
+
+.categorias span {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.categorias span::before {
+    content: "#"
+}
+
+.inf {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    column-gap: 32px;
+    width: 270px;
+}
+
+.likes {
+    padding: 8px;
+}
+
+.vendidos {
+    align-self: flex-end;
+    font-size: 13px;
+    color: rgb(129, 129, 129);
+    padding: 5px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" type="text/css" media="screen" href="../static/css/payment.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+<head>
+    <th:block th:replace="fragments/header.html :: header" />
+    <title>Tramitar pedido</title>
+</head>
+
+<body>
+    <header th:replace="fragments/cabecera.html :: cabecera">
+        Header goes here
+    </header>
+    <nav th:replace="fragments/nav.html :: nav">
+        Nav goes here
+    </nav>
+
+    <div class="contenedor_productos">
+
+        <div class="producto">
+            <label>Dirección de envío:</label>
+            <input type="text" value="Calle de Prueba 1">
+        </div>
+
+        <div class="producto">
+            <label>Método de pago:</label>
+            <input type="text" value="PayPal">
+        </div>
+
+        <div class="producto">
+            <label>Producto detallado:</label>
+            <textarea>Producto 1: 2 unidades; Producto 2: 1 unidades; Producto 3: 1 unidades; Producto 4: 3 unidades;
+            </textarea>
+        </div>
+
+        <div class="producto">
+            <input type="submit" value="Comprar">
+        </div>
+
+    </div>
+
+    <footer th:replace="fragments/footer.html :: footer">
+        Footer goes here
+    </footer>
+
+</body>
+
+</html>
