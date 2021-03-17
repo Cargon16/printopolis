@@ -1,0 +1,1 @@
+insert into design values (1, 'Weeeeeee', 'turuturuturutu', 'PeroKHE', 100.0, 200);

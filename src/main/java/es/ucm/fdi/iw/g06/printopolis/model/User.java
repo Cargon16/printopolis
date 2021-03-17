@@ -17,33 +17,21 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Design {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@NotNull
-	private String category;
-	private float price;
-	private String name;
-	private String description;
-	private int puntuation;
-	
-	@ManyToMany
-	private List<User> client = new ArrayList<>();
-
-	@ManyToMany
-	private List<User> printer = new ArrayList<>();
-
-
-	@OneToMany
-	@JoinColumn(name="design_id")
-	private List<User> designer = new ArrayList<>();
+	private String Nombre;
+	private String email;
+	private String login;	
+	private String password;	
 
 
 	@Override
 	public String toString() {
-		return "Design #" + id;
+		return "User #" + id;
 	}	
 }
