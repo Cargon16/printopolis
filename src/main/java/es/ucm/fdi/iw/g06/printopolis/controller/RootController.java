@@ -51,9 +51,6 @@ public class RootController {
 	@GetMapping("/designs")
 	@Transactional
 	public String designs(Model model, HttpServletRequest request) {
-		Design d = new Design();
-		d.setCategory("category");
-		entityManager.persist(d);
 		return "designs";
 	}
 	

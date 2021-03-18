@@ -29,18 +29,7 @@ public class Design {
 	private String name;
 	private String description;
 	private int puntuation;
-	
-	@ManyToMany
-	private List<User> client = new ArrayList<>();
-
-	@ManyToMany
-	private List<User> printer = new ArrayList<>();
-
-
-	@OneToMany
-	@JoinColumn(name="design_id")
-	private List<User> designer = new ArrayList<>();
-
+	private float dimension;
 
 	@Override
 	public String toString() {

@@ -26,8 +26,12 @@ public class User {
 	@NotNull
 	private String Nombre;
 	private String email;
-	private String login;	
-	private String password;	
+	private boolean login;	
+	private String password;
+	private String role;
+	private int phone;
+	private String address;
+
 
 
 	@Override

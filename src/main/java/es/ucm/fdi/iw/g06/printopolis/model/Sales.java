@@ -17,8 +17,18 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Impresor extends User{
-    @ManyToMany
-	private List<Printer> printer = new ArrayList<>();
+public class Sales {
+    @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
+    private long user;
+    private String address;
+    private float total_price;
+
+    @Override
+	public String toString() {
+		return "Sale #" + id;
+	}	
 
 }
