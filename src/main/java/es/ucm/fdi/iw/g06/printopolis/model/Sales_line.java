@@ -1,6 +1,8 @@
 package es.ucm.fdi.iw.g06.printopolis.model;
 
+import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +29,9 @@ public class Sales_line {
     private long design;
     private long sale;
     private int quantity;
-    private float price;
-    private Date date;
+    private BigDecimal price;
+
+    private LocalDateTime date;
 
     @Override
 	public String toString() {

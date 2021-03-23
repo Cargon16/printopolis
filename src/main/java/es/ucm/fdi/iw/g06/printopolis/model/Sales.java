@@ -1,5 +1,6 @@
 package es.ucm.fdi.iw.g06.printopolis.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Sales {
 
     private long user;
     private String address;
-    private float total_price;
+    private BigDecimal total_price; 
 
     @Override
 	public String toString() {
