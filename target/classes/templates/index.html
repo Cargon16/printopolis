@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <link rel="stylesheet" th:href="@{/css/index.css}" href="css/index.css" type="text/css"/>
+  
+<head><th:block th:replace="fragments/header.html :: header"/>
+	<title>Printopolis</title>
+</head>
+<body>
+	<header th:replace="fragments/cabecera.html :: cabecera">
+		Nav goes here
+	</header>
+	<nav th:replace="fragments/nav.html :: nav">
+		Nav goes here
+	</nav>
+	
+	<div id="fondo">
+       
+        <div id="eslogan">
+            <h1>Si lo imaginas, IMPRIMELO</h1>
+        </div>
+    
+        <div id="disenos">
+            <h1><b>DISEÑOS DESTACADOS</b></h1>
+            <div class="grid_container">
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="../img/favicon.png" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p> número de ventas </p> 
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="../img/favicon.png" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p> número de ventas </p> 
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="../img/favicon.png" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p> número de ventas </p> 
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <a class="ver_mas" href="#">
+                <img src="../img/plus.png">
+                <b>Ver más...</b>
+            </a>
+            
+        </div>
+    
+        <div id="impresores">
+            <h1><b>IMPRESORES DESTACADOS</b></h1>
+
+            <div class="grid_container">
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p> número de ventas </p> 
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p>número de ventas </p> 
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                        <div class="container">
+                          <h4><b>nombre</b></h4> 
+                          <p>número de ventas </p> 
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <a class="ver_mas" href="#">
+                <img src="../img/plus.png">
+                <b>Ver más...</b>
+            </a>
+            
+        </div>
+
+    </div>
+
+    <footer th:replace="fragments/footer.html :: footer">
+		Footer goes here
+	</footer>
+		
+</body>
+</html>

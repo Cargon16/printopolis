@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Nav fragment - rest intentionally left empty</title>
+</head>
+
+<body>
+    <header th:fragment="cabecera">
+        <div class ="barra-busqueda">
+            <form action="" method="POST" class="form-buscar">
+                <input id="buscar" type="text" name="search" placeholder="Buscar en todas las categorías">
+            </form>
+            <div class="icono">
+                <a href="/">
+                    <img id="icon" src="../../static/img/logo.png" th:src="@{/img/logo.png}" alt="Printopolis" />
+                </a>
+            </div>
+            
+            <div class="btn-login">
+                <a id="boton_login" href="/signup" title="Login">
+                    Regístrate o inicia sesión
+                </a>
+            </div>
+            
+        </div>
+
+    </header>
+</body>
+
+</html>

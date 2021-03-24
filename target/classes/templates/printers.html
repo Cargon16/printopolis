@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" th:href="@{/css/printers.css}" href="css/printers.css" type="text/css"/>
+
+<head>
+    <th:block th:replace="fragments/header.html :: header" />
+    <title>Printopolis</title>
+</head>
+
+<body>
+    <header th:replace="fragments/cabecera.html :: cabecera">
+        Header goes here
+    </header>
+    <nav th:replace="fragments/nav.html :: nav">
+		Nav goes here
+	</nav>
+
+    <div id="fondo">
+
+        <div id="filtrar">
+            Filtrar por 
+            
+            <a class="button_filtro" href="#" title="">
+                <b>Favorito</b> 
+            </a>
+        
+            <a class="button_filtro" href="#" title="">
+                <b>Número de ventas</b>   
+            </a>
+        
+            <a class="button_filtro" href="#" title="">
+                <b>Número de diseños</b> 
+            </a>
+        </div>
+
+        <div class="grid_container">
+            <div class="card">
+                <a href="#">
+                    <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                    <div class="container">
+                      <h4><b>nombre</b></h4> 
+                      <p> número de ventas </p> 
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="#">
+                    <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                    <div class="container">
+                      <h4><b>nombre</b></h4> 
+                      <p>número de ventas </p> 
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="#">
+                    <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                    <div class="container">
+                      <h4><b>nombre</b></h4> 
+                      <p>número de ventas </p> 
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="#">
+                    <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                    <div class="container">
+                      <h4><b>nombre</b></h4> 
+                      <p> número de ventas </p> 
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="#">
+                    <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                    <div class="container">
+                      <h4><b>nombre</b></h4> 
+                      <p>número de ventas </p> 
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="#">
+                    <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                    <div class="container">
+                      <h4><b>nombre</b></h4> 
+                      <p>número de ventas </p> 
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <div id="paginado">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">&raquo;</a>
+        </div>
+
+    </div>
+
+    <footer th:replace="fragments/footer.html :: footer">
+        Footer goes here
+    </footer>
+
+</body>
+
+</html>
