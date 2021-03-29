@@ -17,13 +17,13 @@
 
     <div class="container"> 
 
-        <form action="" class="form">
+        <form class="form" method="POST" th:action="@{/signup}">
             <label>Nombre</label>
-            <input type="text" required placeholder="Tu nombre">
+            <input type="text" required name="name" placeholder="Tu nombre">
             <label>E-Mail</label>
-            <input type="email" required placeholder="Tu email">
+            <input type="email" name="email" required placeholder="Tu email">
             <label>Contraseña</label>
-            <input type="password" required placeholder="Tu contraseña">
+            <input type="password" name="password" required placeholder="Tu contraseña">
             
             <input type="submit" value="Registrar">
         </form>
