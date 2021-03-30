@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -21,7 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ch.qos.logback.core.net.LoginAuthenticator;
 import es.ucm.fdi.iw.g06.printopolis.LoginSuccessHandler;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 /**
  * Landing-page controller
@@ -88,6 +93,12 @@ public class RootController {
 		return "login";
 	}
 
+	
+	@GetMapping("/stlviewer")
+	public String stlviewer() {
+		return "stlViewer";
+	}
+
 	@Transactional
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String addUser(@RequestParam("name") String name, @RequestParam("email") String mail,
@@ -97,7 +108,7 @@ public class RootController {
 		usuario.setUsername(mail);
 		usuario.setFirstName(name);
 		usuario.setPassword(passwordEncoder.encode(password));
-		usuario.setEnabled((byte)1);
+		usuario.setEnabled((byte) 1);
 		usuario.setRoles("ADMIN");
 		entityManager.persist(usuario);
 		log.info("Sign up user {}", mail);
@@ -105,18 +116,10 @@ public class RootController {
 		return "redirect:/";
 	}
 
-	/*@Transactional
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginUser(@RequestParam("username") String email, @RequestParam("password") String password,
-			Model model, HttpSession session) throws IOException {
-
-		User u = entityManager.createNamedQuery("User.byUsername", User.class).setParameter("username", email)
-				.getSingleResult();
-		if (u.getPassword().equals(password)) {
-			SecurityConfig
-		}
-		log.info("Sign up user {}", u);
-
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		new SecurityContextLogoutHandler().logout(request, response, auth);
 		return "redirect:/";
-	}*/
+	}
 }

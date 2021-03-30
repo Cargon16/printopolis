@@ -17,7 +17,13 @@
                 </a>
             </div>
             
-            <div class="btn-login">
+            <div class="btn-login" th:if="${session.u}">
+                <a id="boton_login" href="/logout" title="Login">
+                    Cerrar sesión
+                </a>
+            </div>
+
+            <div class="btn-login" th:unless="${session.u}">
                 <a id="boton_login" href="/signup" title="Login">
                     Regístrate o inicia sesión
                 </a>

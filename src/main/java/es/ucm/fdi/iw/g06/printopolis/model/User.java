@@ -77,6 +77,7 @@ public class User implements Transferable<User.Transfer> {
 	private byte enabled;
 	private String phone;
 	private String address;
+	private String aboutMe;
 
 	//desginer specific fields, related with designs
 	@OneToMany

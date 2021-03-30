@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<script src="/js/main.js"></script>
 
 <head>
     <th:block th:replace="fragments/header.html :: header" />
@@ -11,8 +12,8 @@
         Header goes here
     </header>
     <nav th:replace="fragments/nav.html :: nav">
-		Nav goes here
-	</nav>
+        Nav goes here
+    </nav>
 
     <div class="profile">
         <div class="perfil-izq">
@@ -21,7 +22,7 @@
                 <p>Usuario Ejemplo</p>
                 <a class="mensaje-perfil" href="">Mensaje</a>
                 <div class="stats-usuario">
-                    <div class ="stats">
+                    <div class="stats">
                         <div class="stat">
                             <p>8</p>
                         </div>
@@ -41,17 +42,46 @@
             </div>
             <div class="info-Usuario">
                 <h3>Sobre mí:</h3>
-                <p>Te doy una descripción random de este usuario. Aquí el usuario puede contar sus cameos en el mundo de la impresión 3D.
+                <p>Te doy una descripción random de este usuario. Aquí el usuario puede contar sus cameos en el mundo de
+                    la impresión 3D.
                 </p>
                 <h3>Nivel de experiencia:</h3>
                 <p>Intermedio</p>
-                
+
             </div>
         </div>
         <div class="perfil-der">
+            <div style="width: 100%;">
+                <button id="boton_design" style="float:right; height: auto;">Añadir diseño</button>
+            </div>
+            <div id="addDesignModal" class="modal">
+
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form class="form" method="POST" th:action="@{/design/addDesign}" enctype="multipart/form-data">
+                        <label>Categoría</label>
+                        <input type="text" required name="category" placeholder="Categoría">
+                        <label>Precio</label>
+                        <input type="number" name="precio" required placeholder="Precio">
+                        <label>Nombre</label>
+                        <input type="text" name="diseno" required placeholder="Diseño">
+                        <label>Descripción</label>
+                        <input type="text" name="about" placeholder="Describe el diseño">
+                        <label>Volumen</label>
+                        <input type="number" name="volumen" placeholder="Volumen" required>
+                        <label>Fichero</label>
+                        <input type="file" name="fichero" placeholder="Archivo" accept=".stl" required>
+                        <input type="submit" value="Añadir">
+                    </form>
+                </div>
+
+            </div>
             <div class="diseno">
                 <h3>Diseño 1</h3>
-                <img style="width: 50%; margin-left: auto; margin-right: auto;"id="icon" src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
+                <a href="/stlviewer"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon" src="../static/img/object.png"
+                    th:src="@{/img/object.png}" alt="Diseño" />
+
+                </a>
                 <div class="stats">
                     <div class="stat">
                         <p>10</p>
@@ -60,47 +90,6 @@
                         <p>Me gusta</p>
                     </div>
                 </div>
-                
-            </div>
-            <div class="diseno">
-                <h3>Diseño 2</h3>
-                <img style="width: 50%; margin-left: auto; margin-right: auto;"id="icon" src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
-                <div class="stats">
-                    <div class="stat">
-                        <p>10</p>
-                    </div>
-                    <div class="stat">
-                        <p>Me gusta</p>
-                    </div>
-                </div>
-                
-                
-            </div>
-            <div class="diseno">
-                <h3>Diseño 3</h3>
-                <img style="width: 50%; margin-left: auto; margin-right: auto;"id="icon" src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
-                <div class="stats">
-                    <div class="stat">
-                        <p>10</p>
-                    </div>
-                    <div class="stat">
-                        <p>Me gusta</p>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="diseno">
-                <h3>Diseño 4</h3>
-                <img style="width: 50%; margin-left: auto; margin-right: auto;"id="icon" src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
-                <div class="stats">
-                    <div class="stat">
-                        <p>10</p>
-                    </div>
-                    <div class="stat">
-                        <p>Me gusta</p>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </div>

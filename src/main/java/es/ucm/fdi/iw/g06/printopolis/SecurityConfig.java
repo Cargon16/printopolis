@@ -63,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 				.loginPage("/login")
 				.permitAll().successHandler(loginSuccessHandler); // <-- called when login Ok; can redirect
+			
 	}
 	
 	/**
