@@ -1,5 +1,6 @@
 package es.ucm.fdi.iw.g06.printopolis.control;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.qos.logback.core.net.LoginAuthenticator;
+import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.LoginSuccessHandler;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
+import net.bytebuddy.asm.Advice.Local;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,6 +39,9 @@ public class RootController {
 
 	@Autowired
 	private EntityManager entityManager;
+
+	@Autowired
+	private LocalData localData;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -95,7 +101,9 @@ public class RootController {
 
 	
 	@GetMapping("/stlviewer")
-	public String stlviewer() {
+	public String stlviewer(Model model, HttpServletRequest request) {
+		File f = localData.getFile("design", Integer.toString(1));
+		model.addAttribute("file", f);
 		return "stlViewer";
 	}
 

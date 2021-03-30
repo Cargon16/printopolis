@@ -365,3 +365,8 @@ input[type="submit"]
 }
 
 /*-----------------------------------------------*/
+#openDesign{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

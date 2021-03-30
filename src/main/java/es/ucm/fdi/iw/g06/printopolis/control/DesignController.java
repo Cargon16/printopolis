@@ -1,9 +1,13 @@
 package es.ucm.fdi.iw.g06.printopolis.control;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +21,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 import ch.qos.logback.core.net.LoginAuthenticator;
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
@@ -75,5 +82,24 @@ public class DesignController {
 
         return "redirect:/";
     }
+
+    @GetMapping(value="/{id}/photo")
+	public StreamingResponseBody getPhoto(@PathVariable long id, Model model) throws IOException {		
+		File f = localData.getFile("design", ""+id+".glb");
+		InputStream in;
+		if (f.exists()) {
+			in = new BufferedInputStream(new FileInputStream(f));
+		} else {
+            log.info("Failed to load the file", id);
+			in = new BufferedInputStream(getClass().getClassLoader()
+					.getResourceAsStream("static/img/object.png"));
+		}
+		return new StreamingResponseBody() {
+			@Override
+			public void writeTo(OutputStream os) throws IOException {
+				FileCopyUtils.copy(in, os);
+			}
+		};
+	}
 
 }

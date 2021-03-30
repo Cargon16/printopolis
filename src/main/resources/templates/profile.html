@@ -70,7 +70,7 @@
                         <label>Volumen</label>
                         <input type="number" name="volumen" placeholder="Volumen" required>
                         <label>Fichero</label>
-                        <input type="file" name="fichero" placeholder="Archivo" accept=".stl" required>
+                        <input type="file" name="fichero" placeholder="Archivo" accept=".glb" required>
                         <input type="submit" value="Añadir">
                     </form>
                 </div>
@@ -78,10 +78,41 @@
             </div>
             <div class="diseno">
                 <h3>Diseño 1</h3>
-                <a href="/stlviewer"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon" src="../static/img/object.png"
-                    th:src="@{/img/object.png}" alt="Diseño" />
+                <a href="#myModal" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
+                        src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
 
                 </a>
+                <!-- Button trigger modal -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">x</span></button>
+
+                            </div>
+                            <div class="modal-body">
+
+                                <script type="module"
+                                    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+                                <!-- Use it like any other HTML element -->
+                                <style>
+                                    model-viewer {
+                                      width: 580px;
+                                      height: 580px;
+                                    }
+                                </style>
+                                <model-viewer th:src="@{/design/{id}/photo(id=1)}" auto-rotate camera-controls >
+                                </model-viewer>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="stats">
                     <div class="stat">
                         <p>10</p>
