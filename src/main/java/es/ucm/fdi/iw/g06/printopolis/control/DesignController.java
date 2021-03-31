@@ -34,6 +34,7 @@ import ch.qos.logback.core.net.LoginAuthenticator;
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.LoginSuccessHandler;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
+import es.ucm.fdi.iw.g06.printopolis.model.User;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -43,56 +44,83 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 @Controller()
 @RequestMapping("design")
 public class DesignController {
-    private static final Logger log = LogManager.getLogger(UserController.class);
+	private static final Logger log = LogManager.getLogger(UserController.class);
 
-    @Autowired
-    private EntityManager entityManager;
+	@Autowired
+	private EntityManager entityManager;
 
-    @Autowired
-    private LocalData localData;
+	@Autowired
+	private LocalData localData;
 
-    @Transactional
-    @RequestMapping(value = "/addDesign", method = RequestMethod.POST)
-    public String addUser(@RequestParam("diseno") String diseno, @RequestParam("category") String categoria,
-            @RequestParam("precio") float precio, @RequestParam("about") String about,
-            @RequestParam("volumen") float volumen, @RequestParam("fichero") MultipartFile archivo, Model model, HttpSession session) throws IOException {
+	@Transactional
+	@RequestMapping(value = "/addDesign", method = RequestMethod.POST)
+	public String addUser(@RequestParam("diseno") String diseno, @RequestParam("category") String categoria,
+			@RequestParam("precio") float precio, @RequestParam("about") String about,
+			@RequestParam("volumen") float volumen, @RequestParam("fichero") MultipartFile archivo,
+			@RequestParam("captura") MultipartFile captura, Model model, HttpSession session) throws IOException {
 
-        Design d = new Design();
-        d.setCategory(categoria);
-        d.setDescription(about);
-        d.setDimension(volumen);
-        d.setName(diseno);
-        d.setPrice(precio);
-        entityManager.persist(d);
-        entityManager.flush();
-        File f = localData.getFile("design", Long.toString(d.getId()));
+		Design d = new Design();
+		d.setCategory(categoria);
+		d.setDescription(about);
+		d.setDimension(volumen);
+		d.setName(diseno);
+		d.setPrice(precio);
+		d.setDesigner(((User) session.getAttribute("u")));
+		entityManager.persist(d);
+		entityManager.flush();
+		File f = localData.getFile("design", Long.toString(d.getId()));
+		File c = localData.getFile("design", Long.toString(d.getId()) + "c");
 		if (archivo.isEmpty()) {
 			log.info("failed to upload design: emtpy file?");
 		} else {
-			try (BufferedOutputStream stream =
-					new BufferedOutputStream(new FileOutputStream(f))) {
+			try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(f))) {
 				byte[] bytes = archivo.getBytes();
 				stream.write(bytes);
 			} catch (Exception e) {
 				log.warn("Error uploading " + d.getId() + " ", e);
 			}
 			log.info("Successfully uploaded file {} into {}!", d.getId(), f.getAbsolutePath());
+			if (!captura.isEmpty()) {
+				try (BufferedOutputStream stream1 = new BufferedOutputStream(new FileOutputStream(c))) {
+					byte[] bytess = captura.getBytes();
+					stream1.write(bytess);
+				} catch (Exception e1) {
+					log.warn("Error uploading " + d.getId() + " ", e1);
+				}
+			}
 		}
-        log.info("Added new design {}", diseno);
+		log.info("Added new design {}", diseno);
 
-        return "redirect:/";
-    }
+		return "redirect:/";
+	}
 
-    @GetMapping(value="/{id}/photo")
-	public StreamingResponseBody getPhoto(@PathVariable long id, Model model) throws IOException {		
-		File f = localData.getFile("design", ""+id+".glb");
+	@GetMapping(value = "/{id}/design")
+	public StreamingResponseBody get3dModel(@PathVariable long id, Model model) throws IOException {
+		File f = localData.getFile("design", "" + id);
 		InputStream in;
 		if (f.exists()) {
 			in = new BufferedInputStream(new FileInputStream(f));
 		} else {
-            log.info("Failed to load the file", id);
-			in = new BufferedInputStream(getClass().getClassLoader()
-					.getResourceAsStream("static/img/object.png"));
+			log.info("Failed to load the file", id);
+			in = new BufferedInputStream(getClass().getClassLoader().getResourceAsStream("static/img/object.png"));
+		}
+		return new StreamingResponseBody() {
+			@Override
+			public void writeTo(OutputStream os) throws IOException {
+				FileCopyUtils.copy(in, os);
+			}
+		};
+	}
+
+	@GetMapping(value = "/{id}/captura")
+	public StreamingResponseBody getCaptura(@PathVariable long id, Model model) throws IOException {
+		File f = localData.getFile("design", "" + id + "c");
+		InputStream in;
+		if (f.exists()) {
+			in = new BufferedInputStream(new FileInputStream(f));
+		} else {
+			log.info("Failed to load the file", id);
+			in = new BufferedInputStream(getClass().getClassLoader().getResourceAsStream("static/img/object.png"));
 		}
 		return new StreamingResponseBody() {
 			@Override

@@ -53,20 +53,10 @@ public class RootController {
 		return "index";
 	}
 
-	@GetMapping("/profile")
-	public String profile(Model model, HttpServletRequest request) {
-		return "profile";
-	}
-
 	@GetMapping("/designs")
 	@Transactional
 	public String designs(Model model, HttpServletRequest request) {
 		return "designs";
-	}
-
-	@GetMapping("/admin")
-	public String error(Model model) {
-		return "admin";
 	}
 
 	@GetMapping("/printers")

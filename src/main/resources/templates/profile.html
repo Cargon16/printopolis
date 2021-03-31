@@ -19,7 +19,7 @@
         <div class="perfil-izq">
             <div class="datos-Usuario">
                 <img style="width: 20%;" src="../../static/img/user.png" th:src="@{/img/user.png}" alt="User" />
-                <p>Usuario Ejemplo</p>
+                <p th:text="${user.firstName}"></p>
                 <a class="mensaje-perfil" href="">Mensaje</a>
                 <div class="stats-usuario">
                     <div class="stats">
@@ -42,11 +42,10 @@
             </div>
             <div class="info-Usuario">
                 <h3>Sobre mí:</h3>
-                <p>Te doy una descripción random de este usuario. Aquí el usuario puede contar sus cameos en el mundo de
-                    la impresión 3D.
+                <p th:text="${user.aboutMe}">
                 </p>
                 <h3>Nivel de experiencia:</h3>
-                <p>Intermedio</p>
+                <p th:text="${user.aboutMe}"></p>
 
             </div>
         </div>
@@ -62,51 +61,52 @@
                         <label>Categoría</label>
                         <input type="text" required name="category" placeholder="Categoría">
                         <label>Precio</label>
-                        <input type="number" name="precio" required placeholder="Precio">
+                        <input type="number" name="precio" required min="0" placeholder="Precio">
                         <label>Nombre</label>
                         <input type="text" name="diseno" required placeholder="Diseño">
                         <label>Descripción</label>
                         <input type="text" name="about" placeholder="Describe el diseño">
                         <label>Volumen</label>
-                        <input type="number" name="volumen" placeholder="Volumen" required>
-                        <label>Fichero</label>
+                        <input type="number" name="volumen" placeholder="Volumen" min="1" required>
+                        <label>Fichero del diseño</label>
                         <input type="file" name="fichero" placeholder="Archivo" accept=".glb" required>
+                        <label>Captura del diseño (*opcional)</label>
+                        <input type="file" name="captura" placeholder="Captura" accept=".jpg">
                         <input type="submit" value="Añadir">
                     </form>
                 </div>
 
             </div>
-            <div class="diseno">
-                <h3>Diseño 1</h3>
+            
+            <div th:each="d: ${userDesigns}" class="diseno">
+                <h3 th:text="${d.name}"></h3>
                 <a href="#myModal" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
-                        src="../static/img/object.png" th:src="@{/img/object.png}" alt="Diseño" />
+                    th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño" />
 
                 </a>
-                <!-- Button trigger modal -->
-
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade modal-xl" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content" style="width: 580px;">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">x</span></button>
+                                        aria-hidden="true"> x </span></button>
 
                             </div>
                             <div class="modal-body">
 
                                 <script type="module"
                                     src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-                                <!-- Use it like any other HTML element -->
                                 <style>
                                     model-viewer {
                                       width: 580px;
                                       height: 580px;
+                                      background-color: black;
                                     }
                                 </style>
-                                <model-viewer th:src="@{/design/{id}/photo(id=1)}" auto-rotate camera-controls >
+                                <model-viewer th:src="@{/design/{id}/design(id=${d.id})}" auto-rotate camera-controls >
                                 </model-viewer>
+                                <h3>Descripción</h3>
+                                <p th:text="${d.description}"></p>
 
                             </div>
 
@@ -115,7 +115,58 @@
                 </div>
                 <div class="stats">
                     <div class="stat">
-                        <p>10</p>
+                        <p th:text="${d.puntuation}"></p>
+                    </div>
+                    <div class="stat">
+                        <p>Me gusta</p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal añadir impresora-->
+            <div style="width: 100%;">
+                <button id="boton_printer" style="float:right; height: auto; margin-top: 2%;">Añadir impresora</button>
+            </div>
+            <div id="addPrinterModal" class="modal">
+
+                <div class="modal-content">
+                    <span class="close close1" style="float:right;">&times;</span>
+                    <form class="form" method="POST" th:action="@{/printer/addPrinter}" enctype="multipart/form-data">
+                        <label>Nombre</label>
+                        <input type="text" required name="name" placeholder="Nombre">
+                        <label>Nivel de material</label>
+                        <input type="range" name="mat-level" min="0" max="100" required step="5">
+                        <input type="submit" value="Añadir">
+                    </form>
+                </div>
+
+            </div>
+            <div th:each="p: ${userPrinters}" class="diseno">
+                <h3 th:text="${p.name}"></h3>
+                <a href="#myModal1" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
+                    src="/img/printer.png" alt="Diseño" />
+
+                </a>
+                <div class="modal fade modal-xl" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" style="width: 580px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true"> x </span></button>
+
+                            </div>
+                            <div class="modal-body">
+                                <h3>Descripción</h3>
+                                <p>De momento no hay nada, vaya</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <p th:text="${p.puntuation}"></p>
                     </div>
                     <div class="stat">
                         <p>Me gusta</p>

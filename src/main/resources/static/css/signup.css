@@ -38,3 +38,9 @@ input[type="submit"]
     margin-bottom: 5px;
     justify-self: flex-end;
 }
+
+.btnLogin{
+    text-decoration: none;
+    align-self: center;
+    border:1px solid black;
+}

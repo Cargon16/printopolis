@@ -18,31 +18,17 @@
             </div>
             <select class="admin-see">
                 <option value="all">Todo</option>
-                <option value="Designers"> Diseñadores</option>
                 <option value="Users"> Usuarios</option>
                 <option value="Models"> Modelos</option>
             </select>
         </div>
 
         <div class="row container FilterContainer" style="margin: auto; margin-bottom: 2rem;">
-            <div class="col-sm-3 column" data-admin="Designers">
-                <img src="../../static/img/user.png" th:src="@{/img/user.png}" style="width:5%;" />
-                <a href="/profile" class="link">
-                    <div class="content">
-                        <h4>Felipe</h4>
-                        <p>Rol: Diseñador</p>
-                    </div>
-                </a>
-                <div class="opt-admin">
-                    <a href="" class="reportar">Reportar</a>
-                    <a href="" class="reportar">Eliminar</a>
-                </div>
-            </div>
-            <div class="col-sm-3 column" data-admin="Models">
-                <img src="../../static/img/object.png" th:src="@{/img/object.png}" alt="Model1" style="width:5%;" />
+            <div th:each="d:${designs}" class="col-sm-3 column" data-admin="Models">
+                <img src="../../static/img/object.png" th:src="@{/img/object.png}" alt="${d.name}" style="width:5%;" />
                 <a href="" class="link">
                     <div class="content">
-                        <h4>Model1</h4>
+                        <h4 th:text="${d.name}"></h4>
                         <p>Rol: Modelo</p>
                     </div>
                 </a>
@@ -51,11 +37,11 @@
                     <a href="" class="reportar">Eliminar</a>
                 </div>
             </div>
-            <div class="col-sm-3 column" data-admin="Users">
+            <div th:each="u:${users}" class="col-sm-3 column" data-admin="Users">
                 <img src="../../static/img/user.png" th:src="@{/img/user.png}" style="width:5%;" />
-                <a href="/profile" class="link">
+                <a th:href="@{/user/{id}/(id=${u.id})}" class="link">
                     <div class="content">
-                        <h4>Isabel</h4>
+                        <h4 th:text="${u.username}"></h4>
                         <p>Rol: Usuario</p>
                     </div>
                 </a>

@@ -81,10 +81,12 @@ public class User implements Transferable<User.Transfer> {
 
 	//desginer specific fields, related with designs
 	@OneToMany
+	@JoinColumn(name = "designer_id")
 	private List<Design> designs = new ArrayList<>(); //User designs
 
 	//printer(user) specific fields, related with printers(object)
 	@OneToMany
+	@JoinColumn(name = "impresor_id")
 	private List<Printer> printer = new ArrayList<>(); //list to append all user printers available
 
 	// application-specific fields

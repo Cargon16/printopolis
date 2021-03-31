@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +43,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
+import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Message;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.User.Role;;
@@ -99,15 +101,12 @@ public class UserController {
 			throws JsonProcessingException {		
 		User u = entityManager.find(User.class, id);
 		model.addAttribute("user", u);
-
-		// construye y envía mensaje JSON
-		User requester = (User)session.getAttribute("u");
-		ObjectMapper mapper = new ObjectMapper();
-		ObjectNode rootNode = mapper.createObjectNode();
-		rootNode.put("text", requester.getUsername() + " is looking up " + u.getUsername());
-		String json = mapper.writeValueAsString(rootNode);
+		List<Design> l = entityManager.createQuery("SELECT d FROM Design d WHERE designer_id = " + u.getId()).getResultList();
+		model.addAttribute("userDesigns", l);
+		List<Design> l1 = entityManager.createQuery("SELECT p FROM Printer p WHERE impresor_id = " + u.getId()).getResultList();
+		model.addAttribute("userPrinters", l1);
+		log.info("Sending a message to {} with contents '{}'", id, l);
 		
-		messagingTemplate.convertAndSend("/topic/admin", json);
 
 		return "profile";
 	}	

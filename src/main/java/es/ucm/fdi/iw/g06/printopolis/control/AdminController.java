@@ -3,6 +3,7 @@ package es.ucm.fdi.iw.g06.printopolis.control;
 import java.io.File;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.apache.logging.log4j.LogManager;
@@ -39,13 +40,17 @@ public class AdminController {
 	private Environment env;
 	
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(Model model, HttpSession session) {
 		model.addAttribute("activeProfiles", env.getActiveProfiles());
 		model.addAttribute("basePath", env.getProperty("es.ucm.fdi.base-path"));
 		model.addAttribute("debug", env.getProperty("es.ucm.fdi.debug"));
 
+		long id = ((User)(session.getAttribute("u"))).getId();
 		model.addAttribute("users", entityManager.createQuery(
-				"SELECT u FROM User u").getResultList());
+				"SELECT u FROM User u WHERE u.id != " + id).getResultList());
+		
+		model.addAttribute("designs", entityManager.createQuery(
+			"SELECT d FROM Design d").getResultList());
 		
 		return "admin";
 	}

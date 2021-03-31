@@ -250,6 +250,20 @@ footer #copyright{
     float: right;
     
 }
+#boton_printer{
+    height: 20%;
+    background-color: #e76f51;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 15px 20px 15px 20px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    text-decoration: none;
+    word-wrap: break-word;
+    float: right;
+}
 
 /*---------------admin---------------*/
 .admin{
