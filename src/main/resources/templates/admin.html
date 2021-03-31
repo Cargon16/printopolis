@@ -25,7 +25,7 @@
 
         <div class="row container FilterContainer" style="margin: auto; margin-bottom: 2rem;">
             <div th:each="d:${designs}" class="col-sm-3 column" data-admin="Models">
-                <img src="../../static/img/object.png" th:src="@{/img/object.png}" alt="${d.name}" style="width:5%;" />
+                <img th:src="@{/design/{id}/captura(id=${d.id})}" alt="${d.name}" style="width:5%;" />
                 <a href="" class="link">
                     <div class="content">
                         <h4 th:text="${d.name}"></h4>
