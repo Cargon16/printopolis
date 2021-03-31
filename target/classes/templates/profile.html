@@ -80,11 +80,11 @@
             
             <div th:each="d: ${userDesigns}" class="diseno">
                 <h3 th:text="${d.name}"></h3>
-                <a href="#myModal" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
+                <a th:href="@{#} + ${d.id}" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
                     th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño" />
 
                 </a>
-                <div class="modal fade modal-xl" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade modal-xl" th:id="${d.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="width: 580px;">
                             <div class="modal-header">
