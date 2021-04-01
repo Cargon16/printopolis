@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<script src="/js/main.js"></script>
-
 <head>
     <th:block th:replace="fragments/header.html :: header" />
+    <script src="/js/main.js"></script>
     <title>Profile</title>
 </head>
 
@@ -143,11 +142,11 @@
             </div>
             <div th:each="p: ${userPrinters}" class="diseno">
                 <h3 th:text="${p.name}"></h3>
-                <a href="#myModal1" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
+                <a th:href="@{#} + ${p.id}" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
                     src="/img/printer.png" alt="Diseño" />
 
                 </a>
-                <div class="modal fade modal-xl" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade modal-xl" th:id="${d.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="width: 580px;">
                             <div class="modal-header">
