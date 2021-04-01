@@ -2,6 +2,7 @@ package es.ucm.fdi.iw.g06.printopolis.control;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
+import es.ucm.fdi.iw.g06.printopolis.model.Design;
+
 /**
  * Landing-page controller
  */
@@ -56,6 +59,13 @@ public class RootController {
 	@GetMapping("/designs")
 	@Transactional
 	public String designs(Model model, HttpServletRequest request) {
+
+		// List<User> l = entityManager.createQuery("SELECT us.name FROM USER us JOIN DESIGN d WHERE d.designer_id = us.id").getResultList();
+		// model.addAttribute("infoUser", l);
+		List<Design> l1 = entityManager.createQuery("SELECT d FROM Design d").getResultList();
+		model.addAttribute("allDesigns", l1);
+		log.info("Sending a message to {} with contents '{}'", l1);
+
 		return "designs";
 	}
 

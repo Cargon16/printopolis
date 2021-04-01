@@ -141,10 +141,16 @@
     flex-direction: row;
 }
 
-.nombre{
+/* .nombre{
     padding: 5px;
     margin-top:auto;
     margin-left: 5px;
+} */
+
+.imgModelo img{
+    align-self: center;
+    height: 180px;
+    width: 268px;
 }
 
 .img-user{
@@ -153,10 +159,12 @@
     padding: 8px;
     margin-left: 5px;
     margin-top:5px;
+    width: 25px;
+    height: 25px;
 }
 
 .cart{
-    align-self: center;
+    justify-self: flex-end;
     margin-left: 60px;
     text-decoration: none;
     color:black;
