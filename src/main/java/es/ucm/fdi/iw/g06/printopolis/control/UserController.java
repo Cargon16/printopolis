@@ -45,6 +45,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Message;
+import es.ucm.fdi.iw.g06.printopolis.model.Printer;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.User.Role;;
 
@@ -101,9 +102,10 @@ public class UserController {
 			throws JsonProcessingException {		
 		User u = entityManager.find(User.class, id);
 		model.addAttribute("user", u);
-		List<Design> l = entityManager.createQuery("SELECT d FROM Design d WHERE designer_id = " + u.getId()).getResultList();
+		List<Design> l = entityManager.createNamedQuery("Design.allUserDesigns", Design.class).setParameter("userId", u.getId()).getResultList();
 		model.addAttribute("userDesigns", l);
-		List<Design> l1 = entityManager.createQuery("SELECT p FROM Printer p WHERE impresor_id = " + u.getId()).getResultList();
+		List<Printer> l1 = entityManager.createNamedQuery("Printer.allUserPrinters", Printer.class).setParameter("userId", u.getId()).getResultList();
+		System.out.println(l1.toString());
 		model.addAttribute("userPrinters", l1);
 		log.info("Sending a message to {} with contents '{}'", id, l);
 		
