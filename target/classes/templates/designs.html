@@ -31,18 +31,15 @@
 
     <div class="contenedor_diseños">
         <div th:each = "d: ${allDesigns}" class="diseño">
-            <div class="perfil">
+            <div class="perfilUp">
                 <img class="img-user" src="img/user.png">
                 <span class="nombre" th:text= "${d.name}"></span>
-
                 <img class="cart" src="img/cart.png" height="24px" width="24px" href=""></img>
-
-                <div class = "imgModelo">
+            </div>
+            <div class="perfilCenter">
                     <a th:href="@{#} + ${d.id}" class="btn" id="openDesign">
-                        <img id="icon"
-                        th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño"/>
+                        <img id="iconWall" th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño"/>
                     </a>
-                </div>
 
                  <!-- Modelo 3D -->
                 <div class="modal fade modal-xl" th:id="${d.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -76,10 +73,9 @@
                 <span>phonecase</span>
                 <span>tecnología</span>
                 <span>accesorios</span>
-
             </div>
             <div class="inf">
-                <span class="likes" th:text="${d.puntuation}"> <img src="/img/heart.png" height="13px" width="14px"></span>
+                <span class="likes" th:text="${d.puntuation}"> <img id="heart" th:src="@{/img/heart.png}" height="13px" width="14px"/></span>
                 <span class="vendidos">Vendidos #23</span>
             </div>
         </div>
