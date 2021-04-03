@@ -134,8 +134,16 @@ public class DesignController {
 
 	@GetMapping("/{category}")
 	public String designs(@PathVariable String category, Model model, HttpServletRequest request) {
-		List<Design> l = entityManager.createNamedQuery("Design.categoryDesigns", Design.class).setParameter("category", category).getResultList();
+		List<Design> l;
+
+		if(category.equals("all")){
+				l = entityManager.createQuery("SELECT d FROM Design d").getResultList();
+		}
+		else {
+				l = entityManager.createNamedQuery("Design.categoryDesigns", Design.class).setParameter("category", category).getResultList();
+		}
 		model.addAttribute("categoryType", l);
+		model.addAttribute("categoryName", category);
 		log.info("Sending a message to {} with contents '{}'", l);
 
 		return "designs";
