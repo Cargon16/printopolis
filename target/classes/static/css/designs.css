@@ -15,12 +15,12 @@
     text-align: center;
 }
 
-.carrusel div:hover{
+.carrusel a:hover{
     transform: scale(1.1);
     text-shadow: 1px 1px 6px #fff;
 }
 
-.carrusel div{
+.carrusel a{
     border: black solid 2px;
     border-radius: 8%;
     height: 90px;
@@ -40,6 +40,10 @@
     padding: 8px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+}
+
+.titulo{
+    text-align: center;
 }
 
 #tecnologia{
@@ -163,7 +167,7 @@
 
 .cart{
     justify-self: flex-end;
-    margin-left: 130px;
+    margin-left: auto;
     margin-right: 15px;
     margin-top: 23px;
     text-decoration: none;
@@ -208,8 +212,16 @@ content:"#"
 }
 
 .likes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     padding: 8px;
     margin-block-end: 12px;
+    column-gap: 3px;
+}
+
+.likes img{
+    align-self: center;
 }
 
 .vendidos{

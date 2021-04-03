@@ -20,21 +20,28 @@
 
 
     <div class="carrusel">
-        <div id="tecnologia">Tecnología</div>
-        <div id="juguetes">Juguetes</div>
-        <div id="accesorios">Accesorios</div>
-        <div id="herramientas">Herramientas</div>
-        <div id="hogar">Hogar</div>
-        <div id="deporte">Deporte</div>
-        <div id="todasLasCategorias">Todas las categorías</div>
+        <a th:href="@{/design/{category}/ (category = 'Tecnologia')}" id="tecnologia">Tecnología</a>
+        <a th:href="@{/design/{category}/ (category = 'Juguetes')}" id="juguetes">Juguetes</a>
+        <a th:href="@{/design/{category}/ (category = 'Accesorios')}" id="accesorios">Accesorios</a>
+        <a th:href="@{/design/{category}/ (category = 'Herramientas')}" id="herramientas">Herramientas</a>
+        <a th:href="@{/design/{category}/ (category = 'Hogar')}" id="hogar">Hogar</a>
+        <a th:href="@{/design/{category}/ (category = 'Deporte')}" id="deporte">Deporte</a>
+        <a th:href="@{/design/{category}/ (category = 'all')}" id="todasLasCategorias">Todas las categorías</a>
+    </div>
+
+    <div class="titulo" th:if="${categoryName == 'all'}">
+        <h1>Todas las categorías</h1>
+    </div>
+    <div class="titulo" th:unless="${categoryName == 'all'}">
+        <h1 th:text="${categoryName}"></h1>
     </div>
 
     <div class="contenedor_diseños">
-        <div th:each = "d: ${allDesigns}" class="diseño">
+        <div th:each = "d: ${categoryType}" class="diseño">
             <div class="perfilUp">
-                <img class="img-user" src="img/user.png">
+                <img class="img-user" th:src="@{/img/user.png}">
                 <span class="nombre" th:text= "${d.name}"></span>
-                <img class="cart" src="img/cart.png" height="24px" width="24px" href=""></img>
+                <img class="cart" th:src="@{/img/cart.png}" height="24px" width="24px" href=""></img>
             </div>
             <div class="perfilCenter">
                     <a th:href="@{#} + ${d.id}" class="btn" id="openDesign">
@@ -70,12 +77,13 @@
                 <!-------------->
             </div>
             <div class="categorias">
-                <span>phonecase</span>
-                <span>tecnología</span>
-                <span>accesorios</span>
+                <span th:text="${d.category}"></span>
             </div>
             <div class="inf">
-                <span class="likes" th:text="${d.puntuation}"> <img id="heart" th:src="@{/img/heart.png}" height="13px" width="14px"/></span>
+                <div class="likes"> 
+                    <span  th:text="${d.puntuation}"></span>
+                    <img id="heart" th:src="@{/img/heart.png}" height="13px" width="14px"/>
+                </div>
                 <span class="vendidos">Vendidos #23</span>
             </div>
         </div>
