@@ -22,7 +22,11 @@ import lombok.Data;
 @NamedQueries({
 	@NamedQuery(name="Design.allUserDesigns",
 			query="SELECT d FROM Design d "
-					+ "WHERE d.designer.id = :userId")
+					+ "WHERE d.designer.id = :userId"),
+					
+	@NamedQuery(name="Design.categoryDesigns",
+			query="SELECT d FROM Design d "
+					+ "WHERE d.category = :category")
 })
 @Data
 public class Design {

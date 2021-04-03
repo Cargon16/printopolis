@@ -53,21 +53,22 @@ public class RootController {
 
 	@GetMapping("/")
 	public String index(Model model) {
+		model.addAttribute("cat", "all");
 		return "index";
 	}
 
-	@GetMapping("/designs")
-	@Transactional
-	public String designs(Model model, HttpServletRequest request) {
+	// @GetMapping("/designs")
+	// @Transactional
+	// public String designs(Model model, HttpServletRequest request) {
 
-		// List<User> l = entityManager.createQuery("SELECT us.name FROM USER us JOIN DESIGN d WHERE d.designer_id = us.id").getResultList();
-		// model.addAttribute("infoUser", l);
-		List<Design> l1 = entityManager.createQuery("SELECT d FROM Design d").getResultList();
-		model.addAttribute("allDesigns", l1);
-		log.info("Sending a message to {} with contents '{}'", l1);
+	// 	// List<User> l = entityManager.createQuery("SELECT us.name FROM USER us JOIN DESIGN d WHERE d.designer_id = us.id").getResultList();
+	// 	// model.addAttribute("infoUser", l);
+	// 	List<Design> l1 = entityManager.createQuery("SELECT d FROM Design d").getResultList();
+	// 	model.addAttribute("allDesigns", l1);
+	// 	log.info("Sending a message to {} with contents '{}'", l1);
 
-		return "designs";
-	}
+	// 	return "designs";
+	// }
 
 	@GetMapping("/printers")
 	public String printers(Model model, HttpServletRequest request) {

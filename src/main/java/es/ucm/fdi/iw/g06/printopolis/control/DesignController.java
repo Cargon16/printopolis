@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
@@ -130,4 +131,13 @@ public class DesignController {
 		};
 	}
 
+
+	@GetMapping("/{category}")
+	public String designs(@PathVariable String category, Model model, HttpServletRequest request) {
+		List<Design> l = entityManager.createNamedQuery("Design.categoryDesigns", Design.class).setParameter("category", category).getResultList();
+		model.addAttribute("categoryType", l);
+		log.info("Sending a message to {} with contents '{}'", l);
+
+		return "designs";
+	}
 }
