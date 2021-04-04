@@ -131,4 +131,9 @@ public class RootController {
 		new SecurityContextLogoutHandler().logout(request, response, auth);
 		return "redirect:/";
 	}
+
+	@GetMapping("/pruebaAPI")
+	public String prueba(Model model, HttpServletRequest request) {
+		return "pruebaAPI";
+	}
 }
