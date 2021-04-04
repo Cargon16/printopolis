@@ -363,7 +363,7 @@ footer #copyright{
     margin-top: 15px;
 }
 
-input
+input, select
 {
     margin-top: 5px;
     font-size: 20px;
