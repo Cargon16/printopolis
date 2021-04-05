@@ -58,7 +58,16 @@
                     <span class="close">&times;</span>
                     <form class="form" method="POST" th:action="@{/design/addDesign}" enctype="multipart/form-data">
                         <label>Categoría</label>
-                        <input type="text" required name="category" placeholder="Categoría">
+                        <select required name="category" id="ctg">
+                            <option value="" disabled selected>Selecciona una categoría</option>
+                            <option value="Tecnologia">Tecnología</option>
+                            <option value="Juguetes">Juguetes</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Herramientas">Herramientas</option>
+                            <option value="Hogar">Hogar</option>
+                            <option value="Deporte">Deporte</option>
+                          </select>
+
                         <label>Precio</label>
                         <input type="number" name="precio" required min="0" placeholder="Precio">
                         <label>Nombre</label>
