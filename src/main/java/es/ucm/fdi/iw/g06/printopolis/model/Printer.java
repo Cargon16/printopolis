@@ -30,6 +30,7 @@ public class Printer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+    @NotNull
     private String name;
     private float material_level;
     private float puntuation;

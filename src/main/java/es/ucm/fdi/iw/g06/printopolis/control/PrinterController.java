@@ -55,7 +55,9 @@ public class PrinterController {
 
 	@Transactional
 	@RequestMapping(value = "/addPrinter", method = RequestMethod.POST)
-	public String addUser(@RequestParam("name") String impresora, @RequestParam("mat-level") Integer level, Model model, HttpSession session) throws IOException {
+	public String addUser(@RequestParam("name") String impresora, 
+						@RequestParam("mat-level") Integer level,
+						Model model, HttpSession session) throws IOException {
 
 		Printer p = new Printer();
 		p.setMaterial_level(level);
@@ -63,8 +65,32 @@ public class PrinterController {
         p.setPuntuation(0);
 		p.setImpresor(((User) session.getAttribute("u")));
 		entityManager.persist(p);
+		entityManager.flush();
+		File f= localData.getFile("printer", Long.toString(p.getId()));
+		File c= localData.getFile("printer", Long.toString(p.getId())+"c");
 		
-
+		log.info("Added new design {}",impresora);
+		
 		return "redirect:/";
 	}
+
+	@GetMapping(value="/{id}/printer")
+	public StreamingResponseBody getPrinter(@PathVariable long id, Model model) throws IOException {
+		File f = localData.getFile("printer", "" + id);
+		InputStream in;
+		if (f.exists()) {
+			in = new BufferedInputStream(new FileInputStream(f));
+		} else {
+			log.info("Failed to load the file", id);
+			in = new BufferedInputStream(getClass().getClassLoader().getResourceAsStream("static/img/printer.png"));
+		}
+		return new StreamingResponseBody() {
+			@Override
+			public void writeTo(OutputStream os) throws IOException {
+				FileCopyUtils.copy(in, os);
+			}
+		};
+	}
+
+
 }
