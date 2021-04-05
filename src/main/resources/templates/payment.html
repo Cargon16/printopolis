@@ -21,18 +21,12 @@
 
         <div class="producto">
             <label>Dirección de envío:</label>
-            <input type="text" value="Calle de Prueba 1">
+            <input type="text" th:value="${sales.address}">
         </div>
 
         <div class="producto">
-            <label>Método de pago:</label>
-            <input type="text" value="PayPal">
-        </div>
-
-        <div class="producto">
-            <label>Producto detallado:</label>
-            <textarea>Producto 1: 2 unidades; Producto 2: 1 unidades; Producto 3: 1 unidades; Producto 4: 3 unidades;
-            </textarea>
+            <label>Precio total:</label>
+            <input type="text" th:value="${sales.total_price}">
         </div>
 
         <div class="producto">
