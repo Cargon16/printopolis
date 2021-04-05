@@ -5162,3 +5162,839 @@ Caused by: org.hibernate.LazyInitializationException: failed to lazily initializ
 2021-04-05 17:52:41.842 DEBUG 9552 --- [SpringContextShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@39ac01b3] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@255ed8e4]
 2021-04-05 17:52:41.845  INFO 9552 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2021-04-05 17:52:41.857  INFO 9552 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-05 19:18:01.293  INFO 12328 --- [main] e.u.f.i.g.p.PrintopolisApplication       : Starting PrintopolisApplication using Java 11 on DESKTOP-P4RNBKV with PID 12328 (D:\Documentos\Universidad\Ingenier�a Web\printopolis\target\classes started by Carlos in D:\Documentos\Universidad\Ingenier�a Web\printopolis)
+2021-04-05 19:18:01.299  INFO 12328 --- [main] e.u.f.i.g.p.PrintopolisApplication       : The following profiles are active: default
+2021-04-05 19:18:01.906  INFO 12328 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-04-05 19:18:01.927  INFO 12328 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
+2021-04-05 19:18:02.518  INFO 12328 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-04-05 19:18:02.530  INFO 12328 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-05 19:18:02.531  INFO 12328 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-05 19:18:02.627  INFO 12328 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-05 19:18:02.627  INFO 12328 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1278 ms
+2021-04-05 19:18:02.667  INFO 12328 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-05 19:18:02.754  INFO 12328 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-05 19:18:02.759  INFO 12328 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:testdb'
+2021-04-05 19:18:02.900  INFO 12328 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-05 19:18:02.943  INFO 12328 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.23.Final
+2021-04-05 19:18:03.044  INFO 12328 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-05 19:18:03.068 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@102c18e
+2021-04-05 19:18:03.068 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@102c18e
+2021-04-05 19:18:03.069 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@102c18e
+2021-04-05 19:18:03.069 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@2bebd114
+2021-04-05 19:18:03.070 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@6dcab9d9
+2021-04-05 19:18:03.071 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@4a50c746
+2021-04-05 19:18:03.072 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@7f0f84d4
+2021-04-05 19:18:03.073 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@7f0f84d4
+2021-04-05 19:18:03.073 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@7f0f84d4
+2021-04-05 19:18:03.074 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@251c8145
+2021-04-05 19:18:03.076 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@251c8145
+2021-04-05 19:18:03.076 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@251c8145
+2021-04-05 19:18:03.078 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@76c86567
+2021-04-05 19:18:03.080 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@76c86567
+2021-04-05 19:18:03.080 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@76c86567
+2021-04-05 19:18:03.082 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@8c43966
+2021-04-05 19:18:03.083 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@8c43966
+2021-04-05 19:18:03.084 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@8c43966
+2021-04-05 19:18:03.086 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@26c8b296
+2021-04-05 19:18:03.086 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@26c8b296
+2021-04-05 19:18:03.086 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@26c8b296
+2021-04-05 19:18:03.087 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@3520958b
+2021-04-05 19:18:03.089 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@3520958b
+2021-04-05 19:18:03.089 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@3520958b
+2021-04-05 19:18:03.090 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@1b37fbec
+2021-04-05 19:18:03.090 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@1b37fbec
+2021-04-05 19:18:03.091 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@1b37fbec
+2021-04-05 19:18:03.093 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@357f6391
+2021-04-05 19:18:03.093 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@357f6391
+2021-04-05 19:18:03.095 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@7971c2a9
+2021-04-05 19:18:03.096 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@7971c2a9
+2021-04-05 19:18:03.098 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@411fa0ce
+2021-04-05 19:18:03.099 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@411fa0ce
+2021-04-05 19:18:03.100 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@5b0dbfb
+2021-04-05 19:18:03.101 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@15d114ce
+2021-04-05 19:18:03.102 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@a2b54e3
+2021-04-05 19:18:03.103 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@a2b54e3
+2021-04-05 19:18:03.104 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@240f350a
+2021-04-05 19:18:03.104 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@240f350a
+2021-04-05 19:18:03.106 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@49cb3881
+2021-04-05 19:18:03.106 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@49cb3881
+2021-04-05 19:18:03.108 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@435e416c
+2021-04-05 19:18:03.109 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@435e416c
+2021-04-05 19:18:03.111 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@26c77f54
+2021-04-05 19:18:03.112 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@26c77f54
+2021-04-05 19:18:03.113 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@560271a1
+2021-04-05 19:18:03.115 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@560271a1
+2021-04-05 19:18:03.117 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@5287ba5f
+2021-04-05 19:18:03.117 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@5287ba5f
+2021-04-05 19:18:03.119 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@2aa14ae6
+2021-04-05 19:18:03.119 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@2aa14ae6
+2021-04-05 19:18:03.121 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@8e99809
+2021-04-05 19:18:03.122 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@8e99809
+2021-04-05 19:18:03.124 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@1e76afeb
+2021-04-05 19:18:03.125 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@1e76afeb
+2021-04-05 19:18:03.127 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@5b1c32e4
+2021-04-05 19:18:03.127 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@5b1c32e4
+2021-04-05 19:18:03.129 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@191a0351
+2021-04-05 19:18:03.129 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@191a0351
+2021-04-05 19:18:03.130 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@191a0351
+2021-04-05 19:18:03.132 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@6d5f4900
+2021-04-05 19:18:03.135 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@570a62a5
+2021-04-05 19:18:03.135 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@570a62a5
+2021-04-05 19:18:03.136 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@570a62a5
+2021-04-05 19:18:03.137 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@29d25e65
+2021-04-05 19:18:03.138 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@1a1f79ce
+2021-04-05 19:18:03.139 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@601d6622
+2021-04-05 19:18:03.140 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@601d6622
+2021-04-05 19:18:03.141 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@391d1e33
+2021-04-05 19:18:03.142 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@391d1e33
+2021-04-05 19:18:03.144 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@3fde2209
+2021-04-05 19:18:03.145 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@3fde2209
+2021-04-05 19:18:03.146 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@1e226bcd
+2021-04-05 19:18:03.147 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@1e226bcd
+2021-04-05 19:18:03.149 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@6f38f084
+2021-04-05 19:18:03.150 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@6f38f084
+2021-04-05 19:18:03.151 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@3e5beab5
+2021-04-05 19:18:03.152 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@6ddd1c51
+2021-04-05 19:18:03.153 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@6ddd1c51
+2021-04-05 19:18:03.154 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@6ddd1c51
+2021-04-05 19:18:03.155 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@6544899b
+2021-04-05 19:18:03.156 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@6544899b
+2021-04-05 19:18:03.156 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@6544899b
+2021-04-05 19:18:03.158 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@42c0a16e
+2021-04-05 19:18:03.160 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@2ca3d826
+2021-04-05 19:18:03.162 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@7ccd611e
+2021-04-05 19:18:03.162 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@7ccd611e
+2021-04-05 19:18:03.163 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@7ccd611e
+2021-04-05 19:18:03.166 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@512abf25
+2021-04-05 19:18:03.168 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@512abf25
+2021-04-05 19:18:03.169 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@512abf25
+2021-04-05 19:18:03.171 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@7aa01bd9
+2021-04-05 19:18:03.172 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@5fef0c19
+2021-04-05 19:18:03.174 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@1cd2ff5b
+2021-04-05 19:18:03.174 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@1cd2ff5b
+2021-04-05 19:18:03.175 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@67b61834
+2021-04-05 19:18:03.177 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@6a567f7b
+2021-04-05 19:18:03.178 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@6a567f7b
+2021-04-05 19:18:03.180 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@34c7232c
+2021-04-05 19:18:03.180 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@34c7232c
+2021-04-05 19:18:03.181 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@2589d787
+2021-04-05 19:18:03.181 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@7558633
+2021-04-05 19:18:03.183 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@2dc39b53
+2021-04-05 19:18:03.187 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@37606fee
+2021-04-05 19:18:03.187 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@37606fee
+2021-04-05 19:18:03.188 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@65cc5252
+2021-04-05 19:18:03.188 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@42c12b3e
+2021-04-05 19:18:03.189 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@2dbfa972
+2021-04-05 19:18:03.189 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@46f73ffa
+2021-04-05 19:18:03.189 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@41aebbb4
+2021-04-05 19:18:03.190 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@afde064
+2021-04-05 19:18:03.194 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@5a592c70
+2021-04-05 19:18:03.194 DEBUG 12328 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@252ec02e
+2021-04-05 19:18:03.244  INFO 12328 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-04-05 19:18:03.307 DEBUG 12328 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@2b7facc7] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@1c74d19]
+2021-04-05 19:18:03.482 DEBUG 12328 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@2b7facc7] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@4f8659d0]
+2021-04-05 19:18:03.855  INFO 12328 --- [main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'file:/D:/Documentos/Universidad/Ingenier%c3%ada%20Web/printopolis/target/classes/import.sql'
+2021-04-05 19:18:03.902  INFO 12328 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-05 19:18:03.975 TRACE 12328 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@4f8659d0] for TypeConfiguration
+2021-04-05 19:18:03.978  INFO 12328 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-05 19:18:04.082  INFO 12328 --- [main] es.ucm.fdi.iw.g06.printopolis.LocalData  : base folder is D:\tmp\iw
+2021-04-05 19:18:04.083  INFO 12328 --- [main] es.ucm.fdi.iw.g06.printopolis.LocalData  : using already-existing base folder :-)
+2021-04-05 19:18:04.199  INFO 12328 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2021-04-05 19:18:04.203  INFO 12328 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2021-04-05 19:18:04.289  INFO 12328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/h2/**'] with []
+2021-04-05 19:18:04.316  INFO 12328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3f6d36eb, org.springframework.security.web.context.SecurityContextPersistenceFilter@2b540131, org.springframework.security.web.header.HeaderWriterFilter@2914a328, org.springframework.security.web.csrf.CsrfFilter@71eaef6a, org.springframework.security.web.authentication.logout.LogoutFilter@33827b88, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6eadd342, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c91f5bf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6074d638, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3f5ac587, org.springframework.security.web.session.SessionManagementFilter@26291192, org.springframework.security.web.access.ExceptionTranslationFilter@62aee901, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e64ae1a]
+2021-04-05 19:18:04.336  INFO 12328 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2021-04-05 19:18:04.352 DEBUG 12328 --- [main] o.s.w.s.s.s.WebSocketHandlerMapping      : Patterns [/ws] in 'stompWebSocketHandlerMapping'
+2021-04-05 19:18:04.357  INFO 12328 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2021-04-05 19:18:04.377 DEBUG 12328 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.AdminController:
+	
+2021-04-05 19:18:04.379 DEBUG 12328 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.DesignController:
+	
+2021-04-05 19:18:04.380 DEBUG 12328 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.MessageController:
+	
+2021-04-05 19:18:04.381 DEBUG 12328 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.PrinterController:
+	
+2021-04-05 19:18:04.382 DEBUG 12328 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.RootController:
+	
+2021-04-05 19:18:04.382 DEBUG 12328 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.UserController:
+	
+2021-04-05 19:18:04.386 DEBUG 12328 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+2021-04-05 19:18:04.455 DEBUG 12328 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-04-05 19:18:04.506 DEBUG 12328 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 29 mappings in 'requestMappingHandlerMapping'
+2021-04-05 19:18:04.511  INFO 12328 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-04-05 19:18:04.532 DEBUG 12328 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-04-05 19:18:04.541 DEBUG 12328 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-04-05 19:18:04.655  INFO 12328 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-04-05 19:18:04.657 DEBUG 12328 --- [main] org.springframework.web.SimpLogging      : clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2021-04-05 19:18:04.658 DEBUG 12328 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[]]
+2021-04-05 19:18:04.658  INFO 12328 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2021-04-05 19:18:04.659 DEBUG 12328 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3673e211]
+2021-04-05 19:18:04.659 DEBUG 12328 --- [main] org.springframework.web.SimpLogging      : brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3673e211]
+2021-04-05 19:18:04.660  INFO 12328 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3673e211]]
+2021-04-05 19:18:04.661  INFO 12328 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2021-04-05 19:18:04.662 DEBUG 12328 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2021-04-05 19:18:04.663 DEBUG 12328 --- [main] org.springframework.web.SimpLogging      : brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2021-04-05 19:18:04.666  INFO 12328 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories�
+2021-04-05 19:18:04.667  INFO 12328 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-04-05 19:18:04.676  INFO 12328 --- [main] e.u.f.iw.g06.printopolis.StartupConfig   : Setting global debug property to true
+2021-04-05 19:18:04.681  INFO 12328 --- [main] e.u.f.i.g.p.PrintopolisApplication       : Started PrintopolisApplication in 3.779 seconds (JVM running for 4.155)
+2021-04-05 19:18:35.289  INFO 12328 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-05 19:18:35.292  INFO 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-05 19:18:35.293 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2021-04-05 19:18:35.293 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2021-04-05 19:18:35.293 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2021-04-05 19:18:35.294 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@67b09e34
+2021-04-05 19:18:35.295 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@2c451c4a
+2021-04-05 19:18:35.295 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2021-04-05 19:18:35.296  INFO 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2021-04-05 19:18:35.321 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
+2021-04-05 19:18:35.325 DEBUG 12328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.RootController#index(Model)
+2021-04-05 19:18:35.365 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:18:35.621 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.655 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:18:35.657 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/index.css", parameters={}
+2021-04-05 19:18:35.658 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:18:35.664 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.664 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.667 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.679 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.680 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.682 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.687 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:18:35.688 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/img/favicon.png", parameters={}
+2021-04-05 19:18:35.688 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.693 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.694 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.700 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.716 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/img/user.png", parameters={}
+2021-04-05 19:18:35.716 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/img/plus.png", parameters={}
+2021-04-05 19:18:35.718 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.719 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.721 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.727 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.732 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:18:35.734 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.736 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:18:35.738 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:35.765 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:35.847 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:56.500 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/signup", parameters={}
+2021-04-05 19:18:56.500 DEBUG 12328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.RootController#signup(Model, HttpServletRequest)
+2021-04-05 19:18:56.502 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:18:56.674  WARN 12328 --- [http-nio-8080-exec-8] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [159] milliseconds.
+2021-04-05 19:18:56.681 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:56.708 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:18:56.709 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:18:56.710 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/signup.css", parameters={}
+2021-04-05 19:18:56.713 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:56.715 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:18:56.718 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:56.719 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:56.716 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:56.726 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:56.728 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:56.730 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:56.742 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:56.746 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:18:56.748 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:56.749 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:18:56.750 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:18:56.753 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:56.796 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:18:56.940 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2021-04-05 19:18:56.940 DEBUG 12328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.RootController#login()
+2021-04-05 19:18:56.943 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*;q=0.8' given [image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2021-04-05 19:18:56.958 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:04.359  INFO 12328 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2021-04-05 19:19:07.947 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2021-04-05 19:19:07.947 DEBUG 12328 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.RootController#login()
+2021-04-05 19:19:07.949 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:19:07.959 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:07.988 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/signup.css", parameters={}
+2021-04-05 19:19:07.991 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:07.989 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:07.993 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:19:07.989 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:19:07.996 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:07.993 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:07.994 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:07.996 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:07.999 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:08.004 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:08.009 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:08.013 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:19:08.016 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:08.032 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:19:08.035 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:08.042 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:08.075 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:08.180 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/login", parameters={}
+2021-04-05 19:19:08.180 DEBUG 12328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.RootController#login()
+2021-04-05 19:19:08.201 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*;q=0.8' given [image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2021-04-05 19:19:08.220 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:12.457 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [a]
+2021-04-05 19:19:12.461 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_5_] : [BIGINT]) - [1]
+2021-04-05 19:19:12.467 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.467 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.468 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_] : [TINYINT]) - [1]
+2021-04-05 19:19:12.468 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:12.468 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:12.468 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:12.469 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.469 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:12.470 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_] : [VARCHAR]) - [a]
+2021-04-05 19:19:12.482 TRACE 12328 --- [http-nio-8080-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:12.483 TRACE 12328 --- [http-nio-8080-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:12.483 TRACE 12328 --- [http-nio-8080-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:12.483 TRACE 12328 --- [http-nio-8080-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:12.492  INFO 12328 --- [http-nio-8080-exec-4] e.u.f.i.g.p.IwUserDetailsService         : Roles for a include ROLE_USER
+2021-04-05 19:19:12.492  INFO 12328 --- [http-nio-8080-exec-4] e.u.f.i.g.p.IwUserDetailsService         : Roles for a include ROLE_ADMIN
+2021-04-05 19:19:12.604  INFO 12328 --- [http-nio-8080-exec-4] e.u.f.i.g.p.LoginSuccessHandler          : Storing user info for a in session F347F2EDAD5B3EB4FA52C63F380F720E
+2021-04-05 19:19:12.606 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [a]
+2021-04-05 19:19:12.607 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_5_] : [BIGINT]) - [1]
+2021-04-05 19:19:12.607 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.607 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.608 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_] : [TINYINT]) - [1]
+2021-04-05 19:19:12.608 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:12.608 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:12.608 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:12.609 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.609 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:12.609 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_] : [VARCHAR]) - [a]
+2021-04-05 19:19:12.610 TRACE 12328 --- [http-nio-8080-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:12.610 TRACE 12328 --- [http-nio-8080-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:12.611 TRACE 12328 --- [http-nio-8080-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:12.611 TRACE 12328 --- [http-nio-8080-exec-4] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:12.614 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:12.618 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([col_0_0_] : [BIGINT]) - [5]
+2021-04-05 19:19:12.626 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/admin/", parameters={}
+2021-04-05 19:19:12.627 DEBUG 12328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.AdminController#index(Model, HttpSession)
+2021-04-05 19:19:12.635 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_5_] : [BIGINT]) - [2]
+2021-04-05 19:19:12.635 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.635 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.636 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_] : [TINYINT]) - [1]
+2021-04-05 19:19:12.636 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_] : [VARCHAR]) - [Berta]
+2021-04-05 19:19:12.636 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_] : [VARCHAR]) - [Muéstrez]
+2021-04-05 19:19:12.636 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:12.637 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.637 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_] : [VARCHAR]) - [USER]
+2021-04-05 19:19:12.637 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_] : [VARCHAR]) - [b]
+2021-04-05 19:19:12.638 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#2]
+2021-04-05 19:19:12.640 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#2]
+2021-04-05 19:19:12.640 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#2]
+2021-04-05 19:19:12.640 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#2]
+2021-04-05 19:19:12.644 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_0_] : [BIGINT]) - [1]
+2021-04-05 19:19:12.644 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category2_0_] : [VARCHAR]) - [Deporte]
+2021-04-05 19:19:12.645 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript3_0_] : [VARCHAR]) - [Hola soy un diseño]
+2021-04-05 19:19:12.645 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([designer8_0_] : [BIGINT]) - [2]
+2021-04-05 19:19:12.646 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([dimensio4_0_] : [FLOAT]) - [123.0]
+2021-04-05 19:19:12.648 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_0_] : [VARCHAR]) - [Pruebadiseño]
+2021-04-05 19:19:12.648 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([price6_0_] : [FLOAT]) - [12.0]
+2021-04-05 19:19:12.649 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati7_0_] : [INTEGER]) - [0]
+2021-04-05 19:19:12.650 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_0_] : [BIGINT]) - [2]
+2021-04-05 19:19:12.650 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category2_0_] : [VARCHAR]) - [Accesorios]
+2021-04-05 19:19:12.650 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript3_0_] : [VARCHAR]) - [Hola soy un diseño1]
+2021-04-05 19:19:12.651 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([designer8_0_] : [BIGINT]) - [1]
+2021-04-05 19:19:12.651 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([dimensio4_0_] : [FLOAT]) - [123.0]
+2021-04-05 19:19:12.651 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_0_] : [VARCHAR]) - [Pruebadiseño1]
+2021-04-05 19:19:12.652 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([price6_0_] : [FLOAT]) - [12.0]
+2021-04-05 19:19:12.652 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati7_0_] : [INTEGER]) - [0]
+2021-04-05 19:19:12.653 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_0_] : [BIGINT]) - [3]
+2021-04-05 19:19:12.653 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category2_0_] : [VARCHAR]) - [Juguetes]
+2021-04-05 19:19:12.653 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript3_0_] : [VARCHAR]) - [Hola soy un diseño2]
+2021-04-05 19:19:12.654 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([designer8_0_] : [BIGINT]) - [2]
+2021-04-05 19:19:12.654 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([dimensio4_0_] : [FLOAT]) - [123.0]
+2021-04-05 19:19:12.654 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_0_] : [VARCHAR]) - [Pruebadiseño2]
+2021-04-05 19:19:12.655 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([price6_0_] : [FLOAT]) - [12.0]
+2021-04-05 19:19:12.655 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati7_0_] : [INTEGER]) - [0]
+2021-04-05 19:19:12.661 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2021-04-05 19:19:12.665 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.665 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.665 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:12.666 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Berta]
+2021-04-05 19:19:12.666 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Muéstrez]
+2021-04-05 19:19:12.666 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:12.667 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.667 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER]
+2021-04-05 19:19:12.667 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [b]
+2021-04-05 19:19:12.668 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#2]
+2021-04-05 19:19:12.668 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#2]
+2021-04-05 19:19:12.669 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#2]
+2021-04-05 19:19:12.670 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#2]
+2021-04-05 19:19:12.672 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:12.673 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.673 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.674 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:12.674 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:12.674 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:12.674 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:12.675 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:12.675 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:12.675 TRACE 12328 --- [http-nio-8080-exec-5] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [a]
+2021-04-05 19:19:12.675 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:12.676 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:12.676 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:12.676 TRACE 12328 --- [http-nio-8080-exec-5] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:12.680 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:19:12.696 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:12.721 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:19:12.725 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:12.724 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:12.727 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:12.729 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:12.731 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:12.739 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:19:12.742 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:12.745 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:12.748 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/img/user.png", parameters={}
+2021-04-05 19:19:12.752 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:12.756 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:12.762 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/design/2/captura", parameters={}
+2021-04-05 19:19:12.764 DEBUG 12328 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#getCaptura(long, Model)
+2021-04-05 19:19:12.764 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/design/1/captura", parameters={}
+2021-04-05 19:19:12.762 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/design/3/captura", parameters={}
+2021-04-05 19:19:12.767 DEBUG 12328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#getCaptura(long, Model)
+2021-04-05 19:19:12.766 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:19:12.770 DEBUG 12328 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#getCaptura(long, Model)
+2021-04-05 19:19:12.771 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:19:12.772 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:12.774 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:12.778 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:12.784  INFO 12328 --- [http-nio-8080-exec-3] e.u.f.i.g.p.control.UserController       : Failed to load the file
+2021-04-05 19:19:12.784  INFO 12328 --- [http-nio-8080-exec-10] e.u.f.i.g.p.control.UserController       : Failed to load the file
+2021-04-05 19:19:12.787  WARN 12328 --- [http-nio-8080-exec-8] o.s.w.c.request.async.WebAsyncManager    : 
+!!!
+An Executor is required to handle java.util.concurrent.Callable return values.
+Please, configure a TaskExecutor in the MVC config under "async support".
+The SimpleAsyncTaskExecutor currently in use is not suitable under load.
+-------------------------------
+Request URI: '/design/1/captura'
+!!!
+2021-04-05 19:19:12.795 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2021-04-05 19:19:12.795 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2021-04-05 19:19:12.795 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2021-04-05 19:19:12.799 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2021-04-05 19:19:12.798 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2021-04-05 19:19:12.798 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2021-04-05 19:19:12.802 DEBUG 12328 --- [MvcAsync1] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /design/3/captura
+2021-04-05 19:19:12.804 DEBUG 12328 --- [MvcAsync3] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /design/2/captura
+2021-04-05 19:19:12.807 DEBUG 12328 --- [MvcAsync2] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /design/1/captura
+2021-04-05 19:19:12.813 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/design/1/captura", parameters={}
+2021-04-05 19:19:12.813 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/design/3/captura", parameters={}
+2021-04-05 19:19:12.813 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/design/2/captura", parameters={}
+2021-04-05 19:19:12.816 DEBUG 12328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result []
+2021-04-05 19:19:12.816 DEBUG 12328 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result []
+2021-04-05 19:19:12.817 DEBUG 12328 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result []
+2021-04-05 19:19:12.821 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2021-04-05 19:19:12.821 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2021-04-05 19:19:12.821 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2021-04-05 19:19:12.860 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.030 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/user/1/", parameters={}
+2021-04-05 19:19:14.031 DEBUG 12328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.UserController#getUser(long, Model, HttpSession)
+2021-04-05 19:19:14.037 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:14.038 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:14.038 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:14.039 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:14.039 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:14.040 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:14.040 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:14.041 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:14.042 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:14.043 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [a]
+2021-04-05 19:19:14.043 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:14.044 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:14.045 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:14.045 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:14.047 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:14.048 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_0_] : [BIGINT]) - [2]
+2021-04-05 19:19:14.048 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category2_0_] : [VARCHAR]) - [Accesorios]
+2021-04-05 19:19:14.048 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript3_0_] : [VARCHAR]) - [Hola soy un diseño1]
+2021-04-05 19:19:14.049 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([designer8_0_] : [BIGINT]) - [1]
+2021-04-05 19:19:14.049 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([dimensio4_0_] : [FLOAT]) - [123.0]
+2021-04-05 19:19:14.049 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_0_] : [VARCHAR]) - [Pruebadiseño1]
+2021-04-05 19:19:14.050 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([price6_0_] : [FLOAT]) - [12.0]
+2021-04-05 19:19:14.050 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati7_0_] : [INTEGER]) - [0]
+2021-04-05 19:19:14.054 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:14.057 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:14.058 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:14.058 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:14.059 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:14.059 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:14.060 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:14.060 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:14.060 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:14.061 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [a]
+2021-04-05 19:19:14.061 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:14.062 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:14.064 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:14.065 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:14.067 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:14.068  INFO 12328 --- [http-nio-8080-exec-6] e.u.f.i.g.p.control.UserController       : Sending a message to 1 with contents '[Design #2]'
+2021-04-05 19:19:14.076 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:19:14.096 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.114 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:19:14.116 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:14.118 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:14.119 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.124 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:14.151 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.159 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:14.159 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:14.162 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.168 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/design/2/captura", parameters={}
+2021-04-05 19:19:14.160 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:19:14.178 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/img/user.png", parameters={}
+2021-04-05 19:19:14.180 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:14.182 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:19:14.182 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:19:14.202 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:14.177 DEBUG 12328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#getCaptura(long, Model)
+2021-04-05 19:19:14.201 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:14.204 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.208 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.200 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:14.209  INFO 12328 --- [http-nio-8080-exec-8] e.u.f.i.g.p.control.UserController       : Failed to load the file
+2021-04-05 19:19:14.216 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2021-04-05 19:19:14.217 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2021-04-05 19:19:14.218 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.254 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:14.260 DEBUG 12328 --- [MvcAsync4] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /design/2/captura
+2021-04-05 19:19:14.263 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/design/2/captura", parameters={}
+2021-04-05 19:19:14.264 DEBUG 12328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result []
+2021-04-05 19:19:14.264 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2021-04-05 19:19:18.789 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/printer/addPrinter", parameters={masked}
+2021-04-05 19:19:18.793 DEBUG 12328 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.PrinterController#addUser(String, Integer, Model, HttpSession)
+2021-04-05 19:19:18.827 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:18.829 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [FLOAT] - [50.0]
+2021-04-05 19:19:18.829 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [Impresora1]
+2021-04-05 19:19:18.830 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [FLOAT] - [0.0]
+2021-04-05 19:19:18.830 TRACE 12328 --- [http-nio-8080-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARBINARY] - [null]
+2021-04-05 19:19:18.857  INFO 12328 --- [http-nio-8080-exec-4] e.u.f.i.g.p.control.UserController       : Added new design Impresora1
+2021-04-05 19:19:18.862 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.view.RedirectView        : View name 'redirect:/', model {}
+2021-04-05 19:19:18.863 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2021-04-05 19:19:18.868 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
+2021-04-05 19:19:18.869 DEBUG 12328 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.RootController#index(Model)
+2021-04-05 19:19:18.870 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:19:18.877 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.901 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/index.css", parameters={}
+2021-04-05 19:19:18.903 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:19:18.903 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.902 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:18.903 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.913 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.914 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.914 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.919 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.920 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:19:18.924 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.930 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.936 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/img/user.png", parameters={}
+2021-04-05 19:19:18.936 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/img/favicon.png", parameters={}
+2021-04-05 19:19:18.937 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.937 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.937 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/img/plus.png", parameters={}
+2021-04-05 19:19:18.941 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.943 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.944 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.948 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.953 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:19:18.954 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.957 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:18.954 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:19:18.960 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:18.999 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:20.923 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/printers", parameters={}
+2021-04-05 19:19:20.923 DEBUG 12328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.RootController#printers(Model, HttpServletRequest)
+2021-04-05 19:19:20.925 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:19:20.931 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:20.952 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/printers.css", parameters={}
+2021-04-05 19:19:20.953 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:19:20.954 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:20.955 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:20.953 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:20.962 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:20.963 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:20.967 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:20.970 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:19:20.972 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:20.970 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:20.977 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:20.984 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/img/user.png", parameters={}
+2021-04-05 19:19:20.986 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:19:20.986 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:19:20.986 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:20.987 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:20.990 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:20.994 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:21.001 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:21.038 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.694 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/design/all/", parameters={}
+2021-04-05 19:19:24.695 DEBUG 12328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#designs(String, Model, HttpServletRequest)
+2021-04-05 19:19:24.698 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_0_] : [BIGINT]) - [1]
+2021-04-05 19:19:24.699 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category2_0_] : [VARCHAR]) - [Deporte]
+2021-04-05 19:19:24.699 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript3_0_] : [VARCHAR]) - [Hola soy un diseño]
+2021-04-05 19:19:24.699 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([designer8_0_] : [BIGINT]) - [2]
+2021-04-05 19:19:24.700 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([dimensio4_0_] : [FLOAT]) - [123.0]
+2021-04-05 19:19:24.700 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_0_] : [VARCHAR]) - [Pruebadiseño]
+2021-04-05 19:19:24.700 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([price6_0_] : [FLOAT]) - [12.0]
+2021-04-05 19:19:24.701 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati7_0_] : [INTEGER]) - [0]
+2021-04-05 19:19:24.701 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_0_] : [BIGINT]) - [2]
+2021-04-05 19:19:24.702 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category2_0_] : [VARCHAR]) - [Accesorios]
+2021-04-05 19:19:24.702 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript3_0_] : [VARCHAR]) - [Hola soy un diseño1]
+2021-04-05 19:19:24.702 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([designer8_0_] : [BIGINT]) - [1]
+2021-04-05 19:19:24.703 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([dimensio4_0_] : [FLOAT]) - [123.0]
+2021-04-05 19:19:24.703 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_0_] : [VARCHAR]) - [Pruebadiseño1]
+2021-04-05 19:19:24.704 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([price6_0_] : [FLOAT]) - [12.0]
+2021-04-05 19:19:24.705 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati7_0_] : [INTEGER]) - [0]
+2021-04-05 19:19:24.706 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_0_] : [BIGINT]) - [3]
+2021-04-05 19:19:24.706 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category2_0_] : [VARCHAR]) - [Juguetes]
+2021-04-05 19:19:24.706 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript3_0_] : [VARCHAR]) - [Hola soy un diseño2]
+2021-04-05 19:19:24.707 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([designer8_0_] : [BIGINT]) - [2]
+2021-04-05 19:19:24.707 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([dimensio4_0_] : [FLOAT]) - [123.0]
+2021-04-05 19:19:24.707 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_0_] : [VARCHAR]) - [Pruebadiseño2]
+2021-04-05 19:19:24.707 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([price6_0_] : [FLOAT]) - [12.0]
+2021-04-05 19:19:24.708 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati7_0_] : [INTEGER]) - [0]
+2021-04-05 19:19:24.709 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2021-04-05 19:19:24.710 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:24.710 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:24.711 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:24.711 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Berta]
+2021-04-05 19:19:24.712 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Muéstrez]
+2021-04-05 19:19:24.713 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:24.713 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:24.714 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER]
+2021-04-05 19:19:24.714 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [b]
+2021-04-05 19:19:24.715 TRACE 12328 --- [http-nio-8080-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#2]
+2021-04-05 19:19:24.715 TRACE 12328 --- [http-nio-8080-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#2]
+2021-04-05 19:19:24.715 TRACE 12328 --- [http-nio-8080-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#2]
+2021-04-05 19:19:24.715 TRACE 12328 --- [http-nio-8080-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#2]
+2021-04-05 19:19:24.716 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:24.717 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:24.718 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:24.718 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:24.718 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:24.719 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:24.719 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:24.719 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:24.720 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:24.720 TRACE 12328 --- [http-nio-8080-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [a]
+2021-04-05 19:19:24.720 TRACE 12328 --- [http-nio-8080-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:24.720 TRACE 12328 --- [http-nio-8080-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:24.722 TRACE 12328 --- [http-nio-8080-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:24.722 TRACE 12328 --- [http-nio-8080-exec-8] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:24.723  INFO 12328 --- [http-nio-8080-exec-8] e.u.f.i.g.p.control.UserController       : Sending a message to [Design #1, Design #2, Design #3] with contents '[Design #1, Design #2, Design #3]'
+2021-04-05 19:19:24.724 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:19:24.740 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.767 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/designs.css", parameters={}
+2021-04-05 19:19:24.768 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:24.768 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.768 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:19:24.768 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.770 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.774 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.783 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.777 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.786 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:19:24.786 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.791 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.800 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/img/user.png", parameters={}
+2021-04-05 19:19:24.801 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/img/cart.png", parameters={}
+2021-04-05 19:19:24.802 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/img/heart.png", parameters={}
+2021-04-05 19:19:24.806 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/design/1/captura", parameters={}
+2021-04-05 19:19:24.807 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/design/2/captura", parameters={}
+2021-04-05 19:19:24.809 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/design/3/captura", parameters={}
+2021-04-05 19:19:24.810 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.812 DEBUG 12328 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#getCaptura(long, Model)
+2021-04-05 19:19:24.810 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.813 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.814 DEBUG 12328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#getCaptura(long, Model)
+2021-04-05 19:19:24.814 DEBUG 12328 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#getCaptura(long, Model)
+2021-04-05 19:19:24.822  INFO 12328 --- [http-nio-8080-exec-6] e.u.f.i.g.p.control.UserController       : Failed to load the file
+2021-04-05 19:19:24.823  INFO 12328 --- [http-nio-8080-exec-2] e.u.f.i.g.p.control.UserController       : Failed to load the file
+2021-04-05 19:19:24.816 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.819 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2021-04-05 19:19:24.823 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2021-04-05 19:19:24.825 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:19:24.825 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2021-04-05 19:19:24.830 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2021-04-05 19:19:24.830 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2021-04-05 19:19:24.839 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.831 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.832 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.837 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2021-04-05 19:19:24.843 DEBUG 12328 --- [MvcAsync6] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /design/3/captura
+2021-04-05 19:19:24.844 DEBUG 12328 --- [MvcAsync7] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /design/2/captura
+2021-04-05 19:19:24.844 DEBUG 12328 --- [MvcAsync5] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /design/1/captura
+2021-04-05 19:19:24.851 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:19:24.874 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.853 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/design/2/captura", parameters={}
+2021-04-05 19:19:24.853 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/design/3/captura", parameters={}
+2021-04-05 19:19:24.876 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:24.912 DEBUG 12328 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result []
+2021-04-05 19:19:24.876 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/design/1/captura", parameters={}
+2021-04-05 19:19:24.912 DEBUG 12328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result []
+2021-04-05 19:19:24.927 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2021-04-05 19:19:24.927 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/img/heart.png", parameters={}
+2021-04-05 19:19:24.928 DEBUG 12328 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result []
+2021-04-05 19:19:24.928 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2021-04-05 19:19:24.930 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2021-04-05 19:19:24.931 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:24.935 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:25.400 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:25.411 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/img/favicon.png", parameters={}
+2021-04-05 19:19:25.412 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:25.419 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.318 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
+2021-04-05 19:19:27.318 DEBUG 12328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.RootController#index(Model)
+2021-04-05 19:19:27.319 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:19:27.326 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.351 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/index.css", parameters={}
+2021-04-05 19:19:27.353 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:19:27.356 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.353 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.360 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.361 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.365 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:27.366 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.369 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.370 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:19:27.373 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.377 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.385 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/img/plus.png", parameters={}
+2021-04-05 19:19:27.385 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/img/user.png", parameters={}
+2021-04-05 19:19:27.385 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/img/favicon.png", parameters={}
+2021-04-05 19:19:27.387 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.387 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.392 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:19:27.392 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:19:27.394 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.394 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.396 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.398 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.403 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:27.405 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.411 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:27.538 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:28.904 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/user/1/", parameters={}
+2021-04-05 19:19:28.906 DEBUG 12328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.UserController#getUser(long, Model, HttpSession)
+2021-04-05 19:19:28.908 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:28.908 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.909 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.909 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:28.909 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:28.910 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:28.910 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:28.910 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.910 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:28.911 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [a]
+2021-04-05 19:19:28.911 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:28.912 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:28.912 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:28.912 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:28.914 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:28.915 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_0_] : [BIGINT]) - [2]
+2021-04-05 19:19:28.916 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([category2_0_] : [VARCHAR]) - [Accesorios]
+2021-04-05 19:19:28.916 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([descript3_0_] : [VARCHAR]) - [Hola soy un diseño1]
+2021-04-05 19:19:28.917 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([designer8_0_] : [BIGINT]) - [1]
+2021-04-05 19:19:28.917 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([dimensio4_0_] : [FLOAT]) - [123.0]
+2021-04-05 19:19:28.917 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_0_] : [VARCHAR]) - [Pruebadiseño1]
+2021-04-05 19:19:28.918 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([price6_0_] : [FLOAT]) - [12.0]
+2021-04-05 19:19:28.918 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati7_0_] : [INTEGER]) - [0]
+2021-04-05 19:19:28.919 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:28.919 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.920 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.920 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:28.920 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:28.920 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:28.922 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:28.923 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.924 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:28.924 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [a]
+2021-04-05 19:19:28.925 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:28.925 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:28.925 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:28.926 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:28.927 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:28.928 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_2_] : [BIGINT]) - [1]
+2021-04-05 19:19:28.928 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([impresor6_2_] : [BIGINT]) - [1]
+2021-04-05 19:19:28.930 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([material2_2_] : [FLOAT]) - [50.0]
+2021-04-05 19:19:28.931 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name3_2_] : [VARCHAR]) - [Impresora1]
+2021-04-05 19:19:28.931 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([puntuati4_2_] : [FLOAT]) - [0.0]
+2021-04-05 19:19:28.932 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([status5_2_] : [VARBINARY]) - [null]
+2021-04-05 19:19:28.933 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-04-05 19:19:28.933 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([about_me2_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.934 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([address3_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.934 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([enabled4_5_0_] : [TINYINT]) - [1]
+2021-04-05 19:19:28.934 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([first_na5_5_0_] : [VARCHAR]) - [Abundio]
+2021-04-05 19:19:28.935 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([last_nam6_5_0_] : [VARCHAR]) - [Ejémplez]
+2021-04-05 19:19:28.935 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password7_5_0_] : [VARCHAR]) - [{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u]
+2021-04-05 19:19:28.936 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([phone8_5_0_] : [VARCHAR]) - [null]
+2021-04-05 19:19:28.936 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([roles9_5_0_] : [VARCHAR]) - [USER,ADMIN]
+2021-04-05 19:19:28.937 TRACE 12328 --- [http-nio-8080-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([usernam10_5_0_] : [VARCHAR]) - [a]
+2021-04-05 19:19:28.937 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.designs#1]
+2021-04-05 19:19:28.937 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.printer#1]
+2021-04-05 19:19:28.939 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.received#1]
+2021-04-05 19:19:28.941 TRACE 12328 --- [http-nio-8080-exec-6] org.hibernate.type.CollectionType        : Created collection wrapper: [es.ucm.fdi.iw.g06.printopolis.model.User.sent#1]
+2021-04-05 19:19:28.942  INFO 12328 --- [http-nio-8080-exec-6] e.u.f.i.g.p.control.UserController       : Sending a message to 1 with contents '[Design #2]'
+2021-04-05 19:19:28.943 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8]
+2021-04-05 19:19:28.965 DEBUG 12328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:28.984 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2021-04-05 19:19:28.984 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:28.985 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:28.986 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:28.987 DEBUG 12328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:28.994 DEBUG 12328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:29.005 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/img/logo.png", parameters={}
+2021-04-05 19:19:29.005 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/js/main.js", parameters={}
+2021-04-05 19:19:29.006 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:29.009 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:29.011 DEBUG 12328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:29.016 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:29.028 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/design/2/captura", parameters={}
+2021-04-05 19:19:29.029 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/img/printer.png", parameters={}
+2021-04-05 19:19:29.030 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/img/fondo.png", parameters={}
+2021-04-05 19:19:29.031 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/img/buscar.png", parameters={}
+2021-04-05 19:19:29.032 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/img/user.png", parameters={}
+2021-04-05 19:19:29.034 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:29.032 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:29.032 DEBUG 12328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to es.ucm.fdi.iw.g06.printopolis.control.DesignController#getCaptura(long, Model)
+2021-04-05 19:19:29.039  INFO 12328 --- [http-nio-8080-exec-8] e.u.f.i.g.p.control.UserController       : Failed to load the file
+2021-04-05 19:19:29.037 DEBUG 12328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:29.033 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:29.041 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.w.c.request.async.WebAsyncManager    : Started async request
+2021-04-05 19:19:29.042 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler ["classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/", "/"]
+2021-04-05 19:19:29.061 DEBUG 12328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:29.051 DEBUG 12328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting but response remains open for further handling
+2021-04-05 19:19:29.070 DEBUG 12328 --- [MvcAsync8] o.s.w.c.request.async.WebAsyncManager    : Async result set, dispatch to /design/2/captura
+2021-04-05 19:19:29.073 DEBUG 12328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:19:29.073 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ASYNC" dispatch for GET "/design/2/captura", parameters={}
+2021-04-05 19:19:29.075 DEBUG 12328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerAdapter : Resume with async result []
+2021-04-05 19:19:29.075 DEBUG 12328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2021-04-05 19:19:29.320 DEBUG 12328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2021-04-05 19:26:39.551 DEBUG 12328 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2021-04-05 19:26:39.552 DEBUG 12328 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[]]
+2021-04-05 19:26:39.553  INFO 12328 --- [SpringContextShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2021-04-05 19:26:39.554  INFO 12328 --- [SpringContextShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3673e211]]
+2021-04-05 19:26:39.555 DEBUG 12328 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3673e211]
+2021-04-05 19:26:39.555 DEBUG 12328 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3673e211]
+2021-04-05 19:26:39.556  INFO 12328 --- [SpringContextShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2021-04-05 19:26:39.556 DEBUG 12328 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2021-04-05 19:26:39.557 DEBUG 12328 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2021-04-05 19:26:39.765  INFO 12328 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2021-04-05 19:26:39.766  INFO 12328 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2021-04-05 19:26:39.767  INFO 12328 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2021-04-05 19:26:39.767  INFO 12328 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2021-04-05 19:26:39.767  INFO 12328 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-05 19:26:39.768  INFO 12328 --- [SpringContextShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-04-05 19:26:39.782 TRACE 12328 --- [SpringContextShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@4f8659d0] for TypeConfiguration
+2021-04-05 19:26:39.783 DEBUG 12328 --- [SpringContextShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@fb80e4b] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@4f8659d0]
+2021-04-05 19:26:39.785  INFO 12328 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-05 19:26:39.788  INFO 12328 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
