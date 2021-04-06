@@ -20,15 +20,15 @@ import lombok.Data;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Printer.allUserPrinters",
-			query="SELECT p FROM Printer p "
-					+ "WHERE p.impresor.id = :userId")
-})
+        @NamedQuery(name = "Printer.allUserPrinters", query = "SELECT p FROM Printer p "
+                + "WHERE p.impresor.id = :userId")
+                 })
+
 @Data
 public class Printer {
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @NotNull
     private String name;
@@ -40,8 +40,8 @@ public class Printer {
     private User impresor;
 
     @Override
-	public String toString() {
-		return "Printer #" + id;
-	}	
+    public String toString() {
+        return "Printer #" + id;
+    }
 
 }

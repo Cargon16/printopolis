@@ -40,36 +40,37 @@ import lombok.AllArgsConstructor;
 @Entity
 @NoArgsConstructor
 @NamedQueries({
-        @NamedQuery(name="User.byUsername",
-                query="SELECT u FROM User u "
-                        + "WHERE u.username = :username AND u.enabled = 1"),
-        @NamedQuery(name="User.hasUsername",
-                query="SELECT COUNT(u) "
-                        + "FROM User u "
-                        + "WHERE u.username = :username")
+		@NamedQuery(name = "User.byUsername", query = "SELECT u FROM User u "
+				+ "WHERE u.username = :username AND u.enabled = 1"),
+		@NamedQuery(name = "User.hasUsername", query = "SELECT COUNT(u) " + "FROM User u "
+				+ "WHERE u.username = :username"),
+		@NamedQuery(name = "User.allImpresores", query = "SELECT u FROM User u JOIN Printer p on u.id = p.impresor.id")
+
 })
 @Data
 public class User implements Transferable<User.Transfer> {
 
-
-	private static Logger log = LogManager.getLogger(User.class);	
+	private static Logger log = LogManager.getLogger(User.class);
 
 	public enum Role {
-		USER,			// used for logged-in, non-priviledged users
-		ADMIN,			// used for maximum priviledged users
-		DESIGNER,		//used to identify design's owners
-		PRINTER,		// used to indentify print's users
+		USER, // used for logged-in, non-priviledged users
+		ADMIN, // used for maximum priviledged users
+		DESIGNER, // used to identify design's owners
+		PRINTER, // used to indentify print's users
 	}
-	
+
 	// do not change these fields
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	/** username for login purposes; must be unique */
 	@Column(nullable = false, unique = true)
 	private String username;
-	/** encoded password; use setPassword(SecurityConfig.encode(plaintextPassword)) to encode it  */
+	/**
+	 * encoded password; use setPassword(SecurityConfig.encode(plaintextPassword))
+	 * to encode it
+	 */
 	@Column(nullable = false)
 	private String password;
 	@Column(nullable = false)
@@ -79,15 +80,15 @@ public class User implements Transferable<User.Transfer> {
 	private String address;
 	private String aboutMe;
 
-	//desginer specific fields, related with designs
+	// desginer specific fields, related with designs
 	@OneToMany
 	@JoinColumn(name = "designer_id")
-	private List<Design> designs = new ArrayList<>(); //User designs
+	private List<Design> designs = new ArrayList<>(); // User designs
 
-	//printer(user) specific fields, related with printers(object)
+	// printer(user) specific fields, related with printers(object)
 	@OneToMany
 	@JoinColumn(name = "impresor_id")
-	private List<Printer> printer = new ArrayList<>(); //list to append all user printers available
+	private List<Printer> printer = new ArrayList<>(); // list to append all user printers available
 
 	// application-specific fields
 	private String firstName;
@@ -97,36 +98,37 @@ public class User implements Transferable<User.Transfer> {
 	@JoinColumn(name = "sender_id")
 	private List<Message> sent = new ArrayList<>();
 	@OneToMany
-	@JoinColumn(name = "recipient_id")	
-	private List<Message> received = new ArrayList<>();	
-	
+	@JoinColumn(name = "recipient_id")
+	private List<Message> received = new ArrayList<>();
+
 	// utility methods
-	
+
 	/**
 	 * Checks whether this user has a given role.
+	 * 
 	 * @param role to check
 	 * @return true iff this user has that role.
 	 */
 	public boolean hasRole(Role role) {
 		String roleName = role.name();
-		return Arrays.stream(roles.split(","))
-				.anyMatch(r -> r.equals(roleName));
+		return Arrays.stream(roles.split(",")).anyMatch(r -> r.equals(roleName));
 	}
 
-    @Getter
-    @AllArgsConstructor
-    public static class Transfer {
+	@Getter
+	@AllArgsConstructor
+	public static class Transfer {
 		private long id;
-        private String username;
+		private String username;
 		private int totalReceived;
 		private int totalSent;
-    }
+	}
 
 	@Override
-    public Transfer toTransfer() {
-		return new Transfer(id,	username, received.size(), sent.size());
-    }
+	public Transfer toTransfer() {
+		return new Transfer(id, username, received.size(), sent.size());
+	}
 }
 
-//Vale te comento, las clases de usuario sobran, solo dejamos esta, en el enum de user metemos los que queramos
+// Vale te comento, las clases de usuario sobran, solo dejamos esta, en el enum
+// de user metemos los que queramos
 // y los atributos que nos hagan falta los metemos aquí

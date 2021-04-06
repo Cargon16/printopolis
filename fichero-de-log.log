@@ -6202,3 +6202,207 @@ Request URI: '/design/1/captura'
 2021-04-05 21:08:03.412 DEBUG 8440 --- [SpringContextShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@1ff6c52e] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@7d28cdcd]
 2021-04-05 21:08:03.416  INFO 8440 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2021-04-05 21:08:03.422  INFO 8440 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-05 21:09:31.029  INFO 9296 --- [main] e.u.f.i.g.p.PrintopolisApplication       : Starting PrintopolisApplication using Java 11 on DESKTOP-P4RNBKV with PID 9296 (D:\Documentos\Universidad\Ingeniería Web\printopolis\target\classes started by Carlos in D:\Documentos\Universidad\Ingeniería Web\printopolis)
+2021-04-05 21:09:31.032  INFO 9296 --- [main] e.u.f.i.g.p.PrintopolisApplication       : The following profiles are active: default
+2021-04-05 21:09:32.039  INFO 9296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2021-04-05 21:09:32.068  INFO 9296 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 0 JPA repository interfaces.
+2021-04-05 21:09:32.863  INFO 9296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-04-05 21:09:32.886  INFO 9296 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-05 21:09:32.886  INFO 9296 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-04-05 21:09:33.011  INFO 9296 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-05 21:09:33.017  INFO 9296 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1926 ms
+2021-04-05 21:09:33.070  INFO 9296 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-05 21:09:33.179  INFO 9296 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-05 21:09:33.185  INFO 9296 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:testdb'
+2021-04-05 21:09:33.354  INFO 9296 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-05 21:09:33.399  INFO 9296 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.23.Final
+2021-04-05 21:09:33.537  INFO 9296 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-05 21:09:33.563 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@3709748f
+2021-04-05 21:09:33.565 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration boolean -> org.hibernate.type.BooleanType@3709748f
+2021-04-05 21:09:33.566 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@3709748f
+2021-04-05 21:09:33.567 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@5e85c21b
+2021-04-05 21:09:33.568 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration true_false -> org.hibernate.type.TrueFalseType@4966bab1
+2021-04-05 21:09:33.569 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration yes_no -> org.hibernate.type.YesNoType@5aa76ad2
+2021-04-05 21:09:33.571 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@250d440
+2021-04-05 21:09:33.571 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte -> org.hibernate.type.ByteType@250d440
+2021-04-05 21:09:33.572 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@250d440
+2021-04-05 21:09:33.573 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration character -> org.hibernate.type.CharacterType@1edccfd4
+2021-04-05 21:09:33.574 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char -> org.hibernate.type.CharacterType@1edccfd4
+2021-04-05 21:09:33.574 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@1edccfd4
+2021-04-05 21:09:33.577 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@44d7e24
+2021-04-05 21:09:33.578 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration short -> org.hibernate.type.ShortType@44d7e24
+2021-04-05 21:09:33.582 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@44d7e24
+2021-04-05 21:09:33.588 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration integer -> org.hibernate.type.IntegerType@756b2d90
+2021-04-05 21:09:33.589 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration int -> org.hibernate.type.IntegerType@756b2d90
+2021-04-05 21:09:33.590 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@756b2d90
+2021-04-05 21:09:33.591 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@11c88cca
+2021-04-05 21:09:33.592 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration long -> org.hibernate.type.LongType@11c88cca
+2021-04-05 21:09:33.594 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Long -> org.hibernate.type.LongType@11c88cca
+2021-04-05 21:09:33.598 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@2fd1ad8a
+2021-04-05 21:09:33.600 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration float -> org.hibernate.type.FloatType@2fd1ad8a
+2021-04-05 21:09:33.601 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@2fd1ad8a
+2021-04-05 21:09:33.603 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@de579ff
+2021-04-05 21:09:33.605 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration double -> org.hibernate.type.DoubleType@de579ff
+2021-04-05 21:09:33.606 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@de579ff
+2021-04-05 21:09:33.607 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@4d518c66
+2021-04-05 21:09:33.608 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@4d518c66
+2021-04-05 21:09:33.612 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@797fcf9
+2021-04-05 21:09:33.613 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@797fcf9
+2021-04-05 21:09:33.615 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration string -> org.hibernate.type.StringType@4fb64e14
+2021-04-05 21:09:33.617 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.String -> org.hibernate.type.StringType@4fb64e14
+2021-04-05 21:09:33.618 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@21f7e537
+2021-04-05 21:09:33.619 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@46b2dcc5
+2021-04-05 21:09:33.620 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration url -> org.hibernate.type.UrlType@111c229c
+2021-04-05 21:09:33.621 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.net.URL -> org.hibernate.type.UrlType@111c229c
+2021-04-05 21:09:33.622 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Duration -> org.hibernate.type.DurationType@320be73
+2021-04-05 21:09:33.622 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@320be73
+2021-04-05 21:09:33.624 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Instant -> org.hibernate.type.InstantType@2c1d57bc
+2021-04-05 21:09:33.624 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@2c1d57bc
+2021-04-05 21:09:33.629 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@1e3f86d5
+2021-04-05 21:09:33.630 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@1e3f86d5
+2021-04-05 21:09:33.632 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@19fec3d6
+2021-04-05 21:09:33.633 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@19fec3d6
+2021-04-05 21:09:33.635 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@74b00247
+2021-04-05 21:09:33.635 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@74b00247
+2021-04-05 21:09:33.637 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@7c950b3b
+2021-04-05 21:09:33.637 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@7c950b3b
+2021-04-05 21:09:33.639 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@6424e613
+2021-04-05 21:09:33.640 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@6424e613
+2021-04-05 21:09:33.641 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@1e76afeb
+2021-04-05 21:09:33.647 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@1e76afeb
+2021-04-05 21:09:33.652 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration date -> org.hibernate.type.DateType@1eca3ea7
+2021-04-05 21:09:33.656 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Date -> org.hibernate.type.DateType@1eca3ea7
+2021-04-05 21:09:33.658 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration time -> org.hibernate.type.TimeType@2416c658
+2021-04-05 21:09:33.659 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@2416c658
+2021-04-05 21:09:33.663 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timestamp -> org.hibernate.type.TimestampType@1a2ac487
+2021-04-05 21:09:33.665 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@1a2ac487
+2021-04-05 21:09:33.667 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@1a2ac487
+2021-04-05 21:09:33.669 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@52a7928a
+2021-04-05 21:09:33.670 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar -> org.hibernate.type.CalendarType@30f28b5
+2021-04-05 21:09:33.671 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@30f28b5
+2021-04-05 21:09:33.671 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@30f28b5
+2021-04-05 21:09:33.672 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@1118d539
+2021-04-05 21:09:33.673 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@57186526
+2021-04-05 21:09:33.675 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration locale -> org.hibernate.type.LocaleType@257f30f7
+2021-04-05 21:09:33.678 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@257f30f7
+2021-04-05 21:09:33.681 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration currency -> org.hibernate.type.CurrencyType@615efd1c
+2021-04-05 21:09:33.681 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@615efd1c
+2021-04-05 21:09:33.682 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration timezone -> org.hibernate.type.TimeZoneType@48cd319d
+2021-04-05 21:09:33.684 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@48cd319d
+2021-04-05 21:09:33.686 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration class -> org.hibernate.type.ClassType@33ec2c0c
+2021-04-05 21:09:33.686 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@33ec2c0c
+2021-04-05 21:09:33.688 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@443a06ad
+2021-04-05 21:09:33.688 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@443a06ad
+2021-04-05 21:09:33.691 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@1fb2eec
+2021-04-05 21:09:33.698 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration binary -> org.hibernate.type.BinaryType@7c8874ef
+2021-04-05 21:09:33.700 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration byte[] -> org.hibernate.type.BinaryType@7c8874ef
+2021-04-05 21:09:33.700 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [B -> org.hibernate.type.BinaryType@7c8874ef
+2021-04-05 21:09:33.702 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@76396509
+2021-04-05 21:09:33.702 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@76396509
+2021-04-05 21:09:33.703 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@76396509
+2021-04-05 21:09:33.705 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration row_version -> org.hibernate.type.RowVersionType@5c3d4f05
+2021-04-05 21:09:33.706 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration image -> org.hibernate.type.ImageType@5438fa43
+2021-04-05 21:09:33.707 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration characters -> org.hibernate.type.CharArrayType@615db358
+2021-04-05 21:09:33.717 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration char[] -> org.hibernate.type.CharArrayType@615db358
+2021-04-05 21:09:33.738 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [C -> org.hibernate.type.CharArrayType@615db358
+2021-04-05 21:09:33.752 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@382d71c7
+2021-04-05 21:09:33.755 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@382d71c7
+2021-04-05 21:09:33.756 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@382d71c7
+2021-04-05 21:09:33.761 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration text -> org.hibernate.type.TextType@1a1c21b4
+2021-04-05 21:09:33.767 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration ntext -> org.hibernate.type.NTextType@6c951ada
+2021-04-05 21:09:33.769 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration blob -> org.hibernate.type.BlobType@5c8d58ed
+2021-04-05 21:09:33.771 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@5c8d58ed
+2021-04-05 21:09:33.773 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@34136bd1
+2021-04-05 21:09:33.784 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration clob -> org.hibernate.type.ClobType@285a4fe3
+2021-04-05 21:09:33.785 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@285a4fe3
+2021-04-05 21:09:33.787 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration nclob -> org.hibernate.type.NClobType@16cb9989
+2021-04-05 21:09:33.787 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@16cb9989
+2021-04-05 21:09:33.788 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@27a9f025
+2021-04-05 21:09:33.791 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@45037e16
+2021-04-05 21:09:33.803 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration serializable -> org.hibernate.type.SerializableType@20349058
+2021-04-05 21:09:33.806 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration object -> org.hibernate.type.ObjectType@74f280bd
+2021-04-05 21:09:33.806 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@74f280bd
+2021-04-05 21:09:33.809 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@8641b7d
+2021-04-05 21:09:33.810 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@37c7766e
+2021-04-05 21:09:33.811 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@3fb450d7
+2021-04-05 21:09:33.811 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@4b7ed03e
+2021-04-05 21:09:33.817 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@636985df
+2021-04-05 21:09:33.819 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@6f91fbda
+2021-04-05 21:09:33.822 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@723e3c17
+2021-04-05 21:09:33.823 DEBUG 9296 --- [main] org.hibernate.type.BasicTypeRegistry     : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@4ffced4e
+2021-04-05 21:09:33.880  INFO 9296 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-04-05 21:09:33.957 DEBUG 9296 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@7a358613] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@760f1081]
+2021-04-05 21:09:34.188 DEBUG 9296 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@7a358613] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@205159dc]
+2021-04-05 21:09:34.741  INFO 9296 --- [main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'file:/D:/Documentos/Universidad/Ingenier%c3%ada%20Web/printopolis/target/classes/import.sql'
+2021-04-05 21:09:34.799  INFO 9296 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-05 21:09:34.874 TRACE 9296 --- [main] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@205159dc] for TypeConfiguration
+2021-04-05 21:09:34.877  INFO 9296 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-05 21:09:35.031  INFO 9296 --- [main] es.ucm.fdi.iw.g06.printopolis.LocalData  : base folder is D:\tmp\iw
+2021-04-05 21:09:35.032  INFO 9296 --- [main] es.ucm.fdi.iw.g06.printopolis.LocalData  : using already-existing base folder :-)
+2021-04-05 21:09:35.192  INFO 9296 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientInboundChannelExecutor'
+2021-04-05 21:09:35.197  INFO 9296 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'clientOutboundChannelExecutor'
+2021-04-05 21:09:35.303  INFO 9296 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/h2/**'] with []
+2021-04-05 21:09:35.340  INFO 9296 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f65e0c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@126ff1a1, org.springframework.security.web.header.HeaderWriterFilter@1382a7d8, org.springframework.security.web.csrf.CsrfFilter@62aee901, org.springframework.security.web.authentication.logout.LogoutFilter@486dd616, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@63ed5dae, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ba08a09, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38af386e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@566cc6af, org.springframework.security.web.session.SessionManagementFilter@402feb85, org.springframework.security.web.access.ExceptionTranslationFilter@189e96af, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@47f39279]
+2021-04-05 21:09:35.367  INFO 9296 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'messageBrokerTaskScheduler'
+2021-04-05 21:09:35.391 DEBUG 9296 --- [main] o.s.w.s.s.s.WebSocketHandlerMapping      : Patterns [/ws] in 'stompWebSocketHandlerMapping'
+2021-04-05 21:09:35.403  INFO 9296 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'brokerChannelExecutor'
+2021-04-05 21:09:35.434 DEBUG 9296 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.AdminController:
+	
+2021-04-05 21:09:35.436 DEBUG 9296 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.DesignController:
+	
+2021-04-05 21:09:35.436 DEBUG 9296 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.MessageController:
+	
+2021-04-05 21:09:35.437 DEBUG 9296 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.PrinterController:
+	
+2021-04-05 21:09:35.438 DEBUG 9296 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.RootController:
+	
+2021-04-05 21:09:35.438 DEBUG 9296 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	e.u.f.i.g.p.c.UserController:
+	
+2021-04-05 21:09:35.442 DEBUG 9296 --- [main] .WebSocketAnnotationMethodMessageHandler : 
+	o.s.b.a.w.s.e.BasicErrorController:
+	
+2021-04-05 21:09:35.539 DEBUG 9296 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2021-04-05 21:09:35.605 DEBUG 9296 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 29 mappings in 'requestMappingHandlerMapping'
+2021-04-05 21:09:35.610  INFO 9296 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-04-05 21:09:35.640 DEBUG 9296 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2021-04-05 21:09:35.656 DEBUG 9296 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2021-04-05 21:09:35.809  INFO 9296 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-04-05 21:09:35.810 DEBUG 9296 --- [main] org.springframework.web.SimpLogging      : clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2021-04-05 21:09:35.811 DEBUG 9296 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[]]
+2021-04-05 21:09:35.811  INFO 9296 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2021-04-05 21:09:35.812 DEBUG 9296 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@724c26e0]
+2021-04-05 21:09:35.814 DEBUG 9296 --- [main] org.springframework.web.SimpLogging      : brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@724c26e0]
+2021-04-05 21:09:35.817  INFO 9296 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@724c26e0]]
+2021-04-05 21:09:35.819  INFO 9296 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2021-04-05 21:09:35.820 DEBUG 9296 --- [main] org.springframework.web.SimpLogging      : clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2021-04-05 21:09:35.821 DEBUG 9296 --- [main] org.springframework.web.SimpLogging      : brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2021-04-05 21:09:35.824  INFO 9296 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2021-04-05 21:09:35.827  INFO 9296 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2021-04-05 21:09:35.839  INFO 9296 --- [main] e.u.f.iw.g06.printopolis.StartupConfig   : Setting global debug property to true
+2021-04-05 21:09:35.844  INFO 9296 --- [main] e.u.f.i.g.p.PrintopolisApplication       : Started PrintopolisApplication in 5.372 seconds (JVM running for 5.897)
+2021-04-05 21:10:35.404  INFO 9296 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2021-04-05 21:16:02.190 DEBUG 9296 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2021-04-05 21:16:02.191 DEBUG 9296 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[]]
+2021-04-05 21:16:02.191  INFO 9296 --- [SpringContextShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2021-04-05 21:16:02.192  INFO 9296 --- [SpringContextShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@724c26e0]]
+2021-04-05 21:16:02.193 DEBUG 9296 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@724c26e0]
+2021-04-05 21:16:02.195 DEBUG 9296 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@724c26e0]
+2021-04-05 21:16:02.195  INFO 9296 --- [SpringContextShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2021-04-05 21:16:02.196 DEBUG 9296 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2021-04-05 21:16:02.197 DEBUG 9296 --- [SpringContextShutdownHook] org.springframework.web.SimpLogging      : brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2021-04-05 21:16:02.452  INFO 9296 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2021-04-05 21:16:02.452  INFO 9296 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2021-04-05 21:16:02.454  INFO 9296 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2021-04-05 21:16:02.454  INFO 9296 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2021-04-05 21:16:02.455  INFO 9296 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-05 21:16:02.455  INFO 9296 --- [SpringContextShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-04-05 21:16:02.478 TRACE 9296 --- [SpringContextShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Handling #sessionFactoryClosed from [org.hibernate.internal.SessionFactoryImpl@205159dc] for TypeConfiguration
+2021-04-05 21:16:02.486 DEBUG 9296 --- [SpringContextShutdownHook] o.h.type.spi.TypeConfiguration$Scope     : Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@c14a8a8] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@205159dc]
+2021-04-05 21:16:02.488  INFO 9296 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-05 21:16:02.492  INFO 9296 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

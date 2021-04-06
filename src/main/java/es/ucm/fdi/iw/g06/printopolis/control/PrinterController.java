@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
@@ -66,8 +67,8 @@ public class PrinterController {
 		p.setImpresor(((User) session.getAttribute("u")));
 		entityManager.persist(p);
 		entityManager.flush();
-		File f= localData.getFile("printer", Long.toString(p.getId()));
-		File c= localData.getFile("printer", Long.toString(p.getId())+"c");
+		/*File f= localData.getFile("printer", Long.toString(p.getId()));
+		File c= localData.getFile("printer", Long.toString(p.getId())+"c");*/
 		
 		log.info("Added new design {}",impresora);
 		
@@ -91,6 +92,14 @@ public class PrinterController {
 			}
 		};
 	}
+
+	@GetMapping("/")
+	public String printers(Model model, HttpServletRequest request) {
+		List<User> l1= entityManager.createNamedQuery("User.allImpresores", User.class).getResultList();
+		model.addAttribute("printerDest", l1);
+		return "printers";
+	}
+	
 
 
 }

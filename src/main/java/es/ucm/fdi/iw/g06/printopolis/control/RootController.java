@@ -33,6 +33,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
+import es.ucm.fdi.iw.g06.printopolis.model.Printer;
 
 /**
  * Landing-page controller
@@ -54,14 +55,13 @@ public class RootController {
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("cat", "all");
+		List<Design> l= entityManager.createNamedQuery("Design.listAll", Design.class).setMaxResults(3).getResultList();
+		model.addAttribute("designDest", l);
+		List<User> l1= entityManager.createNamedQuery("User.allImpresores", User.class).setMaxResults(3).getResultList();
+		model.addAttribute("printerDest", l1);
 		return "index";
 	}
-
-	@GetMapping("/printers")
-	public String printers(Model model, HttpServletRequest request) {
-		return "printers";
-	}
-
+	
 	@GetMapping("/signup")
 	public String signup(Model model, HttpServletRequest request) {
 		return "signup";

@@ -24,34 +24,15 @@
         <div id="disenos">
             <h1><b>DISEÑOS DESTACADOS</b></h1>
             <div class="grid_container">
-                <div class="card">
+                <div th:each="d:${designDest}" class="card">
                     <a href="#">
                         <img alt="Imagen Perfil" width="100" height="100" src="../img/favicon.png" >
                         <div class="container">
-                          <h4><b>nombre</b></h4> 
-                          <p> número de ventas </p> 
+                          <h4 th:text="${d.name}"><b></b></h4> 
+                          <p th:text="${d.category}"></p> 
                         </div>
                     </a>
                 </div>
-                <div class="card">
-                    <a href="#">
-                        <img alt="Imagen Perfil" width="100" height="100" src="../img/favicon.png" >
-                        <div class="container">
-                          <h4><b>nombre</b></h4> 
-                          <p> número de ventas </p> 
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="#">
-                        <img alt="Imagen Perfil" width="100" height="100" src="../img/favicon.png" >
-                        <div class="container">
-                          <h4><b>nombre</b></h4> 
-                          <p> número de ventas </p> 
-                        </div>
-                    </a>
-                </div>
-
             </div>
 
             <a class="ver_mas" href="#">
@@ -65,34 +46,14 @@
             <h1><b>IMPRESORES DESTACADOS</b></h1>
 
             <div class="grid_container">
-                <div class="card">
+                <div th:each="p:${printerDest}" class="card">
                     <a href="#">
                         <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
                         <div class="container">
-                          <h4><b>nombre</b></h4> 
-                          <p> número de ventas </p> 
+                          <h4 th:text="${p.firstName}"><b></b></h4> 
                         </div>
                     </a>
                 </div>
-                <div class="card">
-                    <a href="#">
-                        <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
-                        <div class="container">
-                          <h4><b>nombre</b></h4> 
-                          <p>número de ventas </p> 
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="#">
-                        <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
-                        <div class="container">
-                          <h4><b>nombre</b></h4> 
-                          <p>número de ventas </p> 
-                        </div>
-                    </a>
-                </div>
-
             </div>
 
             <a class="ver_mas" href="#">
