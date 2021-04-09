@@ -69,6 +69,15 @@ public class SalesController {
        model.addAttribute("sales", l);
        return "payment";
 	}
+
+	@GetMapping("/")
+	public String openCart(Model model, HttpSession session) throws IOException {
+	   User u = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+	   List<SalesLine> l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class).setParameter("id", u.getSaleId().getId()).getResultList();
+       model.addAttribute("products", l);
+       return "cart";
+	}
+
 	/*@GetMapping("/{category}")
 	public String designs(@PathVariable String category, Model model, HttpServletRequest request) {
 		List<Design> l;

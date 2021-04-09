@@ -137,11 +137,14 @@
 }
 
 .perfilUp{
-    justify-content: flex-start;
     align-self: flex-start;
-    width: 270px;
+    max-width: 270px;
+
     display:flex;
     flex-direction: row;
+    justify-content: flex-end;
+    /* flex-wrap: wrap; */
+    flex-shrink: 0.5;
 }
 
 .perfilCenter{
@@ -152,6 +155,12 @@
     padding: 5px;
     margin-top:auto;
     margin-left: 5px;
+    margin-right: 60px;
+    max-width: 113px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -160,23 +169,38 @@
     border-radius: 100%;
     padding: 8px;
     margin-left: 7px;
-    margin-top:20px;
+    margin-block-start:25px;
     width: 25px;
     height: 25px;
+    margin-inline-start: 5px;
 }
 
-.cart{
-    justify-self: flex-end;
-    margin-left: auto;
-    margin-right: 15px;
+.cart {
     margin-top: 23px;
+    margin-inline-end: 10px;
+    margin-block-start:25px;
     text-decoration: none;
     color:black;
-    font-style: bold;
     border: 2px solid black;
     border-radius: 10%;
     padding: 2px;
+    background-image: url("/img/cart.png");
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
 }
+
+.cart:hover{
+    cursor: pointer;
+}
+
+.cart:active {
+    background-color: #ffffff;
+    box-shadow: 0 3px rgb(177, 177, 177);
+    transform: translateY(4px);
+  }
 
 .view-model:hover{
     box-shadow: inset 0 0 20px #f4a361bb, 0 0 20px #f4a361bb;

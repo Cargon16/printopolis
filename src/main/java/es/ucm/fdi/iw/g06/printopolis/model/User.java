@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.apache.logging.log4j.LogManager;
@@ -79,6 +80,9 @@ public class User implements Transferable<User.Transfer> {
 	private String phone;
 	private String address;
 	private String aboutMe;
+	@OneToOne
+	@JoinColumn(name = "user")
+	private Sales SaleId;
 
 	// desginer specific fields, related with designs
 	@OneToMany

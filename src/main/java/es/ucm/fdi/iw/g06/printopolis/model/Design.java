@@ -1,5 +1,6 @@
 package es.ucm.fdi.iw.g06.printopolis.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,11 @@ import lombok.Data;
 
 		@NamedQuery(name = "Design.categoryDesigns", query = "SELECT d FROM Design d "
 				+ "WHERE d.category = :category"),
-		@NamedQuery(name = "Design.listAll", query = "SELECT d FROM Design d") })
+		@NamedQuery(name = "Design.listAll", query = "SELECT d FROM Design d"),
+
+		@NamedQuery(name = "Design.getDesign", query = "SELECT d FROM Design d "
+		+ "WHERE d.id = :designId")
+	})
 @Data
 public class Design {
 
@@ -35,11 +40,12 @@ public class Design {
 
 	@NotNull
 	private String category;
-	private float price;
+	private BigDecimal price;
 	private String name;
 	private String description;
 	private int puntuation;
 	private float dimension;
+	// private int numVentas;
 
 	@ManyToOne
 	private User designer;

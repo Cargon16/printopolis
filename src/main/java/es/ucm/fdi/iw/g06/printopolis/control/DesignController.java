@@ -8,6 +8,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -20,11 +22,13 @@ import org.apache.catalina.security.SecurityConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +39,9 @@ import ch.qos.logback.core.net.LoginAuthenticator;
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.LoginSuccessHandler;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
+import es.ucm.fdi.iw.g06.printopolis.model.Sales;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
+import es.ucm.fdi.iw.g06.printopolis.model.SalesLine;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -56,7 +62,7 @@ public class DesignController {
 	@Transactional
 	@RequestMapping(value = "/addDesign", method = RequestMethod.POST)
 	public String addUser(@RequestParam("diseno") String diseno, @RequestParam("category") String categoria,
-			@RequestParam("precio") float precio, @RequestParam("about") String about,
+			@RequestParam("precio") BigDecimal precio, @RequestParam("about") String about,
 			@RequestParam("volumen") float volumen, @RequestParam("fichero") MultipartFile archivo,
 			@RequestParam("captura") MultipartFile captura, Model model, HttpSession session) throws IOException {
 
@@ -147,5 +153,35 @@ public class DesignController {
 		log.info("Sending a message to {} with contents '{}'", l);
 
 		return "designs";
+	}
+
+
+	@Transactional
+	@PostMapping("/addToCart/{id}")
+	public String addUser(@PathVariable long id, Model model, HttpSession session) throws IOException {
+		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		Design d = entityManager.createNamedQuery("Design.getDesign", Design.class).setParameter("designId", id).getSingleResult();
+		Sales compra = user.getSaleId();
+		if(user.getSaleId() == null){
+			compra = new Sales();
+			entityManager.persist(compra);
+			entityManager.flush();
+			user.setSaleId(compra);
+		}
+			SalesLine sl = new SalesLine();
+		
+			sl.setDate(LocalDateTime.now());
+			sl.setDesign(d.getName());
+			sl.setPrice(d.getPrice());
+			//si el user ha seleccionado una (hacer consulta)
+			// sl.setPrinter(printer);
+			sl.setQuantity(1);
+			sl.setSale(compra.getId());
+			entityManager.persist(sl);
+			entityManager.flush();
+
+		log.info("Added new product to cart {}", d.getName());
+
+		return "redirect:/";
 	}
 }

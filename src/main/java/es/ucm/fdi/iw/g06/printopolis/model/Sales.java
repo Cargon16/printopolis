@@ -13,6 +13,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -30,8 +31,8 @@ public class Sales {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-    private long user;
+	@OneToOne
+    private User user;
     private String address;
     private BigDecimal total_price; 
 

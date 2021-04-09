@@ -24,7 +24,7 @@ import lombok.Data;
 @NamedQueries({
 	@NamedQuery(name="SalesLine.salesProducts",
 			query="SELECT l FROM SalesLine l "
-					+ "WHERE l.id = :id")
+					+ "WHERE l.sale = :id")
 })
 @Data
 public class SalesLine {
@@ -33,7 +33,7 @@ public class SalesLine {
 	private long id;
 
     private long printer;
-    private long design;
+    private String design;
     private long sale;
     private int quantity;
     private BigDecimal price;
