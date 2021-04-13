@@ -16,10 +16,10 @@ $(document).ready(function () {
     }
 
   // When the user clicks on <span> (x), close the modal
-  if(span != null)
-  span.onclick = function () {
-    modal.style.display = "none";
-  }
+  if (span != null)
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
@@ -44,10 +44,10 @@ $(document).ready(function () {
     }
 
   // When the user clicks on <span> (x), close the modal
-  if(span != null)
-  span.onclick = function () {
-    modalP.style.display = "none";
-  }
+  if (span != null)
+    span.onclick = function () {
+      modalP.style.display = "none";
+    }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
@@ -61,5 +61,13 @@ $(document).ready(function () {
     var href = jQuery(this).attr('href');
     jQuery(href).modal('toggle');
   });
-});
 
+  var uploadField = document.getElementById("modelo3D");
+
+  uploadField.onchange = function () {
+    if (this.files[0].size > 1048576) {
+      alert("El archivo es demasiado grande");
+      this.value = "";
+    };
+  };
+});

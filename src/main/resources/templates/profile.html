@@ -77,10 +77,10 @@
                         <label>Volumen</label>
                         <input type="number" name="volumen" placeholder="Volumen" min="1" required>
                         <label>Fichero del diseño</label>
-                        <input type="file" name="fichero" placeholder="Archivo" accept=".glb" required>
+                        <input id="modelo3D" type="file" name="fichero" placeholder="Archivo" accept=".glb" multiple max-file-size="1024" required>
                         <label>Captura del diseño (*opcional)</label>
                         <input type="file" name="captura" placeholder="Captura" accept=".jpg, .png">
-                        <input type="submit" value="Añadir">
+                        <input type="submit" onclick="validate()" value="Añadir">
                     </form>
                 </div>
 
