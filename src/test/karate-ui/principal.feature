@@ -27,8 +27,8 @@ Scenario: try to login to printopolis
   * driver.screenshot()
   
   * click("a[id=btnDesigns]")
-  * submit().click("input[id=1]")
-  * submit().click("input[id=2]")
+  * submit().click("input[id=1d]")
+  * submit().click("input[id=2d]")
   * driver.screenshot()
  
   # voy a mensajes si pulso en el buzon

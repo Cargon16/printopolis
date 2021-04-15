@@ -44,7 +44,7 @@
                 <span class="nombre" th:text= "${d.name}"></span>
 
                 <form method="POST" th:action="@{/design/addToCart/{id}/(id=${d.id})}" enctype="multipart/form-data">
-                    <input type="submit" class="cart" value="" th:id="${d.id}" >
+                    <input type="submit" class="cart" value="" th:id="${d.id} + @{d}" >
                 </form>
 
             </div>
