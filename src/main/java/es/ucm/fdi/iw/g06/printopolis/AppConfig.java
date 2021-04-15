@@ -5,6 +5,7 @@ import java.io.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 
@@ -14,7 +15,7 @@ import org.springframework.core.env.Environment;
  * Declares multiple beans (which can later be accessed anywhere) via
  * Spring magic. 
  */
-@Configuration	
+@Configuration
 public class AppConfig {
 
 	@Autowired
@@ -27,10 +28,11 @@ public class AppConfig {
 	 * `@Autowired LocalData localData`, and have it initialized
 	 * with the result of this method. 
 	 */	
+
     @Bean(name="localData")
     public LocalData getLocalData() {
     	return new LocalData(new File(env.getProperty("es.ucm.fdi.base-path")));
-    } 
+    }
     
 	/**
 	 * Declares a MessageSource Spring bean.

@@ -3,7 +3,7 @@ Feature: login, acceso a perfil, ver mensajes + enviar y recibir un mensaje via 
 Background:
   # para escribir tus propias pruebas, lee https://github.com/intuit/karate/tree/master/karate-core
   # driver: chromium bajo linux; si usas google-chrome, puedes quitar executable (que es lo que usaría por defecto)
-  * configure driver = { type: 'chrome', executable: '/usr/bin/chromium-browser', showDriverLog: true }
+  * configure driver = { type: 'chrome', showDriverLog: true }
     
 Scenario: login using chrome
 

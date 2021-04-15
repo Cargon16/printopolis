@@ -171,7 +171,7 @@ public class DesignController {
 			SalesLine sl = new SalesLine();
 		
 			sl.setDate(LocalDateTime.now());
-			sl.setDesign(d.getName());
+			sl.setDesign(d.getId());
 			sl.setPrice(d.getPrice());
 			//si el user ha seleccionado una (hacer consulta)
 			// sl.setPrinter(printer);

@@ -33,7 +33,7 @@ public class SalesLine {
 	private long id;
 
     private long printer;
-    private String design;
+    private long design;
     private long sale;
     private int quantity;
     private BigDecimal price;

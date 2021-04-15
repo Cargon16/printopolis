@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <link rel="stylesheet" th:href="@{/css/designs.css}" href="css/designs.css" type="text/css"/>
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -43,7 +44,7 @@
                 <span class="nombre" th:text= "${d.name}"></span>
 
                 <form method="POST" th:action="@{/design/addToCart/{id}/(id=${d.id})}" enctype="multipart/form-data">
-                    <button type="submit" class="cart" value="" >
+                    <input type="submit" class="cart" value="" th:id="${d.id}" >
                 </form>
 
             </div>

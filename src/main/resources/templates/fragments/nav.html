@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-    <title>Nav fragment - rest intentionally left empty</title>
 </head>
 
 <body>
@@ -12,7 +11,7 @@
             <b>HOME</b>
         </a>
     
-        <a class="button_nav" th:href="@{/design/{category}/(category = 'all')}" title="">
+        <a class="button_nav" id="btnDesigns" th:href="@{/design/{category}/(category = 'all')}" title="">
             <b>DISEÑOS</b>
  
         </a>
@@ -25,7 +24,7 @@
             <b>Prueba API reservas</b>  
         </a>
 
-        <a class="button_nav" th:href="@{/sale/}" title="">
+        <a class="button_nav" id="btnCart" th:href="@{/sale/}" title="">
             <b>CESTA</b>  
         </a>
 

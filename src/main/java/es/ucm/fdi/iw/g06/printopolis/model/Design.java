@@ -45,7 +45,7 @@ public class Design {
 	private String description;
 	private int puntuation;
 	private float dimension;
-	// private int numVentas;
+	private int numVentas;
 
 	@ManyToOne
 	private User designer;
