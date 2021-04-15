@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 </html>
-<link rel="stylesheet" th:href="@{/css/signup.css}" href="css/signup.css" type="text/css" />
+<link rel="stylesheet" th:href="@{/css/login.css}" href="css/login.css" type="text/css" />
 
 
 <head>
@@ -29,8 +29,9 @@
           <input type="password" id="password" name="password" class="form-control" placeholder="Password"
             required="required"></input>
         </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <input id="signin" class="btn btn-lg btn-primary btn-block" type="submit" style="align-self: center;" name="Sign in"></input>
       </form>
+      <p style="text-align: center;">No tienes cuenta, <a style="color: blue;" th:href="@{/signup}">regístrate</a></p>
     </div>
   </body>
 

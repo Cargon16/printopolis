@@ -64,6 +64,7 @@ $(document).ready(function () {
 
   var uploadField = document.getElementById("modelo3D");
 
+  if(uploadField != null)
   uploadField.onchange = function () {
     if (this.files[0].size > 1048576) {
       alert("El archivo es demasiado grande");
