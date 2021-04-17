@@ -24,11 +24,12 @@ Scenario: try to login to printopolis
   * input('#password', 'aa')
   * submit().click("input[id=signin]")
   * match html('title') contains 'Admin'
-  * driver.screenshot()
   
   * click("a[id=btnDesigns]")
-  * submit().click("input[id=1d]")
-  * submit().click("input[id=2d]")
+  * input('#aux', 'a')
+  * submit().click("input[type=submit]") 
+  * delay(5000)
+  * match html('title') contains 'Printopolis'
   * driver.screenshot()
  
   # voy a mensajes si pulso en el buzon

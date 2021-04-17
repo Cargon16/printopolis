@@ -43,18 +43,20 @@
                 <img class="img-user" th:src="@{/img/user.png}">
                 <span class="nombre" th:text= "${d.name}"></span>
 
-                <form method="POST" th:action="@{/design/addToCart/{id}/(id=${d.id})}" enctype="multipart/form-data">
-                    <input type="submit" class="cart" value="" th:id="${d.id} + @{d}" >
+                <form method="POST" th:action="@{/design/addToCart/}">
+                    <input type="hidden" th:value="${d.id}" name="cart">
+                    <input type="hidden" id="aux">
+                    <input type="submit" class="cart" value="" >
                 </form>
 
             </div>
             <div class="perfilCenter">
-                    <a th:href="@{#} + ${d.id}" class="btn" id="openDesign">
+                    <a th:href="@{#} + ${d.id} + @{d}" class="btn" id="openDesign">
                         <img id="iconWall" th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño"/>
                     </a>
 
                  <!-- Modelo 3D -->
-                <div class="modal fade modal-xl" th:id="${d.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade modal-xl" th:id="${d.id} + @{d}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="width: 580px;">
                             <div class="modal-header">

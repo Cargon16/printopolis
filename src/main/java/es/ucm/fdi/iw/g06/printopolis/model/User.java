@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -131,8 +132,9 @@ public class User implements Transferable<User.Transfer> {
 	public Transfer toTransfer() {
 		return new Transfer(id, username, received.size(), sent.size());
 	}
-}
 
-// Vale te comento, las clases de usuario sobran, solo dejamos esta, en el enum
-// de user metemos los que queramos
-// y los atributos que nos hagan falta los metemos aquí
+	@Override
+	public String toString() {
+		return username + " (id: " + id + " role: " + roles + " venta: " +  SaleId +")";
+	}
+}

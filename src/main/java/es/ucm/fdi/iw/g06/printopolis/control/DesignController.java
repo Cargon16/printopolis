@@ -157,8 +157,8 @@ public class DesignController {
 
 
 	@Transactional
-	@PostMapping("/addToCart/{id}")
-	public String addUser(@PathVariable long id, Model model, HttpSession session) throws IOException {
+	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
+	public String addToCart(@RequestParam("cart") Long id, Model model, HttpSession session) throws IOException {
 		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
 		Design d = entityManager.createNamedQuery("Design.getDesign", Design.class).setParameter("designId", id).getSingleResult();
 		Sales compra = user.getSaleId();

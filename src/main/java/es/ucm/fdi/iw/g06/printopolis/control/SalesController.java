@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -73,7 +74,11 @@ public class SalesController {
 	@GetMapping("/")
 	public String openCart(Model model, HttpSession session) throws IOException {
 	   User u = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
-	   List<SalesLine> l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class).setParameter("id", u.getSaleId().getId()).getResultList();
+	   List<SalesLine> l;
+	   if(u.getSaleId() != null)
+	   l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class).setParameter("id", u.getSaleId().getId()).getResultList();
+	   else
+	   l = new ArrayList<SalesLine>();
        model.addAttribute("products", l);
        return "cart";
 	}
