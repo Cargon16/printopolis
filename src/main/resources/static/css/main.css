@@ -63,6 +63,13 @@ header #icon{
     
 }
 
+.btn-perfil{
+    display: flex;
+    width: 10%;
+    margin-left: auto;
+    margin-right: 2%;
+}
+
 /*---------- Barra de buscar ------------------*/
 .form-buscar{
     width: 40%;
