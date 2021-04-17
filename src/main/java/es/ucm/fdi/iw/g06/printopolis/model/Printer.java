@@ -30,11 +30,17 @@ public class Printer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    public enum Status {
+		NO_INK,
+        WORKING,
+        AVAILABLE
+	}
+
     @NotNull
     private String name;
     private float material_level;
-    private float puntuation;
-    private Enum status;
+    private int puntuation;
+    private String status;
 
     @ManyToOne
     private User impresor;
