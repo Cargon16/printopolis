@@ -67,6 +67,8 @@ public class PrinterController {
         p.setPuntuation(0);
 		p.setStatus("AVAILABLE");
 		p.setImpresor(((User) session.getAttribute("u")));
+		User us = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+		us.addPrinter(p);
 		entityManager.persist(p);
 		entityManager.flush();
 		
@@ -97,9 +99,11 @@ public class PrinterController {
 	@GetMapping("/")
 	public String printers(Model model, HttpServletRequest request) {
 		List<User> l1= entityManager.createNamedQuery("User.allImpresores", User.class).getResultList();
-		List<Printer> l2= entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
-		model.addAttribute("printerObj", l2);
+		// List<Printer> l2= entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
+		// model.addAttribute("printerObj", l2);
+
 		model.addAttribute("printerDest", l1);
+		log.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l1.toString());
 		return "printers";
 	}
 	

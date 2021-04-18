@@ -1,0 +1,34 @@
+.contenedor_chats{
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    background-color: rgba(255, 255, 255);
+    box-shadow: inset 0 0 2px black, 0 0 2px black;
+}
+
+.chat{
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.chat::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+.chat img {
+    float: left;
+    max-width: 40px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+  }

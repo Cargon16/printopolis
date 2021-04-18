@@ -46,7 +46,9 @@ import lombok.AllArgsConstructor;
 				+ "WHERE u.username = :username AND u.enabled = 1"),
 		@NamedQuery(name = "User.hasUsername", query = "SELECT COUNT(u) " + "FROM User u "
 				+ "WHERE u.username = :username"),
-		@NamedQuery(name = "User.allImpresores", query = "SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id")
+		@NamedQuery(name = "User.allImpresores", query = "SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id"),
+
+		@NamedQuery(name = "User.byId", query = "SELECT u FROM User u WHERE u.id = :senderId")
 
 })
 @Data
@@ -119,6 +121,10 @@ public class User implements Transferable<User.Transfer> {
 		return Arrays.stream(roles.split(",")).anyMatch(r -> r.equals(roleName));
 	}
 
+	public void addPrinter(Printer p){
+		this.printer.add(p);
+	}
+
 	@Getter
 	@AllArgsConstructor
 	public static class Transfer {
@@ -135,6 +141,6 @@ public class User implements Transferable<User.Transfer> {
 
 	@Override
 	public String toString() {
-		return username + " (id: " + id + " role: " + roles + " venta: " +  SaleId +")";
+		return username + " (id: " + id + " role: " + roles + " venta: " +  SaleId + ")";
 	}
 }

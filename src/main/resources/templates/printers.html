@@ -35,12 +35,14 @@
 
         <div class="grid_container">
         
-            <div th:each="i:${printerObj}" class="card">
-                <a th:href="@{/user/{id}(id=${i.impresor_id})}">
+            <div th:each="i:${printerDest}" class="card">
+                <a th:href="@{/user/{id}/(id=${i.id})}">
                     <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
                     <div class="container">
-                      <h4 th:text="${i.impresor_id.firstName}"><b></b></h4>
-                      <h4 th:text="${i.material}"></h4> 
+                      <h4 th:text="${i.firstName}"><b></b></h4>
+                      <!-- <div th:each="p:${i.printer}">
+                        <h4 th:text="${p.material_level}"></h4> 
+                      </div> -->
                     </div>
                 </a>
             </div>

@@ -139,10 +139,10 @@
 .perfilUp{
     align-self: flex-start;
     max-width: 270px;
-
+    width: 267px;
     display:flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
     /* flex-wrap: wrap; */
     flex-shrink: 0.5;
 }
@@ -169,13 +169,15 @@
     border-radius: 100%;
     padding: 8px;
     margin-left: 7px;
-    margin-block-start:25px;
+    margin-block-start:28px;
     width: 25px;
     height: 25px;
-    margin-inline-start: 5px;
+    margin-inline-start: 8px;
 }
 
 .cart {
+    display: flex;
+    align-content: flex-end;
     margin-top: 23px;
     margin-inline-end: 10px;
     margin-block-start:25px;
@@ -190,6 +192,13 @@
     height: 35px;
     background-repeat: no-repeat;
     background-color: #ffffff;
+}
+
+.perfilUp form {
+    max-height: 35px;
+    margin-block-start:9px;
+    margin-inline-end: 10px;
+    margin-left: auto;
 }
 
 .cart:hover{
@@ -240,7 +249,7 @@ content:"#"
     flex-direction: row;
     justify-content: center;
     padding: 8px;
-    margin-block-end: 12px;
+    margin-block-end: 16px;
     column-gap: 3px;
 }
 
@@ -253,7 +262,7 @@ content:"#"
     font-size: 13px;
     color:rgb(129, 129, 129);
     padding: 5px;
-    margin-block-end: 15px;
+    margin-block-end: 20px;
 }
 
 #openDesign{
