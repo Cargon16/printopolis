@@ -21,8 +21,10 @@ import lombok.Data;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Printer.allUserPrinters", query = "SELECT p FROM Printer p "
-                + "WHERE p.impresor.id = :userId")
-                 })
+                + "WHERE p.impresor.id = :userId"),
+        @NamedQuery(name = "Printer.dePrinter", query = "DELETE FROM Printer p WHERE p.id = :id") 
+    })
+              
 
 @Data
 public class Printer {
@@ -31,10 +33,8 @@ public class Printer {
     private long id;
 
     public enum Status {
-		NO_INK,
-        WORKING,
-        AVAILABLE
-	}
+        NO_INK, WORKING, AVAILABLE
+    }
 
     @NotNull
     private String name;

@@ -46,7 +46,7 @@ import lombok.AllArgsConstructor;
 				+ "WHERE u.username = :username AND u.enabled = 1"),
 		@NamedQuery(name = "User.hasUsername", query = "SELECT COUNT(u) " + "FROM User u "
 				+ "WHERE u.username = :username"),
-		@NamedQuery(name = "User.allImpresores", query = "SELECT u FROM User u JOIN Printer p on u.id = p.impresor.id")
+		@NamedQuery(name = "User.allImpresores", query = "SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id")
 
 })
 @Data

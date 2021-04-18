@@ -25,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,11 +65,11 @@ public class PrinterController {
 		p.setMaterial_level(level);
         p.setName(impresora);
         p.setPuntuation(0);
+		p.setStatus("AVAILABLE");
 		p.setImpresor(((User) session.getAttribute("u")));
 		entityManager.persist(p);
 		entityManager.flush();
-		/*File f= localData.getFile("printer", Long.toString(p.getId()));
-		File c= localData.getFile("printer", Long.toString(p.getId())+"c");*/
+		
 		
 		log.info("Added new design {}",impresora);
 		
@@ -100,6 +101,14 @@ public class PrinterController {
 		return "printers";
 	}
 	
+	@Transactional
+	@PostMapping("/delPrinter/{id}")
+	public String delPrinter(@PathVariable long id, Model model){
+		entityManager.createNamedQuery("Printer.dePrinter").setParameter("id", id).executeUpdate();
+		entityManager.flush();
+
+		return "redirect:/";
+	}
 
 
 }

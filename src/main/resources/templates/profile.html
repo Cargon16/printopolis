@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <th:block th:replace="fragments/header.html :: header" />
     <script src="/js/main.js"></script>
@@ -66,7 +67,7 @@
                             <option value="Herramientas">Herramientas</option>
                             <option value="Hogar">Hogar</option>
                             <option value="Deporte">Deporte</option>
-                          </select>
+                        </select>
 
                         <label>Precio</label>
                         <input type="number" name="precio" required min="0" placeholder="Precio">
@@ -77,7 +78,8 @@
                         <label>Volumen</label>
                         <input type="number" name="volumen" placeholder="Volumen" min="1" required>
                         <label>Fichero del diseño</label>
-                        <input id="modelo3D" type="file" name="fichero" placeholder="Archivo" accept=".glb" multiple max-file-size="1024" required>
+                        <input id="modelo3D" type="file" name="fichero" placeholder="Archivo" accept=".glb" multiple
+                            max-file-size="1024" required>
                         <label>Captura del diseño (*opcional)</label>
                         <input type="file" name="captura" placeholder="Captura" accept=".jpg, .png">
                         <input type="submit" onclick="validate()" value="Añadir">
@@ -85,14 +87,16 @@
                 </div>
 
             </div>
-            
+
             <div th:each="d: ${userDesigns}" class="diseno">
                 <h3 th:text="${d.name}"></h3>
-                <a th:href="@{#} + ${d.id}" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
-                    th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño" />
+                <a th:href="@{#} + ${d.id}" class="btn" id="openDesign"><img
+                        style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
+                        th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño" />
 
                 </a>
-                <div class="modal fade modal-xl" th:id="${d.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade modal-xl" th:id="${d.id}" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="width: 580px;">
                             <div class="modal-header">
@@ -106,12 +110,12 @@
                                     src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                                 <style>
                                     model-viewer {
-                                      width: 580px;
-                                      height: 580px;
-                                      background-color: black;
+                                        width: 580px;
+                                        height: 580px;
+                                        background-color: black;
                                     }
                                 </style>
-                                <model-viewer th:src="@{/design/{id}/design(id=${d.id})}" auto-rotate camera-controls >
+                                <model-viewer th:src="@{/design/{id}/design(id=${d.id})}" auto-rotate camera-controls>
                                 </model-viewer>
                                 <h3>Descripción</h3>
                                 <p th:text="${d.description}"></p>
@@ -150,12 +154,26 @@
 
             </div>
             <div th:each="p: ${userPrinters}" class="diseno">
-                <h3 th:text="${p.name}"></h3>
-                <a th:href="@{#} + ${p.id}" class="btn" id="openDesign"><img style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
-                    src="/img/printer.png" alt="Diseño" />
+                <div style="display:flex; flex-direction:row; align-items: center;">
+                    <h3 th:text="${p.name}"></h3>
+                    <th:block th:switch="${p.status}">
+                        <span th:case="'AVAILABLE'" title="Available"
+                            style="margin-left: 1%; height: 15px;width: 15px;background-color: rgb(131, 207, 16);border-radius: 50%;display: inline-block;"></span>
+                        <span th:case="'NO_INK'" title="No Ink"
+                            style="margin-left: 1%; height: 15px;width: 15px;background-color: rgb(207, 194, 16);border-radius: 50%;display: inline-block;"></span>
+
+                        <span th:case="'WORKING'" title="Working"
+                            style="margin-left: 1%; height: 15px;width: 15px;background-color: rgb(207, 16, 16);border-radius: 50%;display: inline-block;"></span>
+
+                    </th:block>
+                </div>
+                <a th:href="@{#} + ${p.id} + @{p}" class="btn" id="openDesign"><img
+                        style="width: 50%; margin-left: auto; margin-right: auto;" id="icon" src="/img/printer.png"
+                        alt="Diseño" />
 
                 </a>
-                <div class="modal fade modal-xl" th:id="${p.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade modal-xl" th:id="${p.id} + @{p}" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="width: 580px;">
                             <div class="modal-header">
@@ -166,7 +184,11 @@
                             <div class="modal-body">
                                 <h3>Descripción</h3>
                                 <p>De momento no hay nada, vaya</p>
-
+                                <form method="POST" th:action="@{/printer/delPrinter/{id}/(id=${p.id})}">
+                                    <input th:if="${p.status} == 'AVAILABLE'" type="Submit" value="Eliminar">
+                                    <input th:unless="${p.status} == 'AVAILABLE'" type="Submit" value="Eliminar"
+                                        disabled>
+                                </form>
                             </div>
 
                         </div>

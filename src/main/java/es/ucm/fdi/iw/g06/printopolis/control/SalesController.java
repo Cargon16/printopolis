@@ -26,6 +26,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,20 +84,4 @@ public class SalesController {
        return "cart";
 	}
 
-	/*@GetMapping("/{category}")
-	public String designs(@PathVariable String category, Model model, HttpServletRequest request) {
-		List<Design> l;
-
-		if(category.equals("all")){
-				l = entityManager.createQuery("SELECT d FROM Design d").getResultList();
-		}
-		else {
-				l = entityManager.createNamedQuery("Design.categoryDesigns", Design.class).setParameter("category", category).getResultList();
-		}
-		model.addAttribute("categoryType", l);
-		model.addAttribute("categoryName", category);
-		log.info("Sending a message to {} with contents '{}'", l);
-
-		return "designs";
-	}*/
 }

@@ -33,6 +33,7 @@ INSERT INTO DESIGN VALUES(3, 'Juguetes', 'Hola soy un algo2', 123, 'Prueba2', 1,
 
 --Impresores de prueba
 INSERT INTO PRINTER VALUES(1,90,'Impresor1', 10, 'AVAILABLE', 1);
+INSERT INTO PRINTER VALUES(2,100,'Impresor1', 10, 'NO_INK', 1);
 
 -- Compras de prueba
 --INSERT INTO design VALUES();
