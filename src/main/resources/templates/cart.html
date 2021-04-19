@@ -19,18 +19,19 @@
 
     <div class="contenedor_productos">
 
+        <form class="cart">
+            <div th:each="p:${products}" class="apartado">
+                <input type="text" th:value="${p.design}"> <p class="cantidad" th:text="${p.quantity}"></p>
+            </div>
 
-        <div th:each="p:${products}" class="producto">
-            <input type="text" th:value="${p.design}"> <p class="cantidad" th:text="${p.quantity}"></p>
-        </div>
+            <div class="apartado">
+                <input class="input" id="boton" type="submit" value="Añadir impresora">
+            </div>
 
-        <div class="producto">
-            <input type="submit" value="Añadir impresora">
-        </div>
-
-        <div class="producto">
-            <input type="submit" value="Tramitar">
-        </div>
+            <div id="fin">
+                <input class="input" id="boton" type="submit" value="Tramitar">
+            </div>
+        </form>
 
     </div>
 

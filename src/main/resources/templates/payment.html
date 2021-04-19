@@ -19,19 +19,22 @@
 
     <div class="contenedor_productos">
 
-        <div class="producto">
-            <label>Dirección de envío:</label>
-            <input type="text" th:value="${sales.address}">
-        </div>
+        <form class="cart">
+            <div class="apartado">
+                <label>Dirección de envío:</label>
+                <input class="input" type="text" th:value="${sales.address}">
+            </div>
 
-        <div class="producto">
-            <label>Precio total:</label>
-            <input type="text" th:value="${sales.total_price}">
-        </div>
+            <div class="apartado">
+                <label>Precio total:</label>
+                <input class="input" type="text" th:value="${sales.total_price}">
+            </div>
 
-        <div class="producto">
-            <input type="submit" value="Comprar">
-        </div>
+            <div id="fin">
+                <input class="input" id="boton" type="submit" value="Comprar">
+            </div>
+        </form>
+        
 
     </div>
 
