@@ -391,3 +391,9 @@ input[type="submit"]
     justify-content: center;
     display: flex;
 }
+
+#openPrinter{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

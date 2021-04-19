@@ -167,7 +167,7 @@
 
                     </th:block>
                 </div>
-                <a th:href="@{#} + ${p.id} + @{p}" class="btn" id="openDesign"><img
+                <a th:href="@{#} + ${p.id} + @{p}" class="btn" id="openPrinter"><img
                         style="width: 50%; margin-left: auto; margin-right: auto;" id="icon" src="/img/printer.png"
                         alt="Diseño" />
 
@@ -185,7 +185,7 @@
                                 <h3>Descripción</h3>
                                 <p>De momento no hay nada, vaya</p>
                                 <form method="POST" th:action="@{/printer/delPrinter/{id}/(id=${p.id})}">
-                                    <input th:if="${p.status} == 'AVAILABLE'" type="Submit" value="Eliminar">
+                                    <input th:if="${p.status} == 'AVAILABLE'" id="test" type="Submit" value="Eliminar">
                                     <input th:unless="${p.status} == 'AVAILABLE'" type="Submit" value="Eliminar"
                                         disabled>
                                 </form>

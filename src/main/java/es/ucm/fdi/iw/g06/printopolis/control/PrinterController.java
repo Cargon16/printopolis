@@ -96,6 +96,7 @@ public class PrinterController {
 		};
 	}
 
+	@Transactional
 	@GetMapping("/")
 	public String printers(Model model, HttpServletRequest request) {
 		List<User> l1= entityManager.createNamedQuery("User.allImpresores", User.class).getResultList();
@@ -103,7 +104,6 @@ public class PrinterController {
 		// model.addAttribute("printerObj", l2);
 
 		model.addAttribute("printerDest", l1);
-		log.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l1.toString());
 		return "printers";
 	}
 	

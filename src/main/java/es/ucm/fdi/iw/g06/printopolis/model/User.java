@@ -26,6 +26,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import net.bytebuddy.agent.builder.AgentBuilder.PoolStrategy.Eager;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
@@ -93,7 +94,7 @@ public class User implements Transferable<User.Transfer> {
 	private List<Design> designs = new ArrayList<>(); // User designs
 
 	// printer(user) specific fields, related with printers(object)
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name = "impresor_id")
 	private List<Printer> printer = new ArrayList<>(); // list to append all user printers available
 

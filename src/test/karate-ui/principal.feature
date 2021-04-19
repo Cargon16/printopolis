@@ -26,13 +26,17 @@ Scenario: try to login to printopolis
   * match html('title') contains 'Admin'
   
   * click("a[id=btnDesigns]")
-  * input('#aux', 'a')
-  * submit().click("input[type=submit]") 
-  * delay(5000)
+  * waitFor('#hola').click()
   * match html('title') contains 'Printopolis'
   * driver.screenshot()
  
   # voy a mensajes si pulso en el buzon
   * click("a[id=btnCart]")
   * match html('title') contains 'Carrito'
+  * driver.screenshot()
+
+  # Proceso para eliminar una impresora
+  * click("a[class=btn-perfil]")
+  * click("a[id=openPrinter]")
+  * waitFor('#test').click()
   * driver.screenshot()
