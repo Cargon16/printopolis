@@ -130,7 +130,7 @@
     justify-content: center;
 
     border-radius: 3%;
-    height: 330px;
+    height: auto;
     width: 270px;
     margin-top: 30px;
     align-items: center;  
@@ -145,6 +145,11 @@
     justify-content: flex-start;
     /* flex-wrap: wrap; */
     flex-shrink: 0.5;
+    margin-block-end: 3px;
+}
+
+.perfilUp a  {
+    height: auto;
 }
 
 .perfilCenter{
@@ -223,7 +228,7 @@
     align-self: flex-start;
     margin-left: 5px;
     margin-top: 5px;
-    height: 600px;
+    /* height: 600px; */
     /* overflow: hidden; */
 }
 
@@ -242,18 +247,29 @@ content:"#"
     justify-content: flex-end;
     column-gap: 32px;
     width:270px;
+    height: 45px;
 }
 
-.likes{
+.likes {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: end;
     padding: 8px;
-    margin-block-end: 16px;
-    column-gap: 3px;
+    margin-block-end: 10px;
+    margin-bottom: 13px;
 }
 
-.likes img{
+.liked {
+    background-image: url("/img/heart.png");
+    height: 18px;
+    width: 18px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-block-start:28px;
+    margin-top: 0px !important;
+}
+
+.punt{
     align-self: center;
 }
 
@@ -262,7 +278,7 @@ content:"#"
     font-size: 13px;
     color:rgb(129, 129, 129);
     padding: 5px;
-    margin-block-end: 20px;
+    /* margin-block-end: 2px; */
 }
 
 #openDesign{

@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -109,6 +111,15 @@ public class User implements Transferable<User.Transfer> {
 	@OneToMany
 	@JoinColumn(name = "recipient_id")
 	private List<Message> received = new ArrayList<>();
+
+
+	@ManyToMany
+    @JoinTable(
+            name = "userLikes",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "design_id")}
+    )
+    private List<Design> likedDesigns = new ArrayList<>();
 
 	// utility methods
 

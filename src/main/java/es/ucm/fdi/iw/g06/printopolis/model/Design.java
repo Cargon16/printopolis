@@ -30,7 +30,11 @@ import lombok.Data;
 
 		@NamedQuery(name = "Design.getDesign", query = "SELECT d FROM Design d "
 		+ "WHERE d.id = :designId"),
-		@NamedQuery(name = "Design.delDesign", query = "DELETE FROM Design p WHERE p.id = :id")
+		
+		@NamedQuery(name = "Design.delDesign", query = "DELETE FROM Design p WHERE p.id = :id"),
+
+		@NamedQuery(name = "Design.checkLike", query = "SELECT COUNT(u) FROM User u JOIN Design d ON d.designer.id = u.id "
+		+ "WHERE d.id = :designId AND u.id = :userId")
 	})
 @Data
 public class Design {
@@ -44,12 +48,15 @@ public class Design {
 	private float price;
 	private String name;
 	private String description;
-	private int puntuation;
 	private float dimension;
 	private int numVentas;
+	private int puntuation;
 
 	@ManyToOne
 	private User designer;
+
+	@ManyToMany(mappedBy = "likedDesigns")
+	private List<User> usersLikes = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "pedidos")
 	private List<Printer> impresores = new ArrayList<>();
