@@ -39,7 +39,9 @@
                 </a>
                 <div class="opt-admin">
                     <a href="" class="reportar">Reportar</a>
-                    <a href="" class="reportar">Eliminar</a>
+                    <from th:action="@{/design/delDesign/{id}/(id=${d.id})}" method="POST">
+                        <input type="Submit" class="reportar" value="Eliminar">
+                    </from>
                 </div>
             </div>
             <div th:each="u:${users}" class="col-sm-3 column" data-admin="Users">
@@ -52,7 +54,9 @@
                 </a>
                 <div class="opt-admin">
                     <a href="" class="reportar">Reportar</a>
-                    <a href="" class="reportar">Eliminar</a>
+                    <form th:action="@{/user/delUser/{id}/(id=${u.id})}" method="POST">
+                        <input type="submit" class="reportar" value="Eliminar">
+                    </form>
                 </div>
             </div>
         </div>

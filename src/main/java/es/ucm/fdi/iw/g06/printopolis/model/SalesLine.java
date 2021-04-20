@@ -36,7 +36,7 @@ public class SalesLine {
     private long design;
     private long sale;
     private int quantity;
-    private BigDecimal price;
+    private float price;
 
     private LocalDateTime date;
 

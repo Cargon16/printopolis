@@ -18,7 +18,7 @@
             
             <div class="btn-login" th:if="${session.u}">
                 <a th:href="@{/user/{id}/(id=${session.u.id})}" class="btn-perfil"><img style="width: 100%;" id="icon"
-                    src="../static/img/user.png" th:src="@{/img/user.png}" alt="Diseño"></a>
+                    src="../static/img/user.png" th:src="@{/img/user.png}" alt="Avatar"></a>
                 <a id="boton_login" href="/logout" title="Login">
                     Cerrar sesión
                 </a>

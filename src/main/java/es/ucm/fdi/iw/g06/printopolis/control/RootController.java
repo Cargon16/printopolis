@@ -98,7 +98,7 @@ public class RootController {
 	@Transactional
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String addUser(@RequestParam("name") String name, @RequestParam("email") String mail,
-			@RequestParam("password") String password, @RequestParam("aboutme") String about, Model model, HttpSession session) throws IOException {
+			@RequestParam("password") String password, @RequestParam("aboutme") String about, @RequestParam("address") String address, Model model, HttpSession session) throws IOException {
 
 		User usuario = new User();
 		usuario.setUsername(mail);
@@ -106,6 +106,7 @@ public class RootController {
 		usuario.setPassword(passwordEncoder.encode(password));
 		usuario.setEnabled((byte) 1);
 		usuario.setAboutMe(about);
+		usuario.setAddress(address);
 		usuario.setRoles("ADMIN");
 		entityManager.persist(usuario);
 		log.info("Sign up user {}", mail);

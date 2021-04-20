@@ -49,7 +49,8 @@ import lombok.AllArgsConstructor;
 				+ "WHERE u.username = :username"),
 		@NamedQuery(name = "User.allImpresores", query = "SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id"),
 
-		@NamedQuery(name = "User.byId", query = "SELECT u FROM User u WHERE u.id = :senderId")
+		@NamedQuery(name = "User.byId", query = "SELECT u FROM User u WHERE u.id = :senderId"),
+		@NamedQuery(name = "User.delUser", query = "DELETE FROM User p WHERE p.id = :id")
 
 })
 @Data
@@ -94,7 +95,7 @@ public class User implements Transferable<User.Transfer> {
 	private List<Design> designs = new ArrayList<>(); // User designs
 
 	// printer(user) specific fields, related with printers(object)
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER/*, mappedBy = "impresor"*/)
 	@JoinColumn(name = "impresor_id")
 	private List<Printer> printer = new ArrayList<>(); // list to append all user printers available
 

@@ -34,7 +34,8 @@ public class Sales {
 	@OneToOne
     private User user;
     private String address;
-    private BigDecimal total_price; 
+    private float total_price;
+	private Boolean paid;
 
     @Override
 	public String toString() {

@@ -25,11 +25,11 @@
             </div>
 
             <div class="apartado">
-                <input class="input" id="boton" type="submit" value="Añadir impresora">
+                <a class="input" id="boton" href="" value="Añadir impresora">Añadir impresora</a>
             </div>
-
+            
             <div id="fin">
-                <input class="input" id="boton" type="submit" value="Tramitar">
+                <a th:if="${session.u.saleId}" th:href="@{/sale/{id}/payments/(id=${session.u.saleId.id})}" class="input" id="boton">Tramitar</a>
             </div>
         </form>
 

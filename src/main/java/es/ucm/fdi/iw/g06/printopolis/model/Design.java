@@ -29,7 +29,8 @@ import lombok.Data;
 		@NamedQuery(name = "Design.listAll", query = "SELECT d FROM Design d"),
 
 		@NamedQuery(name = "Design.getDesign", query = "SELECT d FROM Design d "
-		+ "WHERE d.id = :designId")
+		+ "WHERE d.id = :designId"),
+		@NamedQuery(name = "Design.delDesign", query = "DELETE FROM Design p WHERE p.id = :id")
 	})
 @Data
 public class Design {
@@ -40,7 +41,7 @@ public class Design {
 
 	@NotNull
 	private String category;
-	private BigDecimal price;
+	private float price;
 	private String name;
 	private String description;
 	private int puntuation;
@@ -49,6 +50,9 @@ public class Design {
 
 	@ManyToOne
 	private User designer;
+
+	@ManyToMany(mappedBy = "pedidos")
+	private List<Printer> impresores = new ArrayList<>();
 
 	@Override
 	public String toString() {

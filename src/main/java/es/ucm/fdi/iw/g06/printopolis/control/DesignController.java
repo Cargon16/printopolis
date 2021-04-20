@@ -62,7 +62,7 @@ public class DesignController {
 	@Transactional
 	@RequestMapping(value = "/addDesign", method = RequestMethod.POST)
 	public String addUser(@RequestParam("diseno") String diseno, @RequestParam("category") String categoria,
-			@RequestParam("precio") BigDecimal precio, @RequestParam("about") String about,
+			@RequestParam("precio") float precio, @RequestParam("about") String about,
 			@RequestParam("volumen") float volumen, @RequestParam("fichero") MultipartFile archivo,
 			@RequestParam("captura") MultipartFile captura, Model model, HttpSession session) throws IOException {
 
@@ -164,15 +164,20 @@ public class DesignController {
 		Sales compra = user.getSaleId();
 		if(user.getSaleId() == null){
 			compra = new Sales();
+			compra.setUser(user);
+			compra.setAddress(user.getAddress());
+			compra.setPaid(false);
+			compra.setTotal_price(0);
 			entityManager.persist(compra);
 			entityManager.flush();
 			user.setSaleId(compra);
 		}
 			SalesLine sl = new SalesLine();
-		
+			((User)session.getAttribute("u")).setSaleId(compra);
 			sl.setDate(LocalDateTime.now());
 			sl.setDesign(d.getId());
 			sl.setPrice(d.getPrice());
+			compra.setTotal_price(compra.getTotal_price() + d.getPrice());
 			//si el user ha seleccionado una (hacer consulta)
 			// sl.setPrinter(printer);
 			sl.setQuantity(1);
@@ -181,6 +186,15 @@ public class DesignController {
 			entityManager.flush();
 
 		log.info("Added new product to cart {}", d.getName());
+
+		return "redirect:/";
+	}
+
+	@Transactional
+	@PostMapping("/delDesign/{id}")
+	public String delDesign(@PathVariable long id, Model model){
+		entityManager.createNamedQuery("Design.delDesign").setParameter("id", id).executeUpdate();
+		entityManager.flush();
 
 		return "redirect:/";
 	}

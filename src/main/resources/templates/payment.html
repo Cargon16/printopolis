@@ -19,7 +19,7 @@
 
     <div class="contenedor_productos">
 
-        <form class="cart">
+        <form th:action="@{/sale/{id}/processPayment/(id=${session.u.saleId.id})}" method="POST" class="cart">
             <div class="apartado">
                 <label>Dirección de envío:</label>
                 <input class="input" type="text" th:value="${sales.address}">

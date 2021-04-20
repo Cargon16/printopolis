@@ -62,6 +62,7 @@ public class SalesController {
 	public String getSale(@PathVariable long id, Model model) throws IOException {
 	   List<SalesLine> l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class).setParameter("id", id).getResultList();
        model.addAttribute("products", l);
+	   
        return "cart";
 	}
 
@@ -84,4 +85,13 @@ public class SalesController {
        return "cart";
 	}
 
+	@Transactional
+	@PostMapping("/{id}/processPayment")
+	public String pay(@PathVariable long id, Model model, HttpSession session) throws IOException {
+		Sales compra = entityManager.find(Sales.class, id);
+		compra.setPaid(true);
+		entityManager.refresh(compra);
+		User us = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		return "redirect:/user/" + us.getId();
+	 }
 }

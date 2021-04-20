@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -44,7 +45,16 @@ public class Printer {
     private String status;
 
     @ManyToOne
+    //@JoinColumn(name="impresor_id")
     private User impresor;
+
+    @ManyToMany
+    @JoinTable(
+            name = "printer_designs",
+            joinColumns = {@JoinColumn(name = "printer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "design_id")}
+    )
+    private List<Design> pedidos = new ArrayList<>();
 
     @Override
     public String toString() {

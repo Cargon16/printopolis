@@ -4,19 +4,19 @@
 --
 
 -- Usuario de ejemplo con username = b y contraseña = aa  
-INSERT INTO user(id,enabled,username,password,roles,first_name,last_name) VALUES (
+INSERT INTO user(id,enabled,username,password,roles,first_name,last_name, address, about_me) VALUES (
 	1, 1, 'a', 
 	'{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u',
 	'USER,ADMIN',
-	'Abundio', 'Ejémplez'
+	'Abundio', 'Ejémplez', 'Calle Rotatoria', 'Adoro el modelaje WOW'
 );
 
 -- Otro usuario de ejemplo con username = b y contraseña = aa  
-INSERT INTO user(id,enabled,username,password,roles,first_name,last_name) VALUES (
+INSERT INTO user(id,enabled,username,password,roles,first_name,last_name, address, about_me) VALUES (
 	2, 1, 'b', 
 	'{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u',
 	'USER',
-	'Berta', 'Muéstrez'
+	'Berta', 'Muéstrez', 'Calle Perico', 'Vivan las impresoras 3D'
 );
 
 -- Unos pocos auto-mensajes de prueba
@@ -37,7 +37,7 @@ INSERT INTO PRINTER VALUES(2,100,'Impresor1', 10, 'NO_INK', 1);
 
 -- Compras de prueba
 --INSERT INTO design VALUES();
-INSERT INTO SALES VALUES (1, 'Calle ola mayor', 40, 1);
+--INSERT INTO SALES VALUES (1, 'Calle ola mayor', 40, 1);
 
 --Sales line de prueba
-INSERT INTO SALES_LINE VALUES (1, sysdate, 1, 40, 2, 1, 1);
+--INSERT INTO SALES_LINE VALUES (1, sysdate, 1, 40, 2, 1, 1);

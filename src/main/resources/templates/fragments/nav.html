@@ -28,10 +28,6 @@
             <b>CESTA</b>  
         </a>
 
-        <a class="button_nav" th:href="@{/sale/{id}/payments/(id=1)}" title="">
-            <b>PAGOS</b>  
-        </a>
-
         <a class="button_nav" th:if="${session.u}" th:href="@{/message/{id}/(id=${session.u.id})}" title="">
             <b>Mensajes</b>  
         </a>
