@@ -40,12 +40,13 @@
     <div class="contenedor_diseños">
         <div th:each = "d: ${categoryType}" class="diseño">
             <div class="perfilUp">
-                <img class="img-user" th:src="@{/img/user.png}">
+                <a th:href="@{/user/{id}/(id=${session.u.id})}">
+                    <img class="img-user" th:src="@{/img/user.png}" alt="Avatar">
+                </a>
                 <span class="nombre" th:text= "${d.name}"></span>
 
                 <form method="POST" th:action="@{/design/addToCart/}">
                     <input type="hidden" th:value="${d.id}" name="cart">
-                    <!-- <input type="hidden" id="aux"> -->
                     <input type="submit" class="cart" value="" id="hola">
                 </form>
 
@@ -87,10 +88,14 @@
                 <span th:text="${d.category}"></span>
             </div>
             <div class="inf">
-                <div class="likes"> 
-                    <span  th:text="${d.puntuation}"></span>
-                    <img id="heart" th:src="@{/img/heart.png}" height="13px" width="14px"/>
-                </div>
+                <form method="POST" th:action="@{/design/like/}">
+                    <div class="likes"> 
+                        <span class="punt" th:text="${d.puntuation}"></span>
+                        <!-- <img id="heart" th:src="@{/img/heart.png}" height="13px" width="14px"/> -->
+                        <input type="hidden" th:value="${d.id}" name="likeId">
+                        <input type="submit" class="liked" value="">
+                    </div>
+                </form>
                 <span class="vendidos">Vendidos #23</span>
             </div>
         </div>

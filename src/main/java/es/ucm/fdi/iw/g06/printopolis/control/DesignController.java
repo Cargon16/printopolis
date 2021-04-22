@@ -198,4 +198,21 @@ public class DesignController {
 
 		return "redirect:/admin/";
 	}
+
+	@Transactional
+	@RequestMapping(value = "/like", method = RequestMethod.POST)
+	public String like(@RequestParam("likeId") Long id, Model model, HttpSession session) throws IOException {
+		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		Design d = entityManager.createNamedQuery("Design.getDesign", Design.class).setParameter("designId", id).getSingleResult();
+		long exist = entityManager.createNamedQuery("Design.checkLike", Long.class).setParameter("designId", id).setParameter("userId", user.getId()).getSingleResult();
+
+		if(exist == 0){
+			d.setPuntuation(d.getPuntuation()+1);
+			entityManager.persist(d);
+			entityManager.flush();
+		}
+		log.info("Increment design's likes {}", d.getPuntuation());
+
+		return "redirect:/";
+	}
 }

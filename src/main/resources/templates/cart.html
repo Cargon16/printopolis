@@ -21,16 +21,21 @@
 
         <form class="cart">
             <div th:each="p:${products}" class="apartado">
-                <input type="text" th:value="${p.design}"> <p class="cantidad" th:text="${p.quantity}"></p>
+                <label>Diseño:</label>
+                <p class="cantidad" th:text="${p.design}"></p>
+            
+                <label>Precio:</label>
+                <p class="cantidad" th:text="${p.price}"></p>
+            
+                <label>Cantidad:</label>
+                <p class="cantidad" th:text="${p.quantity}"></p>
             </div>
 
-            <div class="apartado">
-                <a class="input" id="boton" href="" value="Añadir impresora">Añadir impresora</a>
-            </div>
-            
             <div id="fin">
+                <a class="input" id="boton" href="" value="Añadir impresora">Añadir impresora</a>
                 <a th:if="${session.u.saleId}" th:href="@{/sale/{id}/payments/(id=${session.u.saleId.id})}" class="input" id="boton">Tramitar</a>
             </div>
+
         </form>
 
     </div>
