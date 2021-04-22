@@ -12,6 +12,18 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			const config = {
+			socketUrl: "ws://localhost:8080/ws",	// vacío indica falso
+			rootUrl: "/",
+			csrf: {
+				name: "_csrf",
+				value: "[[${_csrf.token}]]"
+			},
+			admin: "[[${session.u != null && session.u.hasRole('ADMIN')}?true:false]]",
+			userId: "[[${session.u != null}?${session.u.id}:-1]]"
+		};
+		</script>
 		<script th:src="@{/js/main.js}" src="js/main.js"></script>
 		<!--Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
 

@@ -24,7 +24,7 @@
                 <div class="stats-usuario">
                     <div class="stats">
                         <div class="stat">
-                            <p>8</p>
+                            <p th:text="${punctuation[0]}"></p>
                         </div>
                         <div class="stat">
                             <p>Puntos</p>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="stats">
                         <div class="stat">
-                            <p>10</p>
+                            <p th:text="${punctuation[1]}"></p>
                         </div>
                         <div class="stat">
                             <p>Diseños</p>
@@ -44,8 +44,8 @@
                 <h3>Sobre mí:</h3>
                 <p th:text="${user.aboutMe}">
                 </p>
-                <h3>Nivel de experiencia:</h3>
-                <p th:text="${user.aboutMe}"></p>
+                <!-- <h3>Nivel de experiencia:</h3>
+                <p th:text="${user.aboutMe}"></p> -->
 
             </div>
         </div>

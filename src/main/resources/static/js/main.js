@@ -72,3 +72,54 @@ $(document).ready(function () {
     };
   };
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // selector para elegir sobre qué elementos validar
+  let u = document.querySelectorAll('#email')[0]
+  // cada vez que cambien, los revalidamos
+  u.oninput = u.onchange =
+  async () => u.setCustomValidity( // si "", válido; si no, inválido
+    await validaUsername(u.value))
+  })
+  
+  function go(url, method, data = {}) {
+    let params = {
+    method: method, // POST, GET, POST, PUT, DELETE, etc.
+    headers: {
+    "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify(data)
+    };
+    if (method === "GET") {
+    // GET requests cannot have body
+    delete params.body;
+    }
+    console.log("sending", url, params)
+    return fetch(url, params).then(response => {
+    if (response.ok) {
+      response.json().then((d) => {
+        if(d.name == "")
+          return data = "";
+        else
+          return data = d;
+      });
+      /*if(response.statusText == "OK")
+        return data = "";
+        else
+          return data = response.json();*/
+    } else {
+    response.text().then(t => {throw new Error(t + ", at " + url)});
+    }
+    })
+    }
+
+  function validaUsername(username) {
+    let params = {username: username};
+    // Spring Security lo añade en formularios html, pero no en Ajax
+    params[config.csrf.name] = config.csrf.value;
+    // petición en sí
+    var a = go(config.rootUrl + "user/username?id=" + username , 'GET', params)
+    if(a == "") return "";
+    else return "Nombre de usuario inválido o duplicado";
+    }

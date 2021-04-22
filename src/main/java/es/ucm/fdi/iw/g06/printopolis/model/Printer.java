@@ -45,7 +45,6 @@ public class Printer {
     private String status;
 
     @ManyToOne
-    //@JoinColumn(name="impresor_id")
     private User impresor;
 
     @ManyToMany

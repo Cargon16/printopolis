@@ -50,7 +50,9 @@ import lombok.AllArgsConstructor;
 		@NamedQuery(name = "User.allImpresores", query = "SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id"),
 
 		@NamedQuery(name = "User.byId", query = "SELECT u FROM User u WHERE u.id = :senderId"),
-		@NamedQuery(name = "User.delUser", query = "DELETE FROM User p WHERE p.id = :id")
+		@NamedQuery(name = "User.delUser", query = "DELETE FROM User p WHERE p.id = :id"),
+		@NamedQuery(name = "User.delUserDesigns", query = "DELETE FROM Design p WHERE p.designer.id = :id"),
+		@NamedQuery(name = "User.getPunctuation", query = "SELECT SUM(puntuation) AS punt, COUNT(puntuation) AS numDes FROM Design p WHERE p.designer.id = :id")
 
 })
 @Data
@@ -95,7 +97,7 @@ public class User implements Transferable<User.Transfer> {
 	private List<Design> designs = new ArrayList<>(); // User designs
 
 	// printer(user) specific fields, related with printers(object)
-	@OneToMany(fetch=FetchType.EAGER/*, mappedBy = "impresor"*/)
+	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name = "impresor_id")
 	private List<Printer> printer = new ArrayList<>(); // list to append all user printers available
 

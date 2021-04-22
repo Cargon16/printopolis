@@ -196,6 +196,6 @@ public class DesignController {
 		entityManager.createNamedQuery("Design.delDesign").setParameter("id", id).executeUpdate();
 		entityManager.flush();
 
-		return "redirect:/";
+		return "redirect:/admin/";
 	}
 }
