@@ -77,10 +77,22 @@ $(document).ready(function () {
 document.addEventListener("DOMContentLoaded", () => {
   // selector para elegir sobre qué elementos validar
   let u = document.querySelectorAll('#email')[0]
+  let v = document.querySelectorAll('#username')[0]
   // cada vez que cambien, los revalidamos
-  u.oninput = u.onchange =
-    async () => u.setCustomValidity( // si "", válido; si no, inválido
-      await validaUsername(u.value))
+
+  if (u != null) {
+    u.oninput = u.onchange =
+      async () => u.setCustomValidity( // si "", válido; si no, inválido
+        await validaUsername(u.value))
+
+  }
+
+  if(v != null){
+  v.oninput = v.onchange =
+    async () => v.setCustomValidity( // si "", válido; si no, inválido
+      await existeUsuarioLogin(v.value))
+
+  }
 })
 
 async function go(url, method, data = {}) {
@@ -113,10 +125,26 @@ async function validaUsername(username) {
   // petición en sí
   return go(config.rootUrl + "user/username?id=" + username, 'GET', params)
     .then(response => {
-        if (response.name == "")
-          return "";
-        else
-          return "Nombre de usuario inválido o duplicado";
+      if (response.name == "")
+        return "";
+      else
+        return "Nombre de usuario inválido o duplicado";
+    });
+  /*if (a == "") return "";
+  else return "Nombre de usuario inválido o duplicado";*/
+}
+
+async function existeUsuarioLogin(username) {
+  let params = { username: username };
+  // Spring Security lo añade en formularios html, pero no en Ajax
+  params[config.csrf.name] = config.csrf.value;
+  // petición en sí
+  return go(config.rootUrl + "user/username?id=" + username, 'GET', params)
+    .then(response => {
+      if (response.name != "")
+        return "";
+      else
+        return "Usuario no registrado en nuestra plataforma";
     });
   /*if (a == "") return "";
   else return "Nombre de usuario inválido o duplicado";*/
