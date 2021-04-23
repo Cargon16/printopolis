@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<link rel="stylesheet" th:href="@{/css/designs.css}" href="css/designs.css" type="text/css"/>
+<link rel="stylesheet" th:href="@{/css/designs.css}" href="css/designs.css" type="text/css" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 
@@ -15,8 +15,8 @@
         Header goes here
     </header>
     <nav th:replace="fragments/nav.html :: nav">
-		Nav goes here
-	</nav>
+        Nav goes here
+    </nav>
 
 
 
@@ -38,12 +38,12 @@
     </div>
 
     <div class="contenedor_diseños">
-        <div th:each = "d: ${categoryType}" class="diseño">
+        <div th:each="d: ${categoryType}" class="diseño">
             <div class="perfilUp">
                 <a th:href="@{/user/{id}/(id=${session.u.id})}">
                     <img class="img-user" th:src="@{/img/user.png}" alt="Avatar">
                 </a>
-                <span class="nombre" th:text= "${d.name}"></span>
+                <span class="nombre" th:text="${d.name}"></span>
 
                 <form method="POST" th:action="@{/design/addToCart}">
                     <input type="hidden" th:value="${d.id}" name="cart" id="disenio">
@@ -52,12 +52,13 @@
 
             </div>
             <div class="perfilCenter">
-                    <a th:href="@{#} + ${d.id} + @{d}" class="btn" id="openDesign">
-                        <img id="iconWall" th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño"/>
-                    </a>
+                <a th:href="@{#} + ${d.id} + @{d}" class="btn" id="openDesign">
+                    <img id="iconWall" th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño" />
+                </a>
 
-                 <!-- Modelo 3D -->
-                <div class="modal fade modal-xl" th:id="${d.id} + @{d}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <!-- Modelo 3D -->
+                <div class="modal fade modal-xl" th:id="${d.id} + @{d}" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content" style="width: 580px;">
                             <div class="modal-header">
@@ -69,12 +70,12 @@
                                     src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
                                 <style>
                                     model-viewer {
-                                      width: 580px;
-                                      height: 580px;
-                                      background-color: black;
+                                        width: 580px;
+                                        height: 580px;
+                                        background-color: black;
                                     }
                                 </style>
-                                <model-viewer th:src="@{/design/{id}/design(id=${d.id})}" auto-rotate camera-controls >
+                                <model-viewer th:src="@{/design/{id}/design(id=${d.id})}" auto-rotate camera-controls>
                                 </model-viewer>
                                 <h3>Descripción</h3>
                                 <p th:text="${d.description}"></p>
@@ -89,7 +90,7 @@
             </div>
             <div class="inf">
                 <form method="POST" th:action="@{/design/like/}">
-                    <div class="likes"> 
+                    <div class="likes">
                         <span class="punt" th:text="${d.puntuation}"></span>
                         <!-- <img id="heart" th:src="@{/img/heart.png}" height="13px" width="14px"/> -->
                         <input type="hidden" th:value="${d.id}" name="likeId">
@@ -104,6 +105,23 @@
     <footer th:replace="fragments/footer.html :: footer">
         Footer goes here
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let b = document.getElementById("hola");
+            if (b != null)
+                b.onclick = (e) => {
+                    //let idOfTarget = document.getElementById("disenio").value;
+                    let url = b.parentNode.action.replace("", "");
+                    e.preventDefault(); // <-- evita que se envíe de la forma normal
+                    console.log(b, b.parentNode)
+                    go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
+                        { cart: document.getElementById("disenio").value })
+                        .then(d => console.log("happy", d))
+                        .catch(e => console.log("sad", e))
+                }
+        })
+    </script>
 
 </body>
 

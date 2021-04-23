@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+
 import org.apache.catalina.security.SecurityConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,6 +32,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -157,10 +161,12 @@ public class DesignController {
 	}
 
 
+	@PostMapping("/addToCart")
+	//@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
 	@Transactional
 	@ResponseBody
-	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-	public String addToCart(@RequestParam("cart") Long id, Model model, HttpSession session) throws IOException {
+	public String addToCart(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
+		Long id = o.get("cart").asLong();
 		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
 		Design d = entityManager.createNamedQuery("Design.getDesign", Design.class).setParameter("designId", id).getSingleResult();
 		Sales compra = user.getSaleId();
