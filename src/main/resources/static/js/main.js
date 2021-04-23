@@ -94,18 +94,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  let b = document.getElementById("hola");
-  if (b != null)
-      b.onclick = (e) => {
+  $(".cart").on('click' ,function (e) {
           //let idOfTarget = document.getElementById("disenio").value;
-          let url = b.parentNode.action.replace("", "");
+         
+          let url = this.parentElement.action
+          let id = this.parentElement.children[1].value;
           e.preventDefault(); // <-- evita que se envíe de la forma normal
-          console.log(b, b.parentNode)
+          console.log(e, $(this).parent())
           go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
-              { cart: document.getElementById("disenio").value })
+              { cart: id })
               .then(d => console.log("happy", d))
               .catch(e => console.log("sad", e))
-      }
+      });
 
 })
 
