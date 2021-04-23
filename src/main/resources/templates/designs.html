@@ -45,9 +45,9 @@
                 </a>
                 <span class="nombre" th:text= "${d.name}"></span>
 
-                <form method="POST" th:action="@{/design/addToCart/}">
-                    <input type="hidden" th:value="${d.id}" name="cart">
-                    <input type="submit" class="cart" value="" id="hola">
+                <form method="POST" th:action="@{/design/addToCart}">
+                    <input type="hidden" th:value="${d.id}" name="cart" id="disenio">
+                    <button type="submit" class="cart" value="" id="hola"></button>
                 </form>
 
             </div>

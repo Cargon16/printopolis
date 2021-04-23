@@ -87,12 +87,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  if(v != null){
-  v.oninput = v.onchange =
-    async () => v.setCustomValidity( // si "", válido; si no, inválido
-      await existeUsuarioLogin(v.value))
+  if (v != null) {
+    v.oninput = v.onchange =
+      async () => v.setCustomValidity( // si "", válido; si no, inválido
+        await existeUsuarioLogin(v.value))
 
   }
+
+  let b = document.getElementById("hola");
+  if(b != null)
+  b.onclick = (e) => {
+    //let idOfTarget = document.getElementById("disenio").value;
+    let url = b.parentNode.action;
+    let params = {cart: document.getElementById("disenio").value };
+    params[config.csrf.name] = config.csrf.value;
+    e.preventDefault(); // <-- evita que se envíe de la forma normal
+    console.log(b, b.parentNode)
+    go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
+      {params})
+      .then(d => console.log("happy", d))
+      .catch(e => console.log("sad", e))
+  }
+
 })
 
 async function go(url, method, data = {}) {

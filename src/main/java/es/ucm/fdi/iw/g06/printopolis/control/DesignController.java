@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
@@ -157,6 +158,7 @@ public class DesignController {
 
 
 	@Transactional
+	@ResponseBody
 	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
 	public String addToCart(@RequestParam("cart") Long id, Model model, HttpSession session) throws IOException {
 		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
@@ -187,7 +189,8 @@ public class DesignController {
 
 		log.info("Added new product to cart {}", d.getName());
 
-		return "redirect:/";
+		return "{\"name\": \"" + compra.getId() + "\"}";
+		//return "redirect:/";
 	}
 
 	@Transactional
