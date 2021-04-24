@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
@@ -92,6 +93,19 @@ public class SalesController {
 		compra.setPaid(true);
 		entityManager.refresh(compra);
 		User us = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		us.setSaleId(null);
 		return "redirect:/user/" + us.getId();
+	 }
+
+	@Transactional
+	@ResponseBody
+	@GetMapping("/numberDesign")
+	public String pay(Model model, HttpSession session) throws IOException {
+		try{
+		Long cont = entityManager.createNamedQuery("SalesLine.numProducts", Long.class).getSingleResult();
+		return "{\"num\": \"" + cont + "\"}";
+		}catch(Exception e){
+			return "{\"num\": \"" + 0 + "\"}";
+		}
 	 }
 }

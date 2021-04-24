@@ -94,18 +94,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  $(".cart").on('click' ,function (e) {
-          //let idOfTarget = document.getElementById("disenio").value;
-         
-          let url = this.parentElement.action
-          let id = this.parentElement.children[1].value;
-          e.preventDefault(); // <-- evita que se envíe de la forma normal
-          console.log(e, $(this).parent())
-          go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
-              { cart: id })
-              .then(d => console.log("happy", d))
-              .catch(e => console.log("sad", e))
-      });
+  $(".cart").on('click', function (e) {
+    //let idOfTarget = document.getElementById("disenio").value;
+
+    let url = this.parentElement.action
+    let id = this.parentElement.children[1].value;
+    e.preventDefault(); // <-- evita que se envíe de la forma normal
+    console.log(e, $(this).parent())
+    go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
+      { cart: id })
+      .then(d => {console.log("happy", d); designCarrito()})
+      .catch(e => console.log("sad", e))
+  });
+
+  //Carga de manera dinámica los elementos que hay en el carrito
+  let cart = document.getElementById('lblCartCount');
+  if(cart != null)
+    designCarrito();
 
 })
 
@@ -147,8 +152,6 @@ async function validaUsername(username) {
       else
         return "Nombre de usuario inválido o duplicado";
     });
-  /*if (a == "") return "";
-  else return "Nombre de usuario inválido o duplicado";*/
 }
 
 async function existeUsuarioLogin(username) {
@@ -163,6 +166,15 @@ async function existeUsuarioLogin(username) {
       else
         return "Usuario no registrado en nuestra plataforma";
     });
-  /*if (a == "") return "";
-  else return "Nombre de usuario inválido o duplicado";*/
+}
+function designCarrito() {
+  let params = {};
+  // Spring Security lo añade en formularios html, pero no en Ajax
+  params[config.csrf.name] = config.csrf.value;
+  // petición en sí
+  return go(config.rootUrl + "sale/numberDesign", 'GET', params)
+    .then((response) => {
+      var num = response.num;
+      document.getElementById('lblCartCount').innerHTML = num;
+    })
 }

@@ -22,15 +22,13 @@ import lombok.Data;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="SalesLine.salesProducts",
-			query="SELECT l FROM SalesLine l "
-					+ "WHERE l.sale = :id")
-})
+        @NamedQuery(name = "SalesLine.salesProducts", query = "SELECT l FROM SalesLine l " + "WHERE l.sale = :id"),
+        @NamedQuery(name = "SalesLine.numProducts", query = "SELECT COUNT(*) from SalesLine l JOIN Sales s ON l.sale = s.id JOIN User u ON s.id = u.SaleId.id"), })
 @Data
 public class SalesLine {
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     private long printer;
     private long design;
@@ -41,8 +39,8 @@ public class SalesLine {
     private LocalDateTime date;
 
     @Override
-	public String toString() {
-		return "Sale_line #" + id;
-	}	
+    public String toString() {
+        return "Sale_line #" + id;
+    }
 
 }

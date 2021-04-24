@@ -35,6 +35,8 @@ header .barra-busqueda{
 }
 header .btn-login{
     width: 40%;
+    display: flex;
+    flex-direction: row;
 }
 header .icono{
     width: 20%;
@@ -48,7 +50,7 @@ header #icon{
 }
 
 #boton_login{
-    height: 20%;
+    height: max-content;
     background-color: #e76f51;
     border-radius: 4px;
     border: none;
@@ -59,15 +61,20 @@ header #icon{
     font-family: 'VT323', monospace;
     text-decoration: none;
     word-wrap: break-word;
-    float: right;
+    margin-left: auto;
+    width: 30%;
     
 }
 
 .btn-perfil{
     display: flex;
-    width: 10%;
+    width: 16%;
     margin-left: auto;
     margin-right: 2%;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    align-items: center;
 }
 
 /*---------- Barra de buscar ------------------*/
@@ -397,3 +404,28 @@ input[type="submit"]
     justify-content: center;
     display: flex;
 }
+
+/*----------------------Carrito Cabecera--------------------------*/
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+  }
+  
+  .label-warning[href],
+  .badge-warning[href] {
+    background-color: #c67605;
+  }
+  #lblCartCount {
+    font-size: 20px;
+    font-weight: bold;
+    background: white;
+    color: black;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -5px;
+    height: fit-content;
+    margin-top: -10px;
+  }
