@@ -32,9 +32,27 @@
             </div>
 
             <div id="fin">
-                <a class="input" id="boton" href="" value="Añadir impresora">Añadir impresora</a>
+                <a class="input btn" id="boton" href="#eligePrinter" value="Añadir impresora">Añadir impresora</a>
                 <a th:if="${session.u.saleId}" th:href="@{/sale/{id}/payments/(id=${session.u.saleId.id})}" class="input" id="boton">Tramitar</a>
             </div>
+
+            <!--Modal para elegir impresora-->
+            <div class="modal fade modal-xl" id="eligePrinter" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="width: 580px;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true"> x </span></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <iframe src="https://calendar.google.com/calendar/embed?src=c_5afkesrpcbepv9i3h5qth96t7s%40group.calendar.google.com&ctz=Europe%2FMadrid" style="border: 0" width="550" height="500" frameborder="0" scrolling="no"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         </form>
 

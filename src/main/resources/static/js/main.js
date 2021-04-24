@@ -94,19 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  $(".cart").on('click', function (e) {
-    //let idOfTarget = document.getElementById("disenio").value;
-
-    let url = this.parentElement.action
-    let id = this.parentElement.children[1].value;
-    e.preventDefault(); // <-- evita que se envíe de la forma normal
-    console.log(e, $(this).parent())
-    go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
-      { cart: id })
-      .then(d => {console.log("happy", d); designCarrito()})
-      .catch(e => console.log("sad", e))
-  });
-
   //Carga de manera dinámica los elementos que hay en el carrito
   let cart = document.getElementById('lblCartCount');
   if(cart != null)
