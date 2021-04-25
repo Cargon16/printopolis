@@ -38,6 +38,7 @@ import ch.qos.logback.core.net.LoginAuthenticator;
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.LoginSuccessHandler;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
+import es.ucm.fdi.iw.g06.printopolis.model.Printer;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.SalesLine;
 import es.ucm.fdi.iw.g06.printopolis.model.Sales;
@@ -82,7 +83,12 @@ public class SalesController {
 	   l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class).setParameter("id", u.getSaleId().getId()).getResultList();
 	   else
 	   l = new ArrayList<SalesLine>();
+
+	   List<Printer> p = entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
+
        model.addAttribute("products", l);
+	   model.addAttribute("printers", p);
+	//    model.addAttribute("idDesign", l.) NECESITO EL ID DEL DISEÑOOOO
        return "cart";
 	}
 
@@ -109,8 +115,8 @@ public class SalesController {
 		}
 	 }
 
-	 @GetMapping("/printerChoice")
-	public String printerChoice(Model model, HttpSession session) throws IOException {
+	 @GetMapping("/printerChoice/{id}")
+	public String printerChoice(@PathVariable long id, Model model, HttpSession session) throws IOException {
 		return "printerTurn";
 	 }
 }

@@ -35,14 +35,25 @@
             </div>
 
             <div id="fin">
-                <a class="input btn" id="boton" href="/sale/printerChoice" value="Añadir impresora">Añadir impresora</a>
+                <!-- <a class="input btn" id="boton" href="/sale/printerChoice" value="Añadir impresora">Añadir impresora</a> -->
+
+                <div class="dropdown">
+                    <button class="dropbtn">Añadir impresora</button>
+                    <div class="dropdown-content">
+                        <a th:each = "pr: ${printers}" th:href="@{/sale/printerChoice/{id}/(id=${pr.id})}"  th:text ="${pr.name}"></a>
+                    </div>
+                  </div>
+
+
                 <a th:if="${session.u.saleId}" th:href="@{/sale/{id}/payments/(id=${session.u.saleId.id})}"
                     class="input" id="boton">Tramitar</a>
             </div>
 
         </form>
     </div>
+    
 
+   
     <footer th:replace="fragments/footer.html :: footer">
         Footer goes here
     </footer>
