@@ -21,26 +21,19 @@
     </nav>
 
     <div class="contenedor_productos">
-
-        <form class="cart">
-            <div th:each="p:${products}" class="apartado">
-                <label>Diseño:</label>
-                <p class="cantidad" th:text="${p.design}"></p>
-
-                <label>Precio:</label>
-                <p class="cantidad" th:text="${p.price}"></p>
-
-                <label>Cantidad:</label>
-                <p class="cantidad" th:text="${p.quantity}"></p>
-            </div>
-
-            <div id="fin">
-                <a class="input btn" id="boton" href="/sale/printerChoice" value="Añadir impresora">Añadir impresora</a>
-                <a th:if="${session.u.saleId}" th:href="@{/sale/{id}/payments/(id=${session.u.saleId.id})}"
-                    class="input" id="boton">Tramitar</a>
-            </div>
-
-        </form>
+        <div id="myCalendar">
+            <script>
+                var calendarInstance = new calendarJs("myCalendar", {
+                    exportEventsEnabled: true,
+                    manualEditingEnabled: true,
+                    showTimesInMainCalendarEvents: false,
+                    minimumDayHeight: 0,
+                    manualEditingEnabled: true,
+                    organizerName: "Your Name",
+                    organizerEmailAddress: "your@email.address"
+                });
+            </script>
+        </div>
     </div>
 
     <footer th:replace="fragments/footer.html :: footer">

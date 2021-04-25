@@ -1,0 +1,17 @@
+div.split {
+    input,
+    p {
+        width: calc(50% - (#{$spacing} / 2));
+        margin-right: $spacing / 2;
+        margin-left: $spacing / 2;
+        display: inline-block;
+
+        &:first-child {
+            margin-left: 0;
+        }
+        
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

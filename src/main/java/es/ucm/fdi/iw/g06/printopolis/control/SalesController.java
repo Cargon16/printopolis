@@ -108,4 +108,9 @@ public class SalesController {
 			return "{\"num\": \"" + 0 + "\"}";
 		}
 	 }
+
+	 @GetMapping("/printerChoice")
+	public String printerChoice(Model model, HttpSession session) throws IOException {
+		return "printerTurn";
+	 }
 }
