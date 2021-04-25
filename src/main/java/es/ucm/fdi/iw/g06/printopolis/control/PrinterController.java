@@ -64,7 +64,7 @@ public class PrinterController {
 		Printer p = new Printer();
 		p.setMaterial_level(level);
         p.setName(impresora);
-        p.setPuntuation(0);
+        p.setPunctuation(0);
 		p.setStatus("AVAILABLE");
 		p.setImpresor(((User) session.getAttribute("u")));
 		User us = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());

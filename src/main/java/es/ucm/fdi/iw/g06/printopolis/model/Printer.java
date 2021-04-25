@@ -41,7 +41,7 @@ public class Printer {
     @NotNull
     private String name;
     private float material_level;
-    private int puntuation;
+    private int punctuation;
     private String status;
 
     @ManyToOne

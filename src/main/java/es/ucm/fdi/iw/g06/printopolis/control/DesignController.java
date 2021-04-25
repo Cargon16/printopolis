@@ -209,19 +209,34 @@ public class DesignController {
 	}
 
 	@Transactional
-	@RequestMapping(value = "/like", method = RequestMethod.POST)
-	public String like(@RequestParam("likeId") Long id, Model model, HttpSession session) throws IOException {
+	@ResponseBody
+	@PostMapping("/like")
+	public String like(@RequestBody JsonNode o, Model model, HttpSession session) throws IOException {
+		Long id = o.get("likeId").asLong();
 		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
 		Design d = entityManager.createNamedQuery("Design.getDesign", Design.class).setParameter("designId", id).getSingleResult();
-		long exist = entityManager.createNamedQuery("Design.checkLike", Long.class).setParameter("designId", id).setParameter("userId", user.getId()).getSingleResult();
-
-		if(exist == 0){
-			d.setPuntuation(d.getPuntuation()+1);
+		boolean exist = d.getUsersLikes().contains(user);
+		
+		if(!exist){
+			d.setPunctuation(d.getPunctuation()+1);
 			entityManager.persist(d);
 			entityManager.flush();
+			user.addDesignLike(d);
 		}
-		log.info("Increment design's likes {}", d.getPuntuation());
+		log.info("Increment design's likes {}", d.getPunctuation());
 
-		return "redirect:/";
+		return "{\"name\": \"" + d.getId() + "\"}";
 	}
+
+	@RequestMapping(value = "/numLikes", method = RequestMethod.GET)
+	@Transactional
+	@ResponseBody
+	public String getLikes(@RequestParam(name = "id", required = false) Long id, Model model, HttpSession session) throws IOException {
+		try{
+		Long cont = entityManager.createNamedQuery("Design.numLikes", Long.class).setParameter("id", id).getSingleResult();
+		return "{\"num\": \"" + cont + "\"}";
+		}catch(Exception e){
+			return "{\"num\": \"" + 0 + "\"}";
+		}
+	 }
 }

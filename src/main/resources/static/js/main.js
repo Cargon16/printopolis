@@ -154,14 +154,30 @@ async function existeUsuarioLogin(username) {
         return "Usuario no registrado en nuestra plataforma";
     });
 }
+
+//Incremento num elementos del carrito
 function designCarrito() {
   let params = {};
   // Spring Security lo añade en formularios html, pero no en Ajax
-  params[config.csrf.name] = config.csrf.value;
+  // params[config.csrf.name] = config.csrf.value;
   // petición en sí
   return go(config.rootUrl + "sale/numberDesign", 'GET', params)
     .then((response) => {
       var num = response.num;
       document.getElementById('lblCartCount').innerHTML = num;
+    })
+}
+
+//Incremento de likes
+async function designLiked(id) {
+  let params = {};
+  // Spring Security lo añade en formularios html, pero no en Ajax
+  // params[config.csrf.name] = config.csrf.value;
+  // petición en sí
+  return go(config.rootUrl + "design/numLikes?id=" + id, 'GET', params)
+    .then((response) => {
+      var num = response.num;
+     
+      document.getElementById(id).innerHTML = num;
     })
 }

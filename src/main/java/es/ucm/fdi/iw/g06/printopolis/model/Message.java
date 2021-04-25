@@ -29,9 +29,12 @@ import lombok.AllArgsConstructor;
 	query="SELECT COUNT(m) FROM Message m "
 			+ "WHERE m.sender.id = :userId AND m.dateRead = null"),
 
+	// @NamedQuery(name="Message.allMessage",
+	// query="SELECT m FROM Message m "
+	// 		+ "WHERE m.recipient.id = :userId")
 	@NamedQuery(name="Message.allMessage",
 	query="SELECT m FROM Message m "
-			+ "WHERE m.recipient.id = :userId")
+			+ "WHERE m.recipient.id = :userId GROUP BY m.sender.id")
 })
 @Data
 public class Message implements Transferable<Message.Transfer> {

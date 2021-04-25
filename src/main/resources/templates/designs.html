@@ -91,7 +91,7 @@
             <div class="inf">
                 <form method="POST" th:action="@{/design/like/}">
                     <div class="likes">
-                        <span class="punt" th:text="${d.puntuation}"></span>
+                        <span th:id = "${d.id}" class="punt" th:text="${d.punctuation}"></span>
                         <!-- <img id="heart" th:src="@{/img/heart.png}" height="13px" width="14px"/> -->
                         <input type="hidden" th:value="${d.id}" name="likeId">
                         <input type="submit" class="liked" value="">
@@ -117,6 +117,22 @@
             go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
                 { cart: id })
                 .then(d => { console.log("happy", d); designCarrito() })
+                .catch(e => console.log("sad", e))
+        });
+
+
+        $(".liked").on('click', function (e) {
+            //let idOfTarget = document.getElementById("disenio").value;
+
+            let url = this.parentElement.parentElement.action
+
+            let id = this.parentElement.children[1].value;
+          
+            e.preventDefault(); // <-- evita que se envíe de la forma normal
+            console.log(e, $(this).parent().parent())
+            go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
+            { likeId: id} )
+                .then(d => { console.log("happy", d); designLiked(id)})
                 .catch(e => console.log("sad", e))
         });
     </script>

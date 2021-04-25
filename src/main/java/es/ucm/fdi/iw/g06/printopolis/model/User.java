@@ -54,7 +54,7 @@ import lombok.AllArgsConstructor;
 		@NamedQuery(name = "User.byId", query = "SELECT u FROM User u WHERE u.id = :senderId"),
 		@NamedQuery(name = "User.delUser", query = "DELETE FROM User p WHERE p.id = :id"),
 		@NamedQuery(name = "User.delUserDesigns", query = "DELETE FROM Design p WHERE p.designer.id = :id"),
-		@NamedQuery(name = "User.getPunctuation", query = "SELECT SUM(puntuation) AS punt, COUNT(puntuation) AS numDes FROM Design p WHERE p.designer.id = :id")
+		@NamedQuery(name = "User.getPunctuation", query = "SELECT SUM(punctuation) AS punt, COUNT(punctuation) AS numDes FROM Design p WHERE p.designer.id = :id")
 
 })
 @Data
@@ -122,7 +122,9 @@ public class User implements Transferable<User.Transfer> {
             inverseJoinColumns = {@JoinColumn(name = "design_id")}
     )
     private List<Design> likedDesigns = new ArrayList<>();
-
+	public void addDesignLike(Design d){
+		this.likedDesigns.add(d);
+	}
 	// utility methods
 
 	/**

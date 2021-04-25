@@ -33,8 +33,8 @@ import lombok.Data;
 		
 		@NamedQuery(name = "Design.delDesign", query = "DELETE FROM Design p WHERE p.id = :id"),
 
-		@NamedQuery(name = "Design.checkLike", query = "SELECT COUNT(u) FROM User u JOIN Design d ON d.designer.id = u.id "
-		+ "WHERE d.id = :designId AND u.id = :userId")
+		@NamedQuery(name = "Design.numLikes", query = "SELECT d.punctuation from Design d WHERE d.id = :id")
+
 	})
 @Data
 public class Design {
@@ -50,7 +50,7 @@ public class Design {
 	private String description;
 	private float dimension;
 	private int numVentas;
-	private int puntuation;
+	private long punctuation;
 
 	@ManyToOne
 	private User designer;
