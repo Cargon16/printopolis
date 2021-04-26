@@ -2274,12 +2274,12 @@ function calendarJs( id, options, startDateTime ) {
             dayText.appendChild( monthName );
         }
 
-        var holidayText = getHoliday( dayDate );
+        /*var holidayText = getHoliday( dayDate );
         if ( holidayText !== null ) {
             var holiday = createElement( "span", "holiday" );
             holiday.innerText = holidayText;
             dayText.appendChild( holiday );
-        }
+        }*/
 
         expandDayButton.onclick = function() {
             showFullDayView( dayDate, true );
@@ -4880,6 +4880,12 @@ function calendarJs( id, options, startDateTime ) {
                 _events[ storageDate ][ storageGuid ] = getAdjustedAllDayEvent( event );
                 added = true;
 
+                //Función que guarda el evento en la base de datos
+                go("/sale/addEvent", 'POST', // <-- hace el `fetch`, y recibe resultados
+                { evento: {"date":event.from} })
+                .then(d => { console.log("happy", d); designCarrito() })
+                .catch(e => console.log("sad", e))
+
                 if ( triggerEvent ) {
                     triggerOptionsEventWithEventData( "onEventAdded", event );
                 }
@@ -5309,42 +5315,42 @@ function calendarJs( id, options, startDateTime ) {
 
         if ( !isDefined( _options.dayHeaderNames ) ) {
             _options.dayHeaderNames = [
-                "Mon",
-                "Tue",
-                "Wed",
-                "Thu",
-                "Fri",
-                "Sat",
-                "Sun"
+                "Lun",
+                "Mar",
+                "Mie",
+                "Jue",
+                "Vie",
+                "Sab",
+                "Dom"
             ];
         }
 
         if ( !isDefined( _options.dayNames ) ) {
             _options.dayNames = [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
+                "Lunes",
+                "Martes",
+                "Miércoles",
+                "Jueves",
+                "Viernes",
+                "Sábado",
+                "Domingo"
             ];
         }
 
         if ( !isDefined( _options.monthNames ) ) {
             _options.monthNames = [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agosto",
+                "Septiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre"
             ];
         }
 

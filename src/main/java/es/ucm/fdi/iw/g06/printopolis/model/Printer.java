@@ -24,7 +24,6 @@ import lombok.Data;
         @NamedQuery(name = "Printer.allUserPrinters", query = "SELECT p FROM Printer p "
                 + "WHERE p.impresor.id = :userId"),
         @NamedQuery(name = "Printer.dePrinter", query = "DELETE FROM Printer p WHERE p.id = :id")
-        // @NamedQuery(name = "Printer.allPrinters", query= "SELECT p FROM Printer p")
     })
               
 
@@ -46,14 +45,6 @@ public class Printer {
 
     @ManyToOne
     private User impresor;
-
-    @ManyToMany
-    @JoinTable(
-            name = "printer_designs",
-            joinColumns = {@JoinColumn(name = "printer_id")},
-            inverseJoinColumns = {@JoinColumn(name = "design_id")}
-    )
-    private List<Design> pedidos = new ArrayList<>();
 
     @Override
     public String toString() {

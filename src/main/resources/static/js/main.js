@@ -50,11 +50,11 @@ $(document).ready(function () {
     }
 
   // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (event.target == modalP) {
-      modalP.style.display = "none";
-    }
-  }
+  // window.onclick = function (event) {
+  //   if (event.target == modalP) {
+  //     modalP.style.display = "none";
+  //   }
+  // }
 
   jQuery('.btn[href^="#' + '"]').click(function (e) {
     e.preventDefault();

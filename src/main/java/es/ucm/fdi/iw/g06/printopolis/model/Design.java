@@ -58,9 +58,6 @@ public class Design {
 	@ManyToMany(mappedBy = "likedDesigns")
 	private List<User> usersLikes = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "pedidos")
-	private List<Printer> impresores = new ArrayList<>();
-
 	@Override
 	public String toString() {
 		return "Design #" + id;
