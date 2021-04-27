@@ -26,6 +26,8 @@
                 /*<![CDATA[*/
 
                 var id = /*[[${id}]]*/ 0;
+                var user = /*[[${user}]]*/ '';
+                var userActual = /*[[${session.u.username}]]*/ '';
                 console.log(id);
                 var calendarInstance = new calendarJs("myCalendar", {
                     exportEventsEnabled: true,
@@ -36,8 +38,24 @@
                     organizerName: "Printopolis",
                     organizerEmailAddress: "Printopolis@email.com",
                     showDayNumberOrdinals: false
-                }, id);
-
+                }, id, user);
+                ws.receive = (m) => {
+                    var date = new Date(m.from);
+                    let newEvent = {
+                        from: date,
+                        to: date,
+                        title: m.user,
+                        //description: "This is a another description of the event that has been added, so it can be shown in the pop-up dialog.",
+                        location: "",
+                        isAllDay: true,
+                        color: "#484848",
+                        colorText: "#F5F5F5",
+                        colorBorder: "#282828",
+                        id: m.id
+                    };
+                    if(m.idPrinter == id && m.user != userActual)
+                    calendarInstance.addEventOnCreate(newEvent, true);
+                }
                 /*]]>*/
             </script>
         </div>

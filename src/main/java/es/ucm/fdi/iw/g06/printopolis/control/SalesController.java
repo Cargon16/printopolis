@@ -22,11 +22,13 @@ import javax.transaction.Transactional;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import org.apache.catalina.security.SecurityConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -68,6 +70,8 @@ public class SalesController {
 	@Autowired
 	private LocalData localData;
 
+	@Autowired
+	private SimpMessagingTemplate messagingTemplate;
 
 	@GetMapping("/{id}")
 	public String getSale(@PathVariable long id, Model model) throws IOException {
@@ -129,6 +133,7 @@ public class SalesController {
 	 @GetMapping("/printerChoice/{id}")
 	public String printerChoice(@PathVariable long id, Model model, HttpSession session) throws IOException {
 		model.addAttribute("id", id);
+		model.addAttribute("user", ((User)session.getAttribute("u")).getUsername());
 		return "printerTurn";
 	 }
 	 @PostMapping("/addEvent")
@@ -137,13 +142,25 @@ public class SalesController {
 	 public String addEvent(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		Date date = mapper.convertValue(o.get("evento").get("date"), Date.class);
+		Long printer = mapper.convertValue(o.get("evento").get("printer"), Long.class);
+		String user = mapper.convertValue(o.get("evento").get("user"), String.class);
 		Evento e = new Evento();
 		e.setFechaPedido(date);
-		e.setImpresora(1);
+		e.setImpresora(printer);
 		//e.setSale(sale);
-		//e.setUser();
+		e.setUser(user);
 		entityManager.persist(e);
 		entityManager.flush();
+
+		// construye json
+		ObjectNode rootNode = mapper.createObjectNode();
+		rootNode.put("from", date.toString());
+		rootNode.put("user", e.getUser());
+		rootNode.put("idPrinter", e.getImpresora());
+		rootNode.put("id", e.getId());
+		String json = mapper.writeValueAsString(rootNode);
+
+		messagingTemplate.convertAndSend("/topic/printer", json);
 		return "{\"name\": \"" + e.getId() + "\"}";
 	 }
 

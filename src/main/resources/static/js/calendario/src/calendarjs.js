@@ -211,7 +211,9 @@
  * @param       {Long}    idPrinter     
  * @param       {Object}    startDateTime                               The date that the calendar should start from by default (defaults to today).
  */
-function calendarJs(id, options, idPrinter, startDateTime) {
+function calendarJs(id, options, idPrinter, usuario, startDateTime) {
+    var idImpresora = idPrinter;
+    var user = usuario;
     var _options = {},
         _this = this,
         _currentDate = null,
@@ -366,14 +368,15 @@ function calendarJs(id, options, idPrinter, startDateTime) {
                 let newEvent = {
                     from: d,
                     to: d,
-                    title: "Ehhhhh",
+                    title: response[i].user,
                     //description: "This is a another description of the event that has been added, so it can be shown in the pop-up dialog.",
                     location: "",
                     isAllDay: true,
                     color: "#484848",
                     colorText: "#F5F5F5",
                     colorBorder: "#282828",
-                    id: response[i].id
+                    id: response[i].id,
+                    printer: idImpresora
                 };
                 this.addEventOnCreate(newEvent, true);
             }
@@ -4878,9 +4881,9 @@ function calendarJs(id, options, idPrinter, startDateTime) {
                     storageGuid = event.id;
                 }
 
-                if (_options.maximumEventTitleLength > 0 && title !== "" && title.length > _options.maximumEventTitleLength) {
-                    event.title = event.title.substring(0, _options.maximumEventTitleLength);
-                }
+                /*if (_options.maximumEventTitleLength > 0 && title !== "" && title.length > _options.maximumEventTitleLength) {*/
+                    event.title = user;
+                /*}*/
 
                 if (_options.maximumEventDescriptionLength > 0 && description !== "" && description.length > _options.maximumEventDescriptionLength) {
                     event.description = event.description.substring(0, _options.maximumEventDescriptionLength);
@@ -4903,7 +4906,7 @@ function calendarJs(id, options, idPrinter, startDateTime) {
 
                 //Función que guarda el evento en la base de datos
                 go("/sale/addEvent", 'POST', // <-- hace el `fetch`, y recibe resultados
-                    { evento: { "date": event.from } })
+                    {evento :{"date": event.from, "printer" : idImpresora, "user": user}})
                     .then(d => { console.log("happy", d); })
                     .catch(e => console.log("sad", e))
 
