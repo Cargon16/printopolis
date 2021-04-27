@@ -22,7 +22,11 @@
 
     <div class="contenedor_productos">
         <div id="myCalendar">
-            <script>
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+
+                var id = /*[[${id}]]*/ 0;
+                console.log(id);
                 var calendarInstance = new calendarJs("myCalendar", {
                     exportEventsEnabled: true,
                     manualEditingEnabled: true,
@@ -32,24 +36,9 @@
                     organizerName: "Printopolis",
                     organizerEmailAddress: "Printopolis@email.com",
                     showDayNumberOrdinals: false
-                });
-                var eventos =  /*[[${eventos}]]*/ [];
-                console.log("aaaaaaa" + eventos);
-                for(let i =0; i < eventos.length; ++i){
-                    let newEvent = {
-                    from: eventos[i].fechaPedido,
-                    to: eventos[i].fechaPedido,
-                    title: eventos[i].username,
-                    //description: "This is a another description of the event that has been added, so it can be shown in the pop-up dialog.",
-                    location: "",
-                    isAllDay: true,
-                    color: "#FF0000",
-                    colorText: "#FFFF00",
-                    colorBorder: "#00FF00",
-                    id: eventos[0].id
-                };
-                    calendarInstance.addEvent(newEvent, false);
-                }
+                }, id);
+
+                /*]]>*/
             </script>
         </div>
     </div>

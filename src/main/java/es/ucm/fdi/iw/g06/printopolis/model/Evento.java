@@ -22,7 +22,8 @@ import lombok.Data;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "Evento.getPrinterEvents", query = "SELECT e FROM Evento e WHERE e.impresora = :id")
+		@NamedQuery(name = "Evento.getPrinterEvents", query = "SELECT e FROM Evento e WHERE e.impresora = :id"),
+		@NamedQuery(name = "Evento.delEvento", query = "DELETE FROM Evento e WHERE e.id = :id")
 
 	})
 @Data

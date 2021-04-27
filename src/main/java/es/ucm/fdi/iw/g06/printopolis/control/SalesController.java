@@ -128,24 +128,46 @@ public class SalesController {
 	 @Transactional
 	 @GetMapping("/printerChoice/{id}")
 	public String printerChoice(@PathVariable long id, Model model, HttpSession session) throws IOException {
-		List<Evento> kes = entityManager.createNamedQuery("Evento.getPrinterEvents", Evento.class).setParameter("id", id).getResultList();
-		model.addAttribute("eventos", kes);
+		model.addAttribute("id", id);
 		return "printerTurn";
 	 }
 	 @PostMapping("/addEvent")
 	 @Transactional
 	 @ResponseBody
-	 public String addToCart(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
+	 public String addEvent(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		Date date = mapper.convertValue(o.get("evento").get("date"), Date.class);
-		log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGO {}", date);
 		Evento e = new Evento();
 		e.setFechaPedido(date);
-		//e.setImpresora(impresora);
+		e.setImpresora(1);
 		//e.setSale(sale);
 		//e.setUser();
 		entityManager.persist(e);
 		entityManager.flush();
 		return "{\"name\": \"" + e.getId() + "\"}";
 	 }
+
+	@RequestMapping(value = "/getEventos", method = RequestMethod.GET)
+	@Transactional
+	@ResponseBody
+	public List<Evento> getEventos(@RequestParam(name = "id", required = false) Long id, Model model, HttpSession session) throws IOException {
+		try{
+			List<Evento> kes = entityManager.createNamedQuery("Evento.getPrinterEvents", Evento.class).setParameter("id", id).getResultList();
+		return kes;
+		}catch(Exception e){
+			List<Evento> l = new ArrayList<Evento>();
+			return l;
+		}
+	 }
+
+	@RequestMapping(value = "/delEvento", method = RequestMethod.POST)
+	@Transactional
+	@ResponseBody
+	public String delEventos(@RequestParam(name = "id", required = false) Long id, Model model, HttpSession session) throws IOException {
+		entityManager.createNamedQuery("Evento.delEvento").setParameter("id", id).executeUpdate();
+		entityManager.flush();
+
+		return "{\"name\": \"" + "borrado" + "\"}";
+	 }
+
 }
