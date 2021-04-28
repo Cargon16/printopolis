@@ -107,7 +107,7 @@ public class RootController {
 		usuario.setEnabled((byte) 1);
 		usuario.setAboutMe(about);
 		usuario.setAddress(address);
-		usuario.setRoles("ADMIN");
+		usuario.setRoles("USER");
 		entityManager.persist(usuario);
 		log.info("Sign up user {}", mail);
 

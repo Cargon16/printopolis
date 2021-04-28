@@ -40,7 +40,9 @@ public class MessageController {
 	public String getMessages(@PathVariable Long id, Model model, HttpSession session) {
 		long userId = ((User)session.getAttribute("u")).getId();
 		List<Message> l = entityManager.createNamedQuery("Message.allMessage", Message.class).setParameter("userId", userId).getResultList();
+		List<User> u = entityManager.createNamedQuery("User.allUser", User.class).setParameter("id", userId).getResultList();
 		model.addAttribute("message", l);
+		model.addAttribute("users", u);
 		return "messages";
 	}
 

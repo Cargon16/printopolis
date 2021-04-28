@@ -50,6 +50,7 @@ import lombok.AllArgsConstructor;
 		@NamedQuery(name = "User.hasUsername", query = "SELECT COUNT(u) " + "FROM User u "
 				+ "WHERE u.username = :username"),
 		@NamedQuery(name = "User.allImpresores", query = "SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id"),
+		@NamedQuery(name = "User.allUser", query = "SELECT u FROM User u WHERE u.id != :id"),
 
 		@NamedQuery(name = "User.byId", query = "SELECT u FROM User u WHERE u.id = :senderId"),
 		@NamedQuery(name = "User.delUser", query = "DELETE FROM User p WHERE p.id = :id"),
