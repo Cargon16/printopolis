@@ -1,4 +1,4 @@
-.contenedor_chats{
+.datatable{
     margin-left: auto;
     margin-right: auto;
     width: 600px;
@@ -6,29 +6,83 @@
     box-shadow: inset 0 0 2px black, 0 0 2px black;
 }
 
-.chat{
-    border: 2px solid #dedede;
+#datatable{
     background-color: #f1f1f1;
     border-radius: 5px;
     padding: 10px;
-    margin: 10px 0;
+    margin-top: 30px;
+    border-collapse: separate;
+    border-spacing: 0 15px;
 }
 
-.chat::after {
+#datatable tbody > tr {
+    background-color: rgba(255, 255, 255);
+    box-shadow: inset 0 0 2px black, 0 0 2px black;
+    height: 50px;
+    text-align: center;
+}
+
+
+#datatable thead > tr {
+    font-size:20px ;
+}
+
+#datatable::after {
     content: "";
     clear: both;
     display: table;
   }
 
-.chat img {
+#message {
+    width: 560px  !important;
+    margin-right: auto;
+}
+
+#sendmsg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 8px;
+}
+
+.sidebar{
+    margin-top: 20px;
+    width: 630px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.dataTable-info {
+    text-align: center;
+}
+
+/* #datatable img {
     float: left;
     max-width: 40px;
     width: 100%;
     margin-right: 20px;
     border-radius: 50%;
-}
+} */
 
 .time-right {
     float: right;
     color: #aaa;
+  }
+
+h1 {
+    text-align: center;
+  }
+
+
+  .dataTable-dropdown{
+    margin-left: 20px;
+    margin-right: auto;
+    width: 170px;
+  }
+
+  .dataTable-search{
+      width: 214px;
+      margin-left: auto;
+      margin-right: auto;
   }
