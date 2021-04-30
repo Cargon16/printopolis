@@ -23,7 +23,10 @@ import lombok.Data;
 @NamedQueries({
 	@NamedQuery(name="Sales.sale",
 			query="SELECT l FROM Sales l "
-					+ "WHERE l.id = :id")
+					+ "WHERE l.id = :id"),
+	@NamedQuery(name="Sales.getProducts",
+			query="SELECT l from SalesLine l JOIN Sales s ON l.sale = s.id "
+					+ "WHERE s.id = :id")
 
 })
 @Data
