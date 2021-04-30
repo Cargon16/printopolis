@@ -1075,11 +1075,11 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                     };
                 }
 
-                if (_options.manualEditingEnabled) {
+               /* if (_options.manualEditingEnabled) {
                     event.onclick = function () {
                         showEventDialog(eventDetails);
                     };
-                }
+                }*/
 
             } else {
                 buildDayEventPlusText(elementDay, dayDate);
@@ -2601,7 +2601,7 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
      * Build Event Editing Dialog
      * ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      */
-
+    var selectedDate;
     function buildEventEditingDialog() {
         if (_element_EventEditorDialog !== null) {
             removeNode(_document.body, _element_EventEditorDialog);
@@ -2622,16 +2622,16 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
         var contents = createElement("div", "contents");
         view.appendChild(contents);
 
-        var textTitle = createElement("p");
+        /*var textTitle = createElement("p");
         textTitle.innerText = _options.titleText;
         contents.appendChild(textTitle);
-
+        */
         var inputTitleContainer = createElement("div", "input-title-container");
         contents.appendChild(inputTitleContainer);
-
-        _element_EventEditorDialog_Title = createElement("input", null, "text");
-        inputTitleContainer.appendChild(_element_EventEditorDialog_Title);
-
+    
+        //_element_EventEditorDialog_Title = createElement("input", null, "text");
+        //inputTitleContainer.appendChild(_element_EventEditorDialog_Title);
+        /*
         if (_options.maximumEventTitleLength > 0) {
             _element_EventEditorDialog_Title.maxLength = _options.maximumEventTitleLength;
         }
@@ -2646,43 +2646,44 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
         var textFrom = createElement("p");
         textFrom.innerText = _options.fromText.replace(":", "") + "/" + _options.toText;
         contents.appendChild(textFrom);
-
+*/
         var fromSplitContainer = createElement("div", "split");
         contents.appendChild(fromSplitContainer);
 
         _element_EventEditorDialog_DateFrom = createElement("input");
         _element_EventEditorDialog_DateFrom.onchange = isAllDayChanged;
-        fromSplitContainer.appendChild(_element_EventEditorDialog_DateFrom);
+        //fromSplitContainer.appendChild(_element_EventEditorDialog_DateFrom);
 
         setInputType(_element_EventEditorDialog_DateFrom, "date");
+        selectedDate = getSelectedDate(_element_EventEditorDialog_DateFrom);
 
         _element_EventEditorDialog_TimeFrom = createElement("input");
-        fromSplitContainer.appendChild(_element_EventEditorDialog_TimeFrom);
+        //fromSplitContainer.appendChild(_element_EventEditorDialog_TimeFrom);
 
         setInputType(_element_EventEditorDialog_TimeFrom, "time");
 
         var toSplitContainer = createElement("div", "split");
-        contents.appendChild(toSplitContainer);
+        //contents.appendChild(toSplitContainer);
 
         _element_EventEditorDialog_DateTo = createElement("input");
         _element_EventEditorDialog_DateTo.onchange = isAllDayChanged;
-        toSplitContainer.appendChild(_element_EventEditorDialog_DateTo);
+        //toSplitContainer.appendChild(_element_EventEditorDialog_DateTo);
 
         setInputType(_element_EventEditorDialog_DateTo, "date");
 
         _element_EventEditorDialog_TimeTo = createElement("input");
-        toSplitContainer.appendChild(_element_EventEditorDialog_TimeTo);
+        //toSplitContainer.appendChild(_element_EventEditorDialog_TimeTo);
 
         setInputType(_element_EventEditorDialog_TimeTo, "time");
 
-        _element_EventEditorDialog_IsAllDay = buildCheckBox(contents, _options.isAllDayText, isAllDayChanged)[0];
+        //_element_EventEditorDialog_IsAllDay = buildCheckBox(contents, _options.isAllDayText, isAllDayChanged)[0];
 
         var textRepeatEvery = createElement("p");
         textRepeatEvery.innerText = _options.repeatsText;
-        contents.appendChild(textRepeatEvery);
+        //contents.appendChild(textRepeatEvery);
 
         var radioButtonsContainer = createElement("div", "radioButtonsContainer");
-        contents.appendChild(radioButtonsContainer);
+        //contents.appendChild(radioButtonsContainer);
 
         _element_EventEditorDialog_RepeatEvery_Never = buildRadioButton(radioButtonsContainer, _options.repeatsNever, "RepeatType", repeatEveryEvent);
         _element_EventEditorDialog_RepeatEvery_EveryDay = buildRadioButton(radioButtonsContainer, _options.repeatsEveryDayText, "RepeatType", repeatEveryEvent);
@@ -2693,33 +2694,33 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
         _element_EventEditorDialog_RepeatEvery_RepeatOptionsButton = createElement("input", "repeat-options", "button");
         _element_EventEditorDialog_RepeatEvery_RepeatOptionsButton.value = "...";
         _element_EventEditorDialog_RepeatEvery_RepeatOptionsButton.onclick = showEventEditorRepeatOptionsDialog;
-        radioButtonsContainer.appendChild(_element_EventEditorDialog_RepeatEvery_RepeatOptionsButton);
+        //radioButtonsContainer.appendChild(_element_EventEditorDialog_RepeatEvery_RepeatOptionsButton);
 
         addToolTip(_element_EventEditorDialog_RepeatEvery_RepeatOptionsButton, _options.repeatOptionsTitle, true);
 
         var inputFields1TextSplitContainer = createElement("div", "split");
-        contents.appendChild(inputFields1TextSplitContainer);
+        //contents.appendChild(inputFields1TextSplitContainer);
 
         var textLocation = createElement("p");
         textLocation.innerText = _options.locationText;
-        inputFields1TextSplitContainer.appendChild(textLocation);
+       //inputFields1TextSplitContainer.appendChild(textLocation);
 
         var groupLocation = createElement("p");
         groupLocation.innerText = _options.groupText;
-        inputFields1TextSplitContainer.appendChild(groupLocation);
+        //inputFields1TextSplitContainer.appendChild(groupLocation);
 
         var inputFields1SplitContainer = createElement("div", "split");
-        contents.appendChild(inputFields1SplitContainer);
+        //contents.appendChild(inputFields1SplitContainer);
 
         _element_EventEditorDialog_Location = createElement("input", null, "text");
-        inputFields1SplitContainer.appendChild(_element_EventEditorDialog_Location);
+        //inputFields1SplitContainer.appendChild(_element_EventEditorDialog_Location);
 
         if (_options.maximumEventLocationLength > 0) {
             _element_EventEditorDialog_Location.maxLength = _options.maximumEventLocationLength;
         }
 
         _element_EventEditorDialog_Group = createElement("input", null, "text");
-        inputFields1SplitContainer.appendChild(_element_EventEditorDialog_Group);
+        //inputFields1SplitContainer.appendChild(_element_EventEditorDialog_Group);
 
         if (_options.maximumEventGroupLength > 0) {
             _element_EventEditorDialog_Group.maxLength = _options.maximumEventGroupLength;
@@ -2727,10 +2728,10 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
 
         var textDescription = createElement("p");
         textDescription.innerText = _options.descriptionText;
-        contents.appendChild(textDescription);
+        //contents.appendChild(textDescription);
 
         _element_EventEditorDialog_Description = createElement("textarea", "custom-scroll-bars");
-        contents.appendChild(_element_EventEditorDialog_Description);
+        //contents.appendChild(_element_EventEditorDialog_Description);
 
         if (_options.maximumEventDescriptionLength > 0) {
             _element_EventEditorDialog_Description.maxLength = _options.maximumEventDescriptionLength;
@@ -2861,8 +2862,8 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
             _element_EventEditorDialog_TimeFrom.value = toFormattedTime(today);
             _element_EventEditorDialog_DateTo.value = toFormattedDate(today, _element_EventEditorDialog_DateTo.type);
             _element_EventEditorDialog_TimeTo.value = toFormattedTime(today);
-            _element_EventEditorDialog_IsAllDay.checked = false;
-            _element_EventEditorDialog_Title.value = "";
+            //_element_EventEditorDialog_IsAllDay.checked = false;
+            // _element_EventEditorDialog_Title.value = "";
             _element_EventEditorDialog_Description.value = "";
             _element_EventEditorDialog_Location.value = "";
             _element_EventEditorDialog_Group.value = "";
@@ -2881,87 +2882,33 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
         }
 
         buildToolbarButton(_element_EventEditorDialog_TitleBar, "ib-close", _options.closeTooltipText, eventDialogEvent_Cancel, true);
-        isAllDayChanged();
+        //isAllDayChanged();
 
         _element_EventEditorDialog.style.display = "block";
         _element_EventEditorDialog_ErrorMessage.style.display = "none";
-        _element_EventEditorDialog_Title.focus();
+        //_element_EventEditorDialog_Title.focus();
     }
 
     function eventDialogEvent_OK() {
         var fromDate = getSelectedDate(_element_EventEditorDialog_DateFrom),
-            toDate = getSelectedDate(_element_EventEditorDialog_DateTo),
-            fromTime = _element_EventEditorDialog_TimeFrom.value.split(":"),
-            toTime = _element_EventEditorDialog_TimeTo.value.split(":"),
-            title = trimString(_element_EventEditorDialog_Title.value),
-            description = trimString(_element_EventEditorDialog_Description.value),
-            location = trimString(_element_EventEditorDialog_Location.value),
-            group = trimString(_element_EventEditorDialog_Group.value),
-            repeatEnds = getSelectedDate(_element_EventEditorRepeatOptionsDialog_RepeatEnds, null);
-
-        if (fromTime.length < 2) {
-            showEventDialogErrorMessage(_options.fromTimeErrorMessage, _element_EventEditorDialog_TimeFrom);
-        } else if (toTime.length < 2) {
-            showEventDialogErrorMessage(_options.toTimeErrorMessage, _element_EventEditorDialog_TimeTo);
-        } else if (title === "") {
-            showEventDialogErrorMessage(_options.titleErrorMessage, _element_EventEditorDialog_Title);
-        }
-        else {
-
-            setTimeOnDate(fromDate, _element_EventEditorDialog_TimeFrom.value);
-            setTimeOnDate(toDate, _element_EventEditorDialog_TimeTo.value);
-
-            if (toDate < fromDate) {
-                showEventDialogErrorMessage(_options.toSmallerThanFromErrorMessage, _element_EventEditorDialog_DateTo);
-            } else {
-
-                eventDialogEvent_Cancel();
-
-                var isExistingEvent = isDefined(_element_EventEditorDialog_EventDetails.id),
-                    newEvent = {
+            toDate = fromDate;
+            
+                  var newEvent = {
                         from: fromDate,
                         to: toDate,
-                        title: title,
-                        description: description,
-                        location: location,
-                        group: group,
-                        isAllDay: _element_EventEditorDialog_IsAllDay.checked,
-                        color: _element_EventEditorDialog_EventDetails.color,
-                        colorText: _element_EventEditorDialog_EventDetails.colorText,
-                        colorBorder: _element_EventEditorDialog_EventDetails.colorBorder,
-                        repeatEveryExcludeDays: _element_EventEditorDialog_EventDetails.repeatEveryExcludeDays,
-                        repeatEnds: repeatEnds
+                        title: "title",
+                        description: "description",
+                        location: "location",
+                        group: "group"
                     };
 
-                if (_element_EventEditorDialog_RepeatEvery_Never.checked) {
-                    newEvent.repeatEvery = _const_Repeat_Never;
-                } else if (_element_EventEditorDialog_RepeatEvery_EveryDay.checked) {
-                    newEvent.repeatEvery = _const_Repeat_EveryDay;
-                } else if (_element_EventEditorDialog_RepeatEvery_EveryWeek.checked) {
-                    newEvent.repeatEvery = _const_Repeat_EveryWeek;
-                } else if (_element_EventEditorDialog_RepeatEvery_EveryMonth.checked) {
-                    newEvent.repeatEvery = _const_Repeat_EveryMonth;
-                } else if (_element_EventEditorDialog_RepeatEvery_EveryYear.checked) {
-                    newEvent.repeatEvery = _const_Repeat_EveryYear;
-                }
-
-                if (!isExistingEvent) {
-                    newEvent.organizerName = _options.organizerName;
-                    newEvent.organizerEmailAddress = _options.organizerEmailAddress;
-                } else {
-                    newEvent.id = _element_EventEditorDialog_EventDetails.id;
-                }
-
-                if (isExistingEvent) {
-                    _this.updateEvent(_element_EventEditorDialog_EventDetails.id, newEvent, false);
-                } else {
                     _this.addEvent(newEvent, false);
-                }
+                
 
                 buildDayEvents();
                 refreshOpenedViews();
-            }
-        }
+                eventDialogEvent_Cancel();
+                
     }
 
     function setTimeOnDate(date, timeData) {
@@ -4906,7 +4853,7 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
 
                 //Función que guarda el evento en la base de datos
                 go("/sale/addEvent", 'POST', // <-- hace el `fetch`, y recibe resultados
-                    {evento :{"date": event.from, "printer" : idImpresora, "user": user}})
+                    {evento :{"date": event.from, "printer" : idImpresora, "user": user, "eventId": event.id}})
                     .then(d => { console.log("happy", d); })
                     .catch(e => console.log("sad", e))
 
@@ -5094,6 +5041,33 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                 .then((response) => {
                     response.name;
                 })
+
+                return true;
+            }
+        });
+
+        return removed;
+    };
+
+    this.notifyRemoveEvent = function (id, updateEvents, triggerEvent) {
+        var removed = false;
+
+        getAllEventsFunc(function (event, storageDate, storageGuid) {
+            if (storageGuid == id) {
+                updateEvents = !isDefined(updateEvents) ? true : updateEvents;
+                triggerEvent = !isDefined(triggerEvent) ? true : triggerEvent;
+
+                delete _events[storageDate][storageGuid];
+                removed = true;
+
+                if (triggerEvent) {
+                    triggerOptionsEventWithEventData("onEventRemoved", event);
+                }
+
+                if (updateEvents) {
+                    buildDayEvents();
+                    refreshOpenedViews();
+                }
 
                 return true;
             }

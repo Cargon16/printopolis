@@ -40,6 +40,7 @@
                     showDayNumberOrdinals: false
                 }, id, user);
                 ws.receive = (m) => {
+                    if(m.created){
                     var date = new Date(m.from);
                     let newEvent = {
                         from: date,
@@ -55,6 +56,9 @@
                     };
                     if(m.idPrinter == id && m.user != userActual)
                     calendarInstance.addEventOnCreate(newEvent, true);
+                }else{
+                    calendarInstance.notifyRemoveEvent(m.id, true);
+                }
                 }
                 /*]]>*/
             </script>

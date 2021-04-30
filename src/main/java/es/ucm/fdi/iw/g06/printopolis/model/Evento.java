@@ -30,8 +30,7 @@ import lombok.Data;
 public class Evento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private String id;
 
 	@NotNull
 	private Date fechaPedido;

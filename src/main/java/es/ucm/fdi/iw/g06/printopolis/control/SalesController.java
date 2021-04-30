@@ -144,13 +144,14 @@ public class SalesController {
 		Date date = mapper.convertValue(o.get("evento").get("date"), Date.class);
 		Long printer = mapper.convertValue(o.get("evento").get("printer"), Long.class);
 		String user = mapper.convertValue(o.get("evento").get("user"), String.class);
+		String id = mapper.convertValue(o.get("evento").get("eventId"), String.class);
 		Evento e = new Evento();
 		e.setFechaPedido(date);
 		e.setImpresora(printer);
+		e.setId(id);
 		//e.setSale(sale);
 		e.setUser(user);
 		entityManager.persist(e);
-		entityManager.flush();
 
 		// construye json
 		ObjectNode rootNode = mapper.createObjectNode();
@@ -158,6 +159,7 @@ public class SalesController {
 		rootNode.put("user", e.getUser());
 		rootNode.put("idPrinter", e.getImpresora());
 		rootNode.put("id", e.getId());
+		rootNode.put("created", true);
 		String json = mapper.writeValueAsString(rootNode);
 
 		messagingTemplate.convertAndSend("/topic/printer", json);
@@ -180,9 +182,17 @@ public class SalesController {
 	@RequestMapping(value = "/delEvento", method = RequestMethod.POST)
 	@Transactional
 	@ResponseBody
-	public String delEventos(@RequestParam(name = "id", required = false) Long id, Model model, HttpSession session) throws IOException {
+	public String delEventos(@RequestParam(name = "id", required = false) String id, Model model, HttpSession session) throws IOException {
 		entityManager.createNamedQuery("Evento.delEvento").setParameter("id", id).executeUpdate();
 		entityManager.flush();
+
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode rootNode = mapper.createObjectNode();
+		rootNode.put("id", id);
+		rootNode.put("created", false);
+		String json = mapper.writeValueAsString(rootNode);
+
+		messagingTemplate.convertAndSend("/topic/printer", json);
 
 		return "{\"name\": \"" + "borrado" + "\"}";
 	 }
