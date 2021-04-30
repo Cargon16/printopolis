@@ -101,7 +101,6 @@ public class SalesController {
 
        model.addAttribute("products", l);
 	   model.addAttribute("printers", p);
-	//    model.addAttribute("idDesign", l.) NECESITO EL ID DEL DISEÑOOOO
        return "cart";
 	}
 
@@ -113,6 +112,13 @@ public class SalesController {
 		entityManager.refresh(compra);
 		User us = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
 		us.setSaleId(null);
+
+		List<SalesLine> l = entityManager.createNamedQuery("Sales.getProducts", SalesLine.class).setParameter("id", id).getResultList();
+		for(int i = 0; i < l.size(); ++i){
+			Design d = entityManager.createNamedQuery("Design.getDesign", Design.class).setParameter("designId", l.get(i).getDesign()).getSingleResult();
+			d.setNumVentas(d.getNumVentas()+1);
+		}
+
 		return "redirect:/user/" + us.getId();
 	 }
 
