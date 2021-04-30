@@ -29,11 +29,11 @@ INSERT INTO MESSAGE VALUES(5,NULL,'2020-03-23 10:48:22.926000','probando 5',1,1)
 --Diseños de prueba
 INSERT INTO DESIGN VALUES(1, 'Deporte', 'Hola soy un algo', 123, 'Prueba1', 0, 12, 1, 2);
 INSERT INTO DESIGN VALUES(2, 'Accesorios', 'Hola soy un algo1', 123, 'Prueba1', 12, 12, 4, 1);
-INSERT INTO DESIGN VALUES(3, 'Juguetes', 'Hola soy un algo2', 123, 'Prueba2', 1, 12, 3, 2);
+-- INSERT INTO DESIGN VALUES(3, 'Juguetes', 'Hola soy un algo2', 123, 'Prueba2', 1, 12, 3, 2);
 
 --Impresores de prueba
 INSERT INTO PRINTER VALUES(1,90,'Impresor1', 10, 'AVAILABLE', 1);
-INSERT INTO PRINTER VALUES(2,100,'Impresor1', 10, 'NO_INK', 1);
+INSERT INTO PRINTER VALUES(2,100,'Impresor1', 10, 'NO_INK', 2);
 
 -- Compras de prueba
 --INSERT INTO design VALUES();
