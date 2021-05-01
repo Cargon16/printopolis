@@ -241,7 +241,7 @@ footer #copyright{
     padding: 1%;
     display: flex;
     flex-direction: column;
-    height: 50%;
+    max-height: 50%;
 }
 .diseno .stats{
     width: 100%;
