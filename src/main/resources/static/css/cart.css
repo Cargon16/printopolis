@@ -181,9 +181,9 @@
   }
   
   .dropdown {
-    position: absolute;
-    left: 1000px;
-    bottom: 590px;
+    position: relative;
+    left: 750px;
+    bottom: 300px;
     display: inline-block;
   }
   
