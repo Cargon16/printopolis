@@ -32,7 +32,6 @@ public class SalesLine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long printer;
     private long design;
     private long sale;
     private int quantity;

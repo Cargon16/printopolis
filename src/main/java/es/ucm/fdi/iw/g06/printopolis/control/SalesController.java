@@ -109,7 +109,7 @@ public class SalesController {
 	public String pay(@PathVariable long id, Model model, HttpSession session) throws IOException {
 		Sales compra = entityManager.find(Sales.class, id);
 		compra.setPaid(true);
-		entityManager.refresh(compra);
+		entityManager.merge(compra);
 		User us = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
 		us.setSaleId(null);
 
@@ -146,12 +146,15 @@ public class SalesController {
 	 @Transactional
 	 @ResponseBody
 	 public String addEvent(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
+		Sales s = ((User)session.getAttribute("u")).getSaleId();
 		ObjectMapper mapper = new ObjectMapper();
 		Date date = mapper.convertValue(o.get("evento").get("date"), Date.class);
 		Long printer = mapper.convertValue(o.get("evento").get("printer"), Long.class);
 		String user = mapper.convertValue(o.get("evento").get("user"), String.class);
 		String id = mapper.convertValue(o.get("evento").get("eventId"), String.class);
 		Evento e = new Evento();
+		s.setPrinter(printer);
+		entityManager.merge(s);
 		e.setFechaPedido(date);
 		e.setImpresora(printer);
 		e.setId(id);

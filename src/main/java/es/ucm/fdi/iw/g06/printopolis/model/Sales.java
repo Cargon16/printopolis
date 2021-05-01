@@ -37,6 +37,7 @@ public class Sales {
 	@OneToOne
     private User user;
     private String address;
+	private long printer;
     private float total_price;
 	private Boolean paid;
 

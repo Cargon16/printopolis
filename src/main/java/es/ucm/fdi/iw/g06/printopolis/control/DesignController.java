@@ -186,8 +186,6 @@ public class DesignController {
 			sl.setDesign(d.getId());
 			sl.setPrice(d.getPrice());
 			compra.setTotal_price(compra.getTotal_price() + d.getPrice());
-			//si el user ha seleccionado una (hacer consulta)
-			// sl.setPrinter(printer);
 			sl.setQuantity(1);
 			sl.setSale(compra.getId());
 			entityManager.persist(sl);
