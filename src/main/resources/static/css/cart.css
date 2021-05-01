@@ -3,12 +3,12 @@
 } */
 
 .contenedor_productos {
-    margin: 50px 40px 80px 50px;
     display: flex;
     row-gap: 15px;
     column-gap: 30px;
     justify-content: center;
     align-items: center;
+    height: 76%;
 }
 
 .producto {

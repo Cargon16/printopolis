@@ -363,7 +363,7 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
     let params = {};
     go(config.rootUrl + "sale/getEventos?id=" + idPrinter, 'GET', params)
         .then((response) => {
-            for(let i =0; i < response.length; ++i){
+            for (let i = 0; i < response.length; ++i) {
                 var d = new Date(response[i].fechaPedido);
                 let newEvent = {
                     from: d,
@@ -525,9 +525,9 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
 
         buildToolbarButton(_element_HeaderDateDisplay, "ib-arrow-right-full", _options.nextMonthTooltipText, moveForwardMonth);
 
-        if (_options.manualEditingEnabled) {
+        /*if (_options.manualEditingEnabled) {
             buildToolbarButton(_element_HeaderDateDisplay, "ib-plus", _options.addEventTooltipText, addNewEvent);
-        }
+        }*/
 
         if (_options.exportEventsEnabled) {
             _element_HeaderDateDisplay_ExportEventsButton = buildToolbarButton(_element_HeaderDateDisplay, "ib-arrow-down-full-line", _options.exportEventsTooltipText, function () {
@@ -1075,11 +1075,11 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                     };
                 }
 
-               /* if (_options.manualEditingEnabled) {
-                    event.onclick = function () {
-                        showEventDialog(eventDetails);
-                    };
-                }*/
+                /* if (_options.manualEditingEnabled) {
+                     event.onclick = function () {
+                         showEventDialog(eventDetails);
+                     };
+                 }*/
 
             } else {
                 buildDayEventPlusText(elementDay, dayDate);
@@ -1290,9 +1290,9 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
             _element_FullDayView_DateSelected = null;
         });
 
-        if (_options.manualEditingEnabled) {
+        /*if (_options.manualEditingEnabled) {
             buildToolbarButton(titleBar, "ib-plus", _options.addEventTooltipText, addNewEvent);
-        }
+        }*/
 
         buildToolbarButton(titleBar, "ib-arrow-right-full", _options.nextDayTooltipText, onNextDay);
         buildToolbarButton(titleBar, "ib-arrow-left-full", _options.previousDayTooltipText, onPreviousDay);
@@ -1633,9 +1633,9 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
             hideOverlay(_element_ListAllEventsView);
         });
 
-        if (_options.manualEditingEnabled) {
+        /*if (_options.manualEditingEnabled) {
             buildToolbarButton(titleBar, "ib-plus", _options.addEventTooltipText, addNewEvent);
-        }
+        }*/
 
         if (_options.exportEventsEnabled) {
             _element_ListAllEventsView_ExportEventsButton = buildToolbarButton(titleBar, "ib-arrow-down-full-line", _options.exportEventsTooltipText, function () {
@@ -1760,13 +1760,13 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                 build(expandMonthDate);
             });
 
-            if (_options.manualEditingEnabled) {
+            /*if (_options.manualEditingEnabled) {
                 var addNewEventDate = new Date(date.getFullYear(), date.getMonth(), 1);
 
                 buildToolbarButton(header, "ib-plus", _options.addEventTooltipText, function () {
                     showEventDialog(null, addNewEventDate);
                 });
-            }
+            }*/
 
             monthContents = createElement("div", "events");
             monthContents.id = monthContentsID;
@@ -1807,9 +1807,9 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
             hideOverlay(_element_ListAllWeekEventsView);
         });
 
-        if (_options.manualEditingEnabled) {
+        /*if (_options.manualEditingEnabled) {
             buildToolbarButton(titleBar, "ib-plus", _options.addEventTooltipText, addNewEvent);
-        }
+        }*/
 
         buildToolbarButton(titleBar, "ib-arrow-right-full", _options.nextWeekTooltipText, onNextWeek);
         buildToolbarButton(titleBar, "ib-arrow-left-full", _options.previousWeekTooltipText, onPreviousWeek);
@@ -2075,11 +2075,11 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                 showFullDayView(expandDate, true);
             });
 
-            if (_options.manualEditingEnabled) {
+            /*if (_options.manualEditingEnabled) {
                 buildToolbarButton(header, "ib-plus", _options.addEventTooltipText, function () {
                     showEventDialog(null, expandDate);
                 });
-            }
+            }*/
 
             dayContents = createElement("div", "events");
             day.appendChild(dayContents);
@@ -2513,7 +2513,7 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
 
             var editEvent = createElement("div", "item");
             editEvent.innerText = _options.editEventTitle;
-            _element_DropDownMenu_Event.appendChild(editEvent);
+            //_element_DropDownMenu_Event.appendChild(editEvent);
 
             editEvent.onclick = function () {
                 showEventDialog(_element_DropDownMenu_Event_EventDetails);
@@ -2628,7 +2628,7 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
         */
         var inputTitleContainer = createElement("div", "input-title-container");
         contents.appendChild(inputTitleContainer);
-    
+
         //_element_EventEditorDialog_Title = createElement("input", null, "text");
         //inputTitleContainer.appendChild(_element_EventEditorDialog_Title);
         /*
@@ -2703,7 +2703,7 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
 
         var textLocation = createElement("p");
         textLocation.innerText = _options.locationText;
-       //inputFields1TextSplitContainer.appendChild(textLocation);
+        //inputFields1TextSplitContainer.appendChild(textLocation);
 
         var groupLocation = createElement("p");
         groupLocation.innerText = _options.groupText;
@@ -2892,23 +2892,23 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
     function eventDialogEvent_OK() {
         var fromDate = getSelectedDate(_element_EventEditorDialog_DateFrom),
             toDate = fromDate;
-            
-                  var newEvent = {
-                        from: fromDate,
-                        to: toDate,
-                        title: "title",
-                        description: "description",
-                        location: "location",
-                        group: "group"
-                    };
 
-                    _this.addEvent(newEvent, false);
-                
+        var newEvent = {
+            from: fromDate,
+            to: toDate,
+            title: "title",
+            description: "description",
+            location: "location",
+            group: "group"
+        };
 
-                buildDayEvents();
-                refreshOpenedViews();
-                eventDialogEvent_Cancel();
-                
+        _this.addEvent(newEvent, false);
+
+
+        buildDayEvents();
+        refreshOpenedViews();
+        eventDialogEvent_Cancel();
+
     }
 
     function setTimeOnDate(date, timeData) {
@@ -4805,65 +4805,68 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
      */
     this.addEvent = function (event, updateEvents, triggerEvent) {
         var added = false;
+        if (_events[toStorageDate(event.from)] == null || jQuery.isEmptyObject(_events[toStorageDate(event.from)])) {
+            if (event.from <= event.to) {
+                var storageDate = toStorageDate(event.from),
+                    storageGuid = newGuid(),
+                    title = getString(event.title),
+                    description = getString(event.description),
+                    location = getString(event.location),
+                    group = getString(event.group);
 
-        if (event.from <= event.to) {
-            var storageDate = toStorageDate(event.from),
-                storageGuid = newGuid(),
-                title = getString(event.title),
-                description = getString(event.description),
-                location = getString(event.location),
-                group = getString(event.group);
+                event.isAllDay = true;
 
-            if (!_events.hasOwnProperty(storageDate)) {
-                _events[storageDate] = {};
-            }
-
-            if (!_events[storageDate].hasOwnProperty(storageGuid)) {
-                updateEvents = !isDefined(updateEvents) ? true : updateEvents;
-                triggerEvent = !isDefined(triggerEvent) ? true : triggerEvent;
-
-                if (!isDefined(event.id)) {
-                    event.id = storageGuid;
-                } else {
-                    storageGuid = event.id;
+                if (!_events.hasOwnProperty(storageDate)) {
+                    _events[storageDate] = {};
                 }
 
-                /*if (_options.maximumEventTitleLength > 0 && title !== "" && title.length > _options.maximumEventTitleLength) {*/
+                if (!_events[storageDate].hasOwnProperty(storageGuid)) {
+                    updateEvents = !isDefined(updateEvents) ? true : updateEvents;
+                    triggerEvent = !isDefined(triggerEvent) ? true : triggerEvent;
+
+                    if (!isDefined(event.id)) {
+                        event.id = storageGuid;
+                    } else {
+                        storageGuid = event.id;
+                    }
+
+                    /*if (_options.maximumEventTitleLength > 0 && title !== "" && title.length > _options.maximumEventTitleLength) {*/
                     event.title = user;
-                /*}*/
+                    /*}*/
 
-                if (_options.maximumEventDescriptionLength > 0 && description !== "" && description.length > _options.maximumEventDescriptionLength) {
-                    event.description = event.description.substring(0, _options.maximumEventDescriptionLength);
-                }
+                    if (_options.maximumEventDescriptionLength > 0 && description !== "" && description.length > _options.maximumEventDescriptionLength) {
+                        event.description = event.description.substring(0, _options.maximumEventDescriptionLength);
+                    }
 
-                if (_options.maximumEventLocationLength > 0 && location !== "" && location.length > _options.maximumEventLocationLength) {
-                    event.location = event.location.substring(0, _options.maximumEventLocationLength);
-                }
+                    if (_options.maximumEventLocationLength > 0 && location !== "" && location.length > _options.maximumEventLocationLength) {
+                        event.location = event.location.substring(0, _options.maximumEventLocationLength);
+                    }
 
-                if (_options.maximumEventGroupLength > 0 && group !== "" && group.length > _options.maximumEventGroupLength) {
-                    event.group = event.group.substring(0, _options.maximumEventGroupLength);
-                }
+                    if (_options.maximumEventGroupLength > 0 && group !== "" && group.length > _options.maximumEventGroupLength) {
+                        event.group = event.group.substring(0, _options.maximumEventGroupLength);
+                    }
 
-                if (!isDefined(event.created)) {
-                    event.created = new Date();
-                }
+                    if (!isDefined(event.created)) {
+                        event.created = new Date();
+                    }
 
-                _events[storageDate][storageGuid] = getAdjustedAllDayEvent(event);
-                added = true;
+                    _events[storageDate][storageGuid] = getAdjustedAllDayEvent(event);
+                    added = true;
 
-                //Función que guarda el evento en la base de datos
-                go("/sale/addEvent", 'POST', // <-- hace el `fetch`, y recibe resultados
-                    {evento :{"date": event.from, "printer" : idImpresora, "user": user, "eventId": event.id}})
-                    .then(d => { console.log("happy", d); })
-                    .catch(e => console.log("sad", e))
+                    //Función que guarda el evento en la base de datos
+                    go("/sale/addEvent", 'POST', // <-- hace el `fetch`, y recibe resultados
+                        { evento: { "date": event.from, "printer": idImpresora, "user": user, "eventId": event.id } })
+                        .then(d => { console.log("happy", d); })
+                        .catch(e => console.log("sad", e))
 
-                if (triggerEvent) {
-                    triggerOptionsEventWithEventData("onEventAdded", event);
-                }
+                    if (triggerEvent) {
+                        triggerOptionsEventWithEventData("onEventAdded", event);
+                    }
 
-                if (updateEvents) {
-                    buildDayEvents();
-                    refreshOpenedViews();
+                    if (updateEvents) {
+                        buildDayEvents();
+                        refreshOpenedViews();
+                    }
                 }
             }
         }
@@ -4880,6 +4883,8 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                 description = getString(event.description),
                 location = getString(event.location),
                 group = getString(event.group);
+
+            event.isAllDay = true;
 
             if (!_events.hasOwnProperty(storageDate)) {
                 _events[storageDate] = {};
@@ -5021,6 +5026,7 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
         var removed = false;
 
         getAllEventsFunc(function (event, storageDate, storageGuid) {
+            if(this.user == event.title)
             if (storageGuid == id) {
                 updateEvents = !isDefined(updateEvents) ? true : updateEvents;
                 triggerEvent = !isDefined(triggerEvent) ? true : triggerEvent;
@@ -5038,9 +5044,9 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                 }
 
                 go(config.rootUrl + "sale/delEvento?id=" + id, 'POST', params)
-                .then((response) => {
-                    response.name;
-                })
+                    .then((response) => {
+                        response.name;
+                    })
 
                 return true;
             }

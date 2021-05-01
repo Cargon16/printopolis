@@ -241,6 +241,7 @@ public class UserController {
 	@PostMapping("/delUser/{id}")
 	public String delUser(@PathVariable long id, Model model) {
 		entityManager.createNamedQuery("User.delUserDesigns").setParameter("id", id).executeUpdate();
+		entityManager.createNamedQuery("User.delUserPrinters").setParameter("id", id).executeUpdate();
 		entityManager.createNamedQuery("User.delUser").setParameter("id", id).executeUpdate();
 		entityManager.flush();
 

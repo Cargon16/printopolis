@@ -28,7 +28,7 @@
             </select>
         </div>
 
-        <div class="row container FilterContainer" style="margin: auto; margin-bottom: 2rem;">
+        <div class="row container FilterContainer" style="margin-bottom: 2rem;">
             <div th:each="d:${designs}" class="col-sm-3 column" data-admin="Models">
                 <img th:src="@{/design/{id}/captura(id=${d.id})}" alt="${d.name}" style="width:5%;" />
                 <a href="" class="link">
@@ -40,7 +40,7 @@
                 <div class="opt-admin">
                     <a href="" class="reportar">Reportar</a>
                     <form th:action="@{/design/delDesign/{id}/(id=${d.id})}" method="POST">
-                        <input type="Submit" class="reportar" value="Eliminar">
+                        <input type="Submit" class="reportar" value="Eliminar" style="margin-top: 3px;">
                     </form>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="opt-admin">
                     <a href="" class="reportar">Reportar</a>
                     <form th:action="@{/user/delUser/{id}/(id=${u.id})}" method="POST">
-                        <input type="submit" class="reportar" value="Eliminar">
+                        <input type="Submit" class="reportar" value="Eliminar" style="margin-top: 3px;">
                     </form>
                 </div>
             </div>

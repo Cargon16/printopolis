@@ -121,11 +121,6 @@ public class RootController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/pruebaAPI")
-	public String prueba(Model model, HttpServletRequest request) {
-		return "pruebaAPI";
-	}
-
 	@GetMapping("/username")
 	public String getUser(Model model, HttpServletRequest request) {
 		return "a";

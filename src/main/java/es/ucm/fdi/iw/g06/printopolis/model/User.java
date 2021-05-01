@@ -55,6 +55,7 @@ import lombok.AllArgsConstructor;
 		@NamedQuery(name = "User.byId", query = "SELECT u FROM User u WHERE u.id = :senderId"),
 		@NamedQuery(name = "User.delUser", query = "DELETE FROM User p WHERE p.id = :id"),
 		@NamedQuery(name = "User.delUserDesigns", query = "DELETE FROM Design p WHERE p.designer.id = :id"),
+		@NamedQuery(name = "User.delUserPrinters", query = "DELETE FROM Printer p WHERE p.impresor.id = :id"),
 		@NamedQuery(name = "User.getPunctuation", query = "SELECT SUM(punctuation) AS punt, COUNT(punctuation) AS numDes FROM Design p WHERE p.designer.id = :id")
 
 })
