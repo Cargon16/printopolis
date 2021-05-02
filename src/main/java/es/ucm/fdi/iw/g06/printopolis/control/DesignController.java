@@ -160,6 +160,18 @@ public class DesignController {
 		return "designs";
 	}
 
+	@GetMapping("/name")
+	public String nameDesigns(@PathVariable String name, Model model, HttpServletRequest request) {
+		List<Design> l;
+		log.info("??????????????????????????????????????????", name);
+		l = entityManager.createQuery("SELECT d FROM Design d WHERE d.name LIKE '%:name%'").getResultList();
+		model.addAttribute("categoryType", l);
+		model.addAttribute("categoryName", name);
+		
+
+		return "designs";
+	}
+
 
 	@PostMapping("/addToCart")
 	//@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
