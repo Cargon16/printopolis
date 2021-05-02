@@ -55,9 +55,9 @@ public class RootController {
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("cat", "all");
-		List<Design> l= entityManager.createNamedQuery("Design.listAll", Design.class).setMaxResults(3).getResultList();
+		List<Design> l= entityManager.createNamedQuery("Design.randomDesigns", Design.class).setMaxResults(3).getResultList();
 		model.addAttribute("designDest", l);
-		List<User> l1= entityManager.createNamedQuery("User.allImpresores", User.class).setMaxResults(3).getResultList();
+		List<User> l1= entityManager.createNamedQuery("User.randomImpresores", User.class).setMaxResults(3).getResultList();
 		model.addAttribute("printerDest", l1);
 		return "index";
 	}

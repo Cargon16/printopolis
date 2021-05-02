@@ -27,7 +27,7 @@ import lombok.Data;
 		@NamedQuery(name = "Design.categoryDesigns", query = "SELECT d FROM Design d "
 				+ "WHERE d.category = :category"),
 		@NamedQuery(name = "Design.listAll", query = "SELECT d FROM Design d"),
-
+		@NamedQuery(name = "Design.randomDesigns", query= "SELECT d FROM Design d ORDER BY RAND()"),
 		@NamedQuery(name = "Design.getDesign", query = "SELECT d FROM Design d "
 		+ "WHERE d.id = :designId"),
 		
