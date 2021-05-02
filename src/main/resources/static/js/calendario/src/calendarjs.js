@@ -211,9 +211,11 @@
  * @param       {Long}    idPrinter     
  * @param       {Object}    startDateTime                               The date that the calendar should start from by default (defaults to today).
  */
-function calendarJs(id, options, idPrinter, usuario, startDateTime) {
+function calendarJs(id, options, idPrinter, usuario, currentSale, currentPrinter, startDateTime) {
     var idImpresora = idPrinter;
     var user = usuario;
+    var currentsale = currentSale;
+    var currentprinter = currentPrinter;
     var _options = {},
         _this = this,
         _currentDate = null,
@@ -369,14 +371,14 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                     from: d,
                     to: d,
                     title: response[i].user,
-                    //description: "This is a another description of the event that has been added, so it can be shown in the pop-up dialog.",
                     location: "",
                     isAllDay: true,
                     color: "#484848",
                     colorText: "#F5F5F5",
                     colorBorder: "#282828",
                     id: response[i].id,
-                    printer: idImpresora
+                    printer: idImpresora,
+                    currentSale : response[i].sale
                 };
                 this.addEventOnCreate(newEvent, true);
             }
@@ -4805,7 +4807,18 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
      */
     this.addEvent = function (event, updateEvents, triggerEvent) {
         var added = false;
-        if (_events[toStorageDate(event.from)] == null || jQuery.isEmptyObject(_events[toStorageDate(event.from)])) {
+        var existe = false;
+        getAllEventsFunc(function (event) {
+            if (isEventVisible(event)) {
+                if (event.currentSale == currentsale) {
+                    existe = true;
+                    return;
+                }
+            }
+        });
+        var currentDate = new Date();
+        var fechaValida = (event.from >= currentDate);
+        if (currentprinter == 0 && fechaValida && !existe && (_events[toStorageDate(event.from)] == null || jQuery.isEmptyObject(_events[toStorageDate(event.from)]))) {
             if (event.from <= event.to) {
                 var storageDate = toStorageDate(event.from),
                     storageGuid = newGuid(),
@@ -4815,6 +4828,7 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
                     group = getString(event.group);
 
                 event.isAllDay = true;
+                event.currentSale = currentsale;
 
                 if (!_events.hasOwnProperty(storageDate)) {
                     _events[storageDate] = {};
@@ -5026,30 +5040,30 @@ function calendarJs(id, options, idPrinter, usuario, startDateTime) {
         var removed = false;
 
         getAllEventsFunc(function (event, storageDate, storageGuid) {
-            if(this.user == event.title)
-            if (storageGuid == id) {
-                updateEvents = !isDefined(updateEvents) ? true : updateEvents;
-                triggerEvent = !isDefined(triggerEvent) ? true : triggerEvent;
+            if (this.user == event.title)
+                if (storageGuid == id) {
+                    updateEvents = !isDefined(updateEvents) ? true : updateEvents;
+                    triggerEvent = !isDefined(triggerEvent) ? true : triggerEvent;
 
-                delete _events[storageDate][storageGuid];
-                removed = true;
+                    delete _events[storageDate][storageGuid];
+                    removed = true;
 
-                if (triggerEvent) {
-                    triggerOptionsEventWithEventData("onEventRemoved", event);
+                    if (triggerEvent) {
+                        triggerOptionsEventWithEventData("onEventRemoved", event);
+                    }
+
+                    if (updateEvents) {
+                        buildDayEvents();
+                        refreshOpenedViews();
+                    }
+
+                    go(config.rootUrl + "sale/delEvento?id=" + id, 'POST', params)
+                        .then((response) => {
+                            response.name;
+                        })
+
+                    return true;
                 }
-
-                if (updateEvents) {
-                    buildDayEvents();
-                    refreshOpenedViews();
-                }
-
-                go(config.rootUrl + "sale/delEvento?id=" + id, 'POST', params)
-                    .then((response) => {
-                        response.name;
-                    })
-
-                return true;
-            }
         });
 
         return removed;

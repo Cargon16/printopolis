@@ -95,13 +95,14 @@ public class SalesController {
 		List<SalesLine> l;
 		if (u.getSaleId() != null) {
 			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
+			log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", p);
 			if(p!= null)
-			model.addAttribute("printers", p.getName());
-			else model.addAttribute("printers", null);
+			model.addAttribute("printer", p.getName());
+			else model.addAttribute("printer", null);
 			l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class)
 					.setParameter("id", u.getSaleId().getId()).getResultList();
 		} else {
-			model.addAttribute("printers", null);
+			model.addAttribute("printer", null);
 			l = new ArrayList<SalesLine>();
 		}
 		List<Printer> p = entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
@@ -149,6 +150,8 @@ public class SalesController {
 	public String printerChoice(@PathVariable long id, Model model, HttpSession session) throws IOException {
 		model.addAttribute("id", id);
 		model.addAttribute("user", ((User) session.getAttribute("u")).getUsername());
+		model.addAttribute("currentSale", ((User) session.getAttribute("u")).getSaleId().getId());
+		model.addAttribute("currentPrinter", ((User) session.getAttribute("u")).getSaleId().getPrinter());
 		return "printerTurn";
 	}
 
@@ -168,7 +171,7 @@ public class SalesController {
 		e.setFechaPedido(date);
 		e.setImpresora(printer);
 		e.setId(id);
-		// e.setSale(sale);
+		e.setSale(((User) session.getAttribute("u")).getSaleId().getId());
 		e.setUser(user);
 		entityManager.persist(e);
 
@@ -207,11 +210,14 @@ public class SalesController {
 			throws IOException {
 		entityManager.createNamedQuery("Evento.delEvento").setParameter("id", id).executeUpdate();
 		entityManager.flush();
-
+		Sales s = ((User) session.getAttribute("u")).getSaleId();
+		s.setPrinter(new Long(0));
+		entityManager.merge(s);
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode rootNode = mapper.createObjectNode();
 		rootNode.put("id", id);
 		rootNode.put("created", false);
+		rootNode.put("user", ((User) session.getAttribute("u")).getUsername());
 		String json = mapper.writeValueAsString(rootNode);
 
 		messagingTemplate.convertAndSend("/topic/printer", json);

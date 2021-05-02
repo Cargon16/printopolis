@@ -28,6 +28,8 @@
                 var id = /*[[${id}]]*/ 0;
                 var user = /*[[${user}]]*/ '';
                 var userActual = /*[[${session.u.username}]]*/ '';
+                var currentSale = /*[[${currentSale}]]*/ 0;
+                var currentPrinter = /*[[${currentPrinter}]]*/ 0;
                 console.log(id);
                 var calendarInstance = new calendarJs("myCalendar", {
                     exportEventsEnabled: false,
@@ -38,7 +40,7 @@
                     organizerName: "Printopolis",
                     organizerEmailAddress: "Printopolis@email.com",
                     showDayNumberOrdinals: false
-                }, id, user);
+                }, id, user, currentSale, currentPrinter);
                 ws.receive = (m) => {
                     if(m.created){
                     var date = new Date(m.from);
@@ -57,6 +59,8 @@
                     calendarInstance.addEventOnCreate(newEvent, true);
                 }else{
                     calendarInstance.notifyRemoveEvent(m.id, true);
+                    if(m.user == userActual)
+                        calendarInstance.currentPrinter =0;
                 }
                 }
                 /*]]>*/
