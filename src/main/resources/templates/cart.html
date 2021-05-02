@@ -33,7 +33,7 @@
                     <label>Cantidad:</label>
                     <p class="cantidad" th:text="${p.quantity}"></p>
 
-                    <!-- <img th:if="${p.printer > 0}" th:src="@{/img/printer.png}" height="30" width="30" th:text="${p.printer}" alt="Printer"> -->
+                    <img th:if="${printer != null}" th:src="@{/img/printer.png}" height="30" width="30" th:alt="${printer}">
                 </div>
             </div>
 

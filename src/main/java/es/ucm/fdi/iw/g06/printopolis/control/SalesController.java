@@ -75,33 +75,39 @@ public class SalesController {
 
 	@GetMapping("/{id}")
 	public String getSale(@PathVariable long id, Model model) throws IOException {
-	   List<SalesLine> l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class).setParameter("id", id).getResultList();
-       model.addAttribute("products", l);
-	   
-       return "cart";
+		List<SalesLine> l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class)
+				.setParameter("id", id).getResultList();
+		model.addAttribute("products", l);
+
+		return "cart";
 	}
 
-    @GetMapping("/{id}/payments")
+	@GetMapping("/{id}/payments")
 	public String getPayment(@PathVariable long id, Model model) throws IOException {
-	   Sales l = entityManager.createNamedQuery("Sales.sale", Sales.class).setParameter("id", id).getSingleResult();
-       model.addAttribute("sales", l);
-       return "payment";
+		Sales l = entityManager.createNamedQuery("Sales.sale", Sales.class).setParameter("id", id).getSingleResult();
+		model.addAttribute("sales", l);
+		return "payment";
 	}
 
 	@GetMapping("/")
 	public String openCart(Model model, HttpSession session) throws IOException {
-	   User u = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
-	   List<SalesLine> l;
-	   if(u.getSaleId() != null)
-	   l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class).setParameter("id", u.getSaleId().getId()).getResultList();
-	   else
-	   l = new ArrayList<SalesLine>();
-
-	   List<Printer> p = entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
-
-       model.addAttribute("products", l);
-	   model.addAttribute("printers", p);
-       return "cart";
+		User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+		List<SalesLine> l;
+		if (u.getSaleId() != null) {
+			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
+			if(p!= null)
+			model.addAttribute("printers", p.getName());
+			else model.addAttribute("printers", null);
+			l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class)
+					.setParameter("id", u.getSaleId().getId()).getResultList();
+		} else {
+			model.addAttribute("printers", null);
+			l = new ArrayList<SalesLine>();
+		}
+		List<Printer> p = entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
+		model.addAttribute("products", l);
+		model.addAttribute("printers", p);
+		return "cart";
 	}
 
 	@Transactional
@@ -110,43 +116,47 @@ public class SalesController {
 		Sales compra = entityManager.find(Sales.class, id);
 		compra.setPaid(true);
 		entityManager.merge(compra);
-		User us = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		User us = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
 		us.setSaleId(null);
 
-		List<SalesLine> l = entityManager.createNamedQuery("Sales.getProducts", SalesLine.class).setParameter("id", id).getResultList();
-		for(int i = 0; i < l.size(); ++i){
-			Design d = entityManager.createNamedQuery("Design.getDesign", Design.class).setParameter("designId", l.get(i).getDesign()).getSingleResult();
-			d.setNumVentas(d.getNumVentas()+1);
+		List<SalesLine> l = entityManager.createNamedQuery("Sales.getProducts", SalesLine.class).setParameter("id", id)
+				.getResultList();
+		for (int i = 0; i < l.size(); ++i) {
+			Design d = entityManager.createNamedQuery("Design.getDesign", Design.class)
+					.setParameter("designId", l.get(i).getDesign()).getSingleResult();
+			d.setNumVentas(d.getNumVentas() + 1);
 		}
 
 		return "redirect:/user/" + us.getId();
-	 }
+	}
 
 	@Transactional
 	@ResponseBody
 	@GetMapping("/numberDesign")
 	public String pay(Model model, HttpSession session) throws IOException {
-		try{
-		User u = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
-		Long cont = entityManager.createNamedQuery("SalesLine.numProducts", Long.class).setParameter("id", u.getId()).getSingleResult();
-		return "{\"num\": \"" + cont + "\"}";
-		}catch(Exception e){
+		try {
+			User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+			Long cont = entityManager.createNamedQuery("SalesLine.numProducts", Long.class)
+					.setParameter("id", u.getId()).getSingleResult();
+			return "{\"num\": \"" + cont + "\"}";
+		} catch (Exception e) {
 			return "{\"num\": \"" + 0 + "\"}";
 		}
-	 }
+	}
 
-	 @Transactional
-	 @GetMapping("/printerChoice/{id}")
+	@Transactional
+	@GetMapping("/printerChoice/{id}")
 	public String printerChoice(@PathVariable long id, Model model, HttpSession session) throws IOException {
 		model.addAttribute("id", id);
-		model.addAttribute("user", ((User)session.getAttribute("u")).getUsername());
+		model.addAttribute("user", ((User) session.getAttribute("u")).getUsername());
 		return "printerTurn";
-	 }
-	 @PostMapping("/addEvent")
-	 @Transactional
-	 @ResponseBody
-	 public String addEvent(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
-		Sales s = ((User)session.getAttribute("u")).getSaleId();
+	}
+
+	@PostMapping("/addEvent")
+	@Transactional
+	@ResponseBody
+	public String addEvent(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
+		Sales s = ((User) session.getAttribute("u")).getSaleId();
 		ObjectMapper mapper = new ObjectMapper();
 		Date date = mapper.convertValue(o.get("evento").get("date"), Date.class);
 		Long printer = mapper.convertValue(o.get("evento").get("printer"), Long.class);
@@ -158,7 +168,7 @@ public class SalesController {
 		e.setFechaPedido(date);
 		e.setImpresora(printer);
 		e.setId(id);
-		//e.setSale(sale);
+		// e.setSale(sale);
 		e.setUser(user);
 		entityManager.persist(e);
 
@@ -173,25 +183,28 @@ public class SalesController {
 
 		messagingTemplate.convertAndSend("/topic/printer", json);
 		return "{\"name\": \"" + e.getId() + "\"}";
-	 }
+	}
 
 	@RequestMapping(value = "/getEventos", method = RequestMethod.GET)
 	@Transactional
 	@ResponseBody
-	public List<Evento> getEventos(@RequestParam(name = "id", required = false) Long id, Model model, HttpSession session) throws IOException {
-		try{
-			List<Evento> kes = entityManager.createNamedQuery("Evento.getPrinterEvents", Evento.class).setParameter("id", id).getResultList();
-		return kes;
-		}catch(Exception e){
+	public List<Evento> getEventos(@RequestParam(name = "id", required = false) Long id, Model model,
+			HttpSession session) throws IOException {
+		try {
+			List<Evento> kes = entityManager.createNamedQuery("Evento.getPrinterEvents", Evento.class)
+					.setParameter("id", id).getResultList();
+			return kes;
+		} catch (Exception e) {
 			List<Evento> l = new ArrayList<Evento>();
 			return l;
 		}
-	 }
+	}
 
 	@RequestMapping(value = "/delEvento", method = RequestMethod.POST)
 	@Transactional
 	@ResponseBody
-	public String delEventos(@RequestParam(name = "id", required = false) String id, Model model, HttpSession session) throws IOException {
+	public String delEventos(@RequestParam(name = "id", required = false) String id, Model model, HttpSession session)
+			throws IOException {
 		entityManager.createNamedQuery("Evento.delEvento").setParameter("id", id).executeUpdate();
 		entityManager.flush();
 
@@ -204,6 +217,6 @@ public class SalesController {
 		messagingTemplate.convertAndSend("/topic/printer", json);
 
 		return "{\"name\": \"" + "borrado" + "\"}";
-	 }
+	}
 
 }
