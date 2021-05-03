@@ -160,11 +160,10 @@ public class DesignController {
 		return "designs";
 	}
 
-	@GetMapping("/name")
-	public String nameDesigns(@PathVariable String name, Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/name", method = RequestMethod.GET)
+	public String nameDesigns(@RequestParam("search") String name, Model model, HttpServletRequest request) {
 		List<Design> l;
-		log.info("??????????????????????????????????????????", name);
-		l = entityManager.createQuery("SELECT d FROM Design d WHERE d.name LIKE '%:name%'").getResultList();
+		l = entityManager.createQuery("SELECT d FROM Design d WHERE d.name like :name").setParameter("name", "%" + name + "%").getResultList();
 		model.addAttribute("categoryType", l);
 		model.addAttribute("categoryName", name);
 		
