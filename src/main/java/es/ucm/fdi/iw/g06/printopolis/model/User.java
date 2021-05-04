@@ -66,9 +66,7 @@ public class User implements Transferable<User.Transfer> {
 
 	public enum Role {
 		USER, // used for logged-in, non-priviledged users
-		ADMIN, // used for maximum priviledged users
-		DESIGNER, // used to identify design's owners
-		PRINTER, // used to indentify print's users
+		ADMIN // used for maximum priviledged users
 	}
 
 	// do not change these fields

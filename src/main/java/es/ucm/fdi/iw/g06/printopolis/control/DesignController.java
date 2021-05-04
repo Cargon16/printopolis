@@ -197,7 +197,6 @@ public class DesignController {
 			sl.setDesign(d.getId());
 			sl.setPrice(d.getPrice());
 			compra.setTotal_price(compra.getTotal_price() + d.getPrice());
-			sl.setQuantity(1);
 			sl.setSale(compra.getId());
 			entityManager.persist(sl);
 			entityManager.flush();
@@ -210,9 +209,13 @@ public class DesignController {
 
 	@Transactional
 	@PostMapping("/delDesign/{id}")
-	public String delDesign(@PathVariable long id, Model model){
+	public String delDesign(@PathVariable long id, Model model, HttpSession session){
+		User u = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		Design d = entityManager.find(Design.class, id);
+		if(u.hasRole(User.Role.ADMIN) || d.getDesigner().getId() == u.getId()){
 		entityManager.createNamedQuery("Design.delDesign").setParameter("id", id).executeUpdate();
 		entityManager.flush();
+		}
 
 		return "redirect:/admin/";
 	}

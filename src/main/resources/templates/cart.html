@@ -23,29 +23,28 @@
     <div class="contenedor_productos">
         <form class="cart">
             <div class="cartProds">
+                <div th:if="${products.size() == 0}">
+                    <p>Tu cesta está vacía</p>
+                </div>
                 <div th:each="p:${products}" class="apartado">
                     <label>Diseño:</label>
-                    <p class="cantidad" th:text="${p.design}"></p>
+                    <p class="cantidad" th:text="${p[4]}"></p>
 
                     <label>Precio:</label>
-                    <p class="cantidad" th:text="${p.price}"></p>
-
-                    <label>Cantidad:</label>
-                    <p class="cantidad" th:text="${p.quantity}"></p>
+                    <p class="cantidad" th:text="${p[1]}"></p>
 
                     <img th:if="${printer != null}" th:src="@{/img/printer.png}" height="30" width="30" th:alt="${printer}">
                 </div>
             </div>
 
-            <div class="dropdown">
+            <div th:if="${products.size() > 0}" class="dropdown">
                 <button class="dropbtn">Añadir impresora</button>
                 <div class="dropdown-content">
                     <a th:each = "pr: ${printers}" th:href="@{/sale/printerChoice/{id}/(id=${pr.id})}"  th:text ="${pr.name}"></a>
                 </div>
             </div>
 
-            <div id="fin">
-                <!-- <a class="input btn" id="boton" href="/sale/printerChoice" value="Añadir impresora">Añadir impresora</a> -->
+            <div th:if="${products.size() > 0}" id="fin">
                 <a th:if="${session.u.saleId}" th:href="@{/sale/{id}/payments/(id=${session.u.saleId.id})}"
                     class="input" id="boton">Tramitar</a>
             </div>

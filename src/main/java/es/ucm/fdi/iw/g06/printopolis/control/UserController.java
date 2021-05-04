@@ -239,11 +239,14 @@ public class UserController {
 
 	@Transactional
 	@PostMapping("/delUser/{id}")
-	public String delUser(@PathVariable long id, Model model) {
-		entityManager.createNamedQuery("User.delUserDesigns").setParameter("id", id).executeUpdate();
-		entityManager.createNamedQuery("User.delUserPrinters").setParameter("id", id).executeUpdate();
-		entityManager.createNamedQuery("User.delUser").setParameter("id", id).executeUpdate();
-		entityManager.flush();
+	public String delUser(@PathVariable long id, Model model, HttpSession session) {
+		User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+		if (u.hasRole(User.Role.ADMIN)) {
+			entityManager.createNamedQuery("User.delUserDesigns").setParameter("id", id).executeUpdate();
+			entityManager.createNamedQuery("User.delUserPrinters").setParameter("id", id).executeUpdate();
+			entityManager.createNamedQuery("User.delUser").setParameter("id", id).executeUpdate();
+			entityManager.flush();
+		}
 
 		return "redirect:/admin/";
 	}
@@ -251,7 +254,7 @@ public class UserController {
 	// @GetMapping("/username")
 	@RequestMapping(value = "/username", method = RequestMethod.GET)
 	@ResponseBody // <-- "lo que devuelvo es la respuesta, tal cual"
-	public String getUser(@RequestParam(name = "id", required = false) String uname){
+	public String getUser(@RequestParam(name = "id", required = false) String uname) {
 		try {
 			User u = buscaUsuarioOLanzaExcepcion(uname);
 			String s = "{\"name\": \"" + u.getFirstName() + "\"}";

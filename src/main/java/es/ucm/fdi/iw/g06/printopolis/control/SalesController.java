@@ -92,18 +92,18 @@ public class SalesController {
 	@GetMapping("/")
 	public String openCart(Model model, HttpSession session) throws IOException {
 		User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
-		List<SalesLine> l;
+		List<Object> l;
 		if (u.getSaleId() != null) {
 			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
-			log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", p);
 			if(p!= null)
 			model.addAttribute("printer", p.getName());
 			else model.addAttribute("printer", null);
-			l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class)
+			l = entityManager.createNamedQuery("SalesLine.salesProducts")
 					.setParameter("id", u.getSaleId().getId()).getResultList();
+					log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l);
 		} else {
 			model.addAttribute("printer", null);
-			l = new ArrayList<SalesLine>();
+			l = new ArrayList<Object>();
 		}
 		List<Printer> p = entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
 		model.addAttribute("products", l);
