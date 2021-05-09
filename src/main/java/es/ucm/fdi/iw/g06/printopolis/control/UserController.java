@@ -50,6 +50,7 @@ import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Message;
 import es.ucm.fdi.iw.g06.printopolis.model.Printer;
+import es.ucm.fdi.iw.g06.printopolis.model.Sales;
 import es.ucm.fdi.iw.g06.printopolis.model.Transferable;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.Message.Transfer;
@@ -116,6 +117,10 @@ public class UserController {
 				.setParameter("userId", u.getId()).getResultList();
 		Object punt = entityManager.createNamedQuery("User.getPunctuation").setParameter("id", u.getId())
 				.getSingleResult();
+		
+		List<Sales> l2 = entityManager.createNamedQuery("Sales.getUserSales", Sales.class)
+		.setParameter("id", u.getId()).getResultList();
+		model.addAttribute("sales", l2);
 
 		System.out.println(l1.toString());
 		model.addAttribute("userPrinters", l1);

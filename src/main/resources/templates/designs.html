@@ -40,7 +40,7 @@
     <div class="contenedor_diseños">
         <div th:each="d: ${categoryType}" class="diseño">
             <div class="perfilUp">
-                <a th:href="@{/user/{id}/(id=${session.u.id})}">
+                <a th:href="@{/user/{id}/(id=${d.designer.id})}">
                     <img class="img-user" th:src="@{/img/user.png}" alt="Avatar">
                 </a>
                 <span class="nombre" th:text="${d.name}"></span>

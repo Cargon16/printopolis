@@ -38,8 +38,8 @@
                     </div>
                 </a>
                 <div class="opt-admin">
-                    <a href="" class="reportar">Reportar</a>
-                    <form th:action="@{/design/delDesign/{id}/(id=${d.id})}" method="POST">
+                    <form th:action="@{/design/delDesign/{id}/(id=${d.id})}" style="display: flex; flex-direction: row;" method="POST">
+                        <a href="" class="reportar">Reportar</a>
                         <input type="Submit" class="reportar" value="Eliminar" style="margin-top: 3px;">
                     </form>
                 </div>
@@ -53,8 +53,8 @@
                     </div>
                 </a>
                 <div class="opt-admin">
-                    <a href="" class="reportar">Reportar</a>
-                    <form th:action="@{/user/delUser/{id}/(id=${u.id})}" method="POST">
+                    <form th:action="@{/user/delUser/{id}/(id=${u.id})}" style="display: flex; flex-direction: row;" method="POST">
+                        <a href="" class="reportar">Reportar</a>
                         <input type="Submit" class="reportar" value="Eliminar" style="margin-top: 3px;">
                     </form>
                 </div>
