@@ -79,7 +79,7 @@
                                 <model-viewer th:src="@{/design/{id}/design(id=${d.id})}" auto-rotate camera-controls>
                                 </model-viewer>
                                 <h3>Descripción</h3>
-                                <p th:text="${d.description}"></p>
+                                <p th:text="${d.description}" style="word-break: break-all;"></p>
                             </div>
                         </div>
                     </div>

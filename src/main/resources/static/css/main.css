@@ -79,6 +79,9 @@ header #icon{
     font-size: 14px;
     align-items: center;
 }
+.btn-perfil:hover{
+    color:white;
+}
 
 /*---------- Barra de buscar ------------------*/
 .form-buscar{

@@ -18,8 +18,7 @@
 
             <div class="btn-login" th:if="${session.u}">
                 <div style="display: flex; flex-direction: row; margin-left: auto; width: 80%;">
-                    <a th:href="@{/user/{id}/(id=${session.u.id})}" class="btn-perfil"
-                        th:utext="@{Hola} + ' ' + ${session.u.firstName} + '<br />' + @{Tu cuenta}"></a>
+                    <a th:href="@{/user/{id}/(id=${session.u.id})}" class="btn-perfil" >Tu cuenta</a>
                     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
                     <a th:href="@{/sale/}">
                         <div style="display: flex; flex-direction: row; margin-left: auto; width: 65%;">
