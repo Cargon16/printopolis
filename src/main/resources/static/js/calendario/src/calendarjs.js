@@ -4884,6 +4884,7 @@ function calendarJs(id, options, idPrinter, usuario, currentSale, currentPrinter
                 }
             }
         }
+        else showConfirmationDialog();
 
         return added;
     };
