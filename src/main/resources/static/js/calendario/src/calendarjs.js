@@ -4884,7 +4884,9 @@ function calendarJs(id, options, idPrinter, usuario, currentSale, currentPrinter
                 }
             }
         }
-        else showConfirmationDialog();
+        else {
+            window.alert("No puedes añadir mas eventos")
+        }
 
         return added;
     };
