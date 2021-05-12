@@ -28,10 +28,10 @@
                 </div>
                 <div th:each="p:${products}" class="apartado">
                     <label>Diseño:</label>
-                    <p class="cantidad" th:text="${p[4]}"></p>
+                    <p class="cantidad" th:text="${p[5]}"></p>
 
                     <label>Precio:</label>
-                    <p class="cantidad" th:text="${p[1]}"></p>
+                    <p class="cantidad" th:text="${p[2]}"></p>
 
                     <img th:if="${printer != null}" th:src="@{/img/printer.png}" height="30" width="30" th:alt="${printer}">
                 </div>

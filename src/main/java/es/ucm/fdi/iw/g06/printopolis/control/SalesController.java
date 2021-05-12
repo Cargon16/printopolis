@@ -2,18 +2,26 @@ package es.ucm.fdi.iw.g06.printopolis.control;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 import javax.persistence.EntityManager;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,11 +31,18 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+//import com.google.common.io.Files;
+import com.google.common.net.HttpHeaders;
+import java.nio.file.Files;
 
 import org.apache.catalina.security.SecurityConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.engine.jdbc.StreamUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -95,12 +110,13 @@ public class SalesController {
 		List<Object> l;
 		if (u.getSaleId() != null) {
 			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
-			if(p!= null)
-			model.addAttribute("printer", p.getName());
-			else model.addAttribute("printer", null);
-			l = entityManager.createNamedQuery("SalesLine.salesProducts")
-					.setParameter("id", u.getSaleId().getId()).getResultList();
-					log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l);
+			if (p != null)
+				model.addAttribute("printer", p.getName());
+			else
+				model.addAttribute("printer", null);
+			l = entityManager.createNamedQuery("SalesLine.salesProducts").setParameter("id", u.getSaleId().getId())
+					.getResultList();
+			log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l);
 		} else {
 			model.addAttribute("printer", null);
 			l = new ArrayList<Object>();
@@ -225,4 +241,18 @@ public class SalesController {
 		return "{\"name\": \"" + "borrado" + "\"}";
 	}
 
+	@GetMapping(value = "/download/{id}"/*, produces = "application/zip"*/)
+	public void zipDownload(@PathVariable Long id, HttpServletResponse response, HttpSession session) throws IOException {
+		File file = localData.getFile("design", Long.toString(id));
+		FileInputStream in = new FileInputStream(file);
+		byte[] content = new byte[(int) file.length()];
+		in.read(content);
+		ServletContext sc = session.getServletContext();
+		String mimetype = sc.getMimeType(file.getName());
+		response.reset();
+		response.setContentType(mimetype);
+		response.setContentLength(content.length);
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName().concat(".glb") + "\"");
+		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream());
+	}
 }

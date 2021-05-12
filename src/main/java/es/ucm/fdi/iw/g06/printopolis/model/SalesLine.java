@@ -22,9 +22,10 @@ import lombok.Data;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "SalesLine.salesProducts", query = "SELECT l.id, l.price, l.sale, l.date, d.name FROM SalesLine l " + "JOIN Design d ON l.design = d.id WHERE l.sale = :id"),
+        @NamedQuery(name = "SalesLine.salesProducts", query = "SELECT l.id, l.design, l.price, l.sale, l.date, d.name FROM SalesLine l " + "JOIN Design d ON l.design = d.id WHERE l.sale = :id"),
         @NamedQuery(name = "SalesLine.numProducts", query = "SELECT COUNT(*) from SalesLine l JOIN Sales s ON l.sale = s.id JOIN User u ON s.id = u.SaleId.id WHERE u.id = :id"),
         @NamedQuery(name = "Printer.allPrinters", query= "SELECT p FROM Printer p"),
+        @NamedQuery(name = "SalesLine.salesProductsID", query = "SELECT l.design FROM SalesLine l WHERE l.sale = :id")
     })
 @Data
 public class SalesLine {

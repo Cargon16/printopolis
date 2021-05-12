@@ -118,8 +118,8 @@ public class UserController {
 		Object punt = entityManager.createNamedQuery("User.getPunctuation").setParameter("id", u.getId())
 				.getSingleResult();
 		
-		List<Sales> l2 = entityManager.createNamedQuery("Sales.getUserSales", Sales.class)
-		.setParameter("id", u.getId()).getResultList();
+		List<Object> l2 = entityManager.createNamedQuery("Sales.getAllSales", Object.class).setParameter("id", u.getId()).getResultList();
+		log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l2);
 		model.addAttribute("sales", l2);
 
 		System.out.println(l1.toString());

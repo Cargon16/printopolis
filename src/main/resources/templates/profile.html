@@ -208,13 +208,10 @@
                 <h2 style="margin-bottom: 2%;">Mis pedidos</h2>
                 <div th:each="c: ${sales}" style="display:flex; flex-direction:colum; margin-bottom: 10%;">
                     <div style="display:flex; flex-direction:row; align-items: center; margin-right: 3%;">
-                        <h3>Número de pedido: </h3>
-                        <p th:text="${c.id}"></p>
+                        <h3>Identificador del diseño: </h3>
+                        <p th:text="${c}"></p>
                     </div>
-                    <div style="display:flex; flex-direction:row; align-items: center; ">
-                        <h3>Importe: </h3>
-                        <p th:text="${c.total_price}"></p>
-                    </div>
+                    <a th:href="@{/sale/download/{id}/(id=${c})}">Descargar</a>
                 </div>
             </div>
         </div>
