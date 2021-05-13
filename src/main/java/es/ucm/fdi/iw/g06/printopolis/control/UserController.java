@@ -277,4 +277,39 @@ public class UserController {
 		else
 			throw new Exception("Existe el usuario");
 	}
+
+	@PostMapping("/report/{id}")
+	@ResponseBody
+	@Transactional
+	public String reportar(@PathVariable long id, Model model, HttpSession session)
+			throws JsonProcessingException {
+
+		String text = "Este mensaje es un aviso por actitud inapropiada. Mantenga las formas.";
+		User u = entityManager.find(User.class, id);
+		User sender = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+		model.addAttribute("user", u);
+
+		// construye mensaje, lo guarda en BD
+		Message m = new Message();
+		m.setRecipient(u);
+		m.setSender(sender);
+		m.setDateSent(LocalDateTime.now());
+		m.setText(text);
+		entityManager.persist(m);
+		entityManager.flush(); // to get Id before commit
+
+		// construye json
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode rootNode = mapper.createObjectNode();
+		rootNode.put("from", sender.getUsername());
+		rootNode.put("to", u.getUsername());
+		rootNode.put("text", text);
+		rootNode.put("id", m.getId());
+		String json = mapper.writeValueAsString(rootNode);
+
+		log.info("Sending a message to {} with contents '{}'", id, json);
+
+		messagingTemplate.convertAndSend("/user/" + u.getUsername() + "/queue/updates", json);
+		return "{\"result\": \"message sent.\"}";
+	}
 }

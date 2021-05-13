@@ -13,7 +13,7 @@ html{
     background-image: url(../img/fondo.png);
     background-repeat: to left;
     background-size: 100%;
-    height: 100%;
+    /* height: 100%; */
 }
 
 a{
