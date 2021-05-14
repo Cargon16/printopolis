@@ -118,8 +118,8 @@ public class UserController {
 		Object punt = entityManager.createNamedQuery("User.getPunctuation").setParameter("id", u.getId())
 				.getSingleResult();
 		
-		List<Sales> l2 = entityManager.createNamedQuery("Sales.getUserSales", Sales.class)
-		.setParameter("id", u.getId()).getResultList();
+		List<Object> l2 = entityManager.createNamedQuery("Sales.getAllSales", Object.class).setParameter("id", u.getId()).getResultList();
+		log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l2);
 		model.addAttribute("sales", l2);
 
 		System.out.println(l1.toString());
@@ -276,5 +276,40 @@ public class UserController {
 			return u;
 		else
 			throw new Exception("Existe el usuario");
+	}
+
+	@PostMapping("/report/{id}")
+	@ResponseBody
+	@Transactional
+	public String reportar(@PathVariable long id, Model model, HttpSession session)
+			throws JsonProcessingException {
+
+		String text = "Este mensaje es un aviso por actitud inapropiada. Mantenga las formas.";
+		User u = entityManager.find(User.class, id);
+		User sender = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+		model.addAttribute("user", u);
+
+		// construye mensaje, lo guarda en BD
+		Message m = new Message();
+		m.setRecipient(u);
+		m.setSender(sender);
+		m.setDateSent(LocalDateTime.now());
+		m.setText(text);
+		entityManager.persist(m);
+		entityManager.flush(); // to get Id before commit
+
+		// construye json
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode rootNode = mapper.createObjectNode();
+		rootNode.put("from", sender.getUsername());
+		rootNode.put("to", u.getUsername());
+		rootNode.put("text", text);
+		rootNode.put("id", m.getId());
+		String json = mapper.writeValueAsString(rootNode);
+
+		log.info("Sending a message to {} with contents '{}'", id, json);
+
+		messagingTemplate.convertAndSend("/user/" + u.getUsername() + "/queue/updates", json);
+		return "{\"result\": \"message sent.\"}";
 	}
 }

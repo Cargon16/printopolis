@@ -23,8 +23,8 @@ import lombok.Data;
 @NamedQueries({ @NamedQuery(name = "Sales.sale", query = "SELECT l FROM Sales l " + "WHERE l.id = :id"),
 		@NamedQuery(name = "Sales.getProducts", query = "SELECT l from SalesLine l JOIN Sales s ON l.sale = s.id "
 				+ "WHERE s.id = :id"),
-		@NamedQuery(name = "Sales.getUserSales", query = "SELECT l from Sales l WHERE l.user.id = :id")
-
+		@NamedQuery(name = "Sales.getUserSales", query = "SELECT l from Sales l WHERE l.user.id = :id"),
+		@NamedQuery(name = "Sales.getAllSales", query = "SELECT distinct l.design from SalesLine l JOIN Sales s ON l.sale = s.id WHERE s.user.id = :id")
 })
 @Data
 public class Sales {
