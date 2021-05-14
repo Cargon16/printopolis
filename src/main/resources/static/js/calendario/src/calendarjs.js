@@ -4884,9 +4884,10 @@ function calendarJs(id, options, idPrinter, usuario, currentSale, currentPrinter
                 }
             }
         }
-        else {
-            window.alert("No puedes añadir mas eventos")
-        }
+        // else {
+        //     window.dialog(false)
+        //     // window.alert("No puedes añadir mas eventos")
+        // }
 
         return added;
     };

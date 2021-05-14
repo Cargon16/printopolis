@@ -71,19 +71,19 @@
                         </select>
 
                         <label>Precio</label>
-                        <input type="number" name="precio" required min="0" placeholder="Precio">
+                        <input id="pre" type="number" name="precio" required min="0" placeholder="Precio">
                         <label>Nombre</label>
-                        <input type="text" name="diseno" required placeholder="Diseño">
+                        <input id="nom" type="text" name="diseno" required placeholder="Diseño">
                         <label>Descripción</label>
-                        <input type="text" name="about" placeholder="Describe el diseño">
+                        <input id="dec" type="text" name="about" placeholder="Describe el diseño">
                         <label>Volumen</label>
-                        <input type="number" name="volumen" placeholder="Volumen" min="1" required>
+                        <input id="vol" type="number" name="volumen" placeholder="Volumen" min="1" required>
                         <label>Fichero del diseño</label>
                         <input id="modelo3D" type="file" name="fichero" placeholder="Archivo" accept=".glb" multiple
                             max-file-size="1024" required>
                         <label>Captura del diseño (*opcional)</label>
                         <input type="file" name="captura" placeholder="Captura" accept=".jpg, .png">
-                        <input type="submit" onclick="validate()" value="Añadir">
+                        <input id="subir" type="submit" onclick="validate()" value="Añadir">
                     </form>
                 </div>
 

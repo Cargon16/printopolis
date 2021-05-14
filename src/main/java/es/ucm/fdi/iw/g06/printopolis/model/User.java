@@ -91,7 +91,7 @@ public class User implements Transferable<User.Transfer> {
 	private String aboutMe;
 	@OneToOne
 	@JoinColumn(name = "user")
-	private Sales SaleId;
+	private Sales saleId;
 
 	// desginer specific fields, related with designs
 	@OneToMany
@@ -158,6 +158,6 @@ public class User implements Transferable<User.Transfer> {
 
 	@Override
 	public String toString() {
-		return username + " (id: " + id + " role: " + roles + " venta: " +  SaleId + ")";
+		return username + " (id: " + id + " role: " + roles + " venta: " +  saleId + ")";
 	}
 }

@@ -46,9 +46,9 @@
             </div>
 
             <div th:if="${products.size() > 0}" class="dropdown">
-                <button class="dropbtn">Añadir impresora</button>
+                <button id ="drop" class="dropbtn">Añadir impresora</button>
                 <div class="dropdown-content">
-                    <a th:each = "pr: ${printers}" th:href="@{/sale/printerChoice/{id}/(id=${pr.id})}"  th:text ="${pr.name}"></a>
+                    <a th:each = "pr: ${printers}" th:href="@{/sale/printerChoice/{id}/(id=${pr.id})}" th:id = "kaka" th:text ="${pr.name}"></a>
                 </div>
             </div>
 

@@ -180,6 +180,7 @@ public class DesignController {
 		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
 		Design d = entityManager.createNamedQuery("Design.getDesign", Design.class).setParameter("designId", id).getSingleResult();
 		Sales compra = user.getSaleId();
+
 		if(user.getSaleId() == null){
 			compra = new Sales();
 			compra.setUser(user);
