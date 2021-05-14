@@ -173,7 +173,6 @@ public class DesignController {
 
 
 	@PostMapping("/addToCart")
-	//@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
 	@Transactional
 	@ResponseBody
 	public String addToCart(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
@@ -204,7 +203,6 @@ public class DesignController {
 		log.info("Added new product to cart {}", d.getName());
 
 		return "{\"name\": \"" + compra.getId() + "\"}";
-		//return "redirect:/";
 	}
 
 	@Transactional
