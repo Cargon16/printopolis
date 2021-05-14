@@ -25,6 +25,8 @@ import lombok.Data;
         @NamedQuery(name = "SalesLine.salesProducts", query = "SELECT l.id, l.price, l.sale, l.date, d.name FROM SalesLine l " + "JOIN Design d ON l.design = d.id WHERE l.sale = :id"),
         @NamedQuery(name = "SalesLine.numProducts", query = "SELECT COUNT(*) from SalesLine l JOIN Sales s ON l.sale = s.id JOIN User u ON s.id = u.SaleId.id WHERE u.id = :id"),
         @NamedQuery(name = "Printer.allPrinters", query= "SELECT p FROM Printer p"),
+        @NamedQuery(name = "SalesLine.getTotalPrice", query = "SELECT SUM(sl.price) FROM SalesLine sl WHERE sl.sale = :id"),
+        // @NamedQuery(name = "SalesLine.delProd", query = "DELETE FROM SalesLine sl WHERE sl.id = :id"),
     })
 @Data
 public class SalesLine {

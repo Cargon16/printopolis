@@ -99,6 +99,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if(cart != null)
     designCarrito();
 
+  //   //Borrar producto del carrito
+  //   $(".del").on('click', function (e) {
+  //     //let idOfTarget = document.getElementById("disenio").value;
+
+  //     // let url = this.parentElement.action
+      
+  //     let id;
+  //     let name = this.name
+  //     let form = document.getElementById(name)
+  //     let url = form.action
+
+  //     e.preventDefault(); // <-- evita que se envíe de la forma normal
+  //     go(config.rootUrl + "sale/delProduct/" + id, 'POST', // <-- hace el `fetch`, y recibe resultados
+  //         {})
+  //         .then(d => { console.log("report done", d); })
+  //         .catch(e => console.log("bad luck, evil is better", e))
+  // });
 })
 
 async function go(url, method, data = {}) {
@@ -181,3 +198,9 @@ async function designLiked(id) {
       document.getElementById(id).innerHTML = num;
     })
 }
+
+
+
+
+
+

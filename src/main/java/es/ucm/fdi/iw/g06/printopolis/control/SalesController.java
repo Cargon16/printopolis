@@ -77,6 +77,7 @@ public class SalesController {
 	public String getSale(@PathVariable long id, Model model) throws IOException {
 		List<SalesLine> l = entityManager.createNamedQuery("SalesLine.salesProducts", SalesLine.class)
 				.setParameter("id", id).getResultList();
+
 		model.addAttribute("products", l);
 
 		return "cart";
@@ -93,6 +94,7 @@ public class SalesController {
 	public String openCart(Model model, HttpSession session) throws IOException {
 		User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
 		List<Object> l;
+		Double t;
 		if (u.getSaleId() != null) {
 			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
 			if(p!= null)
@@ -100,12 +102,14 @@ public class SalesController {
 			else model.addAttribute("printer", null);
 			l = entityManager.createNamedQuery("SalesLine.salesProducts")
 					.setParameter("id", u.getSaleId().getId()).getResultList();
-					log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l);
+			t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class).setParameter("id", u.getSaleId().getId()).getSingleResult();
+		model.addAttribute("price", t);
 		} else {
 			model.addAttribute("printer", null);
 			l = new ArrayList<Object>();
 		}
 		List<Printer> p = entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
+		log.info("KAKAKAKAKAKKAKAKAKAKAKAKAKAKAKAKAKKAKAKAKAKKAKAKAKAKAKKAKAKAKAKAKAKKAKAKAKAKAKKAKAKA {}", l);
 		model.addAttribute("products", l);
 		model.addAttribute("printers", p);
 		return "cart";
@@ -224,5 +228,18 @@ public class SalesController {
 
 		return "{\"name\": \"" + "borrado" + "\"}";
 	}
+
+	// @RequestMapping(value = "/delProduct/{id}", method = RequestMethod.POST)
+	// @Transactional
+	// @ResponseBody
+	// public String delProducts(@PathVariable Long id, Model model, HttpSession session) throws IOException {
+		
+	// 	entityManager.createNamedQuery("SalesLine.delProd").setParameter("id", id).executeUpdate();
+	// 	entityManager.flush();
+	// 	User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+	// 	List<Object> l = entityManager.createNamedQuery("SalesLine.salesProducts").setParameter("id", u.getSaleId().getId()).getResultList();
+
+	// 	return "{\"listProds\": \"" + l + "\"}";
+	// }
 
 }

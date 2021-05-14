@@ -17,6 +17,75 @@
         Nav goes here
     </nav>
 
+
+    <!-- <div class="row"> -->
+        <!-- <div class="col-75"> -->
+          <div class="container">
+            <form th:action="@{/sale/{id}/processPayment/(id=${session.u.saleId.id})}" method="POST">
+      
+              <div class="row">
+                <div class="colIzq">
+                  <h3>Billing Address</h3>
+                  <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                  <input required type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                  <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                  <input required type="text" id="email" name="email" placeholder="john@example.com">
+                  <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                  <input required type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                  <input class="input" type="text" th:value="${sales.address}">
+                  <label for="city"><i class="fa fa-institution"></i> City</label>
+                  <input required type="text" id="city" name="city" placeholder="New York">
+      
+                  <div class="row">
+                    <div class="colSubIzq">
+                      <label for="state">State</label>
+                      <input required type="text" id="state" name="state" placeholder="NY">
+                    </div>
+                    <div class="colSubIzq">
+                      <label for="zip">Zip</label>
+                      <input required type="text" id="zip" name="zip" placeholder="10001">
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="colDer">
+                  <h3>Payment</h3>
+                  <label for="fname">Accepted Cards</label>
+                  <div class="icon-container">
+                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                  </div>
+                  <label for="cname">Name on Card</label>
+                  <input required type="text" id="cname" name="cardname" placeholder="John More Doe">
+                  <label for="ccnum">Credit card number</label>
+                  <input required type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                  <label for="expmonth">Exp Month</label>
+                  <input required type="text" id="expmonth" name="expmonth" placeholder="September">
+      
+                  <div class="row">
+                    <div class="colSubDer">
+                      <label for="expyear">Exp Year</label>
+                      <input required type="text" id="expyear" name="expyear" placeholder="2018">
+                    </div>
+                    <div class="colSubDer">
+                      <label for="cvv">CVV</label>
+                      <input required type="text" id="cvv" name="cvv" placeholder="352">
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+              <input type="submit" value="Continue to checkout" class="btn">
+            </form>
+          </div>
+        <!-- </div> -->
+
+
+
+
+<!-- 
     <div class="contenedor_productos">
 
         <form th:action="@{/sale/{id}/processPayment/(id=${session.u.saleId.id})}" method="POST" class="cart">
@@ -33,10 +102,10 @@
             <div id="fin">
                 <input class="input" id="boton" type="submit" value="Comprar">
             </div>
-        </form>
+        </form> -->
         
 
-    </div>
+    <!-- </div> -->
 
     <footer th:replace="fragments/footer.html :: footer">
         Footer goes here
