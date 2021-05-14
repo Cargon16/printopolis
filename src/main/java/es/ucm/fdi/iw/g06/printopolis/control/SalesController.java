@@ -253,6 +253,6 @@ public class SalesController {
 		response.setContentType(mimetype);
 		response.setContentLength(content.length);
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName().concat(".glb") + "\"");
-		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream());
+		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream()); 
 	}
 }
