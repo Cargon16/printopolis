@@ -31,8 +31,8 @@
                     <p>Tu cesta está vacía</p>
                 </div>
                 <div th:each="p:${products}" class="apartado">
-                    <p class="cantidad" th:text="${p[4]}"></p>
-                    <span class="price" th:text="${p[1]}"></span>
+                    <p class="cantidad" th:text="${p[5]}"></p>
+                    <span class="price" th:text="${p[2]}"></span>
                     <img th:if="${printer != null}" th:src="@{/img/printer.png}" height="30" width="30" th:alt="${printer}">
                     
                     <!-- <form th:id="${p[0]}" method="POST" th:action="@{/sale/delProduct/{id}/(id=${p[0]})}">
