@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -229,6 +230,20 @@ public class SalesController {
 		return "{\"name\": \"" + "borrado" + "\"}";
 	}
 
+	@GetMapping(value = "/download/{id}"/*, produces = "application/zip"*/)
+	public void zipDownload(@PathVariable Long id, HttpServletResponse response, HttpSession session) throws IOException {
+		File file = localData.getFile("design", Long.toString(id));
+		FileInputStream in = new FileInputStream(file);
+		byte[] content = new byte[(int) file.length()];
+		in.read(content);
+		ServletContext sc = session.getServletContext();
+		String mimetype = sc.getMimeType(file.getName());
+		response.reset();
+		response.setContentType(mimetype);
+		response.setContentLength(content.length);
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName().concat(".glb") + "\"");
+		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream()); 
+	}
 	// @RequestMapping(value = "/delProduct/{id}", method = RequestMethod.POST)
 	// @Transactional
 	// @ResponseBody
