@@ -20,31 +20,52 @@
         <div id="filtrar">
             Filtrar por 
             
-            <a class="button_filtro" href="#" title="">
+            <!-- <a class="button_filtro" href="#" title="">
                 <b>Favorito</b> 
-            </a>
+            </a> -->
         
             <a class="button_filtro" href="#" title="">
-                <b>Número de ventas</b>   
+                <b>Número de impresoras</b>   
             </a>
         
             <a class="button_filtro" href="#" title="">
                 <b>Número de diseños</b> 
             </a>
+
+            <form action="#" method="POST" id="buscarPuntos">
+                <input class="button_filtro" type="submit" value="Puntuación">
+                <select id="selectPuntos" name="puntos">
+                    <option value="cero">0</option>
+                    <option value="uno">1</option>
+                    <option value="dos">2</option>
+                    <option value="tres">3</option>
+                    <option value="cuatro">4</option>
+                    <option value="cinco">5</option>
+                    <option value="seis">6</option>
+                    <option value="siete">7</option>
+                    <option value="ocho">8</option>
+                    <option value="nueve">9</option>
+                </select>
+            </form>
         </div>
 
-        <div class="grid_container">
+        <div class="contenedor_printers">
         
-            <div th:each="i:${printerDest}" class="card">
+            <div th:each="i:${printerDest}" class="printer">
                 <a th:href="@{/user/{id}/(id=${i.id})}">
                     <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
                     <div class="container">
                       <h4 th:text="${i.firstName}"><b></b></h4>
-                      <div th:each="p:${i.printer}">
-                        <h4 th:text="${p.name}"></h4>
-                        <h4 th:text="${p.material_level}"></h4> 
-                      </div>
+                      
                     </div>
+                    <div class="grid_container">
+                        <div th:each="p:${i.printer}" class="card">
+                            <img alt="Imagen impresora" width="16" height="16" src="../img/printer.png" >
+                            <h4 th:text="${p.name}"></h4>
+                            <h4 th:text="${p.material_level}"></h4> 
+                        </div>
+                    </div>
+                    <img alt="Imagen Favorito" width="24" height="24" src="../img/fav.png" >
                 </a>
             </div>
 
