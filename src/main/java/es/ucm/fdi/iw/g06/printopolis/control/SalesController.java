@@ -110,7 +110,6 @@ public class SalesController {
 			l = new ArrayList<Object>();
 		}
 		List<Printer> p = entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
-		log.info("KAKAKAKAKAKKAKAKAKAKAKAKAKAKAKAKAKKAKAKAKAKKAKAKAKAKAKKAKAKAKAKAKAKKAKAKAKAKAKKAKAKA {}", l);
 		model.addAttribute("products", l);
 		model.addAttribute("printers", p);
 		return "cart";

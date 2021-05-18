@@ -26,6 +26,7 @@ Scenario: try to login to printopolis
   * match html('title') contains 'Admin'
   
   * click("a[id=btnDesigns]")
+  * delay(4000)
   * waitFor('#hola').click()
   * driver.screenshot()
  
@@ -35,9 +36,11 @@ Scenario: try to login to printopolis
   * driver.screenshot()
 
   # Añadir un evento de impresora
+  * delay(4000)
   * click("a[id=kaka]")
   * mouse('#calendar-day-36').click()
   * locateAll('.item')[0].click()
+  * delay(3000).screenshot()
   * click("input[class=ok]")
   * click("a[id=goBack]")
 
