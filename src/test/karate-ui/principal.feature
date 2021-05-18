@@ -28,6 +28,7 @@ Scenario: try to login to printopolis
   * click("a[id=btnDesigns]")
   * delay(4000)
   * waitFor('#hola').click()
+  * delay(4000)
   * driver.screenshot()
  
   # voy a mensajes si pulso en el buzon
@@ -39,8 +40,9 @@ Scenario: try to login to printopolis
   * delay(4000)
   * click("a[id=kaka]")
   * mouse('#calendar-day-36').click()
-  * locateAll('.item')[0].click()
-  * delay(3000).screenshot()
+  * locateAll('.ok')[0].click()
+  * delay(4000)
+  * driver.screenshot()
   * click("input[class=ok]")
   * click("a[id=goBack]")
 
