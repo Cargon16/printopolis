@@ -56,9 +56,12 @@ import lombok.AllArgsConstructor;
 		@NamedQuery(name = "User.delUser", query = "DELETE FROM User p WHERE p.id = :id"),
 		@NamedQuery(name = "User.delUserDesigns", query = "DELETE FROM Design p WHERE p.designer.id = :id"),
 		@NamedQuery(name = "User.delUserPrinters", query = "DELETE FROM Printer p WHERE p.impresor.id = :id"),
-		@NamedQuery(name = "User.getPunctuation", query = "SELECT SUM(punctuation) AS punt, COUNT(punctuation) AS numDes FROM Design p WHERE p.designer.id = :id")
-
-})
+		@NamedQuery(name = "User.getPunctuation", query = "SELECT SUM(punctuation) AS punt, COUNT(punctuation) AS numDes FROM Design p WHERE p.designer.id = :id"),
+		@NamedQuery(name= "User.numDesigns", query = " SELECT p FROM Printer p JOIN Design d on p.impresor.id = d.designer.id ORDER BY COUNT(d.id) "),
+		@NamedQuery(name= "User.ordenAsc", query="SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id ORDER BY u.firstName ASC"),
+        @NamedQuery(name= "User.ordenDesc", query="SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id ORDER BY u.firstName DESC"),
+   
+	})
 @Data
 public class User implements Transferable<User.Transfer> {
 

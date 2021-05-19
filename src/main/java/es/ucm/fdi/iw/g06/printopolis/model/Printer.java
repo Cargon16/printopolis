@@ -23,8 +23,9 @@ import lombok.Data;
 @NamedQueries({
         @NamedQuery(name = "Printer.allUserPrinters", query = "SELECT p FROM Printer p "
                 + "WHERE p.impresor.id = :userId"),
-        @NamedQuery(name = "Printer.dePrinter", query = "DELETE FROM Printer p WHERE p.id = :id")
-    })
+        @NamedQuery(name = "Printer.dePrinter", query = "DELETE FROM Printer p WHERE p.id = :id"),
+        @NamedQuery(name= "Printer.numImpresoras", query= "SELECT u FROM User u JOIN Printer p ON u.id = p.impresor.id GROUP BY p.impresor.id"),
+   })
               
 
 @Data
