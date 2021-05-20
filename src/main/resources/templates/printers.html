@@ -19,32 +19,42 @@
 
         <div id="filtrar">
             Filtrar por 
-            
-            <a class="button_filtro" href="#" title="">
-                <b>Favorito</b> 
+        
+            <a class="button_filtro" th:href="@{/printer/num_printer/}" title="">
+                <b>Número de impresoras</b>   
             </a>
         
-            <a class="button_filtro" href="#" title="">
-                <b>Número de ventas</b>   
+            <a class="button_filtro" th:href="@{/printer/ordenarAsc/}" title="">
+                <b>Nombre A-Z</b> 
             </a>
-        
-            <a class="button_filtro" href="#" title="">
-                <b>Número de diseños</b> 
+
+            <a class="button_filtro" th:href="@{/printer/ordenarDesc/}" title="">
+                <b>Nombre Z-A</b> 
             </a>
+
+            <a class="button_filtro" th:href="@{/printer/material/}" title="">
+                <b>Nivel de material</b> 
+            </a>
+
         </div>
 
-        <div class="grid_container">
+        <div class="contenedor_printers">
         
-            <div th:each="i:${printerDest}" class="card">
+            <div th:each="i:${printerDest}" class="printer">
                 <a th:href="@{/user/{id}/(id=${i.id})}">
-                    <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                    <img alt="Imagen Perfil" width="100" height="100" th:src="@{/img/user.png}" >
                     <div class="container">
                       <h4 th:text="${i.firstName}"><b></b></h4>
-                      <div th:each="p:${i.printer}">
-                        <h4 th:text="${p.name}"></h4>
-                        <h4 th:text="${p.material_level}"></h4> 
-                      </div>
+                      
                     </div>
+                    <div class="grid_container">
+                        <div th:each="p:${i.printer}" class="card">
+                            <img alt="Imagen impresora" width="16" height="16" th:src="@{/img/printer.png}" >
+                            <h4 th:text="${p.name}"></h4>
+                            <h4 th:text="${p.material_level}"></h4> 
+                        </div>
+                    </div>
+                    <!-- <img alt="Imagen Favorito" width="24" height="24" src="../img/fav.png" > -->
                 </a>
             </div>
 
