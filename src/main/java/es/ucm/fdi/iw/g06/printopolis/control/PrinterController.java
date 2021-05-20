@@ -114,15 +114,6 @@ public class PrinterController {
 		return "redirect:/";
 	}
 
-	
-	@GetMapping("/num_printer")
-	public String numPrinters(Model model, HttpServletRequest request) {
-		List<Printer> l1= entityManager.createNamedQuery("Printer.numImpresoras", Printer.class).getResultList();
-
-		model.addAttribute("printerDest", l1);
-		return "printers";
-	}
-
 	@GetMapping("/ordenarAsc")
 	public String ordenAsc(Model model, HttpServletRequest request) {
 		List<User> l1= entityManager.createNamedQuery("User.ordenAsc", User.class).getResultList();
@@ -138,14 +129,6 @@ public class PrinterController {
 		model.addAttribute("printerDest", l1);
 		return "printers";
 	}
-
-	// @GetMapping("/material")
-	// public String numPrinters(Model model, HttpServletRequest request) {
-	// 	List<User> l1= entityManager.createNamedQuery("Printer.numImpresoras", Printer.class).getResultList();
-
-	// 	model.addAttribute("printerDest", l1);
-	// 	return "printers";
-	// }
 	
 
 

@@ -42,14 +42,14 @@
         
             <div th:each="i:${printerDest}" class="printer">
                 <a th:href="@{/user/{id}/(id=${i.id})}">
-                    <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                    <img alt="Imagen Perfil" width="100" height="100" th:src="@{/img/user.png}" >
                     <div class="container">
                       <h4 th:text="${i.firstName}"><b></b></h4>
                       
                     </div>
                     <div class="grid_container">
                         <div th:each="p:${i.printer}" class="card">
-                            <img alt="Imagen impresora" width="16" height="16" src="../img/printer.png" >
+                            <img alt="Imagen impresora" width="16" height="16" th:src="@{/img/printer.png}" >
                             <h4 th:text="${p.name}"></h4>
                             <h4 th:text="${p.material_level}"></h4> 
                         </div>
