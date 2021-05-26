@@ -107,5 +107,22 @@ public class PrinterController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/ordenarAsc")
+	public String ordenAsc(Model model, HttpServletRequest request) {
+		List<User> l1= entityManager.createNamedQuery("User.ordenAsc", User.class).getResultList();
+
+		model.addAttribute("printerDest", l1);
+		return "printers";
+	}
+
+	@GetMapping("/ordenarDesc")
+	public String ordenDesc(Model model, HttpServletRequest request) {
+		List<User> l1= entityManager.createNamedQuery("User.ordenDesc", User.class).getResultList();
+
+		model.addAttribute("printerDest", l1);
+		return "printers";
+	}
+	
+
 
 }
