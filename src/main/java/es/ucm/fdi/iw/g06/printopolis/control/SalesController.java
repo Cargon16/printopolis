@@ -1,21 +1,14 @@
 package es.ucm.fdi.iw.g06.printopolis.control;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -25,14 +18,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import org.apache.catalina.security.SecurityConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,13 +32,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
-import antlr.debug.Event;
-import ch.qos.logback.core.net.LoginAuthenticator;
+
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
-import es.ucm.fdi.iw.g06.printopolis.LoginSuccessHandler;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Evento;
 import es.ucm.fdi.iw.g06.printopolis.model.Printer;
@@ -55,10 +42,6 @@ import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.SalesLine;
 import es.ucm.fdi.iw.g06.printopolis.model.Sales;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 @Controller()
 @RequestMapping("sale")

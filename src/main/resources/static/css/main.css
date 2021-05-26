@@ -240,6 +240,20 @@ footer #copyright{
     margin-top: 4%;
 }
 
+
+  
+  .ganancias{
+    line-height: 3em;
+  }
+  
+  .ganancias img{
+    float: left;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 4%;
+  }
+
+
 .diseno{
     width: 27%;
     margin: 2%;

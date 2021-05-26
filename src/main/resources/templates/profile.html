@@ -46,7 +46,10 @@
                 <p th:text="${user.aboutMe}">
                 </p>
                 <h3>Ganancias:</h3>
-                <p th:text="${user.ganancias}"></p>
+                <div class="ganancias">
+                    <img th:src="@{/img/dollar.png}"  alt="Moneda" style="width: 30px; height: 30px;">
+                    <p th:text="${user.ganancias}"></p>
+                </div>
 
             </div>
         </div>
