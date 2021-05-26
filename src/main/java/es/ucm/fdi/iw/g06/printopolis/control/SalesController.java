@@ -98,13 +98,21 @@ public class SalesController {
 		Double t;
 		if (u.getSaleId() != null) {
 			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
-			if(p!= null)
-			model.addAttribute("printer", p.getName());
-			else model.addAttribute("printer", null);
-			l = entityManager.createNamedQuery("SalesLine.salesProducts")
+			if (p != null)
+				model.addAttribute("printer", p.getName());
+			else
+				model.addAttribute("printer", null);
+			l = entityManager.createNamedQuery("SalesLine.salesProducts").setParameter("id", u.getSaleId().getId())
+					.getResultList();
+			t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class)
+					.setParameter("id", u.getSaleId().getId()).getSingleResult();
+			model.addAttribute("price", t);
+			List<Evento> e = entityManager.createNamedQuery("Evento.getEvento", Evento.class)
 					.setParameter("id", u.getSaleId().getId()).getResultList();
-			t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class).setParameter("id", u.getSaleId().getId()).getSingleResult();
-		model.addAttribute("price", t);
+			if (!e.isEmpty())
+				model.addAttribute("evento", e.get(0).toString());
+			else
+				model.addAttribute("evento", "-");
 		} else {
 			model.addAttribute("printer", null);
 			l = new ArrayList<Object>();
@@ -130,6 +138,12 @@ public class SalesController {
 			Design d = entityManager.createNamedQuery("Design.getDesign", Design.class)
 					.setParameter("designId", l.get(i).getDesign()).getSingleResult();
 			d.setNumVentas(d.getNumVentas() + 1);
+
+			float ant = d.getDesigner().getGanancias();
+			d.getDesigner().setGanancias(ant + d.getPrice());
+
+			//entityManager.refresh(d.getDesigner());
+			entityManager.persist(d.getDesigner());
 		}
 
 		return "redirect:/user/" + us.getId();
@@ -229,31 +243,22 @@ public class SalesController {
 		return "{\"name\": \"" + "borrado" + "\"}";
 	}
 
-	@GetMapping(value = "/download/{id}"/*, produces = "application/zip"*/)
-	public void zipDownload(@PathVariable Long id, HttpServletResponse response, HttpSession session) throws IOException {
+	@GetMapping(value = "/download/{id}"/* , produces = "application/zip" */)
+	public void zipDownload(@PathVariable Long id, HttpServletResponse response, HttpSession session)
+			throws IOException {
 		File file = localData.getFile("design", Long.toString(id));
+		String nombreBonito = entityManager.find(Design.class, id).getName();
 		FileInputStream in = new FileInputStream(file);
 		byte[] content = new byte[(int) file.length()];
 		in.read(content);
 		ServletContext sc = session.getServletContext();
 		String mimetype = sc.getMimeType(file.getName());
+		in.close();
 		response.reset();
 		response.setContentType(mimetype);
 		response.setContentLength(content.length);
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName().concat(".glb") + "\"");
-		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream()); 
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + nombreBonito + ".glb\"");
+		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream());
 	}
-	// @RequestMapping(value = "/delProduct/{id}", method = RequestMethod.POST)
-	// @Transactional
-	// @ResponseBody
-	// public String delProducts(@PathVariable Long id, Model model, HttpSession session) throws IOException {
-		
-	// 	entityManager.createNamedQuery("SalesLine.delProd").setParameter("id", id).executeUpdate();
-	// 	entityManager.flush();
-	// 	User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
-	// 	List<Object> l = entityManager.createNamedQuery("SalesLine.salesProducts").setParameter("id", u.getSaleId().getId()).getResultList();
-
-	// 	return "{\"listProds\": \"" + l + "\"}";
-	// }
 
 }

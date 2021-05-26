@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div th:each="u:${users}" class="col-sm-3 column" data-admin="Users">
-                <img src="../../static/img/user.png" th:src="@{/img/user.png}" style="width:5%;" />
+                <img th:src="@{/user/{id}/photo/(id=${u.id})}" style="width:5%;" />
                 <a th:href="@{/user/{id}/(id=${u.id})}" class="link">
                     <div class="content">
                         <h4 th:text="${u.username}"></h4>

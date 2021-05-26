@@ -34,12 +34,6 @@
                     <p class="cantidad" th:text="${p[5]}"></p>
                     <span class="price" th:text="${p[2]}"></span>
                     <img th:if="${printer != null}" th:src="@{/img/printer.png}" height="30" width="30" th:alt="${printer}">
-                    
-                    <!-- <form th:id="${p[0]}" method="POST" th:action="@{/sale/delProduct/{id}/(id=${p[0]})}">
-                        <input type="hidden" th:value="${p[0]}" name="prodId">
-                        <button th:name="${p[0]}" type="submit" th:if="${printer == null}" class="del"> x </button>
-                    </form> -->
-                    
                 </div>
                 <hr>
                 <p th:if="${products.size() > 0}" class="total">Total <span class="price" style="color:black"><b th:text="${price}"></b></span></p>
@@ -50,6 +44,10 @@
                 <div class="dropdown-content">
                     <a th:each = "pr: ${printers}" th:href="@{/sale/printerChoice/{id}/(id=${pr.id})}" th:id = "kaka" th:text ="${pr.name}"></a>
                 </div>
+            </div>
+
+            <div th:if="${products.size() > 0}" id="fin">
+                <h3 th:text="@{Tu pedido ha sido reservado para:} + ${evento}"></h3>
             </div>
 
             <div th:if="${products.size() > 0}" id="fin">

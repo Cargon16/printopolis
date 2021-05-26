@@ -4,18 +4,18 @@
 --
 
 -- Usuario de ejemplo con username = b y contraseña = aa  
-INSERT INTO user(id,enabled,username,password,roles,first_name,last_name, address, about_me) VALUES (
+INSERT INTO user(id,enabled,username,password,roles, ganancias,first_name,last_name, address, about_me) VALUES (
 	1, 1, 'a', 
 	'{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u',
-	'USER,ADMIN',
+	'USER,ADMIN', 0.0,
 	'Abundio', 'Ejémplez', 'Calle Rotatoria', 'Adoro el modelaje WOW'
 );
 
 -- Otro usuario de ejemplo con username = b y contraseña = aa  
-INSERT INTO user(id,enabled,username,password,roles,first_name,last_name, address, about_me) VALUES (
+INSERT INTO user(id,enabled,username,password,roles, ganancias, first_name,last_name, address, about_me) VALUES (
 	2, 1, 'b', 
 	'{bcrypt}$2a$10$xLFtBIXGtYvAbRqM95JhcOaG23fHRpDoZIJrsF2cCff9xEHTTdK1u',
-	'USER',
+	'USER', 0.0,
 	'Berta', 'Muéstrez', 'Calle Perico', 'Vivan las impresoras 3D'
 );
 

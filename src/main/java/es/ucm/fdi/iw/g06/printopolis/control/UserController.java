@@ -10,14 +10,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-import javax.validation.constraints.Null;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,11 +47,8 @@ import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Message;
 import es.ucm.fdi.iw.g06.printopolis.model.Printer;
-import es.ucm.fdi.iw.g06.printopolis.model.Sales;
-import es.ucm.fdi.iw.g06.printopolis.model.Transferable;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
-import es.ucm.fdi.iw.g06.printopolis.model.Message.Transfer;
-import es.ucm.fdi.iw.g06.printopolis.model.User.Role;;
+import es.ucm.fdi.iw.g06.printopolis.model.User.Role;
 
 /**
  * User-administration controller
@@ -119,7 +113,6 @@ public class UserController {
 				.getSingleResult();
 		
 		List<Object> l2 = entityManager.createNamedQuery("Sales.getAllSales", Object.class).setParameter("id", u.getId()).getResultList();
-		log.info("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH {}", l2);
 		model.addAttribute("sales", l2);
 
 		System.out.println(l1.toString());
@@ -168,7 +161,7 @@ public class UserController {
 			in = new BufferedInputStream(new FileInputStream(f));
 		} else {
 			in = new BufferedInputStream(
-					getClass().getClassLoader().getResourceAsStream("static/img/unknown-user.jpg"));
+					getClass().getClassLoader().getResourceAsStream("static/img/user.png"));
 		}
 		return new StreamingResponseBody() {
 			@Override

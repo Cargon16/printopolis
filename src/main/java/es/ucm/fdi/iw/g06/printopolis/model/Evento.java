@@ -2,6 +2,8 @@ package es.ucm.fdi.iw.g06.printopolis.model;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,8 @@ import lombok.Data;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "Evento.getPrinterEvents", query = "SELECT e FROM Evento e WHERE e.impresora = :id"),
-		@NamedQuery(name = "Evento.delEvento", query = "DELETE FROM Evento e WHERE e.id = :id")
+		@NamedQuery(name = "Evento.delEvento", query = "DELETE FROM Evento e WHERE e.id = :id"),
+		@NamedQuery(name = "Evento.getEvento", query = "SELECT e FROM Evento e WHERE e.sale = :id")
 
 	})
 @Data
@@ -40,6 +43,9 @@ public class Evento {
 
 	@Override
 	public String toString() {
-		return "Evento #" + id;
+		String pattern = "dd/MM/yyyy";
+		DateFormat df = new SimpleDateFormat(pattern);
+		String todayAsString = df.format(fechaPedido);
+		return "Tu pedido ha quedado reservado para el día:" + todayAsString;
 	}
 }

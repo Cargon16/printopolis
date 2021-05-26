@@ -1,6 +1,8 @@
 package es.ucm.fdi.iw.g06.printopolis.control;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -10,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-import org.apache.catalina.security.SecurityConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import ch.qos.logback.core.net.LoginAuthenticator;
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
-import es.ucm.fdi.iw.g06.printopolis.LoginSuccessHandler;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
-import net.bytebuddy.asm.Advice.Local;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,7 +32,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
-import es.ucm.fdi.iw.g06.printopolis.model.Printer;
 
 /**
  * Landing-page controller
@@ -55,13 +53,15 @@ public class RootController {
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("cat", "all");
-		List<Design> l= entityManager.createNamedQuery("Design.randomDesigns", Design.class).setMaxResults(3).getResultList();
+		List<Design> l = entityManager.createNamedQuery("Design.randomDesigns", Design.class).setMaxResults(3)
+				.getResultList();
 		model.addAttribute("designDest", l);
-		List<User> l1= entityManager.createNamedQuery("User.randomImpresores", User.class).setMaxResults(3).getResultList();
+		List<User> l1 = entityManager.createNamedQuery("User.randomImpresores", User.class).setMaxResults(3)
+				.getResultList();
 		model.addAttribute("printerDest", l1);
 		return "index";
 	}
-	
+
 	@GetMapping("/signup")
 	public String signup(Model model, HttpServletRequest request) {
 		return "signup";
@@ -87,7 +87,6 @@ public class RootController {
 		return "login";
 	}
 
-	
 	@GetMapping("/stlviewer")
 	public String stlviewer(Model model, HttpServletRequest request) {
 		File f = localData.getFile("design", Integer.toString(1));
@@ -98,7 +97,9 @@ public class RootController {
 	@Transactional
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String addUser(@RequestParam("name") String name, @RequestParam("email") String mail,
-			@RequestParam("password") String password, @RequestParam("aboutme") String about, @RequestParam("address") String address, Model model, HttpSession session) throws IOException {
+			@RequestParam("password") String password, @RequestParam("aboutme") String about,
+			@RequestParam("address") String address, @RequestParam("fichero") MultipartFile archivo, Model model,
+			HttpSession session) throws IOException {
 
 		User usuario = new User();
 		usuario.setUsername(mail);
@@ -109,6 +110,16 @@ public class RootController {
 		usuario.setAddress(address);
 		usuario.setRoles("USER");
 		entityManager.persist(usuario);
+		entityManager.flush();
+		if (!archivo.isEmpty()) {
+			File f = localData.getFile("user", Long.toString(usuario.getId()));
+			try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(f))) {
+				byte[] bytes = archivo.getBytes();
+				stream.write(bytes);
+			} catch (Exception e) {
+				log.warn("Error uploading " + usuario.getId() + " ", e);
+			}
+		}
 		log.info("Sign up user {}", mail);
 
 		return "redirect:/login";

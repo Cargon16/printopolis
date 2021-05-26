@@ -48,7 +48,7 @@
             <div class="grid_container">
                 <div th:each="p:${printerDest}" class="card">
                     <a th:href="@{/user/{id}/(id=${p.id})}">
-                        <img alt="Imagen Perfil" width="100" height="100" src="../img/user.png" >
+                        <img alt="Imagen Perfil" width="100" height="100" th:src="@{/user/{id}/photo/(id=${p.id})}" >
                         <div class="container">
                           <h4 th:text="${p.firstName}"><b></b></h4> 
                         </div>

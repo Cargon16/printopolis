@@ -51,7 +51,7 @@ import lombok.AllArgsConstructor;
 				+ "WHERE u.username = :username"),
 		@NamedQuery(name = "User.allImpresores", query = "SELECT DISTINCT u FROM User u JOIN Printer p on u.id = p.impresor.id"),
 		@NamedQuery(name = "User.allUser", query = "SELECT u FROM User u WHERE u.id != :id"),
-		@NamedQuery(name = "User.randomImpresores", query= "SELECT u FROM User u JOIN Printer p on u.id = p.impresor.id ORDER BY RAND()"),
+		@NamedQuery(name = "User.randomImpresores", query= "SELECT u FROM User u JOIN Printer p on u.id = p.impresor.id GROUP BY u.id ORDER BY RAND()"),
 		@NamedQuery(name = "User.byId", query = "SELECT u FROM User u WHERE u.id = :senderId"),
 		@NamedQuery(name = "User.delUser", query = "DELETE FROM User p WHERE p.id = :id"),
 		@NamedQuery(name = "User.delUserDesigns", query = "DELETE FROM Design p WHERE p.designer.id = :id"),
@@ -114,6 +114,7 @@ public class User implements Transferable<User.Transfer> {
 	@JoinColumn(name = "recipient_id")
 	private List<Message> received = new ArrayList<>();
 
+	private float ganancias;
 
 	@ManyToMany
     @JoinTable(

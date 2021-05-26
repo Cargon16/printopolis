@@ -18,7 +18,7 @@
     <div class="profile">
         <div class="perfil-izq">
             <div class="datos-Usuario">
-                <img style="width: 20%;" src="../../static/img/user.png" th:src="@{/img/user.png}" alt="User" />
+                <img style="width: 20%;" th:src="@{/user/{id}/photo/(id=${user.id})}" alt="User" />
                 <p th:text="${user.firstName}"></p>
                 <a class="mensaje-perfil" th:if="${session.u.username == user.username}" th:href="@{/message/{id}/(id=${session.u.id})}" title="">Mensaje</a>
                 <a th:if="${session.u.roles.contains('ADMIN') && session.u.username == user.username} " class="mensaje-perfil" th:href="@{/admin/}" title="">Admin</a>
@@ -45,8 +45,8 @@
                 <h3>Sobre mí:</h3>
                 <p th:text="${user.aboutMe}">
                 </p>
-                <!-- <h3>Nivel de experiencia:</h3>
-                <p th:text="${user.aboutMe}"></p> -->
+                <h3>Ganancias:</h3>
+                <p th:text="${user.ganancias}"></p>
 
             </div>
         </div>

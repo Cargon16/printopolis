@@ -17,7 +17,7 @@
 
     <div class="container"> 
 
-        <form class="form" method="POST" th:action="@{/signup}">
+        <form class="form" method="POST" th:action="@{/signup}" enctype="multipart/form-data">
             <label>Nombre</label>
             <input type="text" required name="name" placeholder="Tu nombre">
             <label>E-Mail</label>
@@ -28,6 +28,8 @@
             <input type="text" name="aboutme" placeholder="Cuéntanos sobre ti">
             <label>Domicilio</label>
             <input type="text" name="address" placeholder="Dirección de envío">
+            <label>Imagen de perfil</label>
+            <input type="file" name="fichero" placeholder="Foto de perfil opcional">
             <input type="submit" value="Registrar">
         </form>
         
