@@ -111,8 +111,9 @@ public class UserController {
 				.setParameter("userId", u.getId()).getResultList();
 		Object punt = entityManager.createNamedQuery("User.getPunctuation").setParameter("id", u.getId())
 				.getSingleResult();
-		
-		List<Object> l2 = entityManager.createNamedQuery("Sales.getAllSales", Object.class).setParameter("id", u.getId()).getResultList();
+
+		List<Object> l2 = entityManager.createNamedQuery("Sales.getAllSales", Object.class)
+				.setParameter("id", u.getId()).getResultList();
 		model.addAttribute("sales", l2);
 
 		System.out.println(l1.toString());
@@ -160,8 +161,7 @@ public class UserController {
 		if (f.exists()) {
 			in = new BufferedInputStream(new FileInputStream(f));
 		} else {
-			in = new BufferedInputStream(
-					getClass().getClassLoader().getResourceAsStream("static/img/user.png"));
+			in = new BufferedInputStream(getClass().getClassLoader().getResourceAsStream("static/img/user.png"));
 		}
 		return new StreamingResponseBody() {
 			@Override
@@ -274,8 +274,7 @@ public class UserController {
 	@PostMapping("/report/{id}")
 	@ResponseBody
 	@Transactional
-	public String reportar(@PathVariable long id, Model model, HttpSession session)
-			throws JsonProcessingException {
+	public String reportar(@PathVariable long id, Model model, HttpSession session) throws JsonProcessingException {
 
 		String text = "Este mensaje es un aviso por actitud inapropiada. Mantenga las formas.";
 		User u = entityManager.find(User.class, id);
@@ -304,5 +303,31 @@ public class UserController {
 
 		messagingTemplate.convertAndSend("/user/" + u.getUsername() + "/queue/updates", json);
 		return "{\"result\": \"message sent.\"}";
+	}
+
+	@Transactional
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public String editUser(@PathVariable long id, @RequestParam("name") String name,
+			@RequestParam("aboutme") String about, @RequestParam("address") String address,
+			@RequestParam("fichero") MultipartFile archivo, Model model, HttpSession session) throws IOException {
+
+		if (id == ((User) session.getAttribute("u")).getId()) {
+			User usuario = entityManager.find(User.class, id);
+			usuario.setFirstName(name);
+			usuario.setAboutMe(about);
+			usuario.setAddress(address);
+			entityManager.persist(usuario);
+			entityManager.flush();
+			if (!archivo.isEmpty()) {
+				File f = localData.getFile("user", Long.toString(usuario.getId()));
+				try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(f))) {
+					byte[] bytes = archivo.getBytes();
+					stream.write(bytes);
+				} catch (Exception e) {
+					log.warn("Error uploading " + usuario.getId() + " ", e);
+				}
+			}
+		}
+		return "redirect:/user/" + id;
 	}
 }

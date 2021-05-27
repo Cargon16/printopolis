@@ -18,10 +18,47 @@
     <div class="profile">
         <div class="perfil-izq">
             <div class="datos-Usuario">
-                <img style="width: 20%;" th:src="@{/user/{id}/photo/(id=${user.id})}" alt="User" />
+                <div style="width: 100%; text-align: center;">
+                    <img style="width: 20%; margin-left: 11%;" th:src="@{/user/{id}/photo/(id=${user.id})}"
+                        alt="User" />
+                    <a style="background-color: transparent; float:right; padding: 0; margin-top: 0;" class="btn"
+                        th:href="@{#editUser}"><img src="../../static/img/editar.png" th:src="@{/img/editar.png}"></a>
+                    <!--Modal para editar el usuario-->
+                    <div class="modal fade modal-xl" th:id="editUser" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content" style="width: 580px;">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true"> x </span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form" method="POST" th:action="@{/user/edit/{id}/(id=${user.id})}"
+                                        enctype="multipart/form-data">
+                                        <label>Nombre</label>
+                                        <input type="text" required name="name" placeholder="Tu nombre"
+                                            th:value="${user.firstName}">
+                                        <label>Sobre ti</label>
+                                        <input type="text" name="aboutme" placeholder="Cuéntanos sobre ti"
+                                            th:value="${user.aboutMe}">
+                                        <label>Domicilio</label>
+                                        <input type="text" name="address" placeholder="Dirección de envío"
+                                            th:value="${user.address}">
+                                        <label>Imagen de perfil</label>
+                                        <input type="file" name="fichero" placeholder="Foto de perfil opcional">
+                                        <input type="submit" value="Editar">
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <p th:text="${user.firstName}"></p>
-                <a class="mensaje-perfil" th:if="${session.u.username == user.username}" th:href="@{/message/{id}/(id=${session.u.id})}" title="">Mensaje</a>
-                <a th:if="${session.u.roles.contains('ADMIN') && session.u.username == user.username} " class="mensaje-perfil" th:href="@{/admin/}" title="">Admin</a>
+                <a class="mensaje-perfil" th:if="${session.u.username == user.username}"
+                    th:href="@{/message/{id}/(id=${session.u.id})}" title="">Mensaje</a>
+                <a th:if="${session.u.roles.contains('ADMIN') && session.u.username == user.username} "
+                    class="mensaje-perfil" th:href="@{/admin/}" title="">Admin</a>
                 <div class="stats-usuario">
                     <div class="stats">
                         <div class="stat">
@@ -47,7 +84,7 @@
                 </p>
                 <h3>Ganancias:</h3>
                 <div class="ganancias">
-                    <img th:src="@{/img/dollar.png}"  alt="Moneda" style="width: 30px; height: 30px;">
+                    <img th:src="@{/img/dollar.png}" alt="Moneda" style="width: 30px; height: 30px;">
                     <p th:text="${user.ganancias}"></p>
                 </div>
 
@@ -188,7 +225,8 @@
                             <div class="modal-body">
                                 <h3>Descripción</h3>
                                 <p>De momento no hay nada, vaya</p>
-                                <form th:if="${session.u.username == user.username}" method="POST" th:action="@{/printer/delPrinter/{id}/(id=${p.id})}">
+                                <form th:if="${session.u.username == user.username}" method="POST"
+                                    th:action="@{/printer/delPrinter/{id}/(id=${p.id})}">
                                     <input th:if="${p.status} == 'AVAILABLE'" id="test" type="Submit" value="Eliminar">
                                     <input th:unless="${p.status} == 'AVAILABLE'" type="Submit" value="Eliminar"
                                         disabled>
@@ -207,7 +245,8 @@
                     </div>
                 </div>
             </div>
-            <div th:if="${session.u.username == user.username}" style="width: 100%; display:flex; flex-direction: column;">
+            <div th:if="${session.u.username == user.username}"
+                style="width: 100%; display:flex; flex-direction: column;">
                 <h2 style="margin-bottom: 2%;">Mis pedidos</h2>
                 <div th:each="c: ${sales}" style="display:flex; flex-direction:colum; margin-bottom: 10%;">
                     <div style="display:flex; flex-direction:row; align-items: center; margin-right: 3%;">
