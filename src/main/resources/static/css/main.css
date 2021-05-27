@@ -240,6 +240,31 @@ footer #copyright{
     margin-top: 4%;
 }
 
+.edit img{
+    float: right;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 4%;
+}
+
+#boton_designMod {
+    float:right; 
+    height: auto;
+    height: 32px;
+    width: 32px;
+    color:black;
+    border: 0.5px solid black;
+    border-radius: 10%;
+    padding: 2px;
+}
+
+.edit h3{
+    float: left;
+    width: auto;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 4%;
+}
 
   
   .ganancias{
