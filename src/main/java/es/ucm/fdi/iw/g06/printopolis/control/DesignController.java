@@ -55,7 +55,7 @@ public class DesignController {
 
 	@Transactional
 	@RequestMapping(value = "/addDesign", method = RequestMethod.POST)
-	public String addUser(@RequestParam("diseno") String diseno, @RequestParam("category") String categoria,
+	public String addDesign(@RequestParam("diseno") String diseno, @RequestParam("category") String categoria,
 			@RequestParam("precio") float precio, @RequestParam("about") String about,
 			@RequestParam("volumen") float volumen, @RequestParam("fichero") MultipartFile archivo,
 			@RequestParam("captura") MultipartFile captura, Model model, HttpSession session) throws IOException {
@@ -92,6 +92,28 @@ public class DesignController {
 		}
 		log.info("Added new design {}", diseno);
 
+		return "redirect:/";
+	}
+
+
+	@Transactional
+	@RequestMapping(value = "/modDesign/{id}", method = RequestMethod.POST)
+	public String modifyDesign(@PathVariable long id, @RequestParam("diseno") String diseno, @RequestParam("category") String categoria,
+			@RequestParam("precio") float precio, @RequestParam("about") String about, Model model, HttpSession session) throws IOException {
+
+		Design d = entityManager.find(Design.class, id);
+		if(d.getDesigner().getId() == ((User) session.getAttribute("u")).getId()){
+
+
+		d.setCategory(categoria);
+		d.setDescription(about);
+		d.setName(diseno);
+		d.setPrice(precio);
+		entityManager.persist(d);
+		entityManager.flush();
+
+		log.info("Added new design {}", diseno);
+	}
 		return "redirect:/";
 	}
 
@@ -220,7 +242,6 @@ public class DesignController {
 		if(!exist){
 			d.setPunctuation(d.getPunctuation()+1);
 			entityManager.persist(d);
-			entityManager.flush();
 			user.addDesignLike(d);
 		}
 		log.info("Increment design's likes {}", d.getPunctuation());

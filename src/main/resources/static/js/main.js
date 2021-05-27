@@ -3,11 +3,22 @@ $(document).ready(function () {
   //Modal para añadir diseño
   var modal = document.getElementById("addDesignModal");
 
+  //Modal para modificar un diseño
+  var modalMod = document.getElementById("addDesignModalMod");
+
+
   // Get the button that opens the modal
   var btn = document.getElementById("boton_design");
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
+
+
+    // Get the button that opens the modal
+    var btnMod = document.getElementById("boton_designMod");
+
+    // Get the <span> element that closes the modal
+    var spanMod = document.getElementsByClassName("closeMod")[0];
 
   // When the user clicks the button, open the modal
   if (btn != null)
@@ -27,6 +38,28 @@ $(document).ready(function () {
       modal.style.display = "none";
     }
   }
+
+
+
+    // When the user clicks the button, open the modal
+    if (btnMod != null)
+    btnMod.onclick = function () {
+      modalMod.style.display = "block";
+    }
+
+  // When the user clicks on <span> (x), close the modal
+  if (spanMod != null)
+  spanMod.onclick = function () {
+      modalMod.style.display = "none";
+    }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modalMod) {
+      modalMod.style.display = "none";
+    }
+  }
+  
 
   //Modal para añadir impresora
   var modalP = document.getElementById("addPrinterModal");

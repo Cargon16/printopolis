@@ -124,13 +124,43 @@
                         <label>Captura del diseño (*opcional)</label>
                         <input type="file" name="captura" placeholder="Captura" accept=".jpg, .png">
                         <input id="subir" type="submit" onclick="validate()" value="Añadir">
-                    </form>
+                    </form> 
                 </div>
 
             </div>
 
             <div th:each="d: ${userDesigns}" class="diseno">
-                <h3 th:text="${d.name}"></h3>
+                <div class="edit">
+                    <h3 th:text="${d.name}"></h3>
+                    <button id="boton_designMod"> <img th:src="@{/img/editar.png}" alt="Editar"></button>
+                </div>
+                <div id="addDesignModalMod" class="modal">
+
+                    <div class="modal-content">
+                        <span class="closeMod">&times;</span>
+                        <form class="form" method="POST" th:action="@{/design/modDesign/{id}/(id= ${d.id})}" enctype="multipart/form-data">
+                            <label>Categoría</label>
+                            <select required name="category" id="ctg" th:value= "${d.category}">
+                                <option value="" disabled selected>Selecciona una categoría</option>
+                                <option value="Tecnologia">Tecnología</option>
+                                <option value="Juguetes">Juguetes</option>
+                                <option value="Accesorios">Accesorios</option>
+                                <option value="Herramientas">Herramientas</option>
+                                <option value="Hogar">Hogar</option>
+                                <option value="Deporte">Deporte</option>
+                            </select>
+    
+                            <label>Precio</label>
+                            <input id="pre" type="number" name="precio" required min="0" placeholder="Precio" th:value= "${d.price}">
+                            <label>Nombre</label>
+                            <input id="nom" type="text" name="diseno" required placeholder="Diseño" th:value= "${d.name}">
+                            <label>Descripción</label>
+                            <input id="dec" type="text" name="about" placeholder="Describe el diseño" th:value= "${d.description}">
+                            <input id="modif" type="submit" value="Modificar">
+                        </form> 
+                    </div>
+    
+                </div>
                 <a th:href="@{#} + ${d.id}" class="btn" id="openDesign"><img
                         style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
                         th:src="@{/design/{id}/captura(id=${d.id})}" alt="Diseño" />
@@ -183,7 +213,7 @@
             <div id="addPrinterModal" class="modal">
 
                 <div class="modal-content">
-                    <span class="close close1" style="float:right;">&times;</span>
+                    <span class="close1" style="float:right;">&times;</span>
                     <form class="form" method="POST" th:action="@{/printer/addPrinter}" enctype="multipart/form-data">
                         <label>Nombre</label>
                         <input type="text" required name="name" placeholder="Nombre">
