@@ -113,7 +113,7 @@
                         <label>Precio</label>
                         <input id="pre" type="number" name="precio" required min="0" placeholder="Precio">
                         <label>Nombre</label>
-                        <input id="nom" type="text" name="diseno" required placeholder="Diseño">
+                        <input id="nom" type="text" name="diseno" required placeholder="Diseño" pattern='^[^"]+$'>
                         <label>Descripción</label>
                         <input id="dec" type="text" name="about" placeholder="Describe el diseño">
                         <label>Volumen</label>
@@ -178,7 +178,7 @@
                             <div class="modal-body">
 
                                 <script type="module"
-                                    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                                    src="/js/model-viewer.min.js"></script>
                                 <style>
                                     model-viewer {
                                         width: 580px;

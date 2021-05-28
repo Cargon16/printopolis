@@ -212,7 +212,7 @@ public class SalesController {
 		entityManager.createNamedQuery("Evento.delEvento").setParameter("id", id).executeUpdate();
 		entityManager.flush();
 		Sales s = ((User) session.getAttribute("u")).getSaleId();
-		s.setPrinter(new Long(0));
+		s.setPrinter(0L);
 		entityManager.merge(s);
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode rootNode = mapper.createObjectNode();
