@@ -21,7 +21,7 @@
                 <div style="width: 100%; text-align: center;">
                     <img style="width: 20%; margin-left: 11%;" th:src="@{/user/{id}/photo/(id=${user.id})}"
                         alt="User" />
-                    <a style="background-color: transparent; float:right; padding: 0; margin-top: 0;" class="btn"
+                    <a th:if="${session.u.username == user.username}" style="background-color: transparent; float:right; padding: 0; margin-top: 0;" class="btn"
                         th:href="@{#editUser}"><img src="../../static/img/editar.png" th:src="@{/img/editar.png}"></a>
                     <!--Modal para editar el usuario-->
                     <div class="modal fade modal-xl" th:id="editUser" tabindex="-1" role="dialog"
@@ -97,7 +97,7 @@
             <div id="addDesignModal" class="modal">
 
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span class="closeAdd">&times;</span>
                     <form class="form" method="POST" th:action="@{/design/addDesign}" enctype="multipart/form-data">
                         <label>Categoría</label>
                         <select required name="category" id="ctg">

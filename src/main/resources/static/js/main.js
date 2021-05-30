@@ -11,7 +11,7 @@ $(document).ready(function () {
   var btn = document.getElementById("boton_design");
 
   // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
+  var span = document.getElementsByClassName("closeAdd")[0];
 
 
     // Get the button that opens the modal
