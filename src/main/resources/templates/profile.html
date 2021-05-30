@@ -132,7 +132,7 @@
             <div th:each="d: ${userDesigns}" class="diseno">
                 <div class="edit">
                     <h3 th:text="${d.name}"></h3>
-                    <button id="boton_designMod"> <img th:src="@{/img/editar.png}" alt="Editar"></button>
+                    <button th:if="${session.u.username == user.username}" id="boton_designMod"> <img th:src="@{/img/editar.png}" alt="Editar"></button>
                 </div>
                 <div id="addDesignModalMod" class="modal">
 
