@@ -38,7 +38,9 @@
     </div>
 
     <div class="contenedor_diseños">
+        <h2 th:if= "${categoryType.size() == 0}"> Todavía no hay productos</h2>
         <div th:each="d: ${categoryType}" class="diseño">
+            
             <div class="perfilUp">
                 <a th:href="@{/user/{id}/(id=${d.designer.id})}">
                     <img class="img-user" th:src="@{/img/user.png}" alt="Avatar">

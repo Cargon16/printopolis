@@ -123,6 +123,9 @@ public class User implements Transferable<User.Transfer> {
 	public void addDesignLike(Design d){
 		this.likedDesigns.add(d);
 	}
+	public void delDesignLike(Design d){
+		this.likedDesigns.remove(d);
+	}
 	// utility methods
 
 	/**
