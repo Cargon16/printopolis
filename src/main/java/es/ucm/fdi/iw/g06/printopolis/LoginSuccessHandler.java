@@ -62,7 +62,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		session.setAttribute("ws", ws);
 
 		// redirects to 'admin' or 'user/{id}', depending on the user
+		// Si el usuario tiene aviso de mal comportamiento se le lleva a la vista de aviso
 		String nextUrl = u.hasRole(User.Role.ADMIN) ? "admin/" : "user/" + u.getId();
+		Long m = (Long)entityManager.createNamedQuery("Message.warning").setParameter("userId", u.getId()).getSingleResult();
+		if(m > 0)
+				nextUrl = "warning/";
 
 		log.info("LOG IN: {} (id {}) -- session is {}, websocket is {} -- redirected to {}", u.getUsername(), u.getId(),
 				session.getId(), ws, nextUrl);

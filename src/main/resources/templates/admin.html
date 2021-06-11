@@ -38,9 +38,6 @@
                     </div>
                 </a>
                 <div class="opt-admin">
-                    <form th:action="@{/user/report/{id}/(id=${d.designer.id})}" method="POST">
-                        <button id="sendmsg" type="submit" class="reportar" style="margin-top: 3px;">Reportar</button>
-                    </form>
                     <form th:action="@{/design/delDesign/{id}/(id=${d.id})}" style="display: flex; flex-direction: row;"
                         method="POST">
                         <input type="Submit" class="reportar" value="Eliminar" style="margin-top: 3px;">
@@ -56,8 +53,8 @@
                     </div>
                 </a>
                 <div class="opt-admin">
-                    <form th:action="@{/user/report/{id}/(id=${u.id})}" method="POST">
-                        <button id="sendmsg" type="submit" class="reportar" style="margin-top: 3px;">Reportar</button>
+                    <form th:action="@{/user/sendWarning/{id}/(id=${u.id})}" method="POST">
+                        <button id="sendmsg" type="submit" class="reportar" style="margin-top: 3px;">Regañar</button>
                     </form>
                     <form th:action="@{/user/delUser/{id}/(id=${u.id})}" style="display: flex; flex-direction: row;"
                         method="POST">
@@ -95,8 +92,7 @@
                     }).fadeIn('fast');
             }
         });
-
-        //Envío de mensaje de reportar
+        //Envío de mensaje de aviso
         $(".reportar").on('click', function (e) {
             //let idOfTarget = document.getElementById("disenio").value;
 

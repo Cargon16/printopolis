@@ -136,4 +136,9 @@ public class RootController {
 	public String getUser(Model model, HttpServletRequest request) {
 		return "a";
 	}
+
+	@GetMapping("/warning")
+	public String getWarning(Model model, HttpServletRequest request) {
+		return "warning";
+	}
 }

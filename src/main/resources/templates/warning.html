@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"></html>
+<link rel="stylesheet" th:href="@{/css/signup.css}" href="css/signup.css" type="text/css"/>
+
+    
+<head>
+    <th:block th:replace="fragments/header.html :: header" />
+    <title>Sign-up</title>
+</head>
+<body>
+
+    <div class="container"> 
+
+        <h1>
+            HA TENIDO UN COMPORTAMIENTO INADECUADO
+        </h1>
+        <form th:action="@{/user/beGood/{id}/(id=${session.u.id})}" method="POST" style="display: flex;">
+            <button id="sendmsg" type="submit" class="reportar" style="margin-left: auto; margin-right: auto; margin-top: 3px;">Prometo ser bueno</button>
+        </form>
+    </div>
+
+    <footer th:replace="fragments/footer.html :: footer">
+        Footer goes here
+    </footer>
+</body>
+</html>

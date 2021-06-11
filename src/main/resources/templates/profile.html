@@ -21,7 +21,8 @@
                 <div style="width: 100%; text-align: center;">
                     <img style="width: 20%; margin-left: 11%;" th:src="@{/user/{id}/photo/(id=${user.id})}"
                         alt="User" />
-                    <a th:if="${session.u.username == user.username}" style="background-color: transparent; float:right; padding: 0; margin-top: 0;" class="btn"
+                    <a th:if="${session.u.username == user.username}"
+                        style="background-color: transparent; float:right; padding: 0; margin-top: 0;" class="btn"
                         th:href="@{#editUser}"><img src="../../static/img/editar.png" th:src="@{/img/editar.png}"></a>
                     <!--Modal para editar el usuario-->
                     <div class="modal fade modal-xl" th:id="editUser" tabindex="-1" role="dialog"
@@ -55,10 +56,15 @@
                     </div>
                 </div>
                 <p th:text="${user.firstName}"></p>
-                <a class="mensaje-perfil" th:if="${session.u.username == user.username}"
-                    th:href="@{/message/{id}/(id=${session.u.id})}" title="">Mensaje</a>
-                <a th:if="${session.u.roles.contains('ADMIN') && session.u.username == user.username} "
-                    class="mensaje-perfil" th:href="@{/admin/}" title="">Admin</a>
+                <div style="display: flex; flex-direction: row;">
+                    <a class="mensaje-perfil" th:if="${session.u.username == user.username}"
+                        th:href="@{/message/{id}/(id=${session.u.id})}" title="">Mensaje</a>
+                    <a th:if="${session.u.roles.contains('ADMIN') && session.u.username == user.username} "
+                        class="mensaje-perfil" th:href="@{/admin/}" title="">Admin</a>
+                    <form th:if="${session.u.username != user.username}" th:action="@{/user/report/{id}/(id=${user.id})}" method="POST">
+                        <button id="sendmsg" type="submit" class="mensaje-perfil report" style="margin-top: 3px;">Reportar</button>
+                    </form>
+                </div>
                 <div class="stats-usuario">
                     <div class="stats">
                         <div class="stat">
@@ -124,7 +130,7 @@
                         <label>Captura del diseño (*opcional)</label>
                         <input type="file" name="captura" placeholder="Captura" accept=".jpg, .png">
                         <input id="subir" type="submit" onclick="validate()" value="Añadir">
-                    </form> 
+                    </form>
                 </div>
 
             </div>
@@ -132,15 +138,17 @@
             <div th:each="d: ${userDesigns}" class="diseno">
                 <div class="edit">
                     <h3 th:text="${d.name}"></h3>
-                    <button th:if="${session.u.username == user.username}" id="boton_designMod"> <img th:src="@{/img/editar.png}" alt="Editar"></button>
+                    <button th:if="${session.u.username == user.username}" id="boton_designMod"> <img
+                            th:src="@{/img/editar.png}" alt="Editar"></button>
                 </div>
                 <div id="addDesignModalMod" class="modal">
 
                     <div class="modal-content">
                         <span class="closeMod">&times;</span>
-                        <form class="form" method="POST" th:action="@{/design/modDesign/{id}/(id= ${d.id})}" enctype="multipart/form-data">
+                        <form class="form" method="POST" th:action="@{/design/modDesign/{id}/(id= ${d.id})}"
+                            enctype="multipart/form-data">
                             <label>Categoría</label>
-                            <select required name="category" id="ctg" th:value= "${d.category}">
+                            <select required name="category" id="ctg" th:value="${d.category}">
                                 <option value="" disabled selected>Selecciona una categoría</option>
                                 <option value="Tecnologia">Tecnología</option>
                                 <option value="Juguetes">Juguetes</option>
@@ -149,17 +157,20 @@
                                 <option value="Hogar">Hogar</option>
                                 <option value="Deporte">Deporte</option>
                             </select>
-    
+
                             <label>Precio</label>
-                            <input id="pre" type="number" name="precio" required min="0" placeholder="Precio" th:value= "${d.price}">
+                            <input id="pre" type="number" name="precio" required min="0" placeholder="Precio"
+                                th:value="${d.price}">
                             <label>Nombre</label>
-                            <input id="nom" type="text" name="diseno" required placeholder="Diseño" th:value= "${d.name}">
+                            <input id="nom" type="text" name="diseno" required placeholder="Diseño"
+                                th:value="${d.name}">
                             <label>Descripción</label>
-                            <input id="dec" type="text" name="about" placeholder="Describe el diseño" th:value= "${d.description}">
+                            <input id="dec" type="text" name="about" placeholder="Describe el diseño"
+                                th:value="${d.description}">
                             <input id="modif" type="submit" value="Modificar">
-                        </form> 
+                        </form>
                     </div>
-    
+
                 </div>
                 <a th:href="@{#} + ${d.id}" class="btn" id="openDesign"><img
                         style="width: 50%; margin-left: auto; margin-right: auto;" id="icon"
@@ -293,7 +304,23 @@
     <footer th:replace="fragments/footer.html :: footer">
         Footer goes here
     </footer>
+    <script>
+        //Envío de mensaje de reportar
+        $(".report").on('click', function (e) {
+            //let idOfTarget = document.getElementById("disenio").value;
 
+            let url = this.parentElement.action
+
+            //let id = this.parentElement.children[1].value;
+
+            e.preventDefault(); // <-- evita que se envíe de la forma normal
+            console.log(e, $(this).parent().parent())
+            go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
+                {})
+                .then(d => { console.log("report done", d); })
+                .catch(e => console.log("bad luck, evil is better", e))
+        });
+    </script>
 </body>
 
 </html>

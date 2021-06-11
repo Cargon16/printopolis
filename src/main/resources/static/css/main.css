@@ -212,6 +212,16 @@ footer #copyright{
     border-radius: 5px;
     padding: 1%;
 }
+
+.datos-Usuario button{
+    margin-top: 5%;
+    text-decoration: none;
+    background-color: rgb(35, 80, 146);
+    color: white;
+    border-radius: 5px;
+    padding: 1%;
+}
+
 .stats-usuario{
     margin-top: 5%;
     width: 100%;

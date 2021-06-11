@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import javax.websocket.SendHandler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -271,19 +272,22 @@ public class UserController {
 			throw new Exception("Existe el usuario");
 	}
 
-	@PostMapping("/report/{id}")
+	//@PostMapping("/report/{id}")
+	@RequestMapping(value="/report/{id}", method= RequestMethod.POST)
 	@ResponseBody
 	@Transactional
 	public String reportar(@PathVariable long id, Model model, HttpSession session) throws JsonProcessingException {
 
-		String text = "Este mensaje es un aviso por actitud inapropiada. Mantenga las formas.";
 		User u = entityManager.find(User.class, id);
+		String text = "Este mensaje es un aviso por actitud inapropiada. El usuario " + u.getFirstName() + " debe comportarse.";
 		User sender = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
 		model.addAttribute("user", u);
 
+		User admin = entityManager.createQuery("SELECT u FROM User u WHERE u.roles LIKE '%ADMIN%'", User.class).getSingleResult();
+
 		// construye mensaje, lo guarda en BD
 		Message m = new Message();
-		m.setRecipient(u);
+		m.setRecipient(admin);
 		m.setSender(sender);
 		m.setDateSent(LocalDateTime.now());
 		m.setText(text);
@@ -294,7 +298,7 @@ public class UserController {
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode rootNode = mapper.createObjectNode();
 		rootNode.put("from", sender.getUsername());
-		rootNode.put("to", u.getUsername());
+		rootNode.put("to", admin.getUsername());
 		rootNode.put("text", text);
 		rootNode.put("id", m.getId());
 		String json = mapper.writeValueAsString(rootNode);
@@ -329,5 +333,49 @@ public class UserController {
 			}
 		}
 		return "redirect:/user/" + id;
+	}
+
+	@PostMapping("/sendWarning/{id}")
+	@ResponseBody
+	@Transactional
+	public String sendAviso(@PathVariable long id, Model model, HttpSession session) throws JsonProcessingException {
+
+		User u = entityManager.find(User.class, id);
+		User sender = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+		String text = "Este mensaje es un aviso por actitud inapropiada. El usuario " + u.getFirstName() + " debe comportarse.";
+		model.addAttribute("user", u);
+
+		Message m = new Message();
+		m.setRecipient(u);
+		m.setSender(sender);
+		m.setDateSent(LocalDateTime.now());
+		m.setText("ADVERTENCIA: Hemos detectado una actitud inapropiada, acepta ser bueno o no podrás hacer uso de la web.");
+		entityManager.persist(m);
+		entityManager.flush(); // to get Id before commit
+
+		// construye json
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode rootNode = mapper.createObjectNode();
+		rootNode.put("from", sender.getUsername());
+		rootNode.put("to", u.getUsername());
+		rootNode.put("text", text);
+		rootNode.put("id", m.getId());
+		String json = mapper.writeValueAsString(rootNode);
+
+		log.info("Sending a message to {} with contents '{}'", id, json);
+
+		messagingTemplate.convertAndSend("/user/" + u.getUsername() + "/queue/updates", json);
+		return "{\"result\": \"message sent.\"}";
+	}
+
+	@PostMapping("/beGood/{id}")
+	@Transactional
+	public String avisar(@PathVariable long id, Model model, HttpSession session) throws JsonProcessingException {
+
+		User u = entityManager.find(User.class, id);
+		entityManager.createNamedQuery("Message.delete").setParameter("userId", id).executeUpdate();
+		entityManager.flush();
+
+		return "redirect:/";
 	}
 }

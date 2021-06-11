@@ -1,97 +1,203 @@
-  
 <!DOCTYPE html>
-<html 
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-	<th:block th:replace="fragments/header :: header"/>
+	<th:block th:replace="fragments/header :: header" />
 	<title>Mensajes</title>
 
 	<script th:src="@{/js/simple-datatables-2.1.10.min.js}"></script>
 	<link th:href="@{/css/messages.css}" rel="stylesheet">
 </head>
+
 <body>
-    <header th:replace="fragments/cabecera.html :: cabecera">
-        Header goes here
-    </header>
+	<header th:replace="fragments/cabecera.html :: cabecera">
+		Header goes here
+	</header>
 	<nav th:replace="fragments/nav.html :: nav">
 		Nav goes here
 	</nav>
-	
+
 	<div class="container">
-	<div class="main">
-	<h1>Mensajes recibidos</h1>
-	
+		<div id="main" class="main" style="display: flex; flex-direction: column; align-items: center;">
+			<h1>Mensajes recibidos</h1>
 
-		<table class="datatable" id="datatable"></table>
+			<div th:each="u: ${users}" class="dropdownMenu" th:id="${u.username}">
+				<div class="title dropdownButton">
+					<p th:text="${u.username}"></p>
+				</div>
+				<div class="dropdownContent">
+					<th:block th:each="item : ${message}">
+						<div th:if="${item.sender.id == u.id}" style="display: flex; flex-direction: column;">
+							<p th:text="@{Fecha: } + ${item.dateSent}"></p>
+							<p th:text="@{Mensaje: } + ${item.text}" style="margin-bottom: 2%;"></p>
+						</div>
+					</th:block>
+				</div>
+			</div>
+			<!-- <button th:each="u: ${users}" class="accordion" th:text="${u.username}"></button>
+			<div th:each="u: ${users}" class="panel" th:id="${u.username}">
+				<th:block th:each="item : ${message}">
+					<div th:if="${item.sender.id == u.id}" style="display: flex; flex-direction: column;">
+						<p th:text="@{Fecha: } + ${item.dateSent}"></p>
+						<p th:text="@{Mensaje: } + ${item.text}" style="margin-bottom: 2%;"></p>
+					</div>
+				</th:block>
+			</div> -->
+			<!-- <table class="datatable" id="datatable"></table> -->
 
-	
+
+		</div>
 	</div>
-	</div>	
 
 	<div class="sidebar">
 		<form th:action="@{/user/idOfTarget/msg}" method="POST">
-		<select id="idOfTarget">
-			<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.username}">mfreire</option>
-		</select>
-		<textarea id="message" placeholder="escribe al usuario seleccionado" rows="4" cols="20"></textarea>
-		<button id="sendmsg" type="submit">Enviar</button>
+			<select id="idOfTarget">
+				<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.username}">mfreire</option>
+			</select>
+			<textarea id="message" placeholder="escribe al usuario seleccionado" rows="4" cols="20"></textarea>
+			<button id="sendmsg" type="submit">Enviar</button>
 		</form>
 	</div>
 
 	<footer th:replace="fragments/footer.html :: footer">
-        Footer goes here
-    </footer>
+		Footer goes here
+	</footer>
 
 	<script>
-	
-	function formatDate(d) {
-		// 2020-03-23T10:48:11.074 => 23/3/2020@10:48:18
-		return new Date(d).toLocaleString("es-ES").split(" ").join("@")
-	}
-
-	// mostrando una tabla dinámica con datos cargados del servidor vía AJAX
-	let dt = new simpleDatatables.DataTable(
-		'#datatable', { 
-		    ajax: {
-		        url: config.rootUrl + "message/received", // empieza siempre por config.rootUrl
-		        load: function(xhr) {
-		        	let data = JSON.parse(xhr.responseText);
-		        	for (let i=0; i<data.length; i++) {
-		        		let row = data[i];
-		        		row.sent = formatDate(row.sent);
-		        		if (row.received) {
-		        			row.received = formatDate(row.received);
-		        		}
-		        	}
-		        	
-		        	return JSON.stringify(data);
-		        }
-		    }
+		function formatDate(d) {
+			// 2020-03-23T10:48:11.074 => 23/3/2020@10:48:18
+			return new Date(d).toLocaleString("es-ES").split(" ").join("@")
 		}
-	);
 
-	// envío de mensajes vía AJAX, sin recargar la página
-	document.addEventListener("DOMContentLoaded", () => {
-		let b = document.getElementById("sendmsg");
-		b.onclick = (e) => {
-			let idOfTarget = document.getElementById("idOfTarget").value;
-			let url = b.parentNode.action.replace("idOfTarget", idOfTarget);
-			e.preventDefault();
-			console.log(b, b.parentNode)
-			go(url, 'POST', {message: 
-					document.getElementById("message").value})
-				.then(d => console.log("happy", d))
-				.catch(e => console.log("sad", e))
+		// mostrando una tabla dinámica con datos cargados del servidor vía AJAX
+		/*let dt = new simpleDatatables.DataTable(
+			'#datatable', {
+			ajax: {
+				url: config.rootUrl + "message/received", // empieza siempre por config.rootUrl
+				load: function (xhr) {
+					let data = JSON.parse(xhr.responseText);
+					for (let i = 0; i < data.length; i++) {
+						let row = data[i];
+						row.sent = formatDate(row.sent);
+						if (row.received) {
+							row.received = formatDate(row.received);
+						}
+					}
+
+					return JSON.stringify(data);
+				}
+			}
 		}
-	});
+		);*/
 
-	// sobreescribid esta funcion para especificar qué sucede cuando recibes un mensaje
-	// aquí estoy metiendo el mensaje al final de la tabla
-	ws.receive = (m) => {
-		dt.rows().add([m.from, m.to, formatDate(new Date().toISOString()), "", m.text, m.id]);		
-	}
-	
+		// envío de mensajes vía AJAX, sin recargar la página
+		document.addEventListener("DOMContentLoaded", () => {
+
+			$('.dropdownButton').click(function () {
+
+				//Elimina la clase on de todos los botones
+				$('.dropdownButton').removeClass('on');
+
+				//Plegamos todo el contenido que esta abierto
+				$('.dropdownContent').slideUp('slow');
+
+				//Si el siguiente slide no esta abierto lo abrimos
+				if ($(this).next().is(':hidden') == true) {
+
+					//Añade la clase on en el botón
+					$(this).addClass('on');
+
+					//Abre el slide
+					$(this).next().slideDown('slow');
+				}
+
+			});
+
+			// Cerramos todo el contenido al cargar la página
+			$('.dropdownContent').hide();
+
+
+			let b = document.getElementById("sendmsg");
+			b.onclick = (e) => {
+				let idOfTarget = document.getElementById("idOfTarget").value;
+				let url = b.parentNode.action.replace("idOfTarget", idOfTarget);
+				e.preventDefault();
+				console.log(b, b.parentNode)
+				go(url, 'POST', {
+					message:
+						document.getElementById("message").value
+				})
+					.then(d => console.log("happy", d))
+					.catch(e => console.log("sad", e))
+			}
+		});
+
+		// sobreescribid esta funcion para especificar qué sucede cuando recibes un mensaje
+		// aquí estoy metiendo el mensaje al final de la tabla
+		ws.receive = (m) => {
+			var usuario;
+			usuario = document.getElementById(m.from);
+			if (usuario == null) {
+				var main = document.getElementById("main");
+				usuario = document.createElement("div");
+				usuario.id = m.from;
+				usuario.classList.toggle("dropdownMenu");
+
+				var title = document.createElement("div");
+				title.classList.add('title', 'dropdownButton');
+				var titulo = document.createElement("p");
+				var textTitle = document.createTextNode(m.from);
+				titulo.appendChild(textTitle);
+
+				title.onclick = function () {
+
+					//Elimina la clase on de todos los botones
+					$('.dropdownButton').removeClass('on');
+
+					//Plegamos todo el contenido que esta abierto
+					$('.dropdownContent').slideUp('slow');
+
+					//Si el siguiente slide no esta abierto lo abrimos
+					if ($(this).next().is(':hidden') == true) {
+
+						//Añade la clase on en el botón
+						$(this).addClass('on');
+
+						//Abre el slide
+						$(this).next().slideDown('slow');
+					}
+
+				}
+
+				title.appendChild(titulo);
+				usuario.appendChild(title);
+
+				var content = document.createElement("div");
+				content.classList.toggle("dropdownContent");
+				usuario.appendChild(content);
+
+				main.appendChild(usuario);
+
+			}
+			var contenedor = document.createElement("div");
+
+			// Crear nodo de tipo Text
+			var fecha = document.createElement("p");
+			var text = document.createTextNode("Fecha:" + new Date().toISOString());
+			fecha.appendChild(text);
+			contenedor.appendChild(fecha);
+
+			var mensaje = document.createElement("p");
+			var content1 = document.createTextNode("Mensaje:" + m.text);
+			mensaje.appendChild(content1);
+			contenedor.appendChild(mensaje);
+
+			// Añadir el nodo Element como hijo de la pagina
+			usuario.children[1].appendChild(contenedor);
+			// dt.rows().add([m.from, m.to, formatDate(new Date().toISOString()), "", m.text, m.id]);
+		}
+
 	</script>
 </body>
+
 </html>
