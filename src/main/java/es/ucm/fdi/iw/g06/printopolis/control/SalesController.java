@@ -81,15 +81,23 @@ public class SalesController {
 		Double t;
 		if (u.getSaleId() != null) {
 			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
-			if (p != null)
+			if (p != null){
 				model.addAttribute("printer", p.getName());
-			else
+				model.addAttribute("printerPrice", p.getPrecio());
+				t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class)
+					.setParameter("id", u.getSaleId().getId()).getSingleResult();
+				Double pri = t + p.getPrecio();
+			model.addAttribute("price", pri);
+			}
+			else{
 				model.addAttribute("printer", null);
-			l = entityManager.createNamedQuery("SalesLine.salesProducts").setParameter("id", u.getSaleId().getId())
-					.getResultList();
-			t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class)
+				t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class)
 					.setParameter("id", u.getSaleId().getId()).getSingleResult();
 			model.addAttribute("price", t);
+			}
+			l = entityManager.createNamedQuery("SalesLine.salesProducts").setParameter("id", u.getSaleId().getId())
+					.getResultList();
+			
 			List<Evento> e = entityManager.createNamedQuery("Evento.getEvento", Evento.class)
 					.setParameter("id", u.getSaleId().getId()).getResultList();
 			if (!e.isEmpty())
@@ -127,6 +135,12 @@ public class SalesController {
 
 			//entityManager.refresh(d.getDesigner());
 			entityManager.persist(d.getDesigner());
+		}
+		if(compra.getPrinter() > 0){
+			Printer p = entityManager.createNamedQuery("Printer.getPrinter", Printer.class).setParameter("pId", compra.getPrinter()).getSingleResult();
+			User user = entityManager.find(User.class, p.getImpresor().getId());
+			user.setGanancias(user.getGanancias() + p.getPrecio());
+			entityManager.persist(user);
 		}
 
 		return "redirect:/user/" + us.getId();
@@ -244,4 +258,22 @@ public class SalesController {
 		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream());
 	}
 
+
+	@Transactional
+	@ResponseBody
+	@PostMapping("/delProduct")
+	public String delDesign(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException{
+		Long id = o.get("prodId").asLong();
+		float price = (float)o.get("price").asLong();
+
+		User u = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		entityManager.createNamedQuery("SalesLine.delProd").setParameter("id", id).executeUpdate();
+
+
+	   Sales s = entityManager.createNamedQuery("Sales.sale", Sales.class).setParameter("id", u.getSaleId().getId()).getSingleResult();
+	   s.setTotal_price(s.getTotal_price()-price);
+	   entityManager.persist(s);
+
+	   return "{\"Product deleted\": \"" + id + "\"}";
+   }
 }

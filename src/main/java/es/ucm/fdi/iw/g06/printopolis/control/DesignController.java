@@ -244,6 +244,11 @@ public class DesignController {
 			entityManager.persist(d);
 			user.addDesignLike(d);
 		}
+		else{
+			d.setPunctuation(d.getPunctuation()-1);
+			entityManager.persist(d);
+			user.delDesignLike(d);
+		}
 		log.info("Increment design's likes {}", d.getPunctuation());
 
 		return "{\"name\": \"" + d.getId() + "\"}";

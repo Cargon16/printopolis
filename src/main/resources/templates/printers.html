@@ -51,7 +51,8 @@
                         <div th:each="p:${i.printer}" class="card">
                             <img alt="Imagen impresora" width="16" height="16" th:src="@{/img/printer.png}" >
                             <h4 th:text="${p.name}"></h4>
-                            <h4 th:text="${p.material_level}"></h4> 
+                            <h4 th:text="${p.material_level}"></h4>
+                            <h4 th:text="${p.precio + ' €'}"></h4>  
                         </div>
                     </div>
                     <!-- <img alt="Imagen Favorito" width="24" height="24" src="../img/fav.png" > -->

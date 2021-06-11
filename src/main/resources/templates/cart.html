@@ -23,26 +23,44 @@
     <div class="contenedor_productos">
         <form class="cart">
             <div class="cartProds">
-                <h4> 
-                    <span>Diseño</span>
-                    <span class="price" style="color:black">Precio</span>
-                </h4>
+                <table>
+                <tr>
+                    <th>Diseño</th>
+                    <th>Precio</th>
+                </tr>
                 <div th:if="${products.size() == 0}">
                     <p>Tu cesta está vacía</p>
                 </div>
-                <div th:each="p:${products}" class="apartado">
-                    <p class="cantidad" th:text="${p[5]}"></p>
-                    <span class="price" th:text="${p[2]}"></span>
-                    <img th:if="${printer != null}" th:src="@{/img/printer.png}" height="30" width="30" th:alt="${printer}">
-                </div>
+                <!-- <div th:each="p:${products}" class="apartado"> -->
+                    <tr th:each="p:${products}">
+                        <!-- <div class = "prod" th:id = "${p[6]}"> -->
+                            <td id="${p[6]}" class="nombre" th:text="${p[5]}" th:value = "${p[5]}"></td>
+                            <td id = "${p[6]}" class="priceProd" th:text="${p[2]}" th:value = "${p[2]}"></td>
+                            <td>
+                                <form method="POST" th:action="@{/sale/delProduct/}">
+                                    <button type="submit" id="${p[6]}" class="x">X</button>
+                                </form>
+                            </td>
+                            <td th:if="${printer != null}" th:text="${printerPrice + ' €'}"></td>
+                            <td><img id="${p[6]}" th:if="${printer != null}" th:src="@{/img/printer.png}" height="30" width="30" th:alt="${printer}"></td>
+                        
+                        <!-- </div> -->
+                    </tr>
+                <!-- </div> -->
+            </table>
                 <hr>
-                <p th:if="${products.size() > 0}" class="total">Total <span class="price" style="color:black"><b th:text="${price}"></b></span></p>
+                <p id= "sumPrice" th:if="${products.size() > 0}" class="total">Total 
+                    <span class="price" style="color:black">
+                        <b class = "totalPrice" id="priceTotal" th:text="${price}" th:value ="${price}"></b>
+                    </span>
+                </p>
+            
             </div>
 
             <div th:if="${products.size() > 0}" class="dropdown">
                 <button id ="drop" class="dropbtn">Añadir impresora</button>
                 <div class="dropdown-content">
-                    <a th:each = "pr: ${printers}" th:href="@{/sale/printerChoice/{id}/(id=${pr.id})}" th:id = "kaka" th:text ="${pr.name}"></a>
+                    <a th:each = "pr: ${printers}" th:href="@{/sale/printerChoice/{id}/(id=${pr.id})}" th:id = "kaka" th:text ="${pr.name + ' ' + pr.precio + '€'}"></a>
                 </div>
             </div>
 
@@ -62,6 +80,23 @@
     <footer th:replace="fragments/footer.html :: footer">
         Footer goes here
     </footer>
+
+<script>
+    $(".x").on('click', function (e) {
+        document.getElementById( $(".prod").attr("id")).remove();
+        let id = $(".prod").attr("id");
+        let pr = $(".priceProd").attr("value");
+
+        let total = $(".totalPrice").attr("value");
+        let fin = total - pr;
+        document.getElementById("priceTotal").innerHTML = fin;
+        e.preventDefault(); // <-- evita que se envíe de la forma normal
+                go("/sale/delProduct/", 'POST', // <-- hace el `fetch`, y recibe resultados
+                {prodId: id, price:pr} )
+                    .then(d => { console.log("happy", d);})
+                    .catch(e => console.log("sad", e))
+    });
+</script>
 
 </body>
 

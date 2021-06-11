@@ -66,6 +66,31 @@ public class PrinterController {
 		return "redirect:/";
 	}
 
+	@Transactional
+	@RequestMapping(value = "/modPrinter/{id}", method = RequestMethod.POST)
+	public String modifyPrinter(@PathVariable long id, @RequestParam("name") String impresora, 
+						@RequestParam("mat-level") Integer level,
+						@RequestParam("precioP") float precio,
+						Model model, HttpSession session) throws IOException {
+
+		Printer p = entityManager.find(Printer.class, id);
+		p.setMaterial_level(level);
+        p.setName(impresora);
+        p.setPunctuation(0);
+		p.setStatus("AVAILABLE");
+		p.setPrecio(precio);
+		p.setImpresor(((User) session.getAttribute("u")));
+		// User us = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+		// us.addPrinter(p);
+		entityManager.persist(p);
+		entityManager.flush();
+		
+		
+		log.info("Printer modified {}",impresora);
+		
+		return "redirect:/";
+	}
+
 	@GetMapping(value="/{id}/printer")
 	public StreamingResponseBody getPrinter(@PathVariable long id, Model model) throws IOException {
 		File f = localData.getFile("printer", "" + id);
