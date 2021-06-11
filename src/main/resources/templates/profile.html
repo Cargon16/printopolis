@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <p th:text="${user.firstName}"></p>
-                <div style="display: flex; flex-direction: row;">
+                <div style="display: flex; flex-direction: row; width: 100%; justify-content: space-evenly;">
                     <a class="mensaje-perfil" th:if="${session.u.username == user.username}"
                         th:href="@{/message/{id}/(id=${session.u.id})}" title="">Mensaje</a>
                     <a th:if="${session.u.roles.contains('ADMIN') && session.u.username == user.username} "
