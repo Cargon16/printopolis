@@ -154,8 +154,9 @@ public class DesignController {
 	}
 
 
+	@Transactional
 	@GetMapping("/{category}")
-	public String designs(@PathVariable String category, Model model, HttpServletRequest request) {
+	public String designs(@PathVariable String category, Model model, HttpServletRequest request, HttpSession session) {
 		List<Design> l;
 
 		if(category.equals("all")){
@@ -164,6 +165,22 @@ public class DesignController {
 		else {
 				l = entityManager.createNamedQuery("Design.categoryDesigns", Design.class).setParameter("category", category).getResultList();
 		}
+		List<Long> lastId = entityManager.createQuery("SELECT d.id FROM Design d ORDER BY d.id DESC").getResultList();
+		int len = lastId.get(0).intValue() + 1;
+		Integer [] k = new Integer [len];
+		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		for (Design d : l) {
+			Integer id = ((int)d.getId());
+			if(d.getUsersLikes().contains(user)){
+				k[id] =1;
+			}
+			else{
+				k[id] = 0;
+			}
+
+		}
+
+		model.addAttribute("likeList", k);
 		model.addAttribute("categoryType", l);
 		model.addAttribute("categoryName", category);
 		log.info("Sending a message to {} with contents '{}'", l);

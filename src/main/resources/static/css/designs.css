@@ -257,7 +257,7 @@ content:"#"
 }
 
 .liked {
-    background-image: url("/img/heart.png");
+    /* background-image: url("/img/heart.png"); */
     height: 18px;
     width: 18px;
     background-size: cover;

@@ -97,7 +97,9 @@
                         <span th:id = "${d.id}" class="punt" th:text="${d.punctuation}"></span>
                         <!-- <img id="heart" th:src="@{/img/heart.png}" height="13px" width="14px"/> -->
                         <input type="hidden" th:value="${d.id}" name="likeId">
-                        <input type="submit" class="liked" value="">
+                        <!-- <input type="submit" class="liked" value=""> -->
+                        <input th:if="${likeList[d.id] >0}" type="submit" class="liked" value="" th:id="${d.id} + @{H}" style="background-image: url('/img/heart.png');">
+                        <input th:if="${likeList[d.id] ==0}" type="submit" class="liked" value="" th:id="${d.id} + @{H}" style="background-image: url('/img/emptyHeart.png');">
                     </div>
                 </form>
                 <span class="vendidos" th:text="${'Vendidos #' + d.numVentas}"></span>
@@ -130,7 +132,13 @@
             let url = this.parentElement.parentElement.action
 
             let id = this.parentElement.children[1].value;
-          
+            const style = getComputedStyle(this.parentElement.children[2]);
+            const backgroundI = style.backgroundImage;
+            var idInput = "#" + id + "H";
+            if(!backgroundI.includes("empty"))
+            $(idInput).css("background-image","url(/img/emptyHeart.png)");
+            else
+            $(idInput).css("background-image","url(/img/heart.png)");
             e.preventDefault(); // <-- evita que se envíe de la forma normal
             console.log(e, $(this).parent().parent())
             go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
