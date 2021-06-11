@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Evento;
+import es.ucm.fdi.iw.g06.printopolis.model.Message;
 import es.ucm.fdi.iw.g06.printopolis.model.Printer;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.SalesLine;
@@ -142,6 +144,27 @@ public class SalesController {
 			user.setGanancias(user.getGanancias() + p.getPrecio());
 			entityManager.persist(user);
 		}
+		User admin = entityManager.createQuery("SELECT u FROM User u WHERE u.roles LIKE '%ADMIN%'", User.class).getSingleResult();
+		Message m = new Message();
+		m.setRecipient(us);
+		m.setSender(admin);
+		m.setDateSent(LocalDateTime.now());
+		m.setText("Ha realizado su pedido de manera correcta.");
+		entityManager.persist(m);
+		entityManager.flush(); // to get Id before commit
+
+		// construye json
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode rootNode = mapper.createObjectNode();
+		rootNode.put("from", admin.getUsername());
+		rootNode.put("to", us.getUsername());
+		rootNode.put("text", "Ha realizado su pedido de manera correcta.");
+		rootNode.put("id", m.getId());
+		String json = mapper.writeValueAsString(rootNode);
+
+		log.info("Sending a message to {} with contents '{}'", id, json);
+
+		messagingTemplate.convertAndSend("/user/" + us.getUsername() + "/queue/updates", json);
 
 		return "redirect:/user/" + us.getId();
 	}
