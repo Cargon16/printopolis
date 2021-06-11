@@ -51,7 +51,7 @@
     linear-gradient(
         rgba(5, 5, 5, 0.45), 
         rgba(5, 5, 5, 0.45)
-      ), url("https://live.staticflickr.com/7164/6736043905_7ee71eaf31_b.jpg");
+      ), url("/img/6736043905_7ee71eaf31_b.jpg");
 }
 
 #juguetes{
@@ -59,7 +59,7 @@
     linear-gradient(
         rgba(5, 5, 5, 0.45), 
         rgba(5, 5, 5, 0.45)
-      ), url("https://live.staticflickr.com/5100/5526885408_b9b10329b7_b.jpg");
+      ), url("/img/5526885408_b9b10329b7_b.jpg");
 }
 
 #accesorios{
@@ -67,7 +67,7 @@
     linear-gradient(
         rgba(5, 5, 5, 0.45), 
         rgba(5, 5, 5, 0.45)
-      ), url("https://live.staticflickr.com/4121/34807334784_f5530167a2_b.jpg");
+      ), url("/img/34807334784_f5530167a2_b.jpg");
 }
 
 #herramientas{
@@ -75,7 +75,7 @@
     linear-gradient(
         rgba(5, 5, 5, 0.45), 
         rgba(5, 5, 5, 0.45)
-      ), url("https://live.staticflickr.com/484/32708495171_a91cf2732d_b.jpg");
+      ), url("/img/32708495171_a91cf2732d_b.jpg");
 }
 
 #hogar{
@@ -83,7 +83,7 @@
     linear-gradient(
         rgba(5, 5, 5, 0.45), 
         rgba(5, 5, 5, 0.45)
-      ), url("https://live.staticflickr.com/5770/22811852647_4c434d30df_b.jpg");
+      ), url("/img/22811852647_4c434d30df_b.jpg");
 }
 
 #deporte{
@@ -91,7 +91,7 @@
     linear-gradient(
         rgba(5, 5, 5, 0.45), 
         rgba(5, 5, 5, 0.45)
-      ), url("https://cdn.pixabay.com/photo/2018/08/10/16/33/footballs-3597192__340.jpg");
+      ), url("/img/footballs-3597192__340.jpg");
 }
 
 #todasLasCategorias{
