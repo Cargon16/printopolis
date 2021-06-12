@@ -34,7 +34,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Evento;
@@ -43,7 +42,6 @@ import es.ucm.fdi.iw.g06.printopolis.model.Printer;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.SalesLine;
 import es.ucm.fdi.iw.g06.printopolis.model.Sales;
-
 
 @Controller()
 @RequestMapping("sale")
@@ -83,27 +81,32 @@ public class SalesController {
 		Double t;
 		if (u.getSaleId() != null) {
 			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
-			if (p != null){
+			if (p != null) {
 				model.addAttribute("printer", p.getName());
 				model.addAttribute("printerPrice", p.getPrecio());
 				t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class)
-					.setParameter("id", u.getSaleId().getId()).getSingleResult();
+						.setParameter("id", u.getSaleId().getId()).getSingleResult();
+				if (t == null)
+					t = 0D;
 				Double pri = t + p.getPrecio();
-			model.addAttribute("price", pri);
-			}
-			else{
+				model.addAttribute("price", pri);
+			} else {
 				model.addAttribute("printer", null);
 				t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class)
-					.setParameter("id", u.getSaleId().getId()).getSingleResult();
-			model.addAttribute("price", t);
+						.setParameter("id", u.getSaleId().getId()).getSingleResult();
+				if (t == null)
+					t = 0D;
+				model.addAttribute("price", t);
 			}
 			l = entityManager.createNamedQuery("SalesLine.salesProducts").setParameter("id", u.getSaleId().getId())
 					.getResultList();
-			
+
 			List<Evento> e = entityManager.createNamedQuery("Evento.getEvento", Evento.class)
 					.setParameter("id", u.getSaleId().getId()).getResultList();
-			if (!e.isEmpty())
+			if (!e.isEmpty()){
 				model.addAttribute("evento", e.get(0).toString());
+				model.addAttribute("eventId", e.get(0).getId());
+			}
 			else
 				model.addAttribute("evento", "-");
 		} else {
@@ -135,16 +138,18 @@ public class SalesController {
 			float ant = d.getDesigner().getGanancias();
 			d.getDesigner().setGanancias(ant + d.getPrice());
 
-			//entityManager.refresh(d.getDesigner());
+			// entityManager.refresh(d.getDesigner());
 			entityManager.persist(d.getDesigner());
 		}
-		if(compra.getPrinter() > 0){
-			Printer p = entityManager.createNamedQuery("Printer.getPrinter", Printer.class).setParameter("pId", compra.getPrinter()).getSingleResult();
+		if (compra.getPrinter() > 0) {
+			Printer p = entityManager.createNamedQuery("Printer.getPrinter", Printer.class)
+					.setParameter("pId", compra.getPrinter()).getSingleResult();
 			User user = entityManager.find(User.class, p.getImpresor().getId());
 			user.setGanancias(user.getGanancias() + p.getPrecio());
 			entityManager.persist(user);
 		}
-		User admin = entityManager.createQuery("SELECT u FROM User u WHERE u.roles LIKE '%ADMIN%'", User.class).getSingleResult();
+		User admin = entityManager.createQuery("SELECT u FROM User u WHERE u.roles LIKE '%ADMIN%'", User.class)
+				.getSingleResult();
 		Message m = new Message();
 		m.setRecipient(us);
 		m.setSender(admin);
@@ -281,22 +286,21 @@ public class SalesController {
 		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream());
 	}
 
-
 	@Transactional
 	@ResponseBody
 	@PostMapping("/delProduct")
-	public String delDesign(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException{
+	public String delDesign(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
 		Long id = o.get("prodId").asLong();
-		float price = (float)o.get("price").asLong();
+		float price = (float) o.get("price").asLong();
 
-		User u = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
 		entityManager.createNamedQuery("SalesLine.delProd").setParameter("id", id).executeUpdate();
 
+		Sales s = entityManager.createNamedQuery("Sales.sale", Sales.class).setParameter("id", u.getSaleId().getId())
+				.getSingleResult();
+		s.setTotal_price(s.getTotal_price() - price);
+		entityManager.persist(s);
 
-	   Sales s = entityManager.createNamedQuery("Sales.sale", Sales.class).setParameter("id", u.getSaleId().getId()).getSingleResult();
-	   s.setTotal_price(s.getTotal_price()-price);
-	   entityManager.persist(s);
-
-	   return "{\"Product deleted\": \"" + id + "\"}";
-   }
+		return "{\"Product deleted\": \"" + id + "\"}";
+	}
 }
