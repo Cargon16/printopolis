@@ -248,7 +248,6 @@ public class UserController {
 			entityManager.createNamedQuery("User.delUserDesigns").setParameter("id", id).executeUpdate();
 			entityManager.createNamedQuery("User.delUserPrinters").setParameter("id", id).executeUpdate();
 			entityManager.createNamedQuery("User.delUser").setParameter("id", id).executeUpdate();
-			entityManager.flush();
 		}
 
 		return "redirect:/admin/";
@@ -345,31 +344,8 @@ public class UserController {
 	public String sendAviso(@PathVariable long id, Model model, HttpSession session) throws JsonProcessingException {
 
 		User u = entityManager.find(User.class, id);
-		User sender = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
-		String text = "Este mensaje es un aviso por actitud inapropiada. El usuario " + u.getFirstName() + " debe comportarse.";
-		model.addAttribute("user", u);
-
-		Message m = new Message();
-		m.setRecipient(u);
-		m.setSender(sender);
-		m.setDateSent(LocalDateTime.now());
-		m.setText("ADVERTENCIA: Hemos detectado una actitud inapropiada, acepta ser bueno o no podrás hacer uso de la web.");
-		entityManager.persist(m);
-		entityManager.flush(); // to get Id before commit
-
-		// construye json
-		ObjectMapper mapper = new ObjectMapper();
-		ObjectNode rootNode = mapper.createObjectNode();
-		rootNode.put("from", sender.getUsername());
-		rootNode.put("to", u.getUsername());
-		rootNode.put("text", text);
-		rootNode.put("id", m.getId());
-		String json = mapper.writeValueAsString(rootNode);
-
-		log.info("Sending a message to {} with contents '{}'", id, json);
-
-		messagingTemplate.convertAndSend("/user/" + u.getUsername() + "/queue/updates", json);
-		return "{\"result\": \"message sent.\"}";
+		u.setRoles("USER,BANNED");
+		return "{\"result\": \"banned.\"}";
 	}
 
 	@PostMapping("/beGood/{id}")
@@ -377,8 +353,8 @@ public class UserController {
 	public String avisar(@PathVariable long id, Model model, HttpSession session) throws JsonProcessingException {
 
 		User u = entityManager.find(User.class, id);
-		entityManager.createNamedQuery("Message.delete").setParameter("userId", id).executeUpdate();
-		entityManager.flush();
+		//entityManager.createNamedQuery("Message.delete").setParameter("userId", id).executeUpdate();
+		u.setRoles("USER");
 
 		return "redirect:/";
 	}

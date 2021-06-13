@@ -252,7 +252,6 @@ public class SalesController {
 	public String delEventos(@RequestParam(name = "id", required = false) String id, Model model, HttpSession session)
 			throws IOException {
 		entityManager.createNamedQuery("Evento.delEvento").setParameter("id", id).executeUpdate();
-		entityManager.flush();
 		Sales s = ((User) session.getAttribute("u")).getSaleId();
 		s.setPrinter(0L);
 		entityManager.merge(s);

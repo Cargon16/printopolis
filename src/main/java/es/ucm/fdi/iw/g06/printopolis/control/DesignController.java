@@ -110,7 +110,6 @@ public class DesignController {
 		d.setName(diseno);
 		d.setPrice(precio);
 		entityManager.persist(d);
-		entityManager.flush();
 
 		log.info("Added new design {}", diseno);
 	}
@@ -244,7 +243,6 @@ public class DesignController {
 			compra.setTotal_price(compra.getTotal_price() + d.getPrice());
 			sl.setSale(compra.getId());
 			entityManager.persist(sl);
-			entityManager.flush();
 
 		log.info("Added new product to cart {}", d.getName());
 
@@ -258,7 +256,7 @@ public class DesignController {
 		Design d = entityManager.find(Design.class, id);
 		if(u.hasRole(User.Role.ADMIN) || d.getDesigner().getId() == u.getId()){
 		entityManager.createNamedQuery("Design.delDesign").setParameter("id", id).executeUpdate();
-		entityManager.flush();
+		
 		}
 
 		return "redirect:/admin/";

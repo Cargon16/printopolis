@@ -63,7 +63,8 @@ public class User implements Transferable<User.Transfer> {
 
 	public enum Role {
 		USER, // used for logged-in, non-priviledged users
-		ADMIN // used for maximum priviledged users
+		ADMIN, // used for maximum priviledged users
+		BANNED // used for banned users
 	}
 
 	// do not change these fields

@@ -63,7 +63,6 @@ public class PrinterController {
 		User us = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
 		us.addPrinter(p);
 		entityManager.persist(p);
-		entityManager.flush();
 		
 		
 		log.info("Added new design {}",impresora);
@@ -88,7 +87,6 @@ public class PrinterController {
 		// User us = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
 		// us.addPrinter(p);
 		entityManager.persist(p);
-		entityManager.flush();
 		
 		
 		log.info("Printer modified {}",impresora);
@@ -131,7 +129,6 @@ public class PrinterController {
 
 		if(p.getImpresor().getId() == u.getId() || u.hasRole(Role.ADMIN)){
 		entityManager.createNamedQuery("Printer.dePrinter").setParameter("id", id).executeUpdate();
-		entityManager.flush();
 		}
 
 		return "redirect:/";
