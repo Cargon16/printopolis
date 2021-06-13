@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,11 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
@@ -46,7 +50,7 @@ public class PrinterController {
 	@Transactional
 	@RequestMapping(value = "/addPrinter", method = RequestMethod.POST)
 	public String addUser(@RequestParam("name") String impresora, 
-						@RequestParam("mat-level") Integer level,
+						@RequestParam("mat-level") Integer level, @RequestParam("price") Integer precio,
 						Model model, HttpSession session) throws IOException {
 
 		Printer p = new Printer();
@@ -54,6 +58,7 @@ public class PrinterController {
         p.setName(impresora);
         p.setPunctuation(0);
 		p.setStatus("AVAILABLE");
+		p.setPrecio(precio);
 		p.setImpresor(((User) session.getAttribute("u")));
 		User us = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
 		us.addPrinter(p);
@@ -148,6 +153,20 @@ public class PrinterController {
 		return "printers";
 	}
 	
+	@PostMapping("/modifyPrice/{id}")
+	@Transactional
+	@ResponseBody
+	public String changePrice(@PathVariable long id, @RequestBody JsonNode o, Model model, HttpSession session){
+		int precio = o.get("price").asInt(-1);;
+		User u = (User)session.getAttribute("u");
+		Printer p = entityManager.find(Printer.class, id);
 
+		if(p.getImpresor().getId() == u.getId()){
+			p.setPrecio(precio);
+			entityManager.persist(p);
+		}
+
+		return "{\"name\": \"" + p.getPrecio() + "\"}";
+	}
 
 }

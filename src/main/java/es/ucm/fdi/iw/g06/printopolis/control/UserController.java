@@ -48,6 +48,7 @@ import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Message;
 import es.ucm.fdi.iw.g06.printopolis.model.Printer;
+import es.ucm.fdi.iw.g06.printopolis.model.SalesLine;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.User.Role;
 
@@ -116,6 +117,9 @@ public class UserController {
 		List<Object> l2 = entityManager.createNamedQuery("Sales.getAllSales", Object.class)
 				.setParameter("id", u.getId()).getResultList();
 		model.addAttribute("sales", l2);
+
+		List<SalesLine> l3 = entityManager.createNamedQuery("Sales.getHistory", SalesLine.class).setParameter("id", u.getId()).getResultList();
+		model.addAttribute("history", l3);
 
 		System.out.println(l1.toString());
 		model.addAttribute("userPrinters", l1);
@@ -323,7 +327,7 @@ public class UserController {
 			entityManager.persist(usuario);
 			entityManager.flush();
 			if (!archivo.isEmpty()) {
-				File f = localData.getFile("user", Long.toString(usuario.getId()));
+				File f = localData.getFile("user", ""+ usuario.getId());
 				try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(f))) {
 					byte[] bytes = archivo.getBytes();
 					stream.write(bytes);

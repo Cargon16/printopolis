@@ -112,7 +112,7 @@ public class RootController {
 		entityManager.persist(usuario);
 		entityManager.flush();
 		if (!archivo.isEmpty()) {
-			File f = localData.getFile("user", Long.toString(usuario.getId()));
+			File f = localData.getFile("user", ""+ usuario.getId());
 			try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(f))) {
 				byte[] bytes = archivo.getBytes();
 				stream.write(bytes);

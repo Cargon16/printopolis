@@ -61,8 +61,10 @@
                         th:href="@{/message/{id}/(id=${session.u.id})}" title="">Mensaje</a>
                     <a th:if="${session.u.roles.contains('ADMIN') && session.u.username == user.username} "
                         class="mensaje-perfil" th:href="@{/admin/}" title="">Admin</a>
-                    <form th:if="${session.u.username != user.username}" th:action="@{/user/report/{id}/(id=${user.id})}" method="POST">
-                        <button id="sendmsg" type="submit" class="mensaje-perfil report" style="margin-top: 3px;">Reportar</button>
+                    <form th:if="${session.u.username != user.username}"
+                        th:action="@{/user/report/{id}/(id=${user.id})}" method="POST">
+                        <button id="sendmsg" type="submit" class="mensaje-perfil report"
+                            style="margin-top: 3px;">Reportar</button>
                     </form>
                 </div>
                 <div class="stats-usuario">
@@ -103,7 +105,7 @@
             <div id="addDesignModal" class="modal">
 
                 <div class="modal-content">
-                    <span class="closeAdd">&times;</span>
+                    <span class="closeAdd" style="float:right;">&times;</span>
                     <form class="form" method="POST" th:action="@{/design/addDesign}" enctype="multipart/form-data">
                         <label>Categoría</label>
                         <select required name="category" id="ctg">
@@ -144,7 +146,7 @@
                 <div id="addDesignModalMod" class="modal">
 
                     <div class="modal-content">
-                        <span class="closeMod">&times;</span>
+                        <span class="closeMod" style="float:right;">&times;</span>
                         <form class="form" method="POST" th:action="@{/design/modDesign/{id}/(id= ${d.id})}"
                             enctype="multipart/form-data">
                             <label>Categoría</label>
@@ -230,6 +232,8 @@
                         <input type="text" required name="name" placeholder="Nombre">
                         <label>Nivel de material</label>
                         <input type="range" name="mat-level" min="0" max="100" required step="5">
+                        <label>Precio por impresión</label>
+                        <input type="number" name="price" min="0" max="50" required>
                         <input type="submit" value="Añadir">
                     </form>
                 </div>
@@ -265,7 +269,13 @@
                             </div>
                             <div class="modal-body">
                                 <h3>Descripción</h3>
-                                <p>De momento no hay nada, vaya</p>
+                                <p>Precio de impresión:</p>
+                                <form class="form" method="POST" th:action="@{/printer/modifyPrice/{id}/(id=${p.id})}"
+                                    enctype="multipart/form-data">
+                                    <input type="number" id="precioImp" name="price" min="0" max="50"
+                                        th:value="${p.precio}" required>
+                                    <input type="submit" class="change" value="Cambiar">
+                                </form>
                                 <form th:if="${session.u.username == user.username}" method="POST"
                                     th:action="@{/printer/delPrinter/{id}/(id=${p.id})}">
                                     <input th:if="${p.status} == 'AVAILABLE'" id="test" type="Submit" value="Eliminar">
@@ -288,7 +298,7 @@
             </div>
             <div th:if="${session.u.username == user.username}"
                 style="width: 100%; display:flex; flex-direction: column;">
-                <h2 style="margin-bottom: 2%;">Mis pedidos</h2>
+                <h2 style="margin-bottom: 2%;">Mis diseños comprados</h2>
                 <div th:each="c: ${sales}" style="display:flex; flex-direction:colum; margin-bottom: 10%;">
                     <div style="display:flex; flex-direction:row; align-items: center; margin-right: 3%;">
                         <h3>Identificador del diseño: </h3>
@@ -296,6 +306,9 @@
                     </div>
                     <a th:href="@{/sale/download/{id}/(id=${c})}">Descargar</a>
                 </div>
+            </div>
+            <div id="pedidosHistorial" style="display: flex; flex-direction: column; width: 50%;">
+                <h2 style="margin-bottom: 2%;">Mis pedidos</h2>
             </div>
         </div>
     </div>
@@ -305,6 +318,30 @@
         Footer goes here
     </footer>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Cerramos todo el contenido al cargar la página
+            $('.dropdownContent').hide();
+        });
+
+        $(".change").on('click', function (e) {
+            //let idOfTarget = document.getElementById("disenio").value;
+
+            let url = this.parentElement.action
+            let valor = this.parentElement.children[1].value;
+            e.preventDefault();
+            if (valor === '') {
+                alert('No puedes dejar el campo vacío!!!');
+            }
+            else {
+                console.log(valor, url);
+                go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
+                    { price: valor })
+                    .then(d => { console.log("happy", d); document.getElementById("precioImp").value = valor; })
+                    .catch(e => console.log("sad", e))
+            }
+        });
+
         //Envío de mensaje de reportar
         $(".report").on('click', function (e) {
             //let idOfTarget = document.getElementById("disenio").value;
@@ -320,6 +357,118 @@
                 .then(d => { console.log("report done", d); })
                 .catch(e => console.log("bad luck, evil is better", e))
         });
+    </script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var main = document.getElementById("pedidosHistorial");
+        var historial = /*[[${history}]]*/[];
+        if (historial.length != 0) {
+            var pedido = document.createElement("div");
+            pedido.classList.toggle("dropdownMenu");
+            main.appendChild(pedido);
+            //var parent =  document.getElementById("");;
+            var currentSale = historial[0]['sale'];
+            var title = document.createElement("div");
+            title.classList.add('title', 'dropdownButton');
+            var titulo = document.createElement("p");
+            var textTitle = document.createTextNode("Pedido:" + currentSale);
+            titulo.appendChild(textTitle);
+
+            title.onclick = function () {
+
+                //Elimina la clase on de todos los botones
+                $('.dropdownButton').removeClass('on');
+
+                //Plegamos todo el contenido que esta abierto
+                $('.dropdownContent').slideUp('slow');
+
+                //Si el siguiente slide no esta abierto lo abrimos
+                if ($(this).next().is(':hidden') == true) {
+
+                    //Añade la clase on en el botón
+                    $(this).addClass('on');
+
+                    //Abre el slide
+                    $(this).next().slideDown('slow');
+                }
+
+            }
+
+            title.appendChild(titulo);
+            pedido.appendChild(title);
+            var content = document.createElement("div");
+            content.classList.toggle("dropdownContent");
+            pedido.appendChild(content);
+
+            for (var i = 0; i < historial.length; ++i) {
+                if (historial[i]['sale'] == currentSale) {
+
+                    var contenedor = document.createElement("div");
+
+                    // Crear nodo de tipo Text
+                    var producto = document.createElement("p");
+                    var text1 = document.createTextNode("Producto:" + historial[i]['design'] + " " + "Precio:" + historial[i]['price']);
+                    producto.appendChild(text1);
+                    contenedor.appendChild(producto);
+
+                    // Añadir el nodo Element como hijo de la pagina
+                    pedido.children[1].appendChild(contenedor);
+
+
+                }
+                else {
+                    pedido = document.createElement("div");
+                    pedido.classList.toggle("dropdownMenu");
+                    main.appendChild(pedido);
+                    //var parent =  document.getElementById("");;
+                    currentSale = historial[i]['sale'];
+                    title = document.createElement("div");
+                    title.classList.add('title', 'dropdownButton');
+                    titulo = document.createElement("p");
+                    textTitle = document.createTextNode("Pedido:" + currentSale);
+                    titulo.appendChild(textTitle);
+
+                    title.onclick = function () {
+
+                        //Elimina la clase on de todos los botones
+                        $('.dropdownButton').removeClass('on');
+
+                        //Plegamos todo el contenido que esta abierto
+                        $('.dropdownContent').slideUp('slow');
+
+                        //Si el siguiente slide no esta abierto lo abrimos
+                        if ($(this).next().is(':hidden') == true) {
+
+                            //Añade la clase on en el botón
+                            $(this).addClass('on');
+
+                            //Abre el slide
+                            $(this).next().slideDown('slow');
+                        }
+
+                    }
+
+                    title.appendChild(titulo);
+                    pedido.appendChild(title);
+                    content = document.createElement("div");
+                    content.classList.toggle("dropdownContent");
+                    pedido.appendChild(content);
+
+                    contenedor = document.createElement("div");
+
+                    // Crear nodo de tipo Text
+                    producto = document.createElement("p");
+                    text1 = document.createTextNode("Producto:" + historial[i]['design'] + " " + "Precio:" + historial[i]['price']);
+                    producto.appendChild(text1);
+                    contenedor.appendChild(producto);
+
+                    // Añadir el nodo Element como hijo de la pagina
+                    pedido.children[1].appendChild(contenedor);
+                }
+            }
+        }
+
+        /*]]>*/
     </script>
 </body>
 

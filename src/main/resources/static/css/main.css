@@ -213,7 +213,7 @@ footer #copyright{
     padding: 1%;
 }
 
-.datos-Usuario button{
+.datos-Usuario .boton-perfil{
     margin-top: 5%;
     text-decoration: none;
     background-color: rgb(35, 80, 146);
@@ -503,3 +503,47 @@ input[type="submit"]
   #instruccionesCalendar ul{
       list-style: none;
   }
+
+  /*DIV desplegable ---------------------------------------------------------------------*/
+  .dropdownMenu{
+	width: 50%;
+	margin-bottom: 3px;
+}
+.title{
+	padding: 7px 10px;
+	background-color: #1e9083;
+	color: white;
+	margin-bottom: 0;
+}
+.title:hover{
+	background-color: #5edacc;
+}
+.dropdownButton:hover{
+	cursor: pointer;
+}
+.dropdownButton > p .fa{
+	float: right;
+}
+.dropdownContent ul{
+	margin: 0;
+	padding: 0 10px;
+}
+.dropdownContent,
+.dropdownButton{
+	border: 1px solid #1e9083;
+}
+.dropdownContent{
+	padding: 15px 8px;
+	background-color: #fff;
+	margin-top: -1px;
+}
+.dropdownContent ul li{
+	list-style: none;
+	padding: 5px 0;
+}
+.dropdownContent ul li a{
+	text-decoration: none;
+}
+.dropdownContent ul li a:hover{
+	color: blue;
+}

@@ -69,8 +69,8 @@ public class DesignController {
 		d.setDesigner(((User) session.getAttribute("u")));
 		entityManager.persist(d);
 		entityManager.flush();
-		File f = localData.getFile("design", Long.toString(d.getId()));
-		File c = localData.getFile("design", Long.toString(d.getId()) + "c");
+		File f = localData.getFile("design", ""+ d.getId());
+		File c = localData.getFile("design", ""+ d.getId() + "c");
 		if (archivo.isEmpty()) {
 			log.info("failed to upload design: emtpy file?");
 		} else {
@@ -188,10 +188,27 @@ public class DesignController {
 		return "designs";
 	}
 
+	@Transactional
 	@RequestMapping(value = "/name", method = RequestMethod.GET)
-	public String nameDesigns(@RequestParam("search") String name, Model model, HttpServletRequest request) {
+	public String nameDesigns(@RequestParam("search") String name, Model model, HttpServletRequest request, HttpSession session) {
 		List<Design> l;
 		l = entityManager.createQuery("SELECT d FROM Design d WHERE d.name like :name").setParameter("name", "%" + name + "%").getResultList();
+		List<Long> lastId = entityManager.createQuery("SELECT d.id FROM Design d ORDER BY d.id DESC").getResultList();
+		int len = lastId.get(0).intValue() + 1;
+		Integer [] k = new Integer [len];
+		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+		for (Design d : l) {
+			Integer id = ((int)d.getId());
+			if(d.getUsersLikes().contains(user)){
+				k[id] =1;
+			}
+			else{
+				k[id] = 0;
+			}
+
+		}
+
+		model.addAttribute("likeList", k);
 		model.addAttribute("categoryType", l);
 		model.addAttribute("categoryName", name);
 		

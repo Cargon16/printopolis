@@ -271,7 +271,7 @@ public class SalesController {
 	@GetMapping(value = "/download/{id}"/* , produces = "application/zip" */)
 	public void zipDownload(@PathVariable Long id, HttpServletResponse response, HttpSession session)
 			throws IOException {
-		File file = localData.getFile("design", Long.toString(id));
+		File file = localData.getFile("design", ""+ id);
 		String nombreBonito = entityManager.find(Design.class, id).getName();
 		FileInputStream in = new FileInputStream(file);
 		byte[] content = new byte[(int) file.length()];

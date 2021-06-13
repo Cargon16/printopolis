@@ -69,27 +69,6 @@
 			return new Date(d).toLocaleString("es-ES").split(" ").join("@")
 		}
 
-		// mostrando una tabla dinámica con datos cargados del servidor vía AJAX
-		/*let dt = new simpleDatatables.DataTable(
-			'#datatable', {
-			ajax: {
-				url: config.rootUrl + "message/received", // empieza siempre por config.rootUrl
-				load: function (xhr) {
-					let data = JSON.parse(xhr.responseText);
-					for (let i = 0; i < data.length; i++) {
-						let row = data[i];
-						row.sent = formatDate(row.sent);
-						if (row.received) {
-							row.received = formatDate(row.received);
-						}
-					}
-
-					return JSON.stringify(data);
-				}
-			}
-		}
-		);*/
-
 		// envío de mensajes vía AJAX, sin recargar la página
 		document.addEventListener("DOMContentLoaded", () => {
 
@@ -127,7 +106,7 @@
 					message:
 						document.getElementById("message").value
 				})
-					.then(d => console.log("happy", d))
+					.then(d => console.log("happy", d), $("#message").val(''))
 					.catch(e => console.log("sad", e))
 			}
 		});
