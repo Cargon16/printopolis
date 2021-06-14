@@ -34,18 +34,7 @@
 					</th:block>
 				</div>
 			</div>
-			<!-- <button th:each="u: ${users}" class="accordion" th:text="${u.username}"></button>
-			<div th:each="u: ${users}" class="panel" th:id="${u.username}">
-				<th:block th:each="item : ${message}">
-					<div th:if="${item.sender.id == u.id}" style="display: flex; flex-direction: column;">
-						<p th:text="@{Fecha: } + ${item.dateSent}"></p>
-						<p th:text="@{Mensaje: } + ${item.text}" style="margin-bottom: 2%;"></p>
-					</div>
-				</th:block>
-			</div> -->
-			<!-- <table class="datatable" id="datatable"></table> -->
-
-
+			
 		</div>
 	</div>
 
@@ -173,7 +162,6 @@
 
 			// Añadir el nodo Element como hijo de la pagina
 			usuario.children[1].appendChild(contenedor);
-			// dt.rows().add([m.from, m.to, formatDate(new Date().toISOString()), "", m.text, m.id]);
 		}
 
 	</script>

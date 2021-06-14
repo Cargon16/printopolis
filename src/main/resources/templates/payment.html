@@ -18,8 +18,7 @@
     </nav>
 
 
-    <!-- <div class="row"> -->
-        <!-- <div class="col-75"> -->
+
           <div class="container">
             <form th:action="@{/sale/{id}/processPayment/(id=${session.u.saleId.id})}" method="POST">
       
@@ -80,32 +79,7 @@
               <input type="submit" value="Continue to checkout" class="btn" id="checkout">
             </form>
           </div>
-        <!-- </div> -->
 
-
-
-
-<!-- 
-    <div class="contenedor_productos">
-
-        <form th:action="@{/sale/{id}/processPayment/(id=${session.u.saleId.id})}" method="POST" class="cart">
-            <div class="apartado">
-                <label>Dirección de envío:</label>
-                <input class="input" type="text" th:value="${sales.address}">
-            </div>
-
-            <div class="apartado">
-                <label>Precio total:</label>
-                <input class="input" type="text" th:value="${sales.total_price}">
-            </div>
-
-            <div id="fin">
-                <input class="input" id="boton" type="submit" value="Comprar">
-            </div>
-        </form> -->
-        
-
-    <!-- </div> -->
 
     <footer th:replace="fragments/footer.html :: footer">
         Footer goes here

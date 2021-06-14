@@ -29,9 +29,7 @@ import lombok.AllArgsConstructor;
 				+ "WHERE m.sender.id = :userId AND m.dateRead = null"),
 
 		@NamedQuery(name = "Message.allMessage", query = "SELECT m FROM Message m " + "WHERE m.recipient.id = :userId"),
-		// @NamedQuery(name="Message.allMessage",
-		// query="SELECT m FROM Message m "
-		// + "WHERE m.recipient.id = :userId GROUP BY m.sender.id")
+
 		@NamedQuery(name = "Message.warning", query = "SELECT COUNT(*) FROM Message m "
 				+ "WHERE m.recipient.id = :userId AND m.text LIKE '%ADVERTENCIA%'"),
 
