@@ -307,7 +307,7 @@
                     <a th:href="@{/sale/download/{id}/(id=${c})}">Descargar</a>
                 </div>
             </div>
-            <div id="pedidosHistorial" style="display: flex; flex-direction: column; width: 50%;">
+            <div id="pedidosHistorial" style="display: flex; flex-direction: column; width: 50%;" th:if="${session.u.username == user.username}">
                 <h2 style="margin-bottom: 2%;">Mis pedidos</h2>
             </div>
         </div>
