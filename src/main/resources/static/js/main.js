@@ -232,7 +232,20 @@ async function designLiked(id) {
     })
 }
 
+//Aplica descuento
+async function applyDiscount() {
+  let params = {};
+  // Spring Security lo añade en formularios html, pero no en Ajax
+  // params[config.csrf.name] = config.csrf.value;
+  // petición en sí
+  return go(config.rootUrl + "sale/discount", 'GET', params)
+    .then((response) => {
+      var disc = response.discount;
 
+      document.getElementById("priceTotal").setAttribute("value", disc);
+      document.getElementById("priceTotal").innerHTML = disc;
+    })
+}
 
 
 

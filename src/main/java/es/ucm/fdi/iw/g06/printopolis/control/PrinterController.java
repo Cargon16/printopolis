@@ -84,8 +84,7 @@ public class PrinterController {
 		p.setStatus("AVAILABLE");
 		p.setPrecio(precio);
 		p.setImpresor(((User) session.getAttribute("u")));
-		// User us = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
-		// us.addPrinter(p);
+
 		entityManager.persist(p);
 		
 		

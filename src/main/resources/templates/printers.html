@@ -20,10 +20,6 @@
         <div id="filtrar">
             Filtrar por 
         
-            <a class="button_filtro" th:href="@{/printer/num_printer/}" title="">
-                <b>Número de impresoras</b>   
-            </a>
-        
             <a class="button_filtro" th:href="@{/printer/ordenarAsc/}" title="">
                 <b>Nombre A-Z</b> 
             </a>
@@ -32,9 +28,6 @@
                 <b>Nombre Z-A</b> 
             </a>
 
-            <a class="button_filtro" th:href="@{/printer/material/}" title="">
-                <b>Nivel de material</b> 
-            </a>
 
         </div>
 
@@ -55,7 +48,6 @@
                             <h4 th:text="${p.precio + ' €'}"></h4>  
                         </div>
                     </div>
-                    <!-- <img alt="Imagen Favorito" width="24" height="24" src="../img/fav.png" > -->
                 </a>
             </div>
 

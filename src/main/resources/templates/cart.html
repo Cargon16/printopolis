@@ -31,14 +31,13 @@
                     <div th:if="${products.size() == 0}">
                         <p>Tu cesta está vacía</p>
                     </div>
-                    <!-- <div th:each="p:${products}" class="apartado"> -->
                     <tr th:each="p:${products}" th:id="${p[6]}">
-                        <!-- <div class="prod" th:id="${p[6]}"> -->
                         <td class="nombre" th:text="${p[5]}" th:value="${p[5]}"></td>
                         <td class="priceProd" th:text="${p[2]}" th:value="${p[2]}"></td>
                         <td>
                             <form method="POST" th:action="@{/sale/delProduct/}">
                                 <input type="hidden" th:value="${p[6]}">
+                                <input type="hidden" class="printerPrice" th:if="${printer != null}" th:value="${printerPrice}">
                                 <button type="submit" th:id="${p[6]}" class="x">X</button>
                             </form>
                         </td>
@@ -46,9 +45,7 @@
                         <td><img th:if="${printer != null}" th:src="@{/img/printer.png}" height="30" width="30"
                                 th:alt="${printer}"></td>
 
-                        <!-- </div> -->
                     </tr>
-                    <!-- </div> -->
                 </table>
                 <hr>
                 <p id="sumPrice" th:if="${products.size() > 0}" class="total">Total
@@ -77,6 +74,11 @@
                     class="input" id="boton">Tramitar</a>
             </div>
         </form>
+        <form method="POST" th:action="@{/sale/applyDiscount/}">
+            <div th:if = "${coins > 0 and coins <= price} " class="printomoneda">
+                <button type="submit" class="addCoins">Usar printomonedas</button>
+            </div>
+        </form>
     </div>
 
 
@@ -88,11 +90,16 @@
     <script>
         $(".x").on('click', function (e) {
             let id = this.parentElement.children[1].value;
-            //let id = $(".prod").attr("id");
             let pr = $(".priceProd").attr("value");
-
+            let fin;
             let total = $(".totalPrice").attr("value");
-            let fin = (total - pr).toFixed(2);
+            let printPr = $(".printerPrice").attr("value");
+            if(printPr != undefined){
+                fin = (total - pr - printPr).toFixed(2);
+            }
+            else{
+            fin = (total - pr).toFixed(2);
+            }
 
             var box = document.getElementById(id);
             console.log(box);
@@ -121,9 +128,23 @@
                         response.name;
                     })
                 
-                document.getElementById("boton").style.pointerEvents = "none";
+                $("#boton").remove();
+                $("#drop").remove();
             }
         });
+
+        $(".addCoins").on('click', function (e) {
+                $(".addCoins").prop( "disabled", true );
+                let url = this.parentElement.parentElement.action
+
+                e.preventDefault(); // <-- evita que se envíe de la forma normal
+                go(url, 'POST', // <-- hace el `fetch`, y recibe resultados
+                {} )
+                    .then(d => { console.log("happy", d); applyDiscount()})
+                    .catch(e => console.log("sad", e))
+            });
+
+
     </script>
 
 </body>

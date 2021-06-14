@@ -353,7 +353,6 @@ public class UserController {
 	public String avisar(@PathVariable long id, Model model, HttpSession session) throws JsonProcessingException {
 
 		User u = entityManager.find(User.class, id);
-		//entityManager.createNamedQuery("Message.delete").setParameter("userId", id).executeUpdate();
 		u.setRoles("USER");
 
 		return "redirect:/";

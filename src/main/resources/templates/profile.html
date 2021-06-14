@@ -239,7 +239,9 @@
                 </div>
 
             </div>
+            
             <div th:each="p: ${userPrinters}" class="diseno">
+                <span>Pinchame para modificarme</span>
                 <div style="display:flex; flex-direction:row; align-items: center;">
                     <h3 th:text="${p.name}"></h3>
                     <th:block th:switch="${p.status}">
@@ -325,7 +327,6 @@
         });
 
         $(".change").on('click', function (e) {
-            //let idOfTarget = document.getElementById("disenio").value;
 
             let url = this.parentElement.action
             let valor = this.parentElement.children[1].value;
@@ -344,11 +345,9 @@
 
         //Envío de mensaje de reportar
         $(".report").on('click', function (e) {
-            //let idOfTarget = document.getElementById("disenio").value;
 
             let url = this.parentElement.action
 
-            //let id = this.parentElement.children[1].value;
 
             e.preventDefault(); // <-- evita que se envíe de la forma normal
             console.log(e, $(this).parent().parent())
@@ -366,7 +365,6 @@
             var pedido = document.createElement("div");
             pedido.classList.toggle("dropdownMenu");
             main.appendChild(pedido);
-            //var parent =  document.getElementById("");;
             var currentSale = historial[0]['sale'];
             var title = document.createElement("div");
             title.classList.add('title', 'dropdownButton');
@@ -420,7 +418,6 @@
                     pedido = document.createElement("div");
                     pedido.classList.toggle("dropdownMenu");
                     main.appendChild(pedido);
-                    //var parent =  document.getElementById("");;
                     currentSale = historial[i]['sale'];
                     title = document.createElement("div");
                     title.classList.add('title', 'dropdownButton');

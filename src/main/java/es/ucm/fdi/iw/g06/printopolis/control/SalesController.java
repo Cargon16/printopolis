@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,14 +33,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import es.ucm.fdi.iw.g06.printopolis.LocalData;
 import es.ucm.fdi.iw.g06.printopolis.model.Design;
 import es.ucm.fdi.iw.g06.printopolis.model.Evento;
-import es.ucm.fdi.iw.g06.printopolis.model.Message;
 import es.ucm.fdi.iw.g06.printopolis.model.Printer;
 import es.ucm.fdi.iw.g06.printopolis.model.User;
 import es.ucm.fdi.iw.g06.printopolis.model.SalesLine;
 import es.ucm.fdi.iw.g06.printopolis.model.Sales;
+
 
 @Controller()
 @RequestMapping("sale")
@@ -74,33 +74,32 @@ public class SalesController {
 		return "payment";
 	}
 
+	@Transactional
 	@GetMapping("/")
 	public String openCart(Model model, HttpSession session) throws IOException {
 		User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
 		List<Object> l;
-		Double t;
+		Sales t = entityManager.find(Sales.class,  u.getSaleId().getId());
+
 		if (u.getSaleId() != null) {
+			
 			Printer p = entityManager.find(Printer.class, u.getSaleId().getPrinter());
-			if (p != null) {
+
+			if (p != null){
+
 				model.addAttribute("printer", p.getName());
 				model.addAttribute("printerPrice", p.getPrecio());
-				t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class)
-						.setParameter("id", u.getSaleId().getId()).getSingleResult();
-				if (t == null)
-					t = 0D;
-				Double pri = t + p.getPrecio();
-				model.addAttribute("price", pri);
-			} else {
+				t.setTotal_price(t.getTotal_price());
+
+			model.addAttribute("price", t.getTotal_price());
+			}
+			else{
 				model.addAttribute("printer", null);
-				t = entityManager.createNamedQuery("SalesLine.getTotalPrice", Double.class)
-						.setParameter("id", u.getSaleId().getId()).getSingleResult();
-				if (t == null)
-					t = 0D;
-				model.addAttribute("price", t);
+				model.addAttribute("price", t.getTotal_price());
 			}
 			l = entityManager.createNamedQuery("SalesLine.salesProducts").setParameter("id", u.getSaleId().getId())
 					.getResultList();
-
+			
 			List<Evento> e = entityManager.createNamedQuery("Evento.getEvento", Evento.class)
 					.setParameter("id", u.getSaleId().getId()).getResultList();
 			if (!e.isEmpty()){
@@ -109,15 +108,50 @@ public class SalesController {
 			}
 			else
 				model.addAttribute("evento", "-");
-		} else {
+		} 
+		else {
 			model.addAttribute("printer", null);
 			l = new ArrayList<Object>();
 		}
+
+		entityManager.persist(t);
 		List<Printer> p = entityManager.createNamedQuery("Printer.allPrinters", Printer.class).getResultList();
+		model.addAttribute("coins", u.getGanancias());
 		model.addAttribute("products", l);
 		model.addAttribute("printers", p);
 		return "cart";
 	}
+	
+
+	@Transactional
+	@ResponseBody
+	@PostMapping("/applyDiscount")
+	public String usePrintoCoins(Model model, HttpSession session) throws IOException {
+		User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+
+		Sales s = user.getSaleId();
+		s.setTotal_price(s.getTotal_price() - user.getGanancias());
+		user.setGanancias(0);
+		entityManager.persist(s);
+		entityManager.persist(user);
+
+		return "{\"Discount\": \"" + s.getTotal_price() + "\"}";
+	}
+
+	@RequestMapping(value = "/discount", method = RequestMethod.GET)
+	@ResponseBody
+	@Transactional
+	public String getDiscount(Model model, HttpSession session) throws IOException {
+		try{
+			User user = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
+			Sales s = entityManager.createNamedQuery("Sales.sale", Sales.class).setParameter("id", user.getSaleId().getId()).getSingleResult();
+		return "{\"discount\": \"" + s.getTotal_price() + "\"}";
+		}catch(Exception e){
+			return "{\"discount\": \"" + 0 + "\"}";
+		}
+	 }
+
+
 
 	@Transactional
 	@PostMapping("/{id}/processPayment")
@@ -138,38 +172,14 @@ public class SalesController {
 			float ant = d.getDesigner().getGanancias();
 			d.getDesigner().setGanancias(ant + d.getPrice());
 
-			// entityManager.refresh(d.getDesigner());
 			entityManager.persist(d.getDesigner());
 		}
-		if (compra.getPrinter() > 0) {
-			Printer p = entityManager.createNamedQuery("Printer.getPrinter", Printer.class)
-					.setParameter("pId", compra.getPrinter()).getSingleResult();
+		if(compra.getPrinter() > 0){
+			Printer p = entityManager.createNamedQuery("Printer.getPrinter", Printer.class).setParameter("pId", compra.getPrinter()).getSingleResult();
 			User user = entityManager.find(User.class, p.getImpresor().getId());
 			user.setGanancias(user.getGanancias() + p.getPrecio());
 			entityManager.persist(user);
 		}
-		User admin = entityManager.createQuery("SELECT u FROM User u WHERE u.roles LIKE '%ADMIN%'", User.class)
-				.getSingleResult();
-		Message m = new Message();
-		m.setRecipient(us);
-		m.setSender(admin);
-		m.setDateSent(LocalDateTime.now());
-		m.setText("Ha realizado su pedido de manera correcta.");
-		entityManager.persist(m);
-		entityManager.flush(); // to get Id before commit
-
-		// construye json
-		ObjectMapper mapper = new ObjectMapper();
-		ObjectNode rootNode = mapper.createObjectNode();
-		rootNode.put("from", admin.getUsername());
-		rootNode.put("to", us.getUsername());
-		rootNode.put("text", "Ha realizado su pedido de manera correcta.");
-		rootNode.put("id", m.getId());
-		String json = mapper.writeValueAsString(rootNode);
-
-		log.info("Sending a message to {} with contents '{}'", id, json);
-
-		messagingTemplate.convertAndSend("/user/" + us.getUsername() + "/queue/updates", json);
 
 		return "redirect:/user/" + us.getId();
 	}
@@ -202,7 +212,9 @@ public class SalesController {
 	@Transactional
 	@ResponseBody
 	public String addEvent(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
-		Sales s = ((User) session.getAttribute("u")).getSaleId();
+	
+		Sales s = entityManager.find(Sales.class,  ((User) session.getAttribute("u")).getSaleId().getId());
+
 		ObjectMapper mapper = new ObjectMapper();
 		Date date = mapper.convertValue(o.get("evento").get("date"), Date.class);
 		Long printer = mapper.convertValue(o.get("evento").get("printer"), Long.class);
@@ -210,7 +222,13 @@ public class SalesController {
 		String id = mapper.convertValue(o.get("evento").get("eventId"), String.class);
 		Evento e = new Evento();
 		s.setPrinter(printer);
+
+		Printer p = entityManager.find(Printer.class, printer);
+		Object numP = entityManager.createNamedQuery("SalesLine.getNumProducts").setParameter("id", ((User) session.getAttribute("u")).getSaleId().getId()).getSingleResult();
+		float num = Float.parseFloat(numP.toString());
+		s.setTotal_price(s.getTotal_price() + p.getPrecio()*num);
 		entityManager.merge(s);
+
 		e.setFechaPedido(date);
 		e.setImpresora(printer);
 		e.setId(id);
@@ -252,7 +270,8 @@ public class SalesController {
 	public String delEventos(@RequestParam(name = "id", required = false) String id, Model model, HttpSession session)
 			throws IOException {
 		entityManager.createNamedQuery("Evento.delEvento").setParameter("id", id).executeUpdate();
-		Sales s = ((User) session.getAttribute("u")).getSaleId();
+		entityManager.flush();
+		Sales s = entityManager.find(Sales.class, ((User) session.getAttribute("u")).getSaleId().getId());
 		s.setPrinter(0L);
 		entityManager.merge(s);
 		ObjectMapper mapper = new ObjectMapper();
@@ -267,10 +286,10 @@ public class SalesController {
 		return "{\"name\": \"" + "borrado" + "\"}";
 	}
 
-	@GetMapping(value = "/download/{id}"/* , produces = "application/zip" */)
+	@GetMapping(value = "/download/{id}")
 	public void zipDownload(@PathVariable Long id, HttpServletResponse response, HttpSession session)
 			throws IOException {
-		File file = localData.getFile("design", ""+ id);
+		File file = localData.getFile("design", Long.toString(id));
 		String nombreBonito = entityManager.find(Design.class, id).getName();
 		FileInputStream in = new FileInputStream(file);
 		byte[] content = new byte[(int) file.length()];
@@ -285,21 +304,25 @@ public class SalesController {
 		org.springframework.util.FileCopyUtils.copy(content, response.getOutputStream());
 	}
 
+
 	@Transactional
 	@ResponseBody
 	@PostMapping("/delProduct")
-	public String delDesign(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException {
+	public String delDesign(@RequestBody JsonNode o, Model model, HttpSession session) throws JsonProcessingException{
 		Long id = o.get("prodId").asLong();
-		float price = (float) o.get("price").asLong();
+		float price = (float)o.get("price").asLong();
 
-		User u = entityManager.find(User.class, ((User) session.getAttribute("u")).getId());
+		User u = entityManager.find(User.class, ((User)session.getAttribute("u")).getId());
 		entityManager.createNamedQuery("SalesLine.delProd").setParameter("id", id).executeUpdate();
 
-		Sales s = entityManager.createNamedQuery("Sales.sale", Sales.class).setParameter("id", u.getSaleId().getId())
-				.getSingleResult();
-		s.setTotal_price(s.getTotal_price() - price);
-		entityManager.persist(s);
 
-		return "{\"Product deleted\": \"" + id + "\"}";
-	}
+	   Sales s = entityManager.find(Sales.class, u.getSaleId().getId());
+	   s.setTotal_price(s.getTotal_price()-price);
+	   if(s.getPrinter() > 0){
+		Printer p = entityManager.find(Printer.class, s.getPrinter());
+		s.setTotal_price(s.getTotal_price() - p.getPrecio());
+	   }
+	   entityManager.persist(s);
+	   return "{\"Product deleted\": \"" + id + "\"}";
+   }
 }
