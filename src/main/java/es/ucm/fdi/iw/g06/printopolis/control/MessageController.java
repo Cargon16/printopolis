@@ -40,7 +40,9 @@ public class MessageController {
 		long userId = ((User)session.getAttribute("u")).getId();
 		List<Message> l = entityManager.createNamedQuery("Message.allMessage", Message.class).setParameter("userId", userId).getResultList();
 		List<User> u = entityManager.createNamedQuery("User.allUser", User.class).setParameter("id", userId).getResultList();
+		List<Message> l1 = entityManager.createNamedQuery("Message.sentMessage", Message.class).setParameter("userId", userId).getResultList();
 		model.addAttribute("message", l);
+		model.addAttribute("sentMessage", l1);
 		model.addAttribute("users", u);
 		return "messages";
 	}

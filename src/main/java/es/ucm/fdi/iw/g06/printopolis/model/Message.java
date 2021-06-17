@@ -33,8 +33,12 @@ import lombok.AllArgsConstructor;
 		@NamedQuery(name = "Message.warning", query = "SELECT COUNT(*) FROM Message m "
 				+ "WHERE m.recipient.id = :userId AND m.text LIKE '%ADVERTENCIA%'"),
 
+		@NamedQuery(name = "Message.sentMessage", query = "SELECT m FROM Message m " + "WHERE m.sender.id = :userId"),
+
 		@NamedQuery(name = "Message.delete", query = "DELETE FROM Message m "
 				+ "WHERE m.recipient.id = :userId AND m.text LIKE '%ADVERTENCIA%'") })
+
+		
 @Data
 public class Message implements Transferable<Message.Transfer> {
 

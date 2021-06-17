@@ -18,23 +18,40 @@
 	</nav>
 
 	<div class="container">
-		<div id="main" class="main" style="display: flex; flex-direction: column; align-items: center;">
-			<h1>Mensajes recibidos</h1>
+		<div class="tab">
+			<button class="tablinks" onclick="openMessage(event, 'Recibidos')">Recibidos</button>
+			<button class="tablinks" onclick="openMessage(event, 'Enviados')">Enviados</button>
+		</div>
 
-			<div th:each="u: ${users}" class="dropdownMenu" th:id="${u.username}">
-				<div class="title dropdownButton">
-					<p th:text="${u.username}"></p>
+		<!-- Tab content -->
+		<div id="Recibidos" class="tabcontent">
+			<div id="main" class="main" style="display: flex; flex-direction: column; align-items: center;">
+				<h1>Mensajes recibidos</h1>
+
+				<div th:each="u: ${users}" class="dropdownMenu" th:id="${u.username}">
+					<div class="title dropdownButton">
+						<p th:text="${u.username}"></p>
+					</div>
+					<div class="dropdownContent">
+						<th:block th:each="item : ${message}">
+							<div th:if="${item.sender.id == u.id}" style="display: flex; flex-direction: column;">
+								<p th:text="@{Fecha: } + ${item.dateSent}"></p>
+								<p th:text="@{Mensaje: } + ${item.text}" style="margin-bottom: 2%;"></p>
+							</div>
+						</th:block>
+					</div>
 				</div>
-				<div class="dropdownContent">
-					<th:block th:each="item : ${message}">
-						<div th:if="${item.sender.id == u.id}" style="display: flex; flex-direction: column;">
-							<p th:text="@{Fecha: } + ${item.dateSent}"></p>
-							<p th:text="@{Mensaje: } + ${item.text}" style="margin-bottom: 2%;"></p>
-						</div>
-					</th:block>
+
+			</div>
+		</div>
+
+		<div id="Enviados" class="tabcontent">
+			<div id="enviados" style="display: flex; flex-direction: column;">
+				<div th:each="s:${sentMessage}">
+					<p th:text="@{Para:} + ${s.recipient.username}"></p>
+					<p th:text="${s.text}"></p>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 
@@ -87,16 +104,31 @@
 
 			let b = document.getElementById("sendmsg");
 			b.onclick = (e) => {
+				var enviados = usuario = document.getElementById("enviados");
 				let idOfTarget = document.getElementById("idOfTarget").value;
+				let text = $( "#idOfTarget option:selected" ).text();
 				let url = b.parentNode.action.replace("idOfTarget", idOfTarget);
 				e.preventDefault();
-				console.log(b, b.parentNode)
+				
+				var usuario = document.createElement("div");
+				var recibe = document.createElement("p");
+				var text2 = document.createTextNode("Para:" + text);
+				recibe.appendChild(text2);
+				var mensaje = document.createElement("p");
+				var text1 = document.createTextNode(document.getElementById("message").value);
+				mensaje.appendChild(text1);
+				usuario.appendChild(recibe);
+				usuario.appendChild(mensaje);
+				enviados.appendChild(usuario);
+
 				go(url, 'POST', {
 					message:
 						document.getElementById("message").value
 				})
 					.then(d => console.log("happy", d), $("#message").val(''))
 					.catch(e => console.log("sad", e))
+
+
 			}
 		});
 
@@ -162,6 +194,27 @@
 
 			// Añadir el nodo Element como hijo de la pagina
 			usuario.children[1].appendChild(contenedor);
+		}
+
+		function openMessage(evt, eventName) {
+			// Declare all variables
+			var i, tabcontent, tablinks;
+
+			// Get all elements with class="tabcontent" and hide them
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+
+			// Get all elements with class="tablinks" and remove the class "active"
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+
+			// Show the current tab, and add an "active" class to the button that opened the tab
+			document.getElementById(eventName).style.display = "block";
+			evt.currentTarget.className += " active";
 		}
 
 	</script>
