@@ -26,7 +26,6 @@
 		<!-- Tab content -->
 		<div id="Recibidos" class="tabcontent">
 			<div id="main" class="main" style="display: flex; flex-direction: column; align-items: center;">
-				<h1>Mensajes recibidos</h1>
 
 				<div th:each="u: ${users}" class="dropdownMenu" th:id="${u.username}">
 					<div class="title dropdownButton">
@@ -49,6 +48,7 @@
 			<div id="enviados" style="display: flex; flex-direction: column;">
 				<div th:each="s:${sentMessage}">
 					<p th:text="@{Para:} + ${s.recipient.username}"></p>
+					<p th:text="@{Fecha:} + ${s.dateSent}"></p>
 					<p th:text="${s.text}"></p>
 				</div>
 			</div>
@@ -114,10 +114,14 @@
 				var recibe = document.createElement("p");
 				var text2 = document.createTextNode("Para:" + text);
 				recibe.appendChild(text2);
+				var fecha = document.createElement("p");
+				var text3 = document.createTextNode("Fecha:" + new Date().toISOString());
+				fecha.appendChild(text3);
 				var mensaje = document.createElement("p");
 				var text1 = document.createTextNode(document.getElementById("message").value);
 				mensaje.appendChild(text1);
 				usuario.appendChild(recibe);
+				usuario.appendChild(fecha);
 				usuario.appendChild(mensaje);
 				enviados.appendChild(usuario);
 
