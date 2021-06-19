@@ -241,7 +241,7 @@
             </div>
             
             <div th:each="p: ${userPrinters}" class="diseno">
-                <span>Pinchame para modificarme</span>
+                <span th:if="${session.u.username == user.username}">Pinchame para modificarme</span>
                 <div style="display:flex; flex-direction:row; align-items: center;">
                     <h3 th:text="${p.name}"></h3>
                     <th:block th:switch="${p.status}">
@@ -276,7 +276,8 @@
                                     enctype="multipart/form-data">
                                     <input type="number" id="precioImp" name="price" min="0" max="50"
                                         th:value="${p.precio}" required>
-                                    <input type="submit" class="change" value="Cambiar">
+                                    <input th:if="${session.u.username == user.username}" type="submit" class="change" value="Cambiar">
+                                    <input th:if="${session.u.username != user.username}" type="submit" class="change" value="Cambiar" disabled>
                                 </form>
                                 <form th:if="${session.u.username == user.username}" method="POST"
                                     th:action="@{/printer/delPrinter/{id}/(id=${p.id})}">

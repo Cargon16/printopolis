@@ -345,6 +345,7 @@ public class UserController {
 
 		User u = entityManager.find(User.class, id);
 		u.setRoles("USER,BANNED");
+		entityManager.persist(u);
 		return "{\"result\": \"banned.\"}";
 	}
 
@@ -354,7 +355,7 @@ public class UserController {
 
 		User u = entityManager.find(User.class, id);
 		u.setRoles("USER");
-
+		entityManager.persist(u);
 		return "redirect:/";
 	}
 }
